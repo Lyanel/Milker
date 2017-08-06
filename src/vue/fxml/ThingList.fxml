@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootPane" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.ThingCellController">
+   <children>
+      <Accordion>
+        <panes>
+          <TitledPane fx:id="listBuildingTab" animated="false" text="Building">
+               <content>
+                  <ListView fx:id="listBuildingPan" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </TitledPane>
+          <TitledPane fx:id="listWorkerTab" animated="false" text="Worker">
+               <content>
+                  <ListView fx:id="listWorkerPan" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </TitledPane>
+            <TitledPane fx:id="listSlaveTab" animated="false" disable="true" layoutX="10.0" layoutY="62.0" text="Slave" visible="false">
+               <content>
+                  <ListView fx:id="listSlavePan" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </TitledPane>
+          <TitledPane fx:id="listAnimalTab" animated="false" text="Animal">
+               <content>
+                  <ListView fx:id="listAnimalPan" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </children>
+</AnchorPane>

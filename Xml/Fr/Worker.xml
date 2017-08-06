@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<workers>
+	<worker id="11">
+		<name>Fermière</name>
+		<effect>Active la Ferme.</effect>
+		<desc>Une fille désuète travaillant la terre.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="12">
+		<name>Trayeuse</name>
+		<effect>Active les trois étable animal et la salle de traite.</effect>
+		<desc>Une fille mignonne élevant le bétail.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="13">
+		<name>Ouvrière</name>
+		<effect>Active l'Usine et l'Entrepôt.</effect>
+		<desc>Une fille assez brusque faisant diverses produits à partir du lait.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="14">
+		<name>Femme d'affaires</name>
+		<effect>Active le centre d'affaires.</effect>
+		<desc>Une femme cupide remarquable dans l'art de la négociation.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="21">
+		<name>Soubrette</name>
+		<effect>Active l'Hôtels et la Ferme intelligente.</effect>
+		<desc>Une fille énergique qui aime les tâches ménagères..</desc>
+		<quote></quote>
+	</worker>
+	<worker id="22">
+		<name>Vétérinaire</name>
+		<effect>Active la Clinique.</effect>
+		<desc>Une gentille fille prenant soin du bétail.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="23">
+		<name>Scientifique</name>
+		<effect>Active le laboratoire scientifique.</effect>
+		<desc>Une fille intellectuelle qui étudie le fonctionnement de l'univers..</desc>
+		<quote></quote>
+	</worker>
+	<worker id="24">
+		<name>Scientifique folle</name>
+		<effect>Active le laboratoire secret.</effect>
+		<desc>Une fille folle faisant des expériences dingue.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="25">
+		<name>Spationaute</name>
+		<effect>Active Spatioport.</effect>
+		<desc>Une fille courageuse qui voyage dans l'espace.</desc>
+		<quote>Perdu dans le lait.</quote>
+	</worker>
+	<worker id="26">
+		<name>Scientifique maléfique</name>
+		<effect>Active le Condenseur d'énèrgie sombre.</effect>
+		<desc>Une mauvaise fille qui a maîtrisé l'énèrgie sombre.</desc>
+		<quote>Rejoins le côté obscur, on a des cookies.</quote>
+	</worker>
+	<worker id="31">
+		<name>Hôtesse</name>
+		<effect>Active l'Auberge et la Ferme fantaisie.</effect>
+		<desc>Une fille stricte qui aime la cuisine.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="32">
+		<name>Prêtresse</name>
+		<effect>Active le Temple.</effect>
+		<desc>Une fille fervente se souciant du bétail.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="33">
+		<name>Alchimiste</name>
+		<effect>Activer la Tour d'alchimie.</effect>
+		<desc>Une fille étrange étudiant la matière.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="34">
+		<name>Sorcière</name>
+		<effect>Activer la Tour de sorcellerie.</effect>
+		<desc>Une fille sage avec une grande compréhension de l'univers.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="35">
+		<name>Arpenteuse de plan</name>
+		<effect>Active le Portail.</effect>
+		<desc>Une fille puissante parcourant le multivers.</desc>
+		<quote>Toujours vivante.</quote>
+	</worker>
+	<worker id="36">
+		<name>Déesse</name>
+		<effect>Active le Prisme.</effect>
+		<desc>Une fille pure qui a maîtrisé la lumière.</desc>
+		<quote></quote>
+	</worker>
+	<worker id="44">
+		<name>Esclavagiste</name>
+		<effect>Active les 3 étable à esclave.</effect>
+		<desc>Une fille sadique prenant plaisir à dresser les esclaves.</desc>
+		<quote></quote>
+	</worker>
+</workers>

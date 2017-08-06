@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="1" start="1" def="10">
+		<need />
+		<price coin="1" coef="1"/>
+		<agent kind="1" id="10"/>
+		<options>
+			<option id="10" />
+			<option id="11">
+				<need>
+					<object kind="1" id="11">100</object>
+				</need>
+			</option>
+			<option id="111">
+				<need>
+					<object kind="2" id="11">100</object>
+				</need>
+			</option>
+			<option id="112">
+				<need>
+					<object kind="2" id="12">100</object>
+				</need>
+			</option>
+			<option id="113">
+				<need>
+					<object kind="2" id="13">100</object>
+				</need>
+			</option>
+			<option id="121">
+				<need>
+					<object kind="2" id="21">100</object>
+				</need>
+			</option>
+			<option id="122">
+				<need>
+					<object kind="2" id="22">100</object>
+				</need>
+			</option>
+			<option id="123">
+				<need>
+					<object kind="2" id="23">100</object>
+				</need>
+			</option>
+			<option id="124">
+				<need>
+					<object kind="2" id="24">100</object>
+				</need>
+			</option>
+			<option id="125">
+				<need>
+					<object kind="2" id="25">100</object>
+				</need>
+			</option>
+			<option id="126">
+				<need>
+					<object kind="2" id="26">100</object>
+				</need>
+			</option>
+			<option id="131">
+				<need>
+					<object kind="2" id="31">100</object>
+				</need>
+			</option>
+			<option id="132">
+				<need>
+					<object kind="2" id="32">100</object>
+				</need>
+			</option>
+			<option id="133">
+				<need>
+					<object kind="2" id="33">100</object>
+				</need>
+			</option>
+			<option id="134">
+				<need>
+					<object kind="2" id="34">100</object>
+				</need>
+			</option>
+			<option id="135">
+				<need>
+					<object kind="2" id="35">100</object>
+				</need>
+			</option>
+			<option id="136">
+				<need>
+					<object kind="2" id="36">100</object>
+				</need>
+			</option>
+			<option id="144">
+				<need>
+					<object kind="2" id="44">100</object>
+				</need>
+			</option>
+			<option id="211">
+				<need>
+					<object kind="3" id="11">100</object>
+				</need>
+			</option>
+			<option id="212">
+				<need>
+					<object kind="3" id="12">100</object>
+				</need>
+			</option>
+			<option id="222">
+				<need>
+					<object kind="3" id="22">100</object>
+				</need>
+			</option>
+			<option id="223">
+				<need>
+					<object kind="3" id="23">100</object>
+				</need>
+			</option>
+			<option id="224">
+				<need>
+					<object kind="3" id="24">100</object>
+				</need>
+			</option>
+			<option id="225">
+				<need>
+					<object kind="3" id="25">100</object>
+				</need>
+			</option>
+			<option id="226">
+				<need>
+					<object kind="3" id="26">100</object>
+				</need>
+			</option>
+			<option id="232">
+				<need>
+					<object kind="3" id="32">100</object>
+				</need>
+			</option>
+			<option id="233">
+				<need>
+					<object kind="3" id="33">100</object>
+				</need>
+			</option>
+			<option id="234">
+				<need>
+					<object kind="3" id="34">100</object>
+				</need>
+			</option>
+			<option id="235">
+				<need>
+					<object kind="3" id="35">100</object>
+				</need>
+			</option>
+			<option id="236">
+				<need>
+					<object kind="3" id="36">100</object>
+				</need>
+			</option>
+			<option id="242">
+				<need>
+					<object kind="4" id="42">100</object>
+				</need>
+			</option>
+			<option id="243">
+				<need>
+					<object kind="4" id="43">100</object>
+				</need>
+			</option>
+			<option id="244">
+				<need>
+					<object kind="4" id="44">100</object>
+				</need>
+			</option>
+			<option id="245">
+				<need>
+					<object kind="4" id="45">100</object>
+				</need>
+			</option>
+			<option id="251">
+				<need>
+					<object kind="4" id="51">100</object>
+				</need>
+			</option>
+			<option id="252">
+				<need>
+					<object kind="4" id="52">100</object>
+				</need>
+			</option>
+			<option id="253">
+				<need>
+					<object kind="4" id="53">100</object>
+				</need>
+			</option>
+			<option id="254">
+				<need>
+					<object kind="4" id="54">100</object>
+				</need>
+			</option>
+			<option id="261">
+				<need>
+					<object kind="4" id="61">100</object>
+				</need>
+			</option>
+			<option id="262">
+				<need>
+					<object kind="4" id="62">100</object>
+				</need>
+			</option>
+			<option id="263">
+				<need>
+					<object kind="4" id="63">100</object>
+				</need>
+			</option>
+			<option id="264">
+				<need>
+					<object kind="4" id="64">100</object>
+				</need>
+			</option>
+		</options>
+	</toggle>
+	<toggle id="300" start="1" def="301">
+		<need />
+		<price coin="5" coef="1"/>
+		<agent kind="2"/>
+		<options>
+			<option id="301">
+				<need />
+			</option>
+			<option id="302">
+				<need />
+			</option>
+			<option id="303">
+				<need />
+			</option>
+			<option id="304">
+				<need />
+			</option>
+			<option id="305">
+				<need />
+			</option>
+			<option id="306">
+				<need />
+			</option>
+			<option id="307">
+				<need />
+			</option>
+			<option id="308">
+				<need />
+			</option>
+			<option id="309">
+				<need />
+			</option>
+		</options>
+	</toggle>
+	<toggle id="500" start="1" def="510">
+		<price coin="5" coef="1"/>
+		<agent kind="1" id="12"/>
+		<options>
+			<option id="510">
+				<Levels>
+					<Level id="511" path="1" lvl="1">
+						<tool quan="40" qual="40" />
+					</Level>
+					<Level id="512" path="1" lvl="2">
+						<research id="512" />
+						<tool quan="50" qual="50" />
+					</Level>
+					<Level id="513" path="1" lvl="3">
+						<research id="512" />
+						<tool quan="70" qual="70" />
+					</Level>
+					<Level id="514" path="1" lvl="4">
+						<research id="514" />
+						<tool quan="90" qual="90" />
+					</Level>
+					<Level id="515" path="1" lvl="5">
+						<research id="515" />
+						<tool quan="110" qual="110" />
+					</Level>
+					<Level id="516" path="1" lvl="6">
+						<research id="516" />
+						<tool quan="120" qual="140" />
+					</Level>
+					<Level id="517" path="1" lvl="7">
+						<research id="517" />
+						<tool quan="150" qual="150" />
+					</Level>
+				</Levels>
+			</option>
+			<option id="520">
+				<need>
+					<research id="522" />
+				</need>
+				<Levels>
+					<Level id="522" path="2" lvl="2">
+						<tool quan="60" qual="40" />
+					</Level>
+					<Level id="523" path="2" lvl="3">
+						<research id="523" />
+						<tool quan="80" qual="60" />
+					</Level>
+					<Level id="524" path="2" lvl="4">
+						<research id="524" />
+						<tool quan="80" qual="100" />
+					</Level>
+					<Level id="525" path="2" lvl="5">
+						<research id="525" />
+						<tool quan="100" qual="120" />
+					</Level>
+					<Level id="526" path="2" lvl="6">
+						<research id="526" />
+						<tool quan="130" qual="130" />
+					</Level>
+					<Level id="527" path="2" lvl="7">
+						<research id="527" />
+						<tool quan="160" qual="140" />
+					</Level>
+				</Levels>
+			</option>
+			<option id="530">
+				<need>
+					<research id="532" />
+				</need>
+				<Levels>
+					<Level id="532" path="3" lvl="2">
+						<tool quan="40" qual="60" />
+					</Level>
+					<Level id="533" path="3" lvl="3">
+						<research id="533" />
+						<tool quan="60" qual="80" />
+					</Level>
+					<Level id="534" path="3" lvl="4">
+						<research id="534" />
+						<tool quan="100" qual="80" />
+					</Level>
+					<Level id="535" path="3" lvl="5">
+						<research id="535" />
+						<tool quan="120" qual="100" />
+					</Level>
+					<Level id="536" path="3" lvl="6">
+						<research id="536" />
+						<tool quan="140" qual="120" />
+					</Level>
+					<Level id="537" path="3" lvl="7">
+						<research id="537" />
+						<tool quan="140" qual="160" />
+					</Level>
+				</Levels>
+			</option>
+		</options>
+	</toggle>
+</toggles>

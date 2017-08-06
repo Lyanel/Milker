@@ -1,0 +1,71 @@
+	Research, upgrade, synergy & Ascension XML structure
+ID :	
+	001->099 	building related Intel (& people that work/live in)
+	100->199	worker related Intel
+	200->299	slave related Intel
+	300->399	animal related Intel
+	400->499	event related Intel
+	500->599	Toggle related Intel
+	600->999	other Intel ?
+	
+in effect, need & check, the thing reference id, path & lvl are not needed (id="0", path="0", lvl="0" by default)
+	if you leave them, all the thing of the specified kind will be affected/checked.
+
+Level have 2 way of working : 
+	If lvl<0 the Level of the thing must be = to lvl
+	if lvl>0 the Level of the thing must be > to lvl.
+	
+	
+effect	
+	mod="x" : num indicate if the effect is a fixed value (1) or a percentage (0) or change the value (-1).
+		If you want to add a sacrifice cost put 1.
+		If you want to edit a sacrifice cost put -1 (it will not add a sacrifice for the things which don't have one).
+		In all case only specified value will change.
+	coef="x" : effect will increase by " number of agents / coef ".
+	
+Research.xml
+	<research id="x" start="x">
+		<need />													see need.txt.
+		<check />													see need.txt.
+		<sacrifice kind="x" id="X" path="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
+		<price coin="x" coef="x"/>
+	</research>
+	
+upgrade.xml
+	<upgrade id="x" start="x">
+		<need />							see need.txt.
+		<check />							see need.txt.
+		<sacrifice kind="x" id="X" path="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
+		<price coin="x" coef="x"/>
+		<effect mod="x">
+			<things>
+				<thing kind="x" id="x" path="x" lvl="x">
+					(...)
+				</thing>
+				(...)
+			</things>
+		</effect>
+	</upgrade>
+	
+synergy.xml
+	<synergy id="x" start="x">
+		<need />							see need.txt.
+		<check />							see need.txt.
+		<sacrifice kind="x" id="X" path="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
+		<price coin="x" coef="x"/>
+		<effects>
+			<effect mod="x" coef="x">
+				<agents>
+					<agent kind="x" id="x" path="x" lvl="x" />	
+					(...)
+				</agents>
+				<things>
+					<thing kind="x" id="x" path="x" lvl="x">
+						(...)
+					</thing>
+					(...)
+				</things>
+			</effect>
+			(...)
+		</effects>
+	</synergy>

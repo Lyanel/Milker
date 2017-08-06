@@ -1,0 +1,257 @@
+package modele.thing;
+
+import modele.carac.Attrib;
+import modele.carac.Income;
+import modele.intel.Intel;
+
+import java.util.Vector;
+
+import org.w3c.dom.Element;
+
+import controleur.ParseMilkFile;
+
+public class Thing extends Intel implements Cloneable {
+	
+	public static final String noeud = "thing", xmlLvl="lvl", xmlGet="get";
+	public String getNoeud() {return noeud;}
+
+	@SuppressWarnings("rawtypes")
+	public static Vector getMilkVarList(Element elementlist) {
+		Vector<Thing> things = new Vector<Thing>();
+		Thing thing=new Thing();
+		Element elements = thing.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=thing.getMilkElement(elements,i);
+			if (tempE != null){
+				thing.setValueFromNode(tempE);
+				things.add(thing);
+			}
+		}
+		return things;
+	}
+	@SuppressWarnings("rawtypes")
+	public static Vector getNullMilkVarList(Element elementlist) {
+		Vector<Thing> things = new Vector<Thing>();
+		Thing thing=new Thing();
+		Element elements = thing.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=thing.getMilkElement(elements,i);
+			if (tempE != null){
+				thing=new Thing();
+				thing.setNullValueFromNode(tempE);
+				things.add(thing);
+			}
+		}
+		return things;
+	}
+	@SuppressWarnings("rawtypes")
+	public static Vector getMilkVarList(Vector<Element> elementlist) {
+		Vector<Thing> things = new Vector<Thing>();
+		for (Element elementMilk: elementlist) {
+			try {
+				Thing thing = new Thing(elementMilk);
+				things.add(thing);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return things;
+	}
+	@SuppressWarnings("rawtypes")
+	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
+		Vector<Thing> things = new Vector<Thing>();
+		for (Element elementMilk: elementlist) {
+			try {
+				Thing thing = new Thing();
+				thing.setNullValueFromNode(elementMilk);
+				things.add(thing);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return things;
+	}
+	
+	private Integer lvl, get;
+	private Attrib attrib;
+	private Income income;
+
+	// Constructors
+	
+	public Thing() {
+		super();
+		this.setLvl(0);
+		this.setGet(0);
+		this.attrib = new Attrib();
+		this.income = new Income();
+	}
+	public Thing(Element milkElement) {
+		super();
+		this.setLvl(0);
+		this.setGet(0);
+		this.attrib = new Attrib();
+		this.income = new Income();
+		this.setValueFromNode(milkElement);
+	}
+	
+	// Set value from Element methods
+	
+	@Override
+	public void setValueFromNode(Element milkElement) {
+		super.setValueFromNode(milkElement);
+		this.setLvl(milkElement);
+		this.setGet(milkElement);
+		this.setAttrib(milkElement);
+		this.setIncome(milkElement);
+	}
+	@Override
+	public void setNullValueFromNode(Element milkElement) {
+		super.setNullValueFromNode(milkElement);
+		this.setNullLvl(milkElement);
+		this.setNullGet(milkElement);
+		this.setNullAttrib(milkElement);
+		this.setNullIncome(milkElement);
+	}
+	
+	// field methods
+
+	@Override
+	public Float getPriceValue() {
+		return super.getPriceValue()*this.getAttrib().getQuant();
+	}
+	
+	public Integer getLvl() {
+		return this.lvl;
+	}
+	public String getStringLvl() {
+		String temp = null;
+		if (this.lvl != null) temp = xmlLvl+" : "+this.lvl+". ";
+		return temp;
+	}
+	public String getXmlLvl() {
+		String temp = null;
+		if (this.lvl != null) temp = " "+xmlLvl+"=\""+lvl+"\"";
+		return temp;
+	}
+	public void setLvl(Integer lvl) {
+		this.lvl = lvl;
+	}
+	public void setLvl(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
+		if (temp != null) this.lvl=temp;
+	}
+	public void setNullLvl(Element milkElement) {
+		lvl = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
+	}
+
+	public Integer getGet() {
+		return this.get;
+	}
+	public String getStringGet() {
+		String temp = null;
+		if (this.get != null) temp = xmlGet+" : "+this.get+". ";
+		return temp;
+	}
+	public String getXmlGet() {
+		String temp = null;
+		if (this.get != null) temp = " "+xmlGet+"=\""+get+"\"";
+		return temp;
+	}
+	public void setGet(Integer get) {
+		this.get = get;
+	}
+	public void setGet(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
+		if (temp != null) this.get=temp;
+	}
+	public void setNullGet(Element milkElement) {
+		get = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
+	}
+	
+	public Attrib getAttrib() {
+		return this.attrib;
+	}
+	public void setAttrib(Attrib attrib) {
+		this.attrib = attrib;
+	}
+	public void setAttrib(Element milkElement) {
+		this.attrib.setValueFromNode(milkElement);;
+	}
+	public void setNullAttrib(Element milkElement) {
+		this.attrib.setNullValueFromNode(milkElement);
+	}
+
+	public Income getIncome() {
+		return this.income;
+	}
+	public void setProductivity(int prod) {
+		this.income.setProd(prod);
+	}
+	public void setIncome(Income income) {
+		this.income = income;
+	}
+	public void setIncome(Element milkElement) {
+		this.income.setValueFromNode(milkElement);;
+	}
+	public void setNullIncome(Element milkElement) {
+		this.income.setNullValueFromNode(milkElement);
+	}
+	
+	// toString & toXml methods
+
+	@Override
+	public String toStringAttrib() {
+		String temp = super.toStringAttrib();
+		temp+=this.getStringLvl();
+		temp+=this.getStringGet();
+		if (this.attrib != null) temp += this.attrib.toStringAttrib();
+		return temp;
+	}
+	@Override
+	public String toXmlAttrib() {
+		String temp = super.toXmlAttrib();
+		temp+=this.getXmlLvl();
+		temp+=this.getXmlGet();
+		if (this.attrib != null) temp += this.attrib.toXmlAttrib();
+		return temp;
+	}
+	@Override
+	public String toStringStatChild() {
+		String temp = super.toStringStatChild();
+		if (this.attrib != null) temp += this.attrib.toStringStatChild();
+		if (this.income != null) temp += this.income.toStringStat();
+		return temp;
+	}
+	@Override
+	public String toXmlStatChild() {
+		String temp = super.toXmlStatChild();
+		if (this.attrib != null) temp += this.attrib.toXmlStatChild();
+		if (this.income != null) temp += this.income.toXmlStat();
+		return temp;
+	}
+	
+	// other object methods
+
+	@Override
+	public void buy() {
+		this.getAttrib().setQuant(this.getAttrib().getQuant()+1);
+	}
+
+	@Override
+	public boolean allZero()  {
+		boolean temp = super.allZero();
+		if(this.attrib!=null && !this.attrib.allZero()) temp= false;
+		if(this.income!=null && !this.income.allZero()) temp= false;
+		return temp;
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Thing clone = (Thing) super.clone();
+		if (this.attrib!=null) clone.setAttrib((Attrib) this.attrib.clone());
+		if (this.income!=null) clone.setIncome((Income) this.income.clone());
+		return clone;
+	}
+}

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<languages id="2">
+	<language id="11">
+		<name>English</name>
+		<path>Eng</path>
+	</language>
+	<language id="12">
+		<name>Français</name>
+		<path>Fr</path>
+	</language>
+</languages>

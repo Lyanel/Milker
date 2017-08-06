@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<upgrades>
+	<upgrade id="2">
+		<name>Ferme, deuxième étage</name>
+		<effect>Les fermes peuvent accueillir 3 personnes de plus</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="3">
+		<name>Ferme, troisième étage</name>
+		<effect>Les fermes peuvent accueillir 3 personnes de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="11">
+		<name>Plantation d'avoine</name>
+		<effect>Les fermes produisent du lait, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="12">
+		<name>Plantation de coco</name>
+		<effect>Augmentation de la production des fermes, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="13">
+		<name>Plantation de riz</name>
+		<effect>Augmentation de la production des fermes, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="14">
+		<name>Plantation de soja</name>
+		<effect>Augmentation de la production des fermes, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="22">
+		<name>Culture d'épautre</name>
+		<effect>Augmentation de la production des fermes intelligentes, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="23">
+		<name>Culture de lin</name>
+		<effect>Augmentation de la production des fermes intelligentes, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="24">
+		<name>Culture de chanvre</name>
+		<effect>Augmentation de la production des fermes intelligentes, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="32">
+		<name>Croitre des cajoux</name>
+		<effect>Augmentation de la production des fermes fantaisies, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="33">
+		<name>Croitre des noisettes</name>
+		<effect>Augmentation de la production des fermes fantaisies, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="34">
+		<name>Croitre des amandes</name>
+		<effect>Augmentation de la production des fermes fantaisies, nécessite 1 travailleur de plus.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="111">
+		<name>Traite de curiosité</name>
+		<effect>Les travailleuses de niveau 1 produisent du lait.</effect>
+		<desc>À force de voir leur bétail se faire traire, quelques fermières sont devenues curieuses quant au processus...</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="112">
+		<name>Traite volontaire</name>
+		<effect>Les travailleuses de niveau 2 produisent du lait.</effect>
+		<desc>À force de s'occuper des esclaves, quelques filles ont voulu les aider plus.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="113">
+		<name>Traite expérimentale</name>
+		<effect>Les travailleuses de niveau 3 produisent du lait.</effect>
+		<desc>À force de faire des expériences, quelques filles ont commencé à se prendre elles-mêmes pour des cobayes.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="114">
+		<name>Traite contaminée</name>
+		<effect>Les travailleuses de niveau 4 produisent du lait.</effect>
+		<desc>En raison de leur activité pas si légale certaines filles ont été contaminés par d'étrange maladie.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="115">
+		<name>Traite pervertie</name>
+		<effect>Les travailleuses de niveau 5 produisent du lait.</effect>
+		<desc>Après des éons, même les plus têtues finirent par ressentir le besoin d'être traites.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="116">
+		<name>Traite destinée</name>
+		<effect>Les travailleuses de niveau 6 produisent du lait.</effect>
+		<desc>En fin de compte, même les filles les plus géniales acceptèrent de donner leur lait.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="120">
+		<name>Travailleuses jetables</name>
+		<effect>Les travailleuses peuvent-être licenciés gratuitement.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="121">
+		<name>Travailleuses marquées</name>
+		<effect>Les travailleuses sont vendues pour 45% de leur prix d'achat et produise 200% de lait.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="122">
+		<name>Travailleuses bétails</name>
+		<effect>Les travailleuses sont vendues pour 90% de leur prix d'achat et produise 300% de lait.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="211">
+		<name>Légalisation de l'esclavage</name>
+		<effect>Les esclaves humaines sont vendues pour 90% de leur prix d'achat.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="212">
+		<name>Maîtrise génétique animale</name>
+		<effect>Les esclaves animals peuvent être utilisés pour créer des esclaves humaines.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="213">
+		<name>Projet de recyclage animal</name>
+		<effect>Les animaux peuvent être utilisés pour créer des esclaves humaines.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="221">
+		<name>Les semi-animaux ne sont pas humains</name>
+		<effect>Les esclaves animals sont vendues pour 90% de leur prix d'achat.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="222">
+		<name>Maîtrise génétique humaine</name>
+		<effect>Les esclaves humaines peuvent être utilisés pour créer des esclaves animals.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="223">
+		<name>Projet de recyclage humain</name>
+		<effect>Les travailleuses peuvent être utilisés pour créer des esclaves animals.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="301">
+		<name>Mimi milker</name>
+		<effect>Les animaux de niveau 1 produisent du lait.</effect>
+		<desc>Après avoir collecté tellement d'entre eux, ils peuvent peut-être être mis à profit.</desc>
+		<quote>Ils sont là...</quote>
+	</upgrade>
+</upgrades>

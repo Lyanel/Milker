@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<workers>
+	<worker id="11" path="1" lvl="1">
+		<price coin="1" coef="1.15"/>
+		<income quan="1.606" qual="9.34" />
+	</worker>
+	<worker id="12" path="1" lvl="2">
+		<price coin="1" coef="1.15"/>
+		<income quan="1.636" qual="9.78" />
+	</worker>
+	<worker id="13" path="1" lvl="3">
+		<need>
+			<intels>
+				<intel kind="1" id="13" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.6" qual="10.625" />
+	</worker>
+	<worker id="14" path="1" lvl="4">
+		<need>
+			<intels>
+				<intel kind="1" id="14" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.44" qual="12.5" />
+	</worker>
+	<worker id="21" path="2" lvl="1">
+		<need>
+			<intels>
+				<intel kind="1" id="21" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.875" qual="8" />
+	</worker>
+	<worker id="22" path="2" lvl="2">
+		<need>
+			<intels>
+				<intel kind="1" id="22" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.702" qual="9.4" />
+	</worker>
+	<worker id="23" path="2" lvl="3">
+		<need>
+			<intels>
+				<intel kind="1" id="23" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.91" qual="8.9" />
+	</worker>
+	<worker id="24" path="2" lvl="4">
+		<need>
+			<intels>
+				<intel kind="1" id="24" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="2" qual="9" />
+	</worker>
+	<worker id="25" path="2" lvl="5">
+		<need>
+			<intels>
+				<intel kind="1" id="25" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.9" qual="10" />
+	</worker>
+	<worker id="26" path="2" lvl="6">
+		<need>
+			<intels>
+				<intel kind="1" id="26" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.923" qual="10.4" />
+	</worker>
+	<worker id="31" path="3" lvl="1">
+		<need>
+			<intels>
+				<intel kind="1" id="31" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.363" qual="11" />
+	</worker>
+	<worker id="32" path="3" lvl="2">
+		<need>
+			<intels>
+				<intel kind="1" id="32" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.25" qual="12.8" />
+	</worker>
+	<worker id="33" path="3" lvl="3">
+		<need>
+			<intels>
+				<intel kind="1" id="33" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.416" qual="12" />
+	</worker>
+	<worker id="34" path="3" lvl="4">
+		<need>
+			<intels>
+				<intel kind="1" id="34" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.2" qual="15" />
+	</worker>
+	<worker id="35" path="3" lvl="5">
+		<need>
+			<intels>
+				<intel kind="1" id="35" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.461" qual="13" />
+	</worker>
+	<worker id="36" path="3" lvl="6">
+		<need>
+			<intels>
+				<intel kind="1" id="36" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.321" qual="15.14" />
+	</worker>
+	<worker id="44" path="1" lvl="4">
+		<need>
+			<intels>
+				<intel kind="1" id="44" />
+			</intels>
+		</need>
+		<price coin="1" coef="1.15"/>
+		<income quan="1.5" qual="12" />
+	</worker>
+</workers>

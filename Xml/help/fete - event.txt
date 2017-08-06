@@ -1,0 +1,38 @@
+http://cercledusanglier.free.fr/sabbats.html
+
+01/06	Epiphany					(/1er dimanche de janvier), galette des Rois
+01/02	Imbolc						chandeleur (02/02) crêpe. début des plantation, d'accelération de la vitesse d'allongement des jours dans l'hemisphere nord.
+02/14	valentine
+03/20	équinoxe de printemps
+03-04	easter						La date de Pâques est fixée au premier dimanche après la première pleine lune qui suit le 21 mars, donc au plus tôt le 22 mars et au plus tard le 25 avril.
+03-04	Hanami						La Floraison des sakuras change en fonction du lieux et du temps, mais en moyenne elle se situe fin mars début avril
+04/31-05/01	Beltaine/walpurgis		début de la saison lumineuse chez les celtes, fête des fée et des créature magique. (L'église a condamné ces fete, en les tranformant en jour du sabat des sorcière.)
+										floralies chez les romain (Les prostituées romaines appréciaient particulièrement ces fêtes, car elles considéraient Flore comme leur déesse protectrice) 
+06/21	solstice d'été 				Fete de la Musique et de la saint jean.
+
+juillet								diverse fête nationale, Tanabata et Umi no Hi au japon, Neptunalia (romaine)
+08/01	Lugnasad					début de la moisson, d'accelération de la vitesse de la diminution de la duré des jour dans l'hemisphere nord.
+08/15	Fête de Marie assomption	De nombreuse ville francaise célèbre la moisson ~ a cette date, Provins la fête le dernier dimanche d'aout.
+09/22	Équinoxe d'automne			La fête des moissons est célébrée au Royaume-Uni le dimanche de la pleine lune la plus proche de l'équinoxe de septembre.
+octobre								Thanksgiving, nommé Action de grâce au Canada, fêtée le deuxième lundi d'octobre
+10/31-11/01 Samain					halloween, Toussaint, de nombreuse fete des morts se passe vers cette date.
+Novembre							Thanksgiving aux États-Unis, fêtée le quatrième jeudi de novembre, est l'une des dernière fête lié à la moisson.
+
+12/21	Solstice d'hiver
+12/25	christmas
+
+Lapin	Chat
+truie	loup
+Ours	Renne
+Orque	chamelle
+
+Choix final
+id	Date	Event		Chemin	theme		animal		patisserie	
+2	02/01	Imbolc		Science	Plantation	Ours		crêpe
+3	03/20	Ostara		Science	Naissance	Lapin		moelleux au chocolat
+4	05/01	Beltaine	Magie	Amour/Fée	Chat		Forêt blanche
+5	06/21	Litha		Magie	Music		chamelle	Millefeuille
+6	08/01	Lugnasad	Science	Mer			Orque		Savarin
+7	09/21	Mabon		Science	Moisson		Truie		tarte fruité
+8	11/01	Samain		Magie	Mort		Loup		Forêt noir
+9	12/21	Yule		Magie	Neige		Renne		Buche

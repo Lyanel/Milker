@@ -1,0 +1,59 @@
+building, worker, Slaves, animal & toggle (<- not things but who care) XML structure
+
+	<building id="x" path="x" lvl="x" start="x" sell="x" get="x">
+		<need />																					see need.txt
+		<price coin="x" coef="x"/>
+		<worker id="x" >X</worker>													each building need X worker to be active, it does not prevent from buying new building.
+		<income coin="X" quan="X" qual="X" prod="x"/>
+		<bonus coin="X" quan="X" qual="X" />
+		<pop kind="x" path="y" >X</pop>
+	</building>
+	
+	<worker id="x" path="x" lvl="x" start="x" sell="x" get="x">
+		<need />																					see need.txt
+		<price coin="x" coef="x"/>
+		<income quan="X" qual="X" prod="x"/>
+	</worker>
+
+Slaves : Type A & Type B xml are the same, they are divided due to some default value (like kind & sell).	
+sacrifice : By default only these one are available :
+		Worker -> slave type A 
+		animal -> slave type B
+	if id=0 the game will show a list defined by kind, path and lvl in which you choose the sacrifice. 
+	if id=-1 the sacrifice will be random in a list defined by kind, path and lvl.
+		
+	<slave id="x" path="x" lvl="x" start="x" sell="x" get="x">
+		<need />															see need.txt
+		<sacrifice kind="x" id="X" path="X" lvl="x" />
+		<price coin="x" coef="x"/>
+		<income quan="X" qual="X" prod="x"/>
+	</slave>
+	
+	<animal id="x" path="x" lvl="x" start="x" sell="x" get="x">
+		<need />															see need.txt
+		<price coin="x" coef="x"/>
+		<income quan="X" qual="X" prod="x"/>
+	</animal>
+	
+	
+	Toggles are mostly hard coded so the thing here is mostly random.
+	
+	<toggle id="x" start="x" def="y">						def : option enabled by default.
+		<need />															see need.txt
+		<price coin="y" coef="x"/>								Using a toggle cost a price...
+		<agent kind="x" id="x" path="x" lvl="x"/>		...depending of the number of agent. (like coin*agent/coef)
+		<options>
+			<option id="y">
+				<need />													see need.txt
+				<Levels>
+					<Level id="x">
+						<research id="x" />
+						???????????????????					ask the Dev.
+					</Level>
+					(...)
+				</Levels>
+			</option>
+			(...)
+		</options>
+	</toggle>
+	

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<synergys>
+	<synergy id="101">
+		<name>Magnate of finance</name>
+		<effect>Buildings price is reduced by 0,01% for each Business center you have.</effect>
+		<desc></desc>
+		<quote></quote>
+	</synergy>
+	<synergy id="101">
+		<name>Rainbow cat</name>
+		<effect>Workers price is reduced by 0,01% for each cat you have.</effect>
+		<desc>Allowing this cats to move freely on the area, make worker more efficient and above all less claimant.</desc>
+		<quote>Next time we will train them to deliver pizzas.</quote>
+	</synergy>
+	<synergy id="201">
+		<name>Pink bunny</name>
+		<effect>Slaves price is reduced by 0,01% for each bunny you have.</effect>
+		<desc>Making these rabbits freely roam the area, allow slaves to accept more easily their new lives.</desc>
+		<quote>Maybe we should teach them to make coffee?</quote>
+	</synergy>
+</synergys>

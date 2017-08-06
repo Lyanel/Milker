@@ -1,0 +1,53 @@
+ID : must be an unique number >0 for each kind of object (Building, research...). 
+	Have generally at last 2 digit where the tens refer to the path and the units to it's lvl.
+		 (except when multiple object have the same path and lvl)
+
+Kind :  Refer to the Kind of the thing you have/need :
+	object : 1 (buildings), 2 (workers), 3 (human slaves (SH)), 4 (animal slaves (SA)), 5 (animals), 
+		need/check :  x= 0 (None), 49 (All)
+			6 (Semi-Humans (workers+SH)), 7 (slaves (SH+SA)), 8 (Semi-animals (SA+animals)),
+			09 (Earthling People (workers+SA)),			10 (natural Cattle (SH+animals)), 
+			11 (People (workers+SH+SA)),				12 (cattle (SH+SA+animals)),
+			13 (Earthling being (workers+SA+animals)),	14 (natural being (workers+SH+animals)), 
+			15 (Livings being (workers+SH+SA+animals)).
+	intel : 1 (research), 2 (upgrade), 3 (synergy), 4 (ascension), 5 (event).
+	
+Path :  Refer to the path in which you can have the object : 
+	object : 1 (neutral), 2 (science) or 3 (magic).
+	need/check : 0 (all path), 5 (neutral & science), 6 (neutral & magic) or 7 (science & magic).
+
+lvl : refer to the difficulty of the object, some price or requirement check this value, x>0, generally between 1 & 7.
+
+start : quantity of the object you get at the start of the game. not needed, generally used for building and toggle (or debug).
+
+get : Generally used with event, it inform how to get things : 
+	get=-1 you must catch it. (event related).
+	get=0 the thing must be bought. (default value).
+	get=1 you must catch it, then buy it. (event related).
+
+sell : generally hidden, this value is a % of the buy cost.
+	default value are : building:40% and animals:70%,
+		Worker : -40%, dismissing a worker involve a cost... 
+		slave : 0%, they can be released, but selling them would be illegal ...for now.
+
+price : what you must pay to get the object generally milk coin but can also contain sacrifice (Building, animals...).
+	coef is a coefficient increasing the MilkCoin price depending of the number of object you have.
+
+
+income : give an income of a fixed value (you must refer coin OR (production+quality))
+	Milk : generally hidden, show if the object can produce milk or not. default value are : 
+		Building & worker : 0, cattle : 1. But these value can be easily changed by upgrade ;)
+	
+bonus : change the total income by a % value  (you can refer any of the 3 like you want (generally only one is referred)
+
+max : increase the maximum number of a population (Kind) of path y, by X.
+
+Research, upgrade & synergy : the 3 xml are roughly the same but split for easier reading/modifying.
+	Research are meant to unlock (building, worker...), they don't have <effect>.
+	Upgrade are meant to have 1 effect (reduce price, increase production...), they have <effect> but no <effects>.
+	synergy are meant to have multiple effect (like a boost b & b boost a...), they have <effects>.
+Ascension is a "new game +" system where you can get special bonus (direct boost, building, toggle, research, upgrade...).
+When upgrade increase income or bonus the game take them as separate source (like 2 different building).
+When an upgrade change the number of max worker/needed worker, the game add (or remove) the new value to the base value.
+Lastly you can add a list of sacrifice in the upgrade in that case player will choose one in all the lists.
+	

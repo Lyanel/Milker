@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="1">
+		<name>Idol look</name>
+		<effect>Used to change the look of your statue.</effect>
+		<desc>This switch allows the statue to take further appearances, such as stone, gold, biscuit, or even those of your girls.</desc>
+		<quote></quote>
+		<options>
+			<option id="10">
+				<name>Clay look</name>
+				<desc>Her original appearance.</desc>
+				<quote></quote>
+			</option>
+			<option id="11">
+				<name>Straw look</name>
+				<desc>Simple appearance imitating a scarecrow.</desc>
+				<quote></quote>
+			</option>
+			<option id="111">
+				<name>Farm Girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="112">
+				<name>Milkmaid look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="113">
+				<name>Factory Girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="121">
+				<name>Maid look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="122">
+				<name>Veterinary look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="123">
+				<name>Scientist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="124">
+				<name>Mad scientist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="125">
+				<name>Astronaut look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="126">
+				<name>Evil scientist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="131">
+				<name>Hostess look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="132">
+				<name>Priestress look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="133">
+				<name>Alchemist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="134">
+				<name>Witch look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="135">
+				<name>Planeswalker look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="136">
+				<name>Goddess look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="144">
+				<name>Slaver look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="211">
+				<name>Homeless girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="212">
+				<name>Asian slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="222">
+				<name>Russian slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="223">
+				<name>Mutant slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="224">
+				<name>Alien girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="225">
+				<name>ESPer slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="226">
+				<name>Succubus look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="232">
+				<name>Arabian slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="233">
+				<name>Familiar slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="234">
+				<name>Elf slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="235">
+				<name>Ghoul girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="236">
+				<name>Seraph look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="242">
+				<name>Sheep girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="243">
+				<name>Goat girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="244">
+				<name>Mare girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="245">
+				<name>Cow girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="251">
+				<name>Bunny girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="252">
+				<name>Sow girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="253">
+				<name>Bear girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="254">
+				<name>Orca girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="261">
+				<name>Cat girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="262">
+				<name>Wolf girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="263">
+				<name>Reindeer girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="264">
+				<name>Camel girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+		</options>
+	</toggle>
+	<toggle id="300">
+		<name>Event controller</name>
+		<effect>Used to start events.</effect>
+		<desc>This switch allows the statue to mess with time, summoning event at will.</desc>
+		<quote></quote>
+		<options>
+			<option id="301">
+				<name>Normal time</name>
+				<desc>Let the time passe normally, event will come anyway.</desc>
+				<quote></quote>
+			</option>
+			<option id="302">
+				<name>Imbolc</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="303">
+				<name>Ostara</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="304">
+				<name>Beltaine</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="305">
+				<name>Litha</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="306">
+				<name>Lugnasad</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="307">
+				<name>Mabon</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="308">
+				<name>Samain</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="309">
+				<name>Yule</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+		</options>
+	</toggle>
+	<toggle id="500">
+		<name>Milker</name>
+		<effect>Select milking mode.</effect>
+		<desc>This switch let you choose how the cattle are milked.</desc>
+		<quote></quote>
+		<options>
+			<option id="510">
+				<name>Hand Milking</name>
+				<desc>Cattle are milked directly by the milkmaid.</desc>
+				<quote></quote>
+				<Levels>
+					<Level id="511">
+						<name>Noob Hand</name>
+						<desc>Cattle milked by trainee provide a low milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="512">
+						<name>Hand</name>
+						<desc>Cattle milked by apprentice provide a somewhat weak milk but it's still better than trainees.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="513">
+						<name>Experimented Hand</name>
+						<desc>Cattle milked by milkmaid provide a fair milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="514">
+						<name>Professional Hand</name>
+						<desc>Cattle milked by expert milkmaid provide a good milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="515">
+						<name>Master Hand</name>
+						<desc>Cattle milked by master milkmaid provide a very good milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="516">
+						<name>Devil Hand</name>
+						<desc>This demonic hand know exactly how to pleasure cattle to get a milk with an excellent taste.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="517">
+						<name>God Hand</name>
+						<desc>Cattle milked by this heaven hand provide divine milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</Level>
+				</Levels>
+			</option>
+			<option id="520">
+				<name>Machine Milking</name>
+				<desc>Cattle are milked with the help of machine.</desc>
+				<quote></quote>
+				<Levels>
+					<Level id="522">
+						<name>Milking tool</name>
+						<desc>A basic tools make to facilitate the work of milkmaid.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="523">
+						<name>Milking machine</name>
+						<desc>A machine created to increase the production of milk.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="524">
+						<name>Medical machine</name>
+						<desc>A machine created to reduce the stress of the cattle.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="525">
+						<name>Enjoyment machine</name>
+						<desc>A machine created to make the milking more enjoyable for the cattle.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="526">
+						<name>Alien machine</name>
+						<desc>Cattle milked by this machine provide excellent milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="527">
+						<name>Ultimate machine</name>
+						<desc>The best machine created by human mind, nothing can beat this quantity.</desc>
+						<quote></quote>
+					</Level>
+				</Levels>
+			</option>
+			<option id="530">
+				<name>Tentacle Milking</name>
+				<desc>Cattle are milked by organic creatures called tentacles.</desc>
+				<quote></quote>
+				<Levels>
+					<Level id="532">
+						<name>Organic Milker</name>
+						<desc>A organism created to make the milking more natural for the cattle.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="533">
+						<name>Living Milker</name>
+						<desc>A living thing created to simulate a baby cattle.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="534">
+						<name>Young Tentacle</name>
+						<desc>A little Tentacle with a voracious appetite.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="535">
+						<name>Tentacle</name>
+						<desc>Tentacles are worms like creatures who love milk more than anything.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="536">
+						<name>Elder Tentacle</name>
+						<desc>An enormous tentacle favoring quantity over quality.</desc>
+						<quote></quote>
+					</Level>
+					<Level id="537">
+						<name>Tentacle Queen</name>
+						<desc>Queen of her kind, she produce the milk with the best taste.</desc>
+						<quote></quote>
+					</Level>
+				</Levels>
+			</option>
+		</options>
+	</toggle>
+</toggles>

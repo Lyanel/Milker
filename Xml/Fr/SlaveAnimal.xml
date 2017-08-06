@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<slaves>
+	<slave id="42">
+		<name>Fille brebis</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille avec de l'adn de moutons, la douceur incarnée.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="43">
+		<name>Fille chèvre</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille caractérielle, ou juste une tsundere ?</desc>
+		<quote></quote>
+	</slave>
+	<slave id="44">
+		<name>Fille jument</name>
+		<effect>Produit du lait.</effect>
+		<desc>Bien qu'elle produise en faible quantité, son lait est vraiment bon.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="45">
+		<name>Fille vache</name>
+		<effect>Produit du lait.</effect>
+		<desc>Bien qu'elle produise en grande quantité, son lait est juste moyen.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="51">
+		<name>Fille lapine</name>
+		<effect>Produit du lait.</effect>
+		<desc>Elle pense seulement à faire des bébés, méfiez-vous de la surpopulation.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="52">
+		<name>Fille truie</name>
+		<effect>Produit du lait.</effect>
+		<desc>Bien que ses habitudes hygiéniques soient peu attrayantes, c'est une fille très propre.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="53">
+		<name>Fille ourse</name>
+		<effect>Produit du lait.</effect>
+		<desc>Elle semble un peu bourrue, mais en réalité c'elle est une fille très douce.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="54">
+		<name>Fille orque</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille sans entraves, vous pourriez avoir besoin de nager pour l'attraper.</desc>
+		<quote>Ne la laisse pas tomber...</quote>
+	</slave>
+	<slave id="61">
+		<name>Fille chatte</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille joyeuse qui vivent pour l'amour, cependant un peu paresseuse.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="62">
+		<name>Fille louve</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille rusé qui vit pour la chasse, toutefois quelque peu solitaire.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="63">
+		<name>Fille renne</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille fêtarde, vous pourriez avoir besoin de courir pour l'attraper.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="64">
+		<name>Fille chamelle</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille mystérieuse avec des passe-temps étranges, comme compter les grains de sable dans le désert.</desc>
+		<quote></quote>
+	</slave>
+</slaves>

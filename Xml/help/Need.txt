@@ -1,0 +1,33 @@
+Kind :  Refer to the Kind of the thing you have/need :
+	object : 1 (buildings), 2 (workers), 3 (human slaves (SH)), 4 (animal slaves (SA)), 5 (animals), 
+		need/check :  x=0 (all), 6 (Semi-Humans (workers+SH)), 7 (slaves (SH+SA)), 8 (Semi-animals (SA+animals)),
+			09 (Earthling People (workers+SA)),			10 (natural Cattle (SH+animals)), 
+			11 (People (workers+SH+SA)),				12 (cattle (SH+SA+animals)),
+			13 (Earthling being (workers+SA+animals)),	14 (natural being (workers+SH+animals)), 
+			15 (Livings being (workers+SH+SA+animals)).
+	intel : 1 (research), 2 (upgrade), 3 (synergy), 4 (ascension), 5 (event).
+	
+For things X = the quantity needed.
+	
+Need : Look what the thing need to be bought
+
+		<need>
+			<intels>
+				<intel kind="x" id="x" />
+				(...)
+			</intels>
+			<things>
+				<thing kind="x" id="x" path="x" lvl="x">X</thing>
+				(...)
+			</things>
+		</need>
+
+check are similar to need, but only need y thing (1 by default), sometimes needed by neutral intels 
+				(most of the time to look if you have a sciences thing or his magic counterpart (like Secret Lab vs Wizard Tower)).
+				
+		<check true="y">
+			<thing kind="x" id="x" path="x" lvl="x">X</thing>
+			<thing kind="x" id="x" path="x" lvl="x">X</thing>
+				(...)
+		</check>
+		

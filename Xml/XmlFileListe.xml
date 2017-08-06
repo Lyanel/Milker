@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<files id="-1">
+  <file id="2">
+    <name>Interface</name>
+    <path></path>
+  </file>
+  <file id="3">
+    <name>ImgFileListe</name>
+    <path></path>
+  </file>
+  <file id="10">
+    <name>Animal</name>
+    <path>Stat/</path>
+  </file>
+  <file id="11">
+    <name>Ascension</name>
+    <path>Stat/</path>
+  </file>
+  <file id="12">
+    <name>Building</name>
+    <path>Stat/</path>
+  </file>
+  <file id="13">
+    <name>Event</name>
+    <path>Stat/</path>
+  </file>
+  <file id="14">
+    <name>Research</name>
+    <path>Stat/</path>
+  </file>
+  <file id="15">
+    <name>SlaveHuman</name>
+    <path>Stat/</path>
+  </file>
+  <file id="16">
+    <name>SlaveAnimal</name>
+    <path>Stat/</path>
+  </file>
+  <file id="17">
+    <name>Synergy</name>
+    <path>Stat/</path>
+  </file>
+  <file id="18">
+    <name>Toggle</name>
+    <path>Stat/</path>
+  </file>
+  <file id="19">
+    <name>Upgrade</name>
+    <path>Stat/</path>
+  </file>
+  <file id="20">
+    <name>Worker</name>
+    <path>Stat/</path>
+  </file>
+</files>

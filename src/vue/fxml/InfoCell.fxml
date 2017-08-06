@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="rootPane" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.InfoCellController">
+  <children>
+      <GridPane id="infoPan" fx:id="infoPan" scaleZ="2.0" visible="false">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="effectPan" text="Effect" textAlignment="LEFT" />
+            <Label fx:id="descPan" text="Desc" textAlignment="RIGHT" GridPane.rowIndex="1" />
+            <Label fx:id="quotePan" text="Quote" textAlignment="RIGHT" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+  </children>
+</AnchorPane>
