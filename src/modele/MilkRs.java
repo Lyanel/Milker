@@ -16,6 +16,7 @@ public class MilkRs {
 	public static final String milkGame		= fxBasePath+"MilkGame.fxml";
 	public static final String milkGameS	= fxBasePath+"MilkGameS.fxml";
 	public static final String milkEditor	= fxBasePath+"MilkEditor.fxml";
+	public static final String milkOption	= fxBasePath+"MilkOption.fxml";
 	public static final String buildingPan	= fxBasePath+"BuildingTab.fxml";
 	public static final String workerPan	= fxBasePath+"WorkerTab.fxml";
 	public static final String slaveHPan	= fxBasePath+"SlaveHTab.fxml";

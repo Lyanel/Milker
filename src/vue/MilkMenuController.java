@@ -134,7 +134,7 @@ public class MilkMenuController extends MilkerController {
      */
     @FXML
     private void handleOption() {
-    	
+    	this.getMainApp().openOption();
     }
 
     /**

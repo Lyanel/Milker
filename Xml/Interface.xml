@@ -3,9 +3,11 @@
 	<language id="11">
 		<name>English</name>
 		<path>Eng</path>
+		<iso>US</iso>
 	</language>
 	<language id="12">
 		<name>Français</name>
 		<path>Fr</path>
+		<iso>FR</iso>
 	</language>
 </languages>

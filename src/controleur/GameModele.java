@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import modele.MilkDate;
 import modele.MilkKind;
+import modele.MilkLanguage;
 import modele.carac.NeededIntel;
 import modele.intel.Research;
 import modele.intel.Upgrade;

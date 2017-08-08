@@ -14,6 +14,7 @@ import vue.MilkEditorController;
 //import vue.MilkGameController;
 import vue.MilkGameSController;
 import vue.MilkMenuController;
+import vue.MilkOptionController;
 import vue.MilkStatutController;
 import vue.MilkerController;
 
@@ -178,6 +179,25 @@ public class Milker extends Application {
             rootLayout.setCenter(editor);
             
             MilkEditorController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*
+     * Open the option window.
+     */
+    public void openOption() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Milker.class.getResource(MilkRs.milkOption));
+            AnchorPane editor = (AnchorPane) loader.load();
+            rootLayout.setCenter(editor);
+            
+            MilkOptionController controller = loader.getController();
+            System.out.println(controller);
+            System.out.println(this);
             controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();

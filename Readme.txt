@@ -1,4 +1,4 @@
-Milker is a Hentai clicker game project strated by Lyanel Pheles (me).
+Milker is a Hentai clicker game project started by Lyanel Pheles (me).
 Why started ? Because although i have (i think) good idea and I am motivated enough to go as far as possible, my programming skills are extremely poor and my drawing skill are nonexistent.
 So if people are interested, I would never say no and even if you wished to change engine (Renpy,html5?), You have "carte blanche" and I will help you as best I can (which means not much :( ).
 

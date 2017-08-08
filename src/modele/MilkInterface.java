@@ -1,30 +1,33 @@
 package modele;
 
+import java.util.Locale;
 import java.util.Vector;
 
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import modele.thing.Animal;
 
-public class MilkInterface extends MilkFile implements Cloneable {
+public class MilkInterface extends MilkLanguage implements Cloneable {
 	
 	public static final String file			= "Interface";
-	public static final String noeud		= "language";
-	public String getNoeud() {return noeud;}
 	
-	private static Vector<MilkFile> languages = setMilkLanguagesFromFiles();
-	private static MilkFile language;
+	private static Vector<MilkLanguage> languages = setMilkLanguagesFromFiles();
+	private static MilkLanguage language;
 	private static Vector<MilkString> languagesString;
 
 	
-	private static Vector<MilkFile> setMilkLanguagesFromFiles() {
-		if (languages==null) languages = new Vector<MilkFile>();
+	private static Vector<MilkLanguage> setMilkLanguagesFromFiles() {
+		if (languages==null) languages = new Vector<MilkLanguage>();
 		else languages.removeAllElements();
 		Vector<Element> elementlist = new Vector<Element>();
 		elementlist = getMilkElementsFromFiles(getXmlFilePath(file)+file, noeud);
-		languages = getMilkVarList(elementlist);
-		language = languages.get(1);
-		setLanguageStrings();
+		languages = getMilkLanguageList(elementlist);
+		String local = Locale.getDefault().getLanguage();
+		changeLanguage(local);
+		if(language==null) setLanguage(languages.get(1));
 		return languages;
 	}
 	
@@ -37,8 +40,27 @@ public class MilkInterface extends MilkFile implements Cloneable {
 			languagesString = MilkString.getMilkVarList(elementlist);
 		} catch (Exception e) {e.printStackTrace();}
 	}
+
+	public static ObservableList<MilkLanguage> getListes() {
+		System.out.println("MilkInterface.getListes() : Launched");
+		if (languages==null)setMilkLanguagesFromFiles();
+		ObservableList<MilkLanguage> clone = FXCollections.observableArrayList();
+		if (languages!=null){
+			for (MilkLanguage temp:languages){
+				try {
+					System.out.println("MilkInterface.getListes().temp.toStringStat() : "+temp.toStringStat());
+					clone.add((MilkLanguage) temp.clone());
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return clone;
+	}
+
 	
-	public static void setLanguage(MilkFile newlanguage) {
+	public static void setLanguage(MilkLanguage newlanguage) {
 		if(language != newlanguage){
 			language = newlanguage;
 			setLanguageStrings();
@@ -46,12 +68,17 @@ public class MilkInterface extends MilkFile implements Cloneable {
 	}
 	
 	public static void changeLanguage(int id) {
-		if(language.getId() != id){
-			for (MilkFile tlanguage : languages) {
-				if(id == tlanguage.getId()) {
-					language = tlanguage;
-					setLanguageStrings();
-				}
+		if(language==null || language.getId() != id){
+			for (MilkLanguage tlanguage : languages) {
+				if(id == tlanguage.getId()) setLanguage(tlanguage);
+			}
+		}
+	}
+	
+	public static void changeLanguage(String iso) {
+		if(language==null || !language.getIso().matches(iso)){
+			for (MilkLanguage tlanguage : languages) {
+				if(iso.matches(tlanguage.getIso())) setLanguage(tlanguage);
 			}
 		}
 	}
@@ -66,5 +93,10 @@ public class MilkInterface extends MilkFile implements Cloneable {
 
 	public static String getXmlLangPath() {
 		return xmlBasePath+language.getPath()+"/";
+	}
+
+	public static MilkLanguage getMilkLanguage() {
+		// TODO Auto-generated method stub
+		return language;
 	}
 }
