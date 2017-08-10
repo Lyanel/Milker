@@ -26,14 +26,13 @@ public class MilkTabControleur extends MilkerController {
 		add.setText(MilkInterface.getStringsFromId(110));
 		edit.setText(MilkInterface.getStringsFromId(111));
 		del.setText(MilkInterface.getStringsFromId(112));
-		reset.setText(MilkInterface.getStringsFromId(113));
-		resetXml.setText(MilkInterface.getStringsFromId(114));
-		save.setText(MilkInterface.getStringsFromId(115));
-		saveXml.setText(MilkInterface.getStringsFromId(116));
+		reset.setText(MilkInterface.getStringsFromId(113)+" "+MilkInterface.getStringsFromId(114));
+		resetXml.setText(MilkInterface.getStringsFromId(113)+" "+MilkInterface.getStringsFromId(5));
+		save.setText(MilkInterface.getStringsFromId(13)+" "+MilkInterface.getStringsFromId(114));
+		saveXml.setText(MilkInterface.getStringsFromId(13)+" "+MilkInterface.getStringsFromId(5));
     }
 
     /**
-     * Launch a new game.
      */
     @FXML
     private void handleAdd() {
@@ -41,22 +40,18 @@ public class MilkTabControleur extends MilkerController {
     }
 
     /**
-     * Opens the editor.
      */
     @FXML
     private void handleEdit() {
     }
 
     /**
-     * Opens the editor.
      */
     @FXML
     private void handleDel() {
     }
     
     /**
-     * Saves the game to the current save file. 
-     * If there is no save file, the "save as" dialog is shown.
      */
     @FXML
     private void handleResetModel() {
@@ -64,8 +59,6 @@ public class MilkTabControleur extends MilkerController {
     }
 
     /**
-     * Saves the game to the current save file. 
-     * If there is no save file, the "save as" dialog is shown.
      */
     @FXML
     private void handleResetXml() {
@@ -73,8 +66,6 @@ public class MilkTabControleur extends MilkerController {
     }
 
     /**
-     * Saves the game to the current save file. 
-     * If there is no save file, the "save as" dialog is shown.
      */
     @FXML
     private void handleSaveModel() {
@@ -82,8 +73,6 @@ public class MilkTabControleur extends MilkerController {
     }
 
     /**
-     * Saves the game to the current save file. 
-     * If there is no save file, the "save as" dialog is shown.
      */
     @FXML
     private void handleSaveXml() {

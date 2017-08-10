@@ -51,8 +51,8 @@ public class MilkMenuController extends MilkerController {
 		menuNew.setText(MilkInterface.getStringsFromId(11));
 		menuLoad.setText(MilkInterface.getStringsFromId(12));
 		menuSave.setText(MilkInterface.getStringsFromId(13));
-		menuSaveAs.setText(MilkInterface.getStringsFromId(14));
-		menuEdit.setText(MilkInterface.getStringsFromId(2));
+		menuSaveAs.setText(MilkInterface.getStringsFromId(13)+" "+MilkInterface.getStringsFromId(16));
+		menuEdit.setText(MilkInterface.getStringsFromId(4)+" - "+MilkInterface.getStringsFromId(5));
 		menuExit.setText(MilkInterface.getStringsFromId(15));
 
 		menuDisplay.setText(MilkInterface.getStringsFromId(20));
@@ -110,7 +110,7 @@ public class MilkMenuController extends MilkerController {
      */
     @FXML
     private void handleExit() {
-        System.exit(0);
+    	this.getMainApp().close(null);
     }
     
     /**

@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import controleur.GameModele;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import modele.MilkInfo;
 import modele.MilkInterface;
 import modele.MilkRs;
@@ -43,6 +45,7 @@ public class Milker extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle(MilkInterface.getStringsFromId(1));
+        this.primaryStage.setOnCloseRequest(e -> close(e));
         this.model = new GameModele ();
         initMilker();
         initMilkMenu();
@@ -188,7 +191,7 @@ public class Milker extends Application {
     /*
      * Open the option window.
      */
-    public void openOption() {
+  /*  public void openOption() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Milker.class.getResource(MilkRs.milkOption));
@@ -202,7 +205,22 @@ public class Milker extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
+    public void openOption() {
+        try {
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(Milker.class.getResource(MilkRs.milkOption));
+	        AnchorPane editor = (AnchorPane) loader.load();
+	        Stage stage = new Stage();
+	        stage.setTitle(MilkInterface.getStringsFromId(31));
+	        Scene scene = new Scene(editor);
+	        stage.setScene(scene);
+	        stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     
     /**
      * Returns the main stage.
@@ -218,5 +236,14 @@ public class Milker extends Application {
      */
 	public GameModele getModel() {
 		return model;
+	}
+    
+    /**
+     * Close the game.
+     * @param e 
+     */
+	public void close(WindowEvent e) {
+		Platform.exit();
+        System.exit(0);
 	}
 }

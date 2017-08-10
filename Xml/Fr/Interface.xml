@@ -2,14 +2,18 @@
 <strings id="3">
 	<!-- From 1->9 Title string -->
 	<string id="1">Trayeur</string>
-	<string id="2">Mode Éditeur</string>
+	<string id="2">Jeu</string>
+	<string id="3">jeu</string>
+	<string id="4">Éditeur</string>
+	<string id="5">Xml</string>
 	<!-- From 10->60 Menu string -->
 	<string id="10">Fichier</string>
-	<string id="11">Nouveau jeu</string>
-	<string id="12">Charger une sauvegarde</string>
-	<string id="13">Sauvegarder le jeu</string>
-	<string id="14">Sauvegarder le jeu vers</string>
+	<string id="11">Nouveau</string>
+	<string id="12">Charger</string>
+	<string id="13">Sauvegarder</string>
+	<string id="14">Sauvegarde</string>
 	<string id="15">Quitter</string>
+	<string id="16">vers</string>
 	<string id="20">Affichage</string>
 	<string id="21">Plein écran</string>
 	<string id="22">Barre d'état</string>
@@ -21,10 +25,8 @@
 	<string id="110">Ajouter</string>
 	<string id="111">Modifier</string>
 	<string id="112">Supprimer</string>
-	<string id="113">Réinitialiser le modèle</string>
-	<string id="114">Réinitialiser le Xml</string>
-	<string id="115">Enregistrer le modèle</string>
-	<string id="116">Enregistrer le fichier Xml</string>
+	<string id="113">Réinitialiser</string>
+	<string id="114">modèle</string>
 	<string id="120">Les données de la page ont été réinitialisées à partir du modèle.</string>
 	<string id="121">Les données de la page ont été réinitialisées à partir du fichier XML.</string>
 	<string id="122">Enregistrer la modification dans le modèle ?</string>

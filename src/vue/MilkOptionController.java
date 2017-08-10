@@ -7,10 +7,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TitledPane;
 import javafx.util.Callback;
 import modele.MilkInterface;
-import modele.MilkKind;
 import modele.MilkLanguage;
 
 /**
@@ -19,8 +17,6 @@ import modele.MilkLanguage;
  */
 public class MilkOptionController extends MilkTabControleur {
 
-    @FXML
-    private TitledPane optionTitle;
     @FXML
     private Label optionLab1;
     @FXML
@@ -49,12 +45,12 @@ public class MilkOptionController extends MilkTabControleur {
     	optionSel1.setButtonCell(
     		    new ListCell<MilkLanguage>() {
     		        @Override
-    		        protected void updateItem(MilkLanguage t, boolean bln) {
-    		            super.updateItem(t, bln);
-	    		            if (bln) {
+    		        protected void updateItem(MilkLanguage item, boolean empty) {
+    		            super.updateItem(item, empty);
+	    		            if (empty) {
 	    		                setText("");
 	    		            } else {
-	    		                setText(t.getName());
+	    		                setText(item.getName());
     		            }
     		        }
     		    });
@@ -76,20 +72,5 @@ public class MilkOptionController extends MilkTabControleur {
     	        return cell;
     	    }
     	});
-    	
-    	
-    	optionSel1.setButtonCell(
-    		    new ListCell<MilkLanguage>() {
-    		        @Override
-    		        protected void updateItem(MilkLanguage t, boolean bln) {
-    		            super.updateItem(t, bln);
-                        System.out.println("MilkOptionController.initList() - empty = "+bln);
-    		            if (bln) {
-    		                setText("");
-    		            } else {
-    		                setText(t.getName());
-    		            }
-    		        }
-    		    });
     }
 }

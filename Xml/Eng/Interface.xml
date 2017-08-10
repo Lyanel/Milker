@@ -2,14 +2,18 @@
 <strings id="3">
 	<!-- From 1->9 Title string -->
 	<string id="1">Milker</string>
-	<string id="2">Editor mode</string>
+	<string id="2">Game</string>
+	<string id="3">game</string>
+	<string id="4">Editor</string>
+	<string id="5">Xml</string>
 	<!-- From 10->60 Menu string -->
 	<string id="10">File</string>
-	<string id="11">New game</string>
-	<string id="12">Load game</string>
-	<string id="13">Save game</string>
-	<string id="14">Save game as</string>
+	<string id="11">New</string>
+	<string id="12">Load</string>
+	<string id="13">Save</string>
+	<string id="14">save</string>
 	<string id="15">Exit</string>
+	<string id="16">to</string>
 	<string id="20">Display</string>
 	<string id="21">Full screen</string>
 	<string id="22">State bar</string>
@@ -21,10 +25,8 @@
 	<string id="110">Add</string>
 	<string id="111">Edit</string>
 	<string id="112">Delete</string>
-	<string id="113">Reset model</string>
-	<string id="114">Reset Xml</string>
-	<string id="115">Save model</string>
-	<string id="116">Save Xml</string>
+	<string id="113">Reset</string>
+	<string id="114">model</string>
 	<string id="120">The data of the page have been reset from the Model.</string>
 	<string id="121">The data of the page have been reset from the XML file.</string>
 	<string id="122">Save actual edit in model ?</string>

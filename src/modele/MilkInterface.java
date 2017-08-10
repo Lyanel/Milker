@@ -25,9 +25,8 @@ public class MilkInterface extends MilkLanguage implements Cloneable {
 		Vector<Element> elementlist = new Vector<Element>();
 		elementlist = getMilkElementsFromFiles(getXmlFilePath(file)+file, noeud);
 		languages = getMilkLanguageList(elementlist);
-		String local = Locale.getDefault().getLanguage();
-		changeLanguage(local);
-		if(language==null) setLanguage(languages.get(1));
+		changeLanguage(Locale.getDefault().getLanguage());
+		if(language==null) changeLanguage(11);
 		return languages;
 	}
 	
@@ -42,13 +41,11 @@ public class MilkInterface extends MilkLanguage implements Cloneable {
 	}
 
 	public static ObservableList<MilkLanguage> getListes() {
-		System.out.println("MilkInterface.getListes() : Launched");
 		if (languages==null)setMilkLanguagesFromFiles();
 		ObservableList<MilkLanguage> clone = FXCollections.observableArrayList();
 		if (languages!=null){
 			for (MilkLanguage temp:languages){
 				try {
-					System.out.println("MilkInterface.getListes().temp.toStringStat() : "+temp.toStringStat());
 					clone.add((MilkLanguage) temp.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
@@ -78,7 +75,7 @@ public class MilkInterface extends MilkLanguage implements Cloneable {
 	public static void changeLanguage(String iso) {
 		if(language==null || !language.getIso().matches(iso)){
 			for (MilkLanguage tlanguage : languages) {
-				if(iso.matches(tlanguage.getIso())) setLanguage(tlanguage);
+				if(iso.equalsIgnoreCase(tlanguage.getIso())) setLanguage(tlanguage);
 			}
 		}
 	}
