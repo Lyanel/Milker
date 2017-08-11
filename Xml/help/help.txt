@@ -11,8 +11,8 @@ Kind :  Refer to the Kind of the thing you have/need :
 			13 (Earthling being (workers+SA+animals)),	14 (natural being (workers+SH+animals)), 
 			15 (Livings being (workers+SH+SA+animals)).
 	intel : 1 (research), 2 (upgrade), 3 (synergy), 4 (ascension), 5 (event).
-	
-Path :  Refer to the path in which you can have the object : 
+
+Tree :  Refer to the development tree in which you can have the object : 
 	object : 1 (neutral), 2 (science) or 3 (magic).
 	need/check : 0 (all path), 5 (neutral & science), 6 (neutral & magic) or 7 (science & magic).
 
@@ -35,8 +35,8 @@ price : what you must pay to get the object generally milk coin but can also con
 
 
 income : give an income of a fixed value (you must refer coin OR (production+quality))
-	Milk : generally hidden, show if the object can produce milk or not. default value are : 
-		Building & worker : 0, cattle : 1. But these value can be easily changed by upgrade ;)
+	Productive : generally hidden, show if the object can produce coin (2), milk (1) or not (0/null). default value are : 
+		Building & worker : 0/false, cattle : 1/true. But these value can be easily changed by upgrade ;)
 	
 bonus : change the total income by a % value  (you can refer any of the 3 like you want (generally only one is referred)
 

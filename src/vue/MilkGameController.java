@@ -61,6 +61,8 @@ public class MilkGameController extends MilkTabControleur {
     private void initialize() {}
 	
     public void initList() {
+    	coinLabel.textProperty().bind(this.getMainApp().getModel().getMilkCoin().asString());
+    	
     	venusClick.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -158,6 +160,5 @@ public class MilkGameController extends MilkTabControleur {
     	        return new ThingCell(getMainApp());
     	    }
     	});
-    	coinLabel.textProperty().bind(this.getMainApp().getModel().getMilkCoinString());
     }
 }

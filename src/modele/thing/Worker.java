@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 import modele.MilkFile;
 import modele.MilkInterface;
 import modele.MilkKind;
-import modele.carac.Attrib;
+import modele.carac.ThingAttrib;
 
 public class Worker extends Thing implements Cloneable {
 
@@ -67,7 +67,7 @@ public class Worker extends Thing implements Cloneable {
 		if (workers!=null){
 			for (Worker worker:workers){
 				try {
-					if(worker.getAttrib().getPath()==Attrib.Path_Neutral)clone.add((Worker) worker.clone());
+					if(worker.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((Worker) worker.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -84,7 +84,7 @@ public class Worker extends Thing implements Cloneable {
 		if (workers!=null){
 			for (Worker worker:workers){
 				try {
-					if(worker.getAttrib().getPath()==Attrib.Path_Science)clone.add((Worker) worker.clone());
+					if(worker.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((Worker) worker.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -101,7 +101,7 @@ public class Worker extends Thing implements Cloneable {
 		if (workers!=null){
 			for (Worker worker:workers){
 				try {
-					if(worker.getAttrib().getPath()==Attrib.Path_Magic)clone.add((Worker) worker.clone());
+					if(worker.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((Worker) worker.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -133,6 +133,15 @@ public class Worker extends Thing implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return workers;
+	}
+
+	public static double getIncomeFromList(ObservableList<Worker> thingList, double toolProdBonus, double toolQualBonus, double cattleProdBonus,
+			double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+		double tIncome = 0;
+		for (Thing thing:thingList){
+			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
+		}
+		return tIncome;
 	}
 	
 	// Constructors

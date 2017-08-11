@@ -8,7 +8,7 @@ ID :
 	500->599	Toggle related Intel
 	600->999	other Intel ?
 	
-in effect, need & check, the thing reference id, path & lvl are not needed (id="0", path="0", lvl="0" by default)
+in effect, need & check, the thing reference id, tree & lvl are not needed (id="0", tree="0", lvl="0" by default)
 	if you leave them, all the thing of the specified kind will be affected/checked.
 
 Level have 2 way of working : 
@@ -27,7 +27,7 @@ Research.xml
 	<research id="x" start="x">
 		<need />													see need.txt.
 		<check />													see need.txt.
-		<sacrifice kind="x" id="X" path="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
+		<sacrifice kind="x" id="X" tree="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
 		<price coin="x" coef="x"/>
 	</research>
 	
@@ -35,11 +35,11 @@ upgrade.xml
 	<upgrade id="x" start="x">
 		<need />							see need.txt.
 		<check />							see need.txt.
-		<sacrifice kind="x" id="X" path="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
+		<sacrifice kind="x" id="X" tree="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
 		<price coin="x" coef="x"/>
 		<effect mod="x">
 			<things>
-				<thing kind="x" id="x" path="x" lvl="x">
+				<thing kind="x" id="x" tree="x" lvl="x">
 					(...)
 				</thing>
 				(...)
@@ -51,16 +51,16 @@ synergy.xml
 	<synergy id="x" start="x">
 		<need />							see need.txt.
 		<check />							see need.txt.
-		<sacrifice kind="x" id="X" path="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
+		<sacrifice kind="x" id="X" tree="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
 		<price coin="x" coef="x"/>
 		<effects>
 			<effect mod="x" coef="x">
 				<agents>
-					<agent kind="x" id="x" path="x" lvl="x" />	
+					<agent kind="x" id="x" tree="x" lvl="x" />	
 					(...)
 				</agents>
 				<things>
-					<thing kind="x" id="x" path="x" lvl="x">
+					<thing kind="x" id="x" tree="x" lvl="x">
 						(...)
 					</thing>
 					(...)

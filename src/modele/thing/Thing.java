@@ -1,7 +1,8 @@
 package modele.thing;
 
-import modele.carac.Attrib;
+import modele.carac.ThingAttrib;
 import modele.carac.Income;
+import modele.carac.MilkAttrib;
 import modele.intel.Intel;
 
 import java.util.Vector;
@@ -9,6 +10,7 @@ import java.util.Vector;
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
+import javafx.collections.ObservableList;
 
 public class Thing extends Intel implements Cloneable {
 	
@@ -73,7 +75,7 @@ public class Thing extends Intel implements Cloneable {
 	}
 	
 	private Integer lvl, get;
-	private Attrib attrib;
+	private ThingAttrib attrib;
 	private Income income;
 
 	// Constructors
@@ -82,14 +84,14 @@ public class Thing extends Intel implements Cloneable {
 		super();
 		this.setLvl(0);
 		this.setGet(0);
-		this.attrib = new Attrib();
+		this.attrib = new ThingAttrib();
 		this.income = new Income();
 	}
 	public Thing(Element milkElement) {
 		super();
 		this.setLvl(0);
 		this.setGet(0);
-		this.attrib = new Attrib();
+		this.attrib = new ThingAttrib();
 		this.income = new Income();
 		this.setValueFromNode(milkElement);
 	}
@@ -170,10 +172,10 @@ public class Thing extends Intel implements Cloneable {
 		get = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
 	}
 	
-	public Attrib getAttrib() {
+	public ThingAttrib getAttrib() {
 		return this.attrib;
 	}
-	public void setAttrib(Attrib attrib) {
+	public void setAttrib(ThingAttrib attrib) {
 		this.attrib = attrib;
 	}
 	public void setAttrib(Element milkElement) {
@@ -186,6 +188,31 @@ public class Thing extends Intel implements Cloneable {
 	public Income getIncome() {
 		return this.income;
 	}
+	public double getIncome(double buildProdBonus, double buildQualBonus) {
+		double tIncome = 0;
+		Integer thingQuant = this.getAttrib().getQuant();
+		MilkAttrib attrib = this.getIncome().getAttrib();
+		if(thingQuant>0 && this.getIncome().canProdMilk()){
+			double milkQuant = attrib.getQuant();
+			double milkQual = attrib.getQual();
+			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus/100 ) * (milkQual+milkQual*buildQualBonus/100) ;
+		}
+		if(thingQuant>0 && this.getIncome().canProdCoin()){
+			tIncome += thingQuant * this.getIncome().getCoin() ;
+		}
+		return tIncome;
+	}
+	public double getIncome(double toolProdBonus, double toolQualBonus, double cattleProdBonus,double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+		double tIncome = 0;
+		Integer thingQuant = this.getAttrib().getQuant();
+		MilkAttrib attrib = this.getIncome().getAttrib();
+		if(thingQuant>0 && this.getIncome().canProdMilk()){
+			double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus/100)*toolProdBonus;
+			double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus/100)*toolQualBonus;
+			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus/100 ) * (milkQual+milkQual*buildQualBonus/100) ;
+		}
+		return tIncome;
+	}
 	public void setProductivity(int prod) {
 		this.income.setProd(prod);
 	}
@@ -193,7 +220,7 @@ public class Thing extends Intel implements Cloneable {
 		this.income = income;
 	}
 	public void setIncome(Element milkElement) {
-		this.income.setValueFromNode(milkElement);;
+		this.income.setValueFromNode(milkElement);
 	}
 	public void setNullIncome(Element milkElement) {
 		this.income.setNullValueFromNode(milkElement);
@@ -250,7 +277,7 @@ public class Thing extends Intel implements Cloneable {
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		Thing clone = (Thing) super.clone();
-		if (this.attrib!=null) clone.setAttrib((Attrib) this.attrib.clone());
+		if (this.attrib!=null) clone.setAttrib((ThingAttrib) this.attrib.clone());
 		if (this.income!=null) clone.setIncome((Income) this.income.clone());
 		return clone;
 	}

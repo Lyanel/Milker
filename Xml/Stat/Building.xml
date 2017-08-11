@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <buildings>
-	<building id="10" path="1" lvl="1" start="1">
+	<building id="10" tree="1" lvl="1" start="1">
 		<price coin="1" coef="1.15"/>
-		<income coin="1" prod="1"/>
+		<income coin="1" prod="2"/>
 	</building>
-	<building id="11" path="1" lvl="1">
+	<building id="11" tree="1" lvl="1">
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="11">1</agent>
-		<pop kind="2" path="1">5</pop>
+		<pop kind="2" tree="1">5</pop>
 	</building>
-	<building id="12" path="1" lvl="2">
+	<building id="12" tree="1" lvl="2">
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="12">1</agent>
 		<bonus quan="1" qual="1"/>
 	</building>
-	<building id="13" path="1" lvl="3">
+	<building id="13" tree="1" lvl="3">
 		<need>
 			<intels>
 				<intel kind="1" id="13"/>
@@ -24,7 +24,7 @@
 		<agent kind="2" id="13">2</agent>
 		<bonus quan="0" qual="5"/>
 	</building>
-	<building id="14" path="1" lvl="4">
+	<building id="14" tree="1" lvl="4">
 		<need>
 			<intels>
 				<intel kind="1" id="14"/>
@@ -32,9 +32,9 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="14">10</agent>
-		<income coin="1" prod="1000"/>
+		<income coin="1000" prod="2"/>
 	</building>
-	<building id="21" path="2" lvl="1">
+	<building id="21" tree="2" lvl="1">
 		<need>
 			<intels>
 				<intel kind="1" id="21"/>
@@ -42,9 +42,9 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="21">2</agent>
-		<pop kind="2" path="2">10</pop>
+		<pop kind="2" tree="2">10</pop>
 	</building>
-	<building id="22" path="2" lvl="2">
+	<building id="22" tree="2" lvl="2">
 		<need>
 			<intels>
 				<intel kind="1" id="22"/>
@@ -54,7 +54,7 @@
 		<agent kind="2" id="22">3</agent>
 		<bonus quan="1" qual="2"/>
 	</building>
-	<building id="23" path="2" lvl="3">
+	<building id="23" tree="2" lvl="3">
 		<need>
 			<intels>
 				<intel kind="1" id="23"/>
@@ -64,7 +64,7 @@
 		<agent kind="2" id="23">4</agent>
 		<bonus quan="2" qual="3"/>
 	</building>
-	<building id="24" path="2" lvl="4">
+	<building id="24" tree="2" lvl="4">
 		<need>
 			<intels>
 				<intel kind="1" id="24"/>
@@ -74,7 +74,7 @@
 		<agent kind="2" id="24">3</agent>
 		<bonus quan="13" qual="-6"/>
 	</building>
-	<building id="25" path="2" lvl="5">
+	<building id="25" tree="2" lvl="5">
 		<need>
 			<intels>
 				<intel kind="1" id="25"/>
@@ -84,7 +84,7 @@
 		<agent kind="2" id="25">2</agent>
 		<income quan="16000000" qual="5" prod="1"/>
 	</building>
-	<building id="26" path="2" lvl="6">
+	<building id="26" tree="2" lvl="6">
 		<need>
 			<intels>
 				<intel kind="1" id="26"/>
@@ -94,7 +94,7 @@
 		<agent kind="2" id="26">1</agent>
 		<income quan="15000000000" qual="6" prod="1"/>
 	</building>
-	<building id="31" path="3" lvl="1">
+	<building id="31" tree="3" lvl="1">
 		<need>
 			<intels>
 				<intel kind="1" id="31"/>
@@ -102,9 +102,9 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="31">2</agent>
-		<pop kind="2" path="3">10</pop>
+		<pop kind="2" tree="3">10</pop>
 	</building>
-	<building id="32" path="3" lvl="2">
+	<building id="32" tree="3" lvl="2">
 		<need>
 			<intels>
 				<intel kind="1" id="32"/>
@@ -114,7 +114,7 @@
 		<agent kind="2" id="32">3</agent>
 		<bonus quan="2" qual="1"/>
 	</building>
-	<building id="33" path="3" lvl="3">
+	<building id="33" tree="3" lvl="3">
 		<need>
 			<intels>
 				<intel kind="1" id="33"/>
@@ -124,7 +124,7 @@
 		<agent kind="2" id="33">4</agent>
 		<bonus quan="3" qual="2"/>
 	</building>
-	<building id="34" path="3" lvl="4">
+	<building id="34" tree="3" lvl="4">
 		<need>
 			<intels>
 				<intel kind="1" id="34"/>
@@ -134,7 +134,7 @@
 		<agent kind="2" id="34">3</agent>
 		<bonus quan="-6" qual="13"/>
 	</building>
-	<building id="35" path="3" lvl="5">
+	<building id="35" tree="3" lvl="5">
 		<need>
 			<intels>
 				<intel kind="1" id="35"/>
@@ -144,7 +144,7 @@
 		<agent kind="2" id="35">2</agent>
 		<income quan="8000000" qual="10" prod="1"/>
 	</building>
-	<building id="36" path="3" lvl="6">
+	<building id="36" tree="3" lvl="6">
 		<need>
 			<intels>
 				<intel kind="1" id="36"/>
@@ -154,12 +154,12 @@
 		<agent kind="2" id="36">1</agent>
 		<income quan="7500000000" qual="12" prod="1"/>
 	</building>
-	<building id="42" path="1" lvl="2">
+	<building id="42" tree="1" lvl="2">
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="12">1</agent>
-		<pop kind="8" path="0">10</pop>
+		<pop kind="8" tree="0">10</pop>
 	</building>
-	<building id="43" path="1" lvl="3">
+	<building id="43" tree="1" lvl="3">
 		<need>
 			<intels>
 				<intel kind="1" id="43"/>
@@ -169,7 +169,7 @@
 		<agent kind="2" id="13">2</agent>
 		<bonus quan="5" qual="0"/>
 	</building>
-	<building id="44" path="1" lvl="4">
+	<building id="44" tree="1" lvl="4">
 		<need>
 			<intels>
 				<intel kind="1" id="44"/>
@@ -177,9 +177,9 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="44">2</agent>
-		<pop kind="7" path="0">10</pop>
+		<pop kind="7" tree="0">10</pop>
 	</building>
-	<building id="51" path="2" lvl="1">
+	<building id="51" tree="2" lvl="1">
 		<need>
 			<intels>
 				<intel kind="1" id="51"/>
@@ -189,7 +189,7 @@
 		<agent kind="2" id="21">1</agent>
 		<income quan="4000" qual="1" prod="1"/>
 	</building>
-	<building id="52" path="2" lvl="2">
+	<building id="52" tree="2" lvl="2">
 		<need>
 			<intels>
 				<intel kind="1" id="21"/>
@@ -197,9 +197,9 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="12">1</agent>
-		<pop kind="8" path="2">5</pop>
+		<pop kind="8" tree="2">5</pop>
 	</building>
-	<building id="55" path="2" lvl="5">
+	<building id="55" tree="2" lvl="5">
 		<need>
 			<intels>
 				<intel kind="1" id="55"/>
@@ -207,9 +207,9 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="44">1</agent>
-		<pop kind="7" path="2">5</pop>
+		<pop kind="7" tree="2">5</pop>
 	</building>
-	<building id="61" path="3" lvl="1">
+	<building id="61" tree="3" lvl="1">
 		<need>
 			<intels>
 				<intel kind="1" id="61"/>
@@ -219,7 +219,7 @@
 		<agent kind="2" id="31">1</agent>
 		<income quan="2000" qual="2" prod="1"/>
 	</building>
-	<building id="62" path="3" lvl="2">
+	<building id="62" tree="3" lvl="2">
 		<need>
 			<intels>
 				<intel kind="1" id="31"/>
@@ -227,9 +227,9 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="12">1</agent>
-		<pop kind="8" path="3">5</pop>
+		<pop kind="8" tree="3">5</pop>
 	</building>
-	<building id="65" path="3" lvl="5">
+	<building id="65" tree="3" lvl="5">
 		<need>
 			<intels>
 				<intel kind="1" id="65"/>
@@ -237,6 +237,6 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="44">1</agent>
-		<pop kind="7" path="3">5</pop>
+		<pop kind="7" tree="3">5</pop>
 	</building>
 </buildings>

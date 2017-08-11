@@ -4,7 +4,7 @@ import modele.MilkFile;
 import modele.MilkInterface;
 import modele.MilkKind;
 import modele.carac.Agent;
-import modele.carac.Attrib;
+import modele.carac.ThingAttrib;
 import modele.carac.Bonus;
 import modele.carac.Population;
 
@@ -72,7 +72,7 @@ public class Building extends Thing implements Cloneable {
 		if (buildings!=null){
 			for (Building building:buildings){
 				try {
-					if(building.getAttrib().getPath()==Attrib.Path_Neutral)clone.add((Building) building.clone());
+					if(building.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((Building) building.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -88,7 +88,7 @@ public class Building extends Thing implements Cloneable {
 		if (buildings!=null){
 			for (Building building:buildings){
 				try {
-					if(building.getAttrib().getPath()==Attrib.Path_Science)clone.add((Building) building.clone());
+					if(building.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((Building) building.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -104,7 +104,7 @@ public class Building extends Thing implements Cloneable {
 		if (buildings!=null){
 			for (Building building:buildings){
 				try {
-					if(building.getAttrib().getPath()==Attrib.Path_Magic)clone.add((Building) building.clone());
+					if(building.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((Building) building.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -135,6 +135,15 @@ public class Building extends Thing implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return buildings;
+	}
+
+	public static double getIncomeFromList(ObservableList<Building> thingList, double buildProdBonus,
+			double buildQualBonus) {
+		double tIncome = 0;
+		for (Thing thing:thingList){
+			tIncome += thing.getIncome(buildProdBonus,buildQualBonus) ;
+		}
+		return tIncome;
 	}
 
 	private Agent agent;

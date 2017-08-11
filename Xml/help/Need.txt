@@ -17,7 +17,7 @@ Need : Look what the thing need to be bought
 				(...)
 			</intels>
 			<things>
-				<thing kind="x" id="x" path="x" lvl="x">X</thing>
+				<thing kind="x" id="x" tree="x" lvl="x">X</thing>
 				(...)
 			</things>
 		</need>
@@ -26,8 +26,8 @@ check are similar to need, but only need y thing (1 by default), sometimes neede
 				(most of the time to look if you have a sciences thing or his magic counterpart (like Secret Lab vs Wizard Tower)).
 				
 		<check true="y">
-			<thing kind="x" id="x" path="x" lvl="x">X</thing>
-			<thing kind="x" id="x" path="x" lvl="x">X</thing>
+			<thing kind="x" id="x" tree="x" lvl="x">X</thing>
+			<thing kind="x" id="x" tree="x" lvl="x">X</thing>
 				(...)
 		</check>
 		

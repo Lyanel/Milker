@@ -1,7 +1,7 @@
 package modele.thing;
 
 import modele.MilkKind;
-import modele.carac.Attrib;
+import modele.carac.ThingAttrib;
 import modele.carac.Sacrifice;
 
 import org.w3c.dom.Element;
@@ -19,7 +19,7 @@ public class Slave extends Thing implements Cloneable {
 		ObservableList<Slave> clone = FXCollections.observableArrayList();
 		for (SlaveHuman hs:SlaveHuman.getListes()){
 			try {
-				if(hs.getAttrib().getPath()==Attrib.Path_Neutral)clone.add((SlaveHuman) hs.clone());
+				if(hs.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((SlaveHuman) hs.clone());
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -27,7 +27,7 @@ public class Slave extends Thing implements Cloneable {
 		}
 		for (SlaveAnimal as:SlaveAnimal.getListes()){
 			try {
-				if(as.getAttrib().getPath()==Attrib.Path_Neutral)clone.add((SlaveAnimal) as.clone());
+				if(as.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((SlaveAnimal) as.clone());
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -40,7 +40,7 @@ public class Slave extends Thing implements Cloneable {
 		ObservableList<Slave> clone = FXCollections.observableArrayList();
 		for (SlaveHuman hs:SlaveHuman.getListes()){
 			try {
-				if(hs.getAttrib().getPath()==Attrib.Path_Science)clone.add((SlaveHuman) hs.clone());
+				if(hs.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((SlaveHuman) hs.clone());
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,7 +48,7 @@ public class Slave extends Thing implements Cloneable {
 		}
 		for (SlaveAnimal as:SlaveAnimal.getListes()){
 			try {
-				if(as.getAttrib().getPath()==Attrib.Path_Science)clone.add((SlaveAnimal) as.clone());
+				if(as.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((SlaveAnimal) as.clone());
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -62,7 +62,7 @@ public class Slave extends Thing implements Cloneable {
 		ObservableList<Slave> clone = FXCollections.observableArrayList();
 		for (SlaveHuman hs:SlaveHuman.getListes()){
 			try {
-				if(hs.getAttrib().getPath()==Attrib.Path_Magic)clone.add((SlaveHuman) hs.clone());
+				if(hs.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((SlaveHuman) hs.clone());
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -70,7 +70,7 @@ public class Slave extends Thing implements Cloneable {
 		}
 		for (SlaveAnimal as:SlaveAnimal.getListes()){
 			try {
-				if(as.getAttrib().getPath()==Attrib.Path_Magic)clone.add((SlaveAnimal) as.clone());
+				if(as.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((SlaveAnimal) as.clone());
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -78,6 +78,15 @@ public class Slave extends Thing implements Cloneable {
 		}
 		return clone;
 		
+	}
+
+	public static double getIncomeFromList(ObservableList<Slave> thingList, double toolProdBonus, double toolQualBonus, double cattleProdBonus,
+			double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+		double tIncome = 0;
+		for (Thing thing:thingList){
+			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
+		}
+		return tIncome;
 	}
 	
 	private Sacrifice sacrifice;

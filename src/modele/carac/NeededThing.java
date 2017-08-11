@@ -70,19 +70,19 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	}
 	
 	private Integer lvl;
-	private Attrib attrib;
+	private ThingAttrib attrib;
 
 	// Constructors
 	
 	public NeededThing() {
 		super();
 		this.setLvl(0);
-		this.attrib = new Attrib();
+		this.attrib = new ThingAttrib();
 		this.getKind().setMod(1);
 	}
 	public NeededThing(Element milkElement) {
 		super();
-		this.attrib = new Attrib();
+		this.attrib = new ThingAttrib();
 		this.setValueFromNode(milkElement);
 		this.getKind().setMod(1);
 	}
@@ -129,10 +129,10 @@ public class NeededThing extends NeededIntel implements Cloneable {
 		lvl = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
 	}
 	
-	public Attrib getAttrib() {
+	public ThingAttrib getAttrib() {
 		return this.attrib;
 	}
-	public void setAttrib(Attrib attrib) {
+	public void setAttrib(ThingAttrib attrib) {
 		this.attrib = attrib;
 	}
 	public void setAttrib(Element milkElement) {
@@ -184,7 +184,7 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		NeededThing clone = (NeededThing) super.clone();
-		if (this.attrib!=null) clone.setAttrib((Attrib) this.attrib.clone());
+		if (this.attrib!=null) clone.setAttrib((ThingAttrib) this.attrib.clone());
 		return clone;
 	}
 }

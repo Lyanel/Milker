@@ -1,8 +1,5 @@
 package vue;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,8 +8,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
@@ -117,13 +112,14 @@ public class MilkGameSController extends MilkTabControleur {
     private void initialize() {}
 	
     public void initList() {
+    	coinLabel.textProperty().bind(this.getMainApp().getModel().getMilkCoin().asString());
+    	
     	venusClick.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	if (event.getButton()==MouseButton.PRIMARY) getMainApp().getModel().statueClicked();
             }
         });
-    	coinLabel.textProperty().bind(this.getMainApp().getModel().getMilkCoinString());
     	
 
     	neutralTab.setText(MilkInterface.getStringsFromId(613)+" "+MilkInterface.getStringsFromId(561));
@@ -244,4 +240,24 @@ public class MilkGameSController extends MilkTabControleur {
     	upgradePan.setItems(this.getMainApp().getModel().getUpgrade());
     	synergyTab.setText(MilkInterface.getStringsFromId(553));
     }
+    
+    /**
+    * Cet écouteur est appelé lorsque la propriété value change.
+    */
+    /*
+    private final ChangeListener<Double> valueChangeListener = (ObservableValue<? extends Double> observableValue, Double oldValue, Double newValue) -> {
+        updateUI(newValue);
+    };
+
+    private void updateUI(Double value) {
+    	if(((Milker) getApplication()).getModel().isThingVisible(thing) ){
+    		rootPane.setVisible(true);
+            iLabel.setText(thing.getStringId());
+            nameLabel.setText(thing.getInfo().getName());
+            priceLabel.setText(thing.getPrice().getStringCoin());
+            quantLabel.setText(thing.getAttrib().getStringQuant());
+            if(!((Milker) getApplication()).getModel().isThingbuyable(thing))nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
+            else nameLabel.getStyleClass().remove(MilkRs.cssNotBuyable);
+    	} else rootPane.setVisible(false);
+    }*/
 }

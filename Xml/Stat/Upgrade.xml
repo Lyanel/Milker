@@ -3,14 +3,14 @@
 	<upgrade id="2">
 		<need>
 			<things>
-				<thing kind="2" path="1">250</thing>
+				<thing kind="2" tree="1">250</thing>
 			</things>
 		</need>
 		<price coin="1" coef="1"/>
 		<effect num="1">
 			<things>
 				<thing kind="1" id="11">
-					<max kind="2" path="1" >3</max>
+					<max kind="2" tree="1" >3</max>
 				</thing>
 			</things>
 		</effect>
@@ -18,14 +18,14 @@
 	<upgrade id="3">
 		<need>
 			<things>
-				<thing kind="2" path="1">500</thing>
+				<thing kind="2" tree="1">500</thing>
 			</things>
 		</need>
 		<price coin="1" coef="1"/>
 		<effect num="1">
 			<things>
 				<thing kind="1" id="11">
-					<max kind="2" path="1" >3</max>
+					<max kind="2" tree="1" >3</max>
 				</thing>
 			</things>
 		</effect>

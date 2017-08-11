@@ -1,10 +1,14 @@
 package controleur;
 
-import javafx.beans.property.SimpleStringProperty;
+
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import modele.MilkDate;
 import modele.MilkKind;
-import modele.MilkLanguage;
 import modele.carac.NeededIntel;
 import modele.intel.Research;
 import modele.intel.Upgrade;
@@ -13,13 +17,13 @@ import modele.thing.Building;
 import modele.thing.Slave;
 import modele.thing.Thing;
 import modele.thing.Worker;
+import javafx.util.Duration;
 
 public class GameModele {
-
+	
 	private MilkDate plaYear;
 	private String name;
-	private Double milkCoin = 0.0;
-	private SimpleStringProperty milkCoinString;
+	private DoubleProperty milkCoin = new SimpleDoubleProperty(0.0);
 	
 	private ObservableList<Research> researchs;
 	private ObservableList<Upgrade> upgrades;
@@ -44,8 +48,7 @@ public class GameModele {
 	@SuppressWarnings("unchecked")
 	public GameModele() {
 		plaYear = new MilkDate () ;
-		milkCoinString = new SimpleStringProperty();
-
+		
 		researchs = Research.getListes();
 		upgrades = Upgrade.getListes();
     	
@@ -64,6 +67,43 @@ public class GameModele {
     	animalNeutral=Animal.getNeutralListes();
     	animalScience=Animal.getScienceListes();
     	animalMagic=Animal.getMagicListes();
+		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0),
+				event -> milkCoin.setValue(milkCoin.doubleValue() + getIncome())),
+				new KeyFrame(Duration.seconds(1)));
+		timeline.setCycleCount(Animation.INDEFINITE);
+		timeline.play();
+	}
+	
+	/*
+	 * Method retournant le gain de jetonlait/seconde.
+	 * Par encore programmé. 
+	 * return 1
+	 * */
+	private double getIncome() {
+		double tIncome = 0.0;
+		double toolProdBonus = 1.0;
+		double toolQualBonus = 1.0;
+		double cattleProdBonus = 0.0;
+		double cattleQualBonus = 0.0;
+		double buildProdBonus = 0.0;
+		double buildQualBonus = 0.0;
+		
+		tIncome+=Building.getIncomeFromList(buildingNeutral,buildProdBonus,buildQualBonus); 
+		tIncome+=Building.getIncomeFromList(buildingScience,buildProdBonus,buildQualBonus); 
+		tIncome+=Building.getIncomeFromList(buildingMagic,buildProdBonus,buildQualBonus); 
+		
+		tIncome+=Animal.getIncomeFromList(animalNeutral,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Animal.getIncomeFromList(animalScience,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Animal.getIncomeFromList(animalMagic,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		
+		tIncome+=Slave.getIncomeFromList(slaveNeutral,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Slave.getIncomeFromList(slaveScience,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Slave.getIncomeFromList(slaveMagic,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		
+		tIncome+=Worker.getIncomeFromList(workerNeutral,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Worker.getIncomeFromList(workerScience,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Worker.getIncomeFromList(workerMagic,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		return tIncome;
 	}
 
 	public void setName(String name) {
@@ -73,7 +113,11 @@ public class GameModele {
 		return this.name;
 	}
 	
-	public Double getMilkCoin() {
+	public Double getMilkCoinValue() {
+		return this.milkCoin.doubleValue();
+	}
+
+	public DoubleProperty getMilkCoin() {
 		return this.milkCoin;
 	}
 	
@@ -172,26 +216,20 @@ public class GameModele {
 	}
 
 	public boolean isThingbuyable(Thing thing) {
-		return (thing.getPriceValue()<=milkCoin);
+		return (thing.getPriceValue()<=milkCoin.doubleValue());
 	}
 
 	public void buyThing(Thing thing) {
-		if (thing.getPriceValue()<=milkCoin){
+		if (thing.getPriceValue()<=milkCoin.doubleValue()){
 			thing.buy();
-			milkCoin += -thing.getPriceValue();
-			milkCoinString.setValue(milkCoin.toString());
+			milkCoin.setValue(milkCoin.doubleValue() - thing.getPriceValue());
 		}
 	}
 
 	public void statueClicked() {
 		for(Building building: this.buildingNeutral) {
-			if (building.getId().intValue()==10) milkCoin += (building.getIncome().getProd()*(building.getAttrib().getQuant()+building.getStart()));
+			if (building.getId().intValue()==10) milkCoin.setValue(milkCoin.doubleValue() + (building.getIncome().getProd()*(building.getAttrib().getQuant()+building.getStart())));
 		}
-		milkCoinString.setValue(milkCoin.toString());
 		
-	}
-
-	public SimpleStringProperty getMilkCoinString() {
-		return milkCoinString;
 	}
 }

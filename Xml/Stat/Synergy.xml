@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <synergys>
-	<synergy id="101" path="1" lvl="1">
+	<synergy id="101" tree="1" lvl="1">
 		<need>
 			<things>
 				<thing kind="1" id="14">1000</thing>
@@ -20,7 +20,7 @@
 			</effect>
 		</effects>
 	</synergy>
-	<synergy id="101" path="1" lvl="1">
+	<synergy id="101" tree="1" lvl="1">
 		<need>
 			<things>
 				<thing kind="5" id="31">100</thing>
@@ -41,7 +41,7 @@
 			</effect>
 		</effects>
 	</synergy>
-	<synergy id="201" path="1" lvl="1">
+	<synergy id="201" tree="1" lvl="1">
 		<need>
 			<things>
 				<thing kind="5" id="21">100</thing>

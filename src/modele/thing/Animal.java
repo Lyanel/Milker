@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 import modele.MilkFile;
 import modele.MilkInterface;
 import modele.MilkKind;
-import modele.carac.Attrib;
+import modele.carac.ThingAttrib;
 
 public class Animal extends Thing implements Cloneable {
 
@@ -67,7 +67,7 @@ public class Animal extends Thing implements Cloneable {
 		if (animals!=null){
 			for (Animal animal:animals){
 				try {
-					if(animal.getAttrib().getPath()==Attrib.Path_Neutral)clone.add((Animal) animal.clone());
+					if(animal.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((Animal) animal.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -83,7 +83,7 @@ public class Animal extends Thing implements Cloneable {
 		if (animals!=null){
 			for (Animal animal:animals){
 				try {
-					if(animal.getAttrib().getPath()==Attrib.Path_Science)clone.add((Animal) animal.clone());
+					if(animal.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((Animal) animal.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -99,7 +99,7 @@ public class Animal extends Thing implements Cloneable {
 		if (animals!=null){
 			for (Animal animal:animals){
 				try {
-					if(animal.getAttrib().getPath()==Attrib.Path_Magic)clone.add((Animal) animal.clone());
+					if(animal.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((Animal) animal.clone());
 				} catch (CloneNotSupportedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -131,6 +131,16 @@ public class Animal extends Thing implements Cloneable {
 		}
 		return animals;
 	}
+
+	public static double getIncomeFromList(ObservableList<Animal> thingList, double toolProdBonus, double toolQualBonus, double cattleProdBonus,
+			double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+		double tIncome = 0;
+		for (Thing thing:thingList){
+			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
+		}
+		return tIncome;
+	}
+	
 	
 	// Constructors
 	

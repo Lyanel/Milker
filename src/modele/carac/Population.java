@@ -8,17 +8,17 @@ public class Population extends MilkKind implements Cloneable {
 	
 	public static final String noeud = "pop";
 	public String getNoeud() {return noeud;}
-	private Attrib attrib;
+	private ThingAttrib attrib;
 
 	// Constructors
 	
 	public Population() {
 		super();
-		this.attrib = new Attrib();
+		this.attrib = new ThingAttrib();
 	}
 	public Population(Element milkElement) {
 		super();
-		this.attrib = new Attrib();
+		this.attrib = new ThingAttrib();
 		this.setValueFromNode(milkElement);
 	}
 
@@ -40,10 +40,10 @@ public class Population extends MilkKind implements Cloneable {
 	
 	// field methods
 	
-	public Attrib getAttrib() {
+	public ThingAttrib getAttrib() {
 		return this.attrib;
 	}
-	public void setAttrib(Attrib attrib) {
+	public void setAttrib(ThingAttrib attrib) {
 		this.attrib = attrib;
 	}
 	public void setAttrib(Element milkElement) {
@@ -93,7 +93,7 @@ public class Population extends MilkKind implements Cloneable {
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		Population clone = (Population) super.clone();
-		if (this.attrib!=null) clone.setAttrib((Attrib) this.attrib.clone());
+		if (this.attrib!=null) clone.setAttrib((ThingAttrib) this.attrib.clone());
 		return clone;
 	}
 }

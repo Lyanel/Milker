@@ -253,30 +253,30 @@
 		<options>
 			<option id="510">
 				<Levels>
-					<Level id="511" path="1" lvl="1">
+					<Level id="511" tree="1" lvl="1">
 						<tool quan="40" qual="40" />
 					</Level>
-					<Level id="512" path="1" lvl="2">
+					<Level id="512" tree="1" lvl="2">
 						<research id="512" />
 						<tool quan="50" qual="50" />
 					</Level>
-					<Level id="513" path="1" lvl="3">
+					<Level id="513" tree="1" lvl="3">
 						<research id="512" />
 						<tool quan="70" qual="70" />
 					</Level>
-					<Level id="514" path="1" lvl="4">
+					<Level id="514" tree="1" lvl="4">
 						<research id="514" />
 						<tool quan="90" qual="90" />
 					</Level>
-					<Level id="515" path="1" lvl="5">
+					<Level id="515" tree="1" lvl="5">
 						<research id="515" />
 						<tool quan="110" qual="110" />
 					</Level>
-					<Level id="516" path="1" lvl="6">
+					<Level id="516" tree="1" lvl="6">
 						<research id="516" />
 						<tool quan="120" qual="140" />
 					</Level>
-					<Level id="517" path="1" lvl="7">
+					<Level id="517" tree="1" lvl="7">
 						<research id="517" />
 						<tool quan="150" qual="150" />
 					</Level>
@@ -287,26 +287,26 @@
 					<research id="522" />
 				</need>
 				<Levels>
-					<Level id="522" path="2" lvl="2">
+					<Level id="522" tree="2" lvl="2">
 						<tool quan="60" qual="40" />
 					</Level>
-					<Level id="523" path="2" lvl="3">
+					<Level id="523" tree="2" lvl="3">
 						<research id="523" />
 						<tool quan="80" qual="60" />
 					</Level>
-					<Level id="524" path="2" lvl="4">
+					<Level id="524" tree="2" lvl="4">
 						<research id="524" />
 						<tool quan="80" qual="100" />
 					</Level>
-					<Level id="525" path="2" lvl="5">
+					<Level id="525" tree="2" lvl="5">
 						<research id="525" />
 						<tool quan="100" qual="120" />
 					</Level>
-					<Level id="526" path="2" lvl="6">
+					<Level id="526" tree="2" lvl="6">
 						<research id="526" />
 						<tool quan="130" qual="130" />
 					</Level>
-					<Level id="527" path="2" lvl="7">
+					<Level id="527" tree="2" lvl="7">
 						<research id="527" />
 						<tool quan="160" qual="140" />
 					</Level>
@@ -317,26 +317,26 @@
 					<research id="532" />
 				</need>
 				<Levels>
-					<Level id="532" path="3" lvl="2">
+					<Level id="532" tree="3" lvl="2">
 						<tool quan="40" qual="60" />
 					</Level>
-					<Level id="533" path="3" lvl="3">
+					<Level id="533" tree="3" lvl="3">
 						<research id="533" />
 						<tool quan="60" qual="80" />
 					</Level>
-					<Level id="534" path="3" lvl="4">
+					<Level id="534" tree="3" lvl="4">
 						<research id="534" />
 						<tool quan="100" qual="80" />
 					</Level>
-					<Level id="535" path="3" lvl="5">
+					<Level id="535" tree="3" lvl="5">
 						<research id="535" />
 						<tool quan="120" qual="100" />
 					</Level>
-					<Level id="536" path="3" lvl="6">
+					<Level id="536" tree="3" lvl="6">
 						<research id="536" />
 						<tool quan="140" qual="120" />
 					</Level>
-					<Level id="537" path="3" lvl="7">
+					<Level id="537" tree="3" lvl="7">
 						<research id="537" />
 						<tool quan="140" qual="160" />
 					</Level>

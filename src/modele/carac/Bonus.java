@@ -1,27 +1,28 @@
 package modele.carac;
 
-import controleur.ParseMilkFile;
-
 import org.w3c.dom.Element;
 
-public class Bonus extends MilkCoin implements Cloneable {
+import modele.MilkKind;
+
+public class Bonus extends MilkKind implements Cloneable {
 	
-	public static final String noeud = "bonus", xmlQuant = "quan", xmlQual = "qual";
+	public static final String noeud = "bonus";
 	public String getNoeud() {return noeud;}
-	private Float quant, qual; //Quantity & Quality of milk production.
+	private MilkAttrib attrib;
 		
 	// Constructors
 	
 	public Bonus() {
 		super();
+		this.attrib = new MilkAttrib();
 	}
 	public Bonus(Float quant,Float qual) {
 		super();
-		this.setQuant(quant);
-		this.setQual(qual);
+		this.attrib = new MilkAttrib();
 	}
 	public Bonus(Element milkElement) {
 		super();
+		this.attrib = new MilkAttrib();
 		this.setValueFromNode(milkElement);
 	}
 	
@@ -31,67 +32,28 @@ public class Bonus extends MilkCoin implements Cloneable {
 	public void setValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisElementFromParent(milkElement);
 		super.setValueFromNode(thisElement);
-		this.setQuant(thisElement);
-		this.setQual(thisElement);
+		this.setAttrib(thisElement);
 	}
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisElementFromParent(milkElement);
 		super.setValueFromNode(thisElement);
-		this.setNullQuant(thisElement);
-		this.setNullQual(thisElement);
+		this.setNullAttrib(thisElement);
 	}
 	
 	// field methods
 	
-	public Float getQuant() {
-		return this.quant;
+	public MilkAttrib getAttrib() {
+		return this.attrib;
 	}
-	public String getStringQuant() {
-		String temp = "";
-		if (this.quant != null) temp = xmlQuant+" : "+this.quant+". ";
-		return temp;
+	public void setAttrib(MilkAttrib attrib) {
+		this.attrib = attrib;
 	}
-	public String getXmlQuant() {
-		String temp = "";
-		if (this.quant != null) temp = " "+xmlQuant+"=\""+quant+"\"";
-		return temp;
+	public void setAttrib(Element milkElement) {
+		this.attrib.setValueFromNode(milkElement);
 	}
-	public void setQuant(Float quant) {
-		this.quant = quant;
-	}
-	public void setQuant(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQuant);
-		if (temp != null) this.setQuant(temp);
-	}
-	public void setNullQuant(Element milkElement) {
-		this.setQuant(ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQuant));
-	}
-	
-	public Float getQual() {
-		return this.qual;
-	}
-	public String getStringQual() {
-		String temp = "";
-		if (this.qual != null) temp = xmlQual+" : "+this.qual+". ";
-		return temp;
-	}
-	public String getXmlQual() {
-		String temp = "";
-		if (this.qual != null) temp = " "+xmlQual+"=\""+qual+"\"";
-		return temp;
-	}
-	public void setQual(Float qual) {
-		this.qual = qual;
-	}
-	public void setQual(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQual);
-		if (temp != null) this.qual=temp;
-	}
-	public void setNullQual(Element milkElement) {
-		qual = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQual);
+	public void setNullAttrib(Element milkElement) {
+		this.attrib.setNullValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods
@@ -99,15 +61,26 @@ public class Bonus extends MilkCoin implements Cloneable {
 	@Override
 	public String toStringAttrib() {
 		String temp = super.toStringAttrib();
-		temp+=this.getStringQuant();
-		temp+=this.getStringQual();
+		if (this.attrib != null) temp = this.attrib.toStringAttrib();
 		return temp;
 	}
 	@Override
 	public String toXmlAttrib() {
 		String temp = super.toXmlAttrib();
-		temp+=this.getXmlQuant();
-		temp+=this.getXmlQual();
+		if (this.attrib != null) temp = this.attrib.toXmlAttrib();
+		return temp;
+	}
+	
+	@Override
+	public String toStringStatChild() {
+		String temp = super.toXmlStatChild();
+		if (this.attrib != null) temp = this.attrib.toXmlStatChild();
+		return temp;
+	}
+	@Override
+	public String toXmlStatChild() {
+		String temp = super.toXmlStatChild();
+		if (this.attrib != null) temp = this.attrib.toXmlStatChild();
 		return temp;
 	}
 	
@@ -116,14 +89,14 @@ public class Bonus extends MilkCoin implements Cloneable {
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
-		if(this.quant!=null && this.quant!=0) temp= false;
-		if(this.qual!=null && this.qual!=0) temp= false;
+		if(this.attrib!=null && !this.attrib.allZero()) temp= false;
 		return temp;
 	}
 	
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		Bonus clone = (Bonus) super.clone();
+		if (this.attrib!=null) clone.setAttrib((MilkAttrib) this.attrib.clone());
 		return clone;
 	}
 }
