@@ -13,12 +13,12 @@
         <Label fx:id="iLabel" text="I" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER" />
         <Label fx:id="nameLabel" text="Name" textAlignment="JUSTIFY" wrapText="true" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
         <Label fx:id="priceLabel" text="Price" textAlignment="JUSTIFY" wrapText="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
-            <Label fx:id="quantLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Q" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+        <Label fx:id="quantLabel" alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Q" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="NEVER" minWidth="-1.0" prefWidth="-1.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"  />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"  />
       </columnConstraints>
       <rowConstraints>
         <RowConstraints minHeight="-1.0" prefHeight="-1.0" vgrow="NEVER" />

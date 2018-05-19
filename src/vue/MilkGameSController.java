@@ -1,8 +1,12 @@
 package vue;
 
 
+import java.io.IOException;
+
+import application.Milker;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -10,10 +14,15 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.util.Callback;
 import modele.MilkImage;
+import modele.MilkInfo;
 import modele.MilkInterface;
+import modele.MilkRs;
 import modele.intel.Research;
 import modele.intel.Upgrade;
 import modele.thing.Animal;
@@ -26,7 +35,17 @@ import modele.thing.Worker;
  * @author Lyanel Pheles
  */
 public class MilkGameSController extends MilkTabControleur {
-
+	private MouseEvent event;
+	
+    @FXML
+    private BorderPane gamePanel;
+    @FXML
+    private Pane infoPan;
+    @FXML
+    private AnchorPane centerAnchor;
+    
+    private InfoCellController infocell;
+    
     @FXML
     private Label coinLabel;
     @FXML
@@ -112,6 +131,16 @@ public class MilkGameSController extends MilkTabControleur {
     private void initialize() {}
 	
     public void initList() {
+    	initInfoPan(centerAnchor);
+    	gamePanel.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+            	event = e;
+            	if (infocell.isVisible()) infoPan.relocate(event.getSceneX()+10, event.getSceneY()+10);
+            }
+        });
+
+    	
     	coinLabel.textProperty().bind(this.getMainApp().getModel().getMilkCoin().asString());
     	
     	venusClick.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -240,6 +269,35 @@ public class MilkGameSController extends MilkTabControleur {
     	upgradePan.setItems(this.getMainApp().getModel().getUpgrade());
     	synergyTab.setText(MilkInterface.getStringsFromId(553));
     }
+    
+
+    /*
+     * Init a little panel displaying info and following mouse.
+     */
+	public void initInfoPan(AnchorPane game) {
+		try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Milker.class.getResource(MilkRs.infoCell));
+            AnchorPane infoPanAnch = (AnchorPane) loader.load();
+            infoPan.getChildren().add(infoPanAnch);
+            
+           // infoPan.setPrefSize( ((AnchorPane)rootLayout.getCenter()).getWidth(), ((AnchorPane)rootLayout.getCenter()).getHeight());
+            infocell = loader.getController();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+
+	public void setInfoVisible(MilkInfo info, boolean visible) {
+		if(info!=null && visible){
+			infocell.setValue(info);
+		}else{
+			infocell.setValue(new MilkInfo());
+		}
+		infocell.setVisible(visible);
+    	if (infocell.isVisible() && event!=null) infoPan.relocate(0, event.getSceneY());
+	}
+    
     
     /**
     * Cet écouteur est appelé lorsque la propriété value change.

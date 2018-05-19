@@ -18,7 +18,7 @@ import modele.MilkInfo;
  * @author Lyanel Pheles
  */
 public class InfoCellController {
-
+	
     @FXML
     private AnchorPane rootPane;
     
@@ -36,14 +36,6 @@ public class InfoCellController {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
-      /*  rootPane.setOnMouseMoved(
-        	new EventHandler<MouseEvent>() {
-        		@Override
-        		public void handle(MouseEvent e) {
-        			rootPane.relocate(e.getSceneX()+10, e.getSceneY()+10);
-        		}
-        	}
-        );*/
     	effectPan.setText(getValue().getTxEffect());
     	descPan.setText(getValue().getDesc());
     	quotePan.setText(getValue().getQuote());
@@ -81,6 +73,11 @@ public class InfoCellController {
 
 	public void setVisible(boolean visible) {
 		infoPan.setVisible(visible);
+		
+	}
+
+	public boolean isVisible() {
+		return infoPan.isVisible();
 		
 	}
 }

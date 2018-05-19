@@ -1,35 +1,39 @@
-Implemented look :
-Clay								Default look
-Straw							100 Farm
+Implemented look (in xml) :
+Clay						Default look
+Straw						100 Farm
 All worker and slave		Need their living counterpart *100.
 
 
 
 Possible new look : 
 
-Wood	Milking parlor ? Animal Barn ?
+Porcelain	Milking parlor
+Rag doll	Animal Barn
+Wood		Factory
+Plastic		warehouse
+Wax			Business center
 
-Plastic	Clinic
+Glass	Clinic
 Marble	Temple
 
 Steel	Science Lab
-Gold		Alchemy Tower
+Gold	Alchemy Tower
 
 Robot	Secret Lab
-Doll		Witchcraft tower
+Puppet	Witchcraft tower
 
 Slime	Astroport
-Fairy		Portal
+Fairy	Portal
 
 Rubis	Science Barn
 Saphir	Magic Barn
 
-Onix			Dark energy condenser
+Onix	Dark energy condenser
 Daimond	Prism
 
 
 Milk Slime		Astroport + Witchcraft tower
-Choco Fairy	Secret Lab + Portal
+Choco Fairy		Secret Lab + Portal
 Cookie			Milk Slime + Choco Fairy
 
 

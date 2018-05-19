@@ -11,12 +11,9 @@ import javafx.stage.WindowEvent;
 import modele.MilkInfo;
 import modele.MilkInterface;
 import modele.MilkRs;
-import vue.InfoCellController;
 import vue.MilkEditorController;
-//import vue.MilkGameController;
 import vue.MilkGameSController;
 import vue.MilkMenuController;
-import vue.MilkOptionController;
 import vue.MilkStatutController;
 import vue.MilkerController;
 
@@ -39,7 +36,7 @@ public class Milker extends Application {
 	private BorderPane rootLayout;
 	private GameModele model;
 	private MilkStatutController statutController;
-	private InfoCellController infocell;
+	private MilkGameSController gameController;
 	
     @Override
     public void start(Stage primaryStage) {
@@ -129,46 +126,26 @@ public class Milker extends Application {
             rootLayout.setCenter(game);
 
          //   MilkGameController controller = loader.getController();
-            MilkGameSController controller = loader.getController();
-            controller.setMainApp(this);
-            controller.initList();
+            gameController = loader.getController();
+            gameController.setMainApp(this);
+            gameController.initList();
             setStatutMessage(MilkInterface.getStringsFromId(1001));
-            initInfoPan(game);
+        //    initInfoPan(game);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
     /*
-     * Init a little panel displaying info and following mouse.
-     */
-	public void initInfoPan(AnchorPane game) {
-		try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Milker.class.getResource(MilkRs.infoCell));
-            AnchorPane infoPan = (AnchorPane) loader.load();
-            game.getChildren().add(infoPan);
-            
-           // infoPan.setPrefSize( ((AnchorPane)rootLayout.getCenter()).getWidth(), ((AnchorPane)rootLayout.getCenter()).getHeight());
-            infocell = loader.getController();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-
-    /*
-     * show the info panel.
+     * show the info of the OnMoussed cell.
      */
 	public void setInfoPanVisible(MilkInfo info, boolean visible) {
+		gameController.setInfoVisible(info, visible);
 		if(info!=null && visible){
-			infocell.setValue(info);
 			setStatutMessage(info.toStringTextChild());
-		}
-		else{
-			infocell.setValue(new MilkInfo());
+		} else{
 			setStatutMessage("");
 		}
-		infocell.setVisible(visible);
 	}
 
     /*

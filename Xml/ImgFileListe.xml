@@ -2,22 +2,22 @@
 <images id="3">
 	<image id="301">
 		<name>Balance</name>
-		<path>Img/</path>
+		<path>Img/Icon/</path>
 		<desc>Image d'origine inconnue.</desc>
 	</image>
 	<image id="302">
 		<name>Microscope</name>
-		<path>Img/</path>
+		<path>Img/Icon/</path>
 		<desc>Image d'origine inconnue.</desc>
 	</image>
 	<image id="303">
 		<name>Magie</name>
-		<path>Img/</path>
+		<path>Img/Icon/</path>
 		<desc>Image d'origine inconnue.</desc>
 	</image>
 	<image id="304">
 		<name>Tool</name>
-		<path>Img/</path>
+		<path>Img/Icon/</path>
 		<desc>Image d'origine inconnue.</desc>
 	</image>
 </images>

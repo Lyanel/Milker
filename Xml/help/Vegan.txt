@@ -18,7 +18,7 @@ Neutral path
 
 Science path
 01		Quinoa		-	Quinoa 
-02		Spelt 		-	épautre (blé)
+02		Spelt (corn)-	épautre (blé)
 03		Flax 		-	Lin
 04		Hemp		-	chanvre
 
