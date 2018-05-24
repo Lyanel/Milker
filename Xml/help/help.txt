@@ -18,7 +18,10 @@ Tree :  Refer to the development tree in which you can have the object :
 
 lvl : refer to the difficulty of the object, some price or requirement check this value, x>0, generally between 1 & 7.
 
-start : quantity of the object you get at the start of the game. not needed, generally used for building and toggle (or debug).
+start : Not needed for intel, indicate if they're enabled by default (0=no, 1=yes).
+	Not needed for things, quantity of the object you get at the start of the game. Generally used for building (or debug).
+	Required for toggle, it indicate the default option.
+	This value can be altered by ascension.
 
 get : Generally used with event, it inform how to get things : 
 	get=-1 you must catch it. (event related).

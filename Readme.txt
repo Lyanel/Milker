@@ -6,7 +6,14 @@ Milker est un projet de jeu clicker hentai débuté par Lyanel Pheles (moi).
 Pourquoi débuté ? Parce que bien que j'aie (je crois) de bonne idée et que je sois suffisamment motivé pour allé le plus loin possible, mes compétences de programmation sont extrêmement mauvaises et mes compétences de dessin sont inexistantes.
 Donc si des gens sont interressé, je dirait jamais non et même si vous souhaité changé de moteur (Renpy,html5?), vous avez carte blanche et je vous aiderait du mieux que je peux (se qui signifie pas des masses:( ). 
 
+V0.X
+Projected :	?
+Need	:	An artist, a good programer.
+
+v0.02 :	
+Started	:	Code for showing picture, added picture to test it.
+		Code for toggle, they also have their own tab.
+
 v0.01 :	
 Done	:	most of the xml.
 Started	:	Program in JavaFX
-Need	:	An artist, a good programer.

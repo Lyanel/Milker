@@ -38,7 +38,7 @@ sacrifice : By default only these one are available :
 	
 	Toggles are mostly hard coded so the thing here is mostly random.
 	
-	<toggle id="x" start="x" def="y">						def : option enabled by default.
+	<toggle id="x" start="x">
 		<need />															see need.txt
 		<price coin="y" coef="x"/>								Using a toggle cost a price...
 		<agent kind="x" id="x" tree="x" lvl="x"/>		...depending of the number of agent. (like coin*agent/coef)

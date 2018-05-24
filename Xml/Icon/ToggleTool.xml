@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="500">
+		<name>matt-icons_file-x-unknown</name>
+		<path>Img/Icon/</path>
+		<desc>matt-icons_file-x-unknown</desc>
+		<options>
+			<option id="510">
+				<name>matt-icons_file-x-unknown</name>
+				<path>Img/Icon/</path>
+				<desc>matt-icons_file-x-unknown</desc>
+				<levels>
+					<level id="511">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="512">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="513">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="514">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="515">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="516">
+						<name>Main du Diable</name>
+						<desc>Cette main démoniaque sait exactement comment faire plaisir au bétail pour obtenir un lait d'un goût excellent.</desc>
+						<quote></quote>
+					</level>
+					<level id="517">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+				</levels>
+			</option>
+			<option id="520">
+				<name>matt-icons_file-x-unknown</name>
+				<path>Img/Icon/</path>
+				<desc>matt-icons_file-x-unknown</desc>
+				<levels>
+					<level id="522">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="523">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="524">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="525">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="526">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="527">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+				</levels>
+			</option>
+			<option id="530">
+				<name>matt-icons_file-x-unknown</name>
+				<path>Img/Icon/</path>
+				<desc>matt-icons_file-x-unknown</desc>
+				<levels>
+					<level id="532">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="533">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="534">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="535">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="536">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+					<level id="537">
+						<name>matt-icons_file-x-unknown</name>
+						<path>Img/Icon/</path>
+						<desc>matt-icons_file-x-unknown</desc>
+					</level>
+				</levels>
+			</option>
+		</options>
+	</toggle>
+</toggles>

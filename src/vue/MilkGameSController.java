@@ -4,6 +4,7 @@ package vue;
 import java.io.IOException;
 
 import application.Milker;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +13,15 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
+import javafx.scene.paint.ImagePattern;
 import javafx.util.Callback;
 import modele.MilkImage;
 import modele.MilkInfo;
@@ -28,7 +32,10 @@ import modele.intel.Upgrade;
 import modele.thing.Animal;
 import modele.thing.Building;
 import modele.thing.Slave;
+import modele.thing.Thing;
 import modele.thing.Worker;
+import modele.toggle.Toggle;
+import modele.toggle.ToggleOption;
 
 /**
  * The controller for the Game window.  
@@ -40,16 +47,22 @@ public class MilkGameSController extends MilkTabControleur {
     @FXML
     private BorderPane gamePanel;
     @FXML
-    private Pane infoPan;
-    @FXML
     private AnchorPane centerAnchor;
     
     private InfoCellController infocell;
-    
+
     @FXML
     private Label coinLabel;
     @FXML
-    private Circle venusClick;
+    private Label agnelLabel;
+    @FXML
+    private Label bgLab;
+    @FXML
+    private Label npcLab;
+    @FXML
+    private Label idolLab;
+    @FXML
+    private Pane infoPan;
     
     @FXML
     private Tab neutralTab;
@@ -109,11 +122,22 @@ public class MilkGameSController extends MilkTabControleur {
     private ListView<Animal> magicAnimalPan;
     
     @FXML
-    private Tab intelTab;
+    private Tab toggleTab;
     @FXML
     private TitledPane toolTab;
-    //  @FXML
-    //  private ListView<Tool> toolPan;
+    @FXML
+    private ListView<ToggleOption> toolPan;
+    @FXML
+    private TitledPane idolTab;
+    @FXML
+    private ListView<ToggleOption> idolPan;
+    @FXML
+    private TitledPane eventTab;
+    @FXML
+    private ListView<ToggleOption> eventPan;
+    
+    @FXML
+    private Tab intelTab;
     @FXML
     private TitledPane researchTab;
     @FXML
@@ -125,7 +149,7 @@ public class MilkGameSController extends MilkTabControleur {
     @FXML
     private TitledPane synergyTab;
     //  @FXML
-    //  private ListView<Tool> synergyPan;
+    //  private ListView<Synergy> synergyPan;
 
 	@FXML
     private void initialize() {}
@@ -142,20 +166,21 @@ public class MilkGameSController extends MilkTabControleur {
 
     	
     	coinLabel.textProperty().bind(this.getMainApp().getModel().getMilkCoin().asString());
+    	agnelLabel.setText(MilkInterface.getStringsFromId(602));
     	
-    	venusClick.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+    	idolLab.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	if (event.getButton()==MouseButton.PRIMARY) getMainApp().getModel().statueClicked();
             }
         });
+    	bgLab.setText("");
+    	npcLab.setText("");
+    	idolLab.setText("");
     	
 
     	neutralTab.setText(MilkInterface.getStringsFromId(613)+" "+MilkInterface.getStringsFromId(561));
-    //  neutralTab.setText("");
     	neutralTab.setGraphic(MilkImage.getSmallIconFromID(301).getImageView());
-    //	neutralTab.setGraphic(new Circle(0, 0, 10));
-    	
     	
     	neutralBuildingTab.setText(MilkInterface.getStringsFromId(501));
     	neutralBuildingPan.setItems(this.getMainApp().getModel().getBuildingNeutral());
@@ -259,15 +284,39 @@ public class MilkGameSController extends MilkTabControleur {
     	        return new ThingCell(getMainApp());
     	    }
     	});
+
+    	toggleTab.setText(MilkInterface.getStringsFromId(556));
+    	toggleTab.setGraphic(MilkImage.getSmallIconFromID(304).getImageView());
+
+    	ObservableList<Toggle> toggle = this.getMainApp().getModel().getToggle();
     	
+    	toolTab.setText(toggle.get(0).getInfo().getName());
+    	toolPan.setItems(this.getMainApp().getModel().getTool());
+
+    	idolTab.setText(toggle.get(1).getInfo().getName());
+    	idolPan.setItems(this.getMainApp().getModel().getIdol());
+    	idolPan.setCellFactory(new Callback<ListView<ToggleOption>, ListCell<ToggleOption>>() {
+    	    @SuppressWarnings("rawtypes")
+			public ListCell call(ListView<ToggleOption> p) {
+    	        return new MilkCell(getMainApp());
+    	    }
+    	});
+    	
+    	eventTab.setText(toggle.get(2).getInfo().getName());
+    	eventPan.setItems(this.getMainApp().getModel().getEvent());
+
     	intelTab.setText(MilkInterface.getStringsFromId(557));
-    	intelTab.setGraphic(MilkImage.getSmallIconFromID(304).getImageView());
-    	toolTab.setText(MilkInterface.getStringsFromId(556));
+    	intelTab.setGraphic(MilkImage.getSmallIconFromID(305).getImageView());
         researchTab.setText(MilkInterface.getStringsFromId(551));
     	researchPan.setItems(this.getMainApp().getModel().getResearch());
     	upgradeTab.setText(MilkInterface.getStringsFromId(552));
     	upgradePan.setItems(this.getMainApp().getModel().getUpgrade());
     	synergyTab.setText(MilkInterface.getStringsFromId(553));
+    	//synergyPan.setItems(this.getMainApp().getModel().getSynergy());
+    	
+
+    	setBGScene(this.getMainApp().getModel().getBuildingNeutral().get(0));
+    	setIdolScene(this.getMainApp().getModel().getIdol().get(0));
     }
     
 
@@ -296,6 +345,24 @@ public class MilkGameSController extends MilkTabControleur {
 		}
 		infocell.setVisible(visible);
     	if (infocell.isVisible() && event!=null) infoPan.relocate(0, event.getSceneY());
+	}
+
+	public void setBGScene(Thing value) {		
+		centerAnchor.setBackground(new Background(new BackgroundFill(new ImagePattern(value.getScene().getImage()), null, null)));
+	}
+
+	public void setNPCScene(Thing value) {
+		ImageView img = value.getScene().getImageView();
+		img.fitHeightProperty().bind(centerAnchor.heightProperty());
+		img.setPreserveRatio(true);
+		npcLab.setGraphic(img);
+	}
+
+	public void setIdolScene(ToggleOption value) {
+		ImageView img = value.getScene().getImageView();
+		img.fitHeightProperty().bind(centerAnchor.heightProperty());
+		img.setPreserveRatio(true);
+		idolLab.setGraphic(img);
 	}
     
     

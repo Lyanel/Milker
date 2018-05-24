@@ -28,5 +28,6 @@ public class MilkRs {
 	public static final String ascensionPan	= fxBasePath+"AscensionTab.fxml";
 	public static final String eventPan		= fxBasePath+"EventTab.fxml";
 	public static final String thingCell	= fxBasePath+"ThingCell.fxml";
+	public static final String milkCell		= fxBasePath+"MilkCell.fxml";
 	public static final String infoCell		= fxBasePath+"InfoCell.fxml";
 }

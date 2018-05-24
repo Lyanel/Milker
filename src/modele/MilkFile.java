@@ -24,7 +24,7 @@ public class MilkFile extends MilkId implements Cloneable {
 		if (milkFiles==null) milkFiles = new Vector<MilkFile>();
 		else milkFiles.removeAllElements();
 		Vector<Element> elementlist = new Vector<Element>();
-		elementlist = getMilkElementsFromFiles(xmlBasePath+xmlFiles, noeud);
+		elementlist = getMilkElementsFromFiles(xmlBasePath+xmlFiles);
 		milkFiles = getMilkVarList(elementlist);
 	}
 	/**
@@ -36,6 +36,12 @@ public class MilkFile extends MilkId implements Cloneable {
 			elementlist = ParseMilkFile.getMilkElementLists(xmlPathFile,node);
 		} catch (Exception e) {e.printStackTrace();}
 		return elementlist;
+	}
+	/**
+	 * Return an element listing node found in the file xmlPathFile .
+	 */
+	public static Vector<Element> getMilkElementsFromFiles(String xmlPathFile) {
+		return getMilkElementsFromFiles(xmlPathFile,noeud);
 	}
 	/**
 	 * Return the file path after searching the file name in XmlFileListe.

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles id="32">
+	<toggle id="500" start="510" >
+		<price coin="5" coef="1"/>
+		<agent kind="1" id="12"/>
+		<options>
+			<option id="510">
+				<levels>
+					<level id="511" tree="1" lvl="1">
+						<tool quan="40" qual="40" />
+					</level>
+					<level id="512" tree="1" lvl="2">
+						<research id="512" />
+						<tool quan="50" qual="50" />
+					</level>
+					<level id="513" tree="1" lvl="3">
+						<research id="512" />
+						<tool quan="70" qual="70" />
+					</level>
+					<level id="514" tree="1" lvl="4">
+						<research id="514" />
+						<tool quan="90" qual="90" />
+					</level>
+					<level id="515" tree="1" lvl="5">
+						<research id="515" />
+						<tool quan="110" qual="110" />
+					</level>
+					<level id="516" tree="1" lvl="6">
+						<research id="516" />
+						<tool quan="120" qual="140" />
+					</level>
+					<level id="517" tree="1" lvl="7">
+						<research id="517" />
+						<tool quan="150" qual="150" />
+					</level>
+				</levels>
+			</option>
+			<option id="520">
+				<need>
+					<research id="522" />
+				</need>
+				<levels>
+					<level id="522" tree="2" lvl="2">
+						<tool quan="60" qual="40" />
+					</level>
+					<level id="523" tree="2" lvl="3">
+						<research id="523" />
+						<tool quan="80" qual="60" />
+					</level>
+					<level id="524" tree="2" lvl="4">
+						<research id="524" />
+						<tool quan="80" qual="100" />
+					</level>
+					<level id="525" tree="2" lvl="5">
+						<research id="525" />
+						<tool quan="100" qual="120" />
+					</level>
+					<level id="526" tree="2" lvl="6">
+						<research id="526" />
+						<tool quan="130" qual="130" />
+					</level>
+					<level id="527" tree="2" lvl="7">
+						<research id="527" />
+						<tool quan="160" qual="140" />
+					</level>
+				</levels>
+			</option>
+			<option id="530">
+				<need>
+					<research id="532" />
+				</need>
+				<levels>
+					<level id="532" tree="3" lvl="2">
+						<tool quan="40" qual="60" />
+					</level>
+					<level id="533" tree="3" lvl="3">
+						<research id="533" />
+						<tool quan="60" qual="80" />
+					</level>
+					<level id="534" tree="3" lvl="4">
+						<research id="534" />
+						<tool quan="100" qual="80" />
+					</level>
+					<level id="535" tree="3" lvl="5">
+						<research id="535" />
+						<tool quan="120" qual="100" />
+					</level>
+					<level id="536" tree="3" lvl="6">
+						<research id="536" />
+						<tool quan="140" qual="120" />
+					</level>
+					<level id="537" tree="3" lvl="7">
+						<research id="537" />
+						<tool quan="140" qual="160" />
+					</level>
+				</levels>
+			</option>
+		</options>
+	</toggle>
+</toggles>

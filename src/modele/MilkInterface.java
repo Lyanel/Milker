@@ -8,7 +8,6 @@ import org.w3c.dom.Element;
 import controleur.ParseMilkFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import modele.thing.Animal;
 
 public class MilkInterface extends MilkLanguage implements Cloneable {
 	

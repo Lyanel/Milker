@@ -1,6 +1,5 @@
 package controleur;
 
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,14 +8,21 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import modele.MilkDate;
 import modele.MilkKind;
+import modele.MilkXmlObj;
 import modele.carac.NeededIntel;
 import modele.intel.Research;
+import modele.intel.Synergy;
 import modele.intel.Upgrade;
 import modele.thing.Animal;
 import modele.thing.Building;
 import modele.thing.Slave;
 import modele.thing.Thing;
 import modele.thing.Worker;
+import modele.toggle.Toggle;
+import modele.toggle.ToggleEvent;
+import modele.toggle.ToggleIdol;
+import modele.toggle.ToggleOption;
+import modele.toggle.ToggleTool;
 import javafx.util.Duration;
 
 public class GameModele {
@@ -27,7 +33,12 @@ public class GameModele {
 	
 	private ObservableList<Research> researchs;
 	private ObservableList<Upgrade> upgrades;
-	//private ObservableList<Toggle> toggles;
+	private ObservableList<Synergy> synergy;
+
+	private ObservableList<Toggle> toggle;
+	private ObservableList<ToggleOption> idol;
+	private ObservableList<ToggleOption> tool;
+	private ObservableList<ToggleOption> event;
 	
 	private ObservableList<Building> buildingNeutral;
 	private ObservableList<Building> buildingScience;
@@ -51,6 +62,12 @@ public class GameModele {
 		
 		researchs = Research.getListes();
 		upgrades = Upgrade.getListes();
+		synergy = Synergy.getListes();
+
+		toggle = Toggle.getListes();
+		idol = ToggleIdol.getOptionListes();
+		tool = ToggleTool.getOptionListes();
+		event = ToggleEvent.getOptionListes();
     	
 		buildingNeutral=Building.getNeutralListes();
 		buildingScience=Building.getScienceListes();
@@ -67,11 +84,14 @@ public class GameModele {
     	animalNeutral=Animal.getNeutralListes();
     	animalScience=Animal.getScienceListes();
     	animalMagic=Animal.getMagicListes();
+
+    	
 		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0),
 				event -> milkCoin.setValue(milkCoin.doubleValue() + getIncome())),
 				new KeyFrame(Duration.seconds(1)));
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
+		
 	}
 	
 	/*
@@ -136,6 +156,26 @@ public class GameModele {
 
 	public ObservableList<Upgrade> getUpgrade() {
 		return upgrades;
+	}
+
+	public ObservableList<Synergy> getSynergy() {
+		return synergy;
+	}
+
+	public ObservableList<Toggle> getToggle() {
+		return toggle;
+	}
+
+	public ObservableList<ToggleOption> getIdol() {
+		return idol;
+	}
+
+	public ObservableList<ToggleOption> getTool() {
+		return tool;
+	}
+
+	public ObservableList<ToggleOption> getEvent() {
+		return event;
 	}
 
 	public ObservableList<Building> getBuildingNeutral() {
@@ -231,5 +271,15 @@ public class GameModele {
 			if (building.getId().intValue()==10) milkCoin.setValue(milkCoin.doubleValue() + (building.getIncome().getProd()*(building.getAttrib().getQuant()+building.getStart())));
 		}
 		
+	}
+
+	public boolean isSwitchable(MilkXmlObj value) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean isThingVisible(MilkXmlObj milkXmlObj) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

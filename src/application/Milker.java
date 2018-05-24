@@ -11,6 +11,12 @@ import javafx.stage.WindowEvent;
 import modele.MilkInfo;
 import modele.MilkInterface;
 import modele.MilkRs;
+import modele.MilkXmlObj;
+import modele.thing.Animal;
+import modele.thing.Building;
+import modele.thing.Slave;
+import modele.thing.Thing;
+import modele.thing.Worker;
 import vue.MilkEditorController;
 import vue.MilkGameSController;
 import vue.MilkMenuController;
@@ -146,6 +152,15 @@ public class Milker extends Application {
 		} else{
 			setStatutMessage("");
 		}
+	}
+	public void showThing(Thing value) {
+		if (value instanceof Building) gameController.setBGScene(value);
+		if (value instanceof Slave || value instanceof Worker || value instanceof Animal) gameController.setNPCScene(value);
+	}
+
+	public void showMilkObject(MilkXmlObj value) {
+		// TODO Auto-generated method stub
+		
 	}
 
     /*

@@ -31,6 +31,8 @@ public class ThingCellController implements Initializable {
     @FXML
     private Label iLabel;
     @FXML
+    private GridPane textPan;
+    @FXML
     private Label nameLabel;
     @FXML
     private Label priceLabel;
@@ -51,7 +53,8 @@ public class ThingCellController implements Initializable {
     	priceLabel.setText(null);
     	quantLabel.setText(null);
 
-    	varPan.setOnMousePressed(event -> buyThing());
+    	iLabel.setOnMousePressed(event -> showThing());
+    	textPan.setOnMousePressed(event -> buyThing());
     	varPan.setOnMouseEntered(event -> ((Milker) getApplication()).setInfoPanVisible(valueProperty().getValue().getInfo(),true));
     	varPan.setOnMouseExited(event -> ((Milker) getApplication()).setInfoPanVisible(null,false));
     }
@@ -66,7 +69,11 @@ public class ThingCellController implements Initializable {
     private void updateUI(Thing thing) {
     	if(((Milker) getApplication()).getModel().isThingVisible(thing) ){
     		rootPane.setVisible(true);
-            iLabel.setText(thing.getStringId());
+    		if(thing.getIcon().getName()=="") iLabel.setText(thing.getStringId());
+    		else {
+    			thing.getIcon().setAsIcon();
+    			iLabel.setGraphic(thing.getIcon().getImageView());
+    		}
             nameLabel.setText(thing.getInfo().getName());
             priceLabel.setText(thing.getPrice().getStringCoin());
             quantLabel.setText(thing.getAttrib().getStringQuant());
@@ -90,6 +97,11 @@ public class ThingCellController implements Initializable {
 
     public final ObjectProperty<Thing> valueProperty() {
         return value;
+    }
+
+    public final void showThing() {
+    	((Milker) getApplication()).showThing(getValue());
+    	updateUI(getValue());
     }
 
     public final void buyThing() {

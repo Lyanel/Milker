@@ -5,26 +5,75 @@ import java.util.Vector;
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class MilkImage extends MilkFile {
 
-	private static Vector<MilkImage> milkImages;
-	public static final String file = "ImgFileListe";
-	public static final String noeud = "image", xmlDesc= "desc";
+	private static Vector<MilkImage> milkInterfaceIcon;
+	private static Vector<MilkFile> milkIcon = null, milkScene = null;
+	
+	public static final String iconFile = "IconFileListe", sceneFile = "SceneFileListe";
+	public static final String noeud = "image", xmlExt= "ext", xmlDesc= "desc";
 	public String getNoeud() {return noeud;}
 	
 	public static int ICO_HEIGHT=100, ICO_WIDTH=100, SICO_HEIGHT = 20, SICO_WIDTH = 20;
+	
+	// Static method playing with files.Xml.
 
-	private static Vector<MilkImage> setMilkImagesFromFiles() {
-		if (milkImages==null) milkImages = new Vector<MilkImage>();
-		else milkImages.removeAllElements();
+	/**
+	 * set the milkFiles from the xml found in the file XmlFileListe.
+	 * @param milkFiles 
+	 * @param imageType 
+	 */
+	private static Vector<MilkFile> setMilkImagesListFromFiles(String imageType) {
 		Vector<Element> elementlist = new Vector<Element>();
-		elementlist = getMilkElementsFromFiles(getXmlFilePath(file)+file, noeud);
-		milkImages = getMilkImageList(elementlist);
-		return milkImages;
+		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(imageType)+imageType);
+		Vector<MilkFile> milkFiles = getMilkVarList(elementlist);
+		return milkFiles;
 	}
+	
+	/**
+	 * Return the path of an xml image list after searching the file name in an imageFileList.
+	 */
+	private static String getXmlImagePath(String fileName, Vector<MilkFile> milkFiles, String imageType) {
+		String link = "";
+		for (MilkFile gamefile: milkFiles) {
+			if (fileName.equals(gamefile.getName())) link = xmlBasePath+gamefile.getPath();
+		}
+		return link;
+	}
+	/**
+	 * Return the path of an xml scene list after searching the file name in a SceneFileListe.
+	 */
+	public static String getXmlScenesPath(String fileName) {
+		if (milkScene==null){
+			milkScene = new Vector<MilkFile>();
+			milkScene = setMilkImagesListFromFiles(sceneFile);
+		}
+		return getXmlImagePath(fileName,milkScene,sceneFile);
+	}
+	/**
+	 * Return the path of an xml icon list after searching the file name in an IconFileListe.
+	 */
+	public static String getXmlIconsPath(String fileName) {
+		if (milkIcon==null){
+			milkIcon = new Vector<MilkFile>();
+			milkIcon = setMilkImagesListFromFiles(iconFile);
+		}
+		return getXmlImagePath(fileName,milkIcon,iconFile);
+	}
+	
+	private static Vector<MilkImage> setMilkInterfaceIconFromFiles() {
+		if (milkInterfaceIcon==null) milkInterfaceIcon = new Vector<MilkImage>();
+		else milkInterfaceIcon.removeAllElements();
+		Vector<Element> elementlist = new Vector<Element>();
+		elementlist = getMilkElementsFromFiles(getXmlIconsPath(MilkInterface.file)+MilkInterface.file, noeud);
+		milkInterfaceIcon = getMilkImageList(elementlist);
+		return milkInterfaceIcon;
+	}
+	
 	public static Vector<MilkImage> getMilkImageList(Vector<Element> elementlist) {
 		Vector<MilkImage> milkFiles = new Vector<MilkImage>();
 		for (Element elementMilk: elementlist) {
@@ -37,9 +86,9 @@ public class MilkImage extends MilkFile {
 	}
 	
 	public static MilkImage getImageFromID(int id) {
-		if(milkImages==null)setMilkImagesFromFiles();
+		if(milkInterfaceIcon==null)setMilkInterfaceIconFromFiles();
 		MilkImage milkImage = new MilkImage();
-		for (MilkImage tempImage: milkImages) {
+		for (MilkImage tempImage: milkInterfaceIcon) {
 			try {
 				if (tempImage.getId()==id)milkImage=(MilkImage) tempImage.clone();
 			} catch (Exception e) {e.printStackTrace();}
@@ -56,7 +105,8 @@ public class MilkImage extends MilkFile {
 		milkImage.setAsSmallIcon();
 		return milkImage;
 	}
-	
+
+	private String extension;
 	private String desc;
 	private Image img;
 	private double IMG_HEIGHT, IMG_WIDTH;
@@ -68,11 +118,13 @@ public class MilkImage extends MilkFile {
 	}
 	public MilkImage(String desc) {
 		super();
+		this.setExt(".png");
 		this.setDesc(desc);
 		this.setImage(null);
 	}
 	public MilkImage(Element milkElement) {
 		super();
+		this.setExt(".png");
 		this.setValueFromNode(milkElement);
 	}
 
@@ -81,9 +133,11 @@ public class MilkImage extends MilkFile {
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
+		this.setExt(milkElement);
 		this.setDesc(milkElement);
 		setImage();
 	}
+
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
@@ -92,7 +146,13 @@ public class MilkImage extends MilkFile {
 	}
 	
 	// field methods
-	
+	public void setExt(String ext) {
+		this.extension = ext;
+	}
+	private void setExt(Element milkElement) {
+		String tempExt = ParseMilkFile.getXmlStringValue(milkElement,xmlExt);
+		if(tempExt.length()>1&&tempExt.length()<10) this.extension=tempExt;
+	}
 	public String getDesc() {
 		return desc;
 	}
@@ -123,7 +183,7 @@ public class MilkImage extends MilkFile {
 	private void setImage() {
 		String path = this.getPath();
 		if(path!=null && path.length()>0){
-			path = "file:"+this.getPath()+this.getName()+".png";
+			path = "file:"+this.getPath()+this.getName()+extension;
 			this.img = new Image(path);
 			IMG_HEIGHT = img.getHeight();
 			IMG_WIDTH = img.getWidth();
@@ -133,12 +193,21 @@ public class MilkImage extends MilkFile {
 		return img;
 	}
 	public ImageView getImageView() {
-            ImageView imageView = new ImageView();
-            imageView.setFitHeight(IMG_HEIGHT);
-            imageView.setFitWidth(IMG_WIDTH);
-            imageView.setImage(img);
-            return imageView;
+            return getImageView(IMG_WIDTH,IMG_HEIGHT);
      }
+
+	public ImageView getImageView(double layoutY) {
+		double width = layoutY*IMG_WIDTH/IMG_HEIGHT;
+		return getImageView(width, layoutY) ;
+	}
+	
+	public ImageView getImageView(double width, double height) {
+        ImageView imageView = new ImageView();
+        imageView.setFitHeight(height);
+        imageView.setFitWidth(width);
+        imageView.setImage(img);
+        return imageView;
+	}
     
 	public double getHeight() {
 		// TODO Auto-generated method stub

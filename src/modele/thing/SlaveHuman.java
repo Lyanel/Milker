@@ -7,6 +7,7 @@ import org.w3c.dom.Element;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modele.MilkFile;
+import modele.MilkImage;
 import modele.MilkInterface;
 import modele.MilkKind;
 
@@ -18,12 +19,19 @@ public class SlaveHuman extends Slave implements Cloneable {
 	private static Vector<SlaveHuman> setMilkVarFromFiles() {
 		if (slaveHumans==null) slaveHumans = new Vector<SlaveHuman>();
 		else slaveHumans.removeAllElements();
+		//Set stats
 		Vector<Element> elementlist = new Vector<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		slaveHumans = getMilkVarList(elementlist);
+		//Set info
 		Vector<Element> elementlInfos = new Vector<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(slaveHumans, elementlInfos);
+		//Set icon
+		Vector<Element> elementlIcon = new Vector<Element>();
+		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
+		setIcon(slaveHumans, elementlIcon);
+		
 		return slaveHumans;
 	}
 
@@ -40,6 +48,22 @@ public class SlaveHuman extends Slave implements Cloneable {
 				}
 			} catch (Exception e) {e.printStackTrace();}
 		}
+	}
+
+	private static void setIcon(Vector<SlaveHuman> slaveHumans, Vector<Element> elementIcons) {
+		for (Element elementIcon: elementIcons) {
+			try {
+				SlaveHuman slaveHumanIcon = new SlaveHuman(elementIcon);
+				slaveHumanIcon.setIcon(elementIcon);
+				for (SlaveHuman slaveHuman:slaveHumans){
+					if (slaveHumanIcon.equals(slaveHuman)){
+						slaveHuman.setIcon(slaveHumanIcon.getIcon());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		
 	}
 
 	public static ObservableList<SlaveHuman> getListes() {

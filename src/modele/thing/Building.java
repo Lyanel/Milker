@@ -1,6 +1,7 @@
 package modele.thing;
 
 import modele.MilkFile;
+import modele.MilkImage;
 import modele.MilkInterface;
 import modele.MilkKind;
 import modele.carac.Agent;
@@ -26,20 +27,31 @@ public class Building extends Thing implements Cloneable {
 	private static Vector<Building> setMilkVarFromFiles() {
 		if (buildings==null) buildings = new Vector<Building>();
 		else buildings.removeAllElements();
+		//Set stats
 		Vector<Element> elementlist = new Vector<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		buildings = getMilkVarList(elementlist);
+		//Set info
 		Vector<Element> elementlInfos = new Vector<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(buildings, elementlInfos);
+		//Set icon
+		Vector<Element> elementlIcon = new Vector<Element>();
+		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
+		setIcon(buildings, elementlIcon);
+		//Set scene
+		Vector<Element> elementlScene = new Vector<Element>();
+		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
+		setScene(buildings, elementlScene);
+		
 		return buildings;
 	}
 
-	private static void setInfo(Vector<Building> buildings, Vector<Element> elementlInfos) {
-		for (Element elementlInfo: elementlInfos) {
+	private static void setInfo(Vector<Building> buildings, Vector<Element> elementInfos) {
+		for (Element elementInfo: elementInfos) {
 			try {
-				Building buildingInfo = new Building(elementlInfo);
-				buildingInfo.setInfo(elementlInfo);
+				Building buildingInfo = new Building(elementInfo);
+				buildingInfo.setInfo(elementInfo);
 				for (Building building:buildings){
 					if (buildingInfo.equals(building)){
 						building.setInfo(buildingInfo.getInfo());
@@ -49,6 +61,37 @@ public class Building extends Thing implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 	}
+
+	private static void setIcon(Vector<Building> buildings, Vector<Element> elementIcons) {
+		for (Element elementIcon: elementIcons) {
+			try {
+				Building buildingIcon = new Building(elementIcon);
+				buildingIcon.setIcon(elementIcon);
+				for (Building building:buildings){
+					if (buildingIcon.equals(building)){
+						building.setIcon(buildingIcon.getIcon());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+	}
+
+	private static void setScene(Vector<Building> buildings, Vector<Element> elementScenes) {
+		for (Element elementScene: elementScenes) {
+			try {
+				Building buildingScene = new Building(elementScene);
+				buildingScene.setScene(elementScene);
+				for (Building building:buildings){
+					if (buildingScene.equals(building)){
+						building.setScene(buildingScene.getScene());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+	}
+
 
 	public static ObservableList<Building> getListes() {
 		if (buildings==null)setMilkVarFromFiles();

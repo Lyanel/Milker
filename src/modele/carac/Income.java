@@ -78,7 +78,6 @@ public class Income extends MilkCoin implements Cloneable {
 		return temp;
 	}
 	public String getXmlProd() {
-		System.out.println("Income.getXmlProd.prod : "+prod+".");
 		String temp = null;
 		if (this.prod != null) temp = " "+xmlProd+"=\""+prod+"\"";
 		return temp;

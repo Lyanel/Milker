@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<buildings>
+	<building id="10">
+		<name>Venus</name>
+		<path>Img/Icon/Building/</path>
+		<desc>Image d'origine inconnue.</desc>
+	</building>
+	<building id="11">
+		<name>Farm</name>
+		<path>Img/Icon/Building/</path>
+		<desc>https://www.iconshock.com/desktop-icons/real-state-icons/farm-icon/</desc>
+	</building>
+	<building id="12">
+		<name>MilkingParlor</name>
+		<path>Img/Icon/Building/</path>
+		<desc>https://depositphotos.com/169343622/stock-illustration-production-of-milk-set-milk.html</desc>
+	</building>
+	<building id="13">
+		<name>Factory</name>
+		<path>Img/Icon/Building/</path>
+		<desc>https://www.iconexperience.com/v_collection/</desc>
+	</building>
+	<building id="14">
+		<name>Enterprise</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="21">
+		<name>HeroMansion</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="22">
+		<name>Clinic</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="23">
+		<name>ResearchLab</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="24">
+		<name>TechPark</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="25">
+		<name>SpaceAdmin</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="26">
+		<name>ChemicalPlant</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="31">
+		<name>BeachHouse</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="32">
+		<name>AstroChurch</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="33">
+		<name>Laboratory</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="34">
+		<name>DarkTower</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="35">
+		<name>HauntedHouse</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="36">
+		<name>IvoryTower</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="42">
+		<name>Stable</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="43">
+		<name>FarmersMarket</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="44">
+		<name>DatingAgency</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="51">
+		<name>FarmPixPeo</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="52">
+		<name>Gallery</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="55">
+		<name>GenePool</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="61">
+		<name>Greenhouse</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="62">
+		<name>Nursery</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+	<building id="65">
+		<name>TownHall</name>
+		<path>Img/Icon/Building/pixelpeople/</path>
+		<desc>http://pixelpeople.wikia.com</desc>
+	</building>
+</buildings>

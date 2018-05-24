@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <animals>
-	<animal id="13">
+	<animal id="12">
 		<name>Brebis</name>
 		<effect>Produit du lait.</effect>
 		<desc>D'une faible production en quantité ET en qualité, elle est facile à entretenir.</desc>

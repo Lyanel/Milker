@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<slaves>
+	<slave id="42">
+		<name>Sheep</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="43">
+		<name>Goat</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="44">
+		<name>Mare</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="45">
+		<name>Cow</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="51">
+		<name>Bunny</name>
+		<effect>Give Milk.</effect>
+		<desc>She only think about making babies, beware of overcrowding.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="52">
+		<name>Sow</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="53">
+		<name>Bear</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="54">
+		<name>Orca</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="61">
+		<name>Cat</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="62">
+		<name>Wolf</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="63">
+		<name>Reindeer</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+	<slave id="64">
+		<name>Camel</name>
+		<path>Img/Icon/SlaveA/</path>
+		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
+	</slave>
+</slaves>

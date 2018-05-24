@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles id="33">
+	<toggle id="300" start="301" >
+		<need />
+		<price coin="5" coef="1"/>
+		<agent kind="2"/>
+		<options>
+			<option id="301">
+				<need />
+			</option>
+			<option id="302">
+				<need />
+			</option>
+			<option id="303">
+				<need />
+			</option>
+			<option id="304">
+				<need />
+			</option>
+			<option id="305">
+				<need />
+			</option>
+			<option id="306">
+				<need />
+			</option>
+			<option id="307">
+				<need />
+			</option>
+			<option id="308">
+				<need />
+			</option>
+			<option id="309">
+				<need />
+			</option>
+		</options>
+	</toggle>
+</toggles>

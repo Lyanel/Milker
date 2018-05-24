@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<buildings>
+	<building id="10">
+		<name>gazebo_by_nynjakat-d6rvloj</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://nynjakat.deviantart.com/art/Gazebo-409621123</desc>
+	</building>
+	<building id="11">
+		<name>farm__by_alexjjessup-d6bfv6n</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://alexjjessup.deviantart.com/art/Farm-382013087</desc>
+	</building>
+	<building id="12">
+		<name>the_empty_milking_parlor_by_bothellite-db5iyt2</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://steady-by-jerks.deviantart.com/art/The-Empty-Milking-Parlor-674410934</desc>
+	</building>
+	<building id="13">
+		<name>the_factory_by_ark4n-d2zhcsl</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://ark4n.deviantart.com/art/The-Factory-180528645</desc>
+	</building>
+	<building id="14">
+		<name>corporation_street_by_arsenixc-dbqfnle</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://arsenixc.deviantart.com/art/Corporation-street-709528370</desc>
+	</building>
+	<building id="21">
+		<name>hotel_project_by_doubleagent2005-d7evbs6</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://doubleagent2005.deviantart.com/art/Hotel-Project-448239462</desc>
+	</building>
+	<building id="22">
+		<name>12_veterinary_rc4_by_evitaer-d6vd2p9</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://evitaer.deviantart.com/art/12-Veterinary-RC4-415475181</desc>
+	</building>
+	<building id="23">
+		<name>clinic_13_by_stefanieodendahl-d60bkep</name>
+		<path>Img/Scene/Building/</path>
+		<desc>https://stefanieodendahl.deviantart.com/art/clinic-363336721</desc>
+	</building>
+	<building id="24">
+		<name>clinic_by_drdo</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://drdo.deviantart.com/art/Clinic-111371132</desc>
+	</building>
+	<building id="25">
+		<name>785b82a56ce709385e355ccc81eb71f6_1200</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://atlas.sansar.com/experiences/mold3d/astro-port</desc>
+	</building>
+	<building id="26">
+		<name>cyberpunk_med_clinic_by_axl99-d6rlvs5</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://axl99.deviantart.com/art/Cyberpunk-Med-Clinic-409167653</desc>
+	</building>
+	<building id="31">
+		<name>pioneer_camp_leaders_house_by_arsenixc-d3ex1t6</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://arsenixc.deviantart.com/gallery/11314091/Backgrounds</desc>
+	</building>
+	<building id="32">
+		<name>japan_temple_by_pjynico-d7mfml3</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://pjynico.deviantart.com/art/Japan-Temple-460943895</desc>
+	</building>
+	<building id="33">
+		<name>ancient_printing_house_by_evitaer-da9qva3</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://evitaer.deviantart.com/art/Ancient-printing-house-621031899</desc>
+	</building>
+	<building id="34">
+		<name>lok_19_f_by_evitaer-dcazkm4</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://evitaer.deviantart.com/art/Lok-19-f-744049948</desc>
+	</building>
+	<building id="35">
+		<name>portal_by_ferianimations-dbnh572</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://ferianimations.deviantart.com/art/Portal-704558990</desc>
+	</building>
+	<building id="36">
+		<name>progress67__from_my_i_ching_hexagram_35_page__by_dcamp-dcc66l0</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://dcamp.deviantart.com/art/Progress67-from-my-I-Ching-hexagram-35-page-746037972</desc>
+	</building>
+	<building id="42">
+		<name>barn_by_sincommonstitches-d92pfk8</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://sindonic.deviantart.com/art/Barn-548741384</desc>
+	</building>
+	<building id="43">
+		<name>factory_by_joakimolofsson-d4rnnkg</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://joakimolofsson.deviantart.com/art/Factory-288317968</desc>
+	</building>
+	<building id="44">
+		<name>inquisitioninstallation_by_evitaer-dcazl4a</name>
+		<path>Img/Scene/Building/</path>
+		<desc>https://evitaer.deviantart.com/art/InquisitionInstallation-744050602</desc>
+	</building>
+	<building id="51">
+		<name>kait-kybar-harvester</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://kait.artstation.com/projects/xB9yO</desc>
+	</building>
+	<building id="52">
+		<name>dd2103fc6e1062f69a0d84e903da69a0</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://sealle.deviantart.com/art/The-Barn-120645251</desc>
+	</building>
+	<building id="55">
+		<name>10_hunterprison_final_by_evitaer-dcazk6r</name>
+		<path>Img/Scene/Building/</path>
+		<desc>https://evitaer.deviantart.com/art/10-Hunterprison-final-744049395</desc>
+	</building>
+	<building id="61">
+		<name>village_by_arsenixc</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://arsenixc.deviantart.com/gallery/11314091/Backgrounds</desc>
+	</building>
+	<building id="62">
+		<name>salt_barn_by_demonui-d8xehzu</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://demonui.deviantart.com/art/Salt-Barn-539833242</desc>
+	</building>
+	<building id="65">
+		<name>n4JIvaPh0QEAqlahjvBJga7hJ2C5roUFFIxke21UU17o_bB0ldGAwak86dBN[1]</name>
+		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
+		<desc>https://www.shutterstock.com/fr/image-photo/green-skyscraper-building-plants-growing-on-412333285</desc>
+	</building>
+</buildings>

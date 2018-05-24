@@ -1,0 +1,34 @@
+Farm			Farm
+Milking parlor		MilkingParlor
+Factory			Factory
+Business center		Enterprise
+
+Animal Barn		Stable
+Warehouse		FarmersMarket
+Slave Barn		DatingAgency
+
+
+
+Smart hotel		HeroMansion
+Clinic			Clinic
+Science Lab		ResearchLab
+Secret Lab		TechPark
+Astroport			SpaceAdmin
+Dark energy condenser	ChemicalPlant
+
+Smart Farm		FarmPixPeo
+Smart Barn		Gallery
+Science Barn		GenePool
+
+
+
+Fantasy inn		BeachHouse
+Temple			AstroChurch
+Alchemy tower		Laboratory
+Witchcraft tower		DarkTower
+Portal			HauntedHouse
+Prism			IvoryTower
+
+Fantasy Farm		Greenhouse
+Fantasy Barn		Nursery
+Magic Barn		TownHall

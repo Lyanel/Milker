@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animals>
+	<animal id="12">
+		<name>Suffolk_Sheep_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="13">
+		<name>Alpine_goat_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="14">
+		<name>Clydesdale_Horse_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="15">
+		<name>Dairy_Cow_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="21">
+		<name>Cubby_bunny_common_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="22">
+		<name>Welsh_Pig_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="23">
+		<name>Brown_Bear_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="24">
+		<name>Orca_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="31">
+		<name>Orange_tabby_cat_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="32">
+		<name>Gray_Wolf_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="33">
+		<name>Reindeer_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+	<animal id="34">
+		<name>Bactrian_Camel_single</name>
+		<path>Img/Icon/Animal/tinyzoo/</path>
+		<desc>http://tinyzoo.wikia.com/</desc>
+	</animal>
+</animals>

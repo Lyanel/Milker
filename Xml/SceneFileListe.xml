@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<files id="4">
+  <file id="21">
+    <name>Event</name>
+    <path>Scene/</path>
+  </file>
+  <file id="31">
+    <name>ToggleIdol</name>
+    <path>Scene/</path>
+  </file>
+  <file id="32">
+    <name>ToggleTool</name>
+    <path>Scene/</path>
+  </file>
+  <file id="33">
+    <name>ToggleEvent</name>
+    <path>Scene/</path>
+  </file>
+  <file id="41">
+    <name>Building</name>
+    <path>Scene/</path>
+  </file>
+  <file id="42">
+    <name>Worker</name>
+    <path>Scene/</path>
+  </file>
+  <file id="43">
+    <name>Animal</name>
+    <path>Scene/</path>
+  </file>
+  <file id="44">
+    <name>SlaveAnimal</name>
+    <path>Scene/</path>
+  </file>
+  <file id="45">
+    <name>SlaveHuman</name>
+    <path>Scene/</path>
+  </file>
+</files>

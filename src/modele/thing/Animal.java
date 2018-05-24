@@ -7,6 +7,7 @@ import org.w3c.dom.Element;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modele.MilkFile;
+import modele.MilkImage;
 import modele.MilkInterface;
 import modele.MilkKind;
 import modele.carac.ThingAttrib;
@@ -21,12 +22,23 @@ public class Animal extends Thing implements Cloneable {
 	private static Vector<Animal> setMilkVarFromFiles() {
 		if (animals==null) animals = new Vector<Animal>();
 		else animals.removeAllElements();
+		//Set stats
 		Vector<Element> elementlist = new Vector<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		animals = getMilkVarList(elementlist);
+		//Set info
 		Vector<Element> elementlInfos = new Vector<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(animals, elementlInfos);
+		//Set icon
+		Vector<Element> elementlIcon = new Vector<Element>();
+		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
+		setIcon(animals, elementlIcon);
+		//Set scene
+		Vector<Element> elementlScene = new Vector<Element>();
+		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
+		setScene(animals, elementlScene);
+		
 		return animals;
 	}
 
@@ -43,6 +55,38 @@ public class Animal extends Thing implements Cloneable {
 				}
 			} catch (Exception e) {e.printStackTrace();}
 		}
+	}
+
+	private static void setIcon(Vector<Animal> animals, Vector<Element> elementIcons) {
+		for (Element elementIcon: elementIcons) {
+			try {
+				Animal animalIcon = new Animal(elementIcon);
+				animalIcon.setIcon(elementIcon);
+				for (Animal animal:animals){
+					if (animalIcon.equals(animal)){
+						animal.setIcon(animalIcon.getIcon());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		
+	}
+
+	private static void setScene(Vector<Animal> animals, Vector<Element> elementScenes) {
+		for (Element elementScene: elementScenes) {
+			try {
+				Animal animalScene = new Animal(elementScene);
+				animalScene.setScene(elementScene);
+				for (Animal animal:animals){
+					if (animalScene.equals(animal)){
+						animal.setScene(animalScene.getScene());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		
 	}
 
 	public static ObservableList<Animal> getListes() {

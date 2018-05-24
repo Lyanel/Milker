@@ -1,6 +1,7 @@
 package modele.thing;
 
 import modele.carac.ThingAttrib;
+import modele.MilkImage;
 import modele.carac.Income;
 import modele.carac.MilkAttrib;
 import modele.intel.Intel;
@@ -10,9 +11,8 @@ import java.util.Vector;
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
-import javafx.collections.ObservableList;
 
-public class Thing extends Intel implements Cloneable {
+public class Thing extends NearThing implements Cloneable {
 	
 	public static final String noeud = "thing", xmlLvl="lvl", xmlGet="get";
 	public String getNoeud() {return noeud;}
@@ -73,6 +73,8 @@ public class Thing extends Intel implements Cloneable {
 		}
 		return things;
 	}
+
+	// field
 	
 	private Integer lvl, get;
 	private ThingAttrib attrib;

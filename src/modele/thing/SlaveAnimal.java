@@ -7,6 +7,7 @@ import org.w3c.dom.Element;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import modele.MilkFile;
+import modele.MilkImage;
 import modele.MilkInterface;
 import modele.MilkKind;
 
@@ -18,12 +19,19 @@ public class SlaveAnimal extends Slave implements Cloneable {
 	private static Vector<SlaveAnimal> setMilkVarFromFiles() {
 		if (slaveAnimals==null) slaveAnimals = new Vector<SlaveAnimal>();
 		else slaveAnimals.removeAllElements();
+		//Set stats
 		Vector<Element> elementlist = new Vector<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		slaveAnimals = getMilkVarList(elementlist);
+		//Set info
 		Vector<Element> elementlInfos = new Vector<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(slaveAnimals, elementlInfos);
+		//Set icon
+		Vector<Element> elementlIcon = new Vector<Element>();
+		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
+		setIcon(slaveAnimals, elementlIcon);
+		
 		return slaveAnimals;
 	}
 
@@ -40,6 +48,22 @@ public class SlaveAnimal extends Slave implements Cloneable {
 				}
 			} catch (Exception e) {e.printStackTrace();}
 		}
+	}
+
+	private static void setIcon(Vector<SlaveAnimal> slaveAnimals, Vector<Element> elementIcons) {
+		for (Element elementIcon: elementIcons) {
+			try {
+				SlaveAnimal slaveAnimalIcon = new SlaveAnimal(elementIcon);
+				slaveAnimalIcon.setIcon(elementIcon);
+				for (SlaveAnimal slaveAnimal:slaveAnimals){
+					if (slaveAnimalIcon.equals(slaveAnimal)){
+						slaveAnimal.setIcon(slaveAnimalIcon.getIcon());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		
 	}
 
 	public static ObservableList<SlaveAnimal> getListes() {

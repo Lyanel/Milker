@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="500">
+		<name>Trayeuse</name>
+		<effect>Sélectionner le mode de traite.</effect>
+		<desc>Ce sélecteur vous permet de choisir la façon de traire le bétail.</desc>
+		<quote></quote>
+		<options>
+			<option id="510">
+				<name>Traite manuel</name>
+				<desc>Le bétail est trait directement par les trayeuses (humaines...).</desc>
+				<quote></quote>
+				<levels>
+					<level id="511">
+						<name>Main de noob</name>
+						<desc>Le bétail trait par une stagiaire fournit un lait faible, tant en qualité qu'en quantité</desc>
+						<quote></quote>
+					</level>
+					<level id="512">
+						<name>Main</name>
+						<desc>Le bétail trait par une apprentie fournit un lait un peu faible mais c'est toujours mieux qu'une stagiaire.</desc>
+						<quote></quote>
+					</level>
+					<level id="513">
+						<name>Main expérimentée</name>
+						<desc>Le bétail trait par une traiyeuse fournit un lait acceptable, tant en qualité qu'en quantité.</desc>
+						<quote></quote>
+					</level>
+					<level id="514">
+						<name>Main professionnelle</name>
+						<desc>Le bétail trait par une traiyeuse experte fournit un bon lait, en qualité et en quantité.</desc>
+						<quote></quote>
+					</level>
+					<level id="515">
+						<name>Main de maître</name>
+						<desc>Le bétail trait par une maîtresse traiyeuse fournit un très bon lait, en qualité et en quantité.</desc>
+						<quote></quote>
+					</level>
+					<level id="516">
+						<name>Main du Diable</name>
+						<desc>Cette main démoniaque sait exactement comment faire plaisir au bétail pour obtenir un lait d'un goût excellent.</desc>
+						<quote></quote>
+					</level>
+					<level id="517">
+						<name>Main de Dieu</name>
+						<desc>Le bétail trait par cette main céleste fournit du lait divin, en qualité et en quantité.</desc>
+						<quote></quote>
+					</level>
+				</levels>
+			</option>
+			<option id="520">
+				<name>Traite par machine</name>
+				<desc>Le bétail est trait à l'aide de machine.</desc>
+				<quote></quote>
+				<levels>
+					<level id="522">
+						<name>Outil de traite</name>
+						<desc>Un outils basique fait pour faciliter le travail des traiyeuses.</desc>
+						<quote></quote>
+					</level>
+					<level id="523">
+						<name>Machine de traite</name>
+						<desc>Une machine créée pour augmenter la production de lait.</desc>
+						<quote></quote>
+					</level>
+					<level id="524">
+						<name>Machine médical</name>
+						<desc>Une machine créée pour réduire le stress du bétail.</desc>
+						<quote></quote>
+					</level>
+					<level id="525">
+						<name>Machine jouissive</name>
+						<desc>Une machine créée pour rendre la traite plus agréable pour le bétail.</desc>
+						<quote></quote>
+					</level>
+					<level id="526">
+						<name>Machine alien</name>
+						<desc>Le bétail trait par cette machine fournit un lait excellent, en qualité et en quantité.</desc>
+						<quote></quote>
+					</level>
+					<level id="527">
+						<name>Machine ultime</name>
+						<desc>La meilleure machine créée par l'esprit humain, rien ne peut battre cette quantité.</desc>
+						<quote></quote>
+					</level>
+				</levels>
+			</option>
+			<option id="530">
+				<name>Traite par tentacule</name>
+				<desc>Le bétail est trait par des créatures organiques appelée tentacules.</desc>
+				<quote></quote>
+				<levels>
+					<level id="532">
+						<name>Trayeuse organique</name>
+						<desc>Un organisme créé pour rendre la traite plus naturelle pour le bétail.</desc>
+						<quote></quote>
+					</level>
+					<level id="533">
+						<name>Trayeuse vivante</name>
+						<desc>Une chose vivante créée pour simuler un bébé bétail.</desc>
+						<quote></quote>
+					</level>
+					<level id="534">
+						<name>Jeune tentacule</name>
+						<desc>Un petit tentacule avec un appétit vorace.</desc>
+						<quote></quote>
+					</level>
+					<level id="535">
+						<name>Tentacule</name>
+						<desc>Les tentacules sont des créatures ressemblant aux vers, qui aiment le lait plus que tout.</desc>
+						<quote></quote>
+					</level>
+					<level id="536">
+						<name>Tentacule ancienne</name>
+						<desc>Un énorme tentacule favorisant la quantité par rapport à la qualité.</desc>
+						<quote></quote>
+					</level>
+					<level id="537">
+						<name>Reine tentacule</name>
+						<desc>Reine de son espèce, elle produit le lait avec le meilleur goût.</desc>
+						<quote></quote>
+					</level>
+				</levels>
+			</option>
+		</options>
+	</toggle>
+</toggles>
