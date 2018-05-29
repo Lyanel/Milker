@@ -17,72 +17,72 @@
 	</worker>
 	<worker id="14">
 		<name>BusinessWoman</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="21">
 		<name>Maid</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="22">
 		<name>Veterinary</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="23">
 		<name>Scientist</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="24">
 		<name>MadScientist</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="25">
 		<name>Astronaut</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="26">
 		<name>EvilScientist</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="31">
 		<name>Hostess</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="32">
 		<name>Priestress</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="33">
 		<name>Alchemist</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="34">
 		<name>Witch</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="35">
 		<name>Planeswalker</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="36">
 		<name>Goddess</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 	<worker id="44">
 		<name>Slaver</name>
-		<path>Img/Icon/Worker/</path>
+		<path>Img/Scene/Worker/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</worker>
 </workers>

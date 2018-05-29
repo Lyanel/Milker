@@ -28,6 +28,18 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 		}
 		return toggleLevels;
 	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static Vector getMilkVarList(Vector<Element> elementlist) {
+		Vector<ToggleLevel> toggleLevels = new Vector<ToggleLevel>();
+		for (Element elementMilk: elementlist) {
+			try {
+				ToggleLevel toggleLevel = new ToggleLevel(elementMilk);
+				toggleLevels.add(toggleLevel);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return toggleLevels;
+	}
+	/*
 	@SuppressWarnings("rawtypes")
 	public static Vector getNullMilkVarList(Element elementlist) {
 		Vector<ToggleLevel> toggleLevels = new Vector<ToggleLevel>();
@@ -46,17 +58,6 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 		return toggleLevels;
 	}
 	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleLevel> toggleLevels = new Vector<ToggleLevel>();
-		for (Element elementMilk: elementlist) {
-			try {
-				ToggleLevel toggleLevel = new ToggleLevel(elementMilk);
-				toggleLevels.add(toggleLevel);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return toggleLevels;
-	}
-	@SuppressWarnings("rawtypes")
 	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<ToggleLevel> toggleLevels = new Vector<ToggleLevel>();
 		for (Element elementMilk: elementlist) {
@@ -67,7 +68,7 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return toggleLevels;
-	}
+	}*/
 
 	// field
 	
@@ -92,11 +93,18 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setBonus(milkElement);
 	}
+	public void setBonus(Element milkElement) {
+		this.bonus.setValueFromNode(milkElement);;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullBonus(milkElement);
 	}
+	public void setNullBonus(Element milkElement) {
+		this.bonus.setNullValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -105,12 +113,6 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 	}
 	public void setBonus(Bonus bonus) {
 		this.bonus = bonus;
-	}
-	public void setBonus(Element milkElement) {
-		this.bonus.setValueFromNode(milkElement);;
-	}
-	public void setNullBonus(Element milkElement) {
-		this.bonus.setNullValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods

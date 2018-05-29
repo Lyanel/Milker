@@ -15,11 +15,12 @@ import javafx.collections.ObservableList;
 
 public class Research extends Intel implements Cloneable {
 
-	private static Vector<Research> researchs;
-	public static final String file		= "Research";
-	public static final String noeud = "research";
+	public static final String file = "Research", noeud = "research";
 	public String getNoeud() {return noeud;}
 
+	private static Vector<Research> researchs;
+	private static ObservableList<Research> modelResearchs;
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static Vector setMilkVarFromFiles() {
 		if (researchs==null) researchs = new Vector<Research>();
@@ -33,39 +34,7 @@ public class Research extends Intel implements Cloneable {
 		return researchs;
 	}
 
-	private static void setInfo(Vector<Research> researchs, Vector<Element> elementlInfos) {
-		for (Element elementlInfo: elementlInfos) {
-			try {
-				Research researchInfo = new Research(elementlInfo);
-				researchInfo.setInfo(elementlInfo);
-				for (Research research:researchs){
-					if (researchInfo.equals(research)){
-						research.setInfo(researchInfo.getInfo());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static ObservableList getListes() {
-		if (researchs==null)setMilkVarFromFiles();
-		ObservableList<Research> clone = FXCollections.observableArrayList();
-		if (researchs!=null){
-			for (Research research:researchs){
-				try {
-					clone.add((Research) research.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector getMilkVarList(Vector<Element> elementlist) {
 		Vector<Research> researchs = new Vector<Research>();
 		for (Element elementMilk: elementlist) {
@@ -76,20 +45,26 @@ public class Research extends Intel implements Cloneable {
 		}
 		return researchs;
 	}
-
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Research> researchs = new Vector<Research>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Research research = new Research();
-				research.setNullValueFromNode(elementMilk);
-				researchs.add(research);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return researchs;
-	}
 	
+	public static ObservableList<Research> getResearchListe() {
+		if (modelResearchs==null){
+			if (researchs==null)setMilkVarFromFiles();
+			modelResearchs = FXCollections.observableArrayList();
+			if (researchs!=null){
+				for (Research research:researchs){
+					try {
+						modelResearchs.add((Research) research.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelResearchs;
+	}
+
+	// Fields
 	
 	private Sacrifice sacrifice;
 	private Check check;
@@ -118,11 +93,11 @@ public class Research extends Intel implements Cloneable {
 		this.setSacrifice(milkElement);
 		this.setCheck(milkElement);
 	}
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullSacrifice(milkElement);
-		this.setNullCheck(milkElement);
+	public void setSacrifice(Element milkElement) {
+		this.sacrifice.setValueFromNode(milkElement);;
+	}
+	public void setCheck(Element milkElement) {
+		this.check.setValueFromNode(milkElement);;
 	}
 	
 	// field methods
@@ -133,24 +108,12 @@ public class Research extends Intel implements Cloneable {
 	public void setSacrifice(Sacrifice sacrifice) {
 		this.sacrifice = sacrifice;
 	}
-	public void setSacrifice(Element milkElement) {
-		this.sacrifice.setValueFromNode(milkElement);;
-	}
-	public void setNullSacrifice(Element milkElement) {
-		this.sacrifice.setValueFromNode(milkElement);
-	}
 	
 	public Check getCheck() {
 		return this.check;
 	}
 	public void setCheck(Check check) {
 		this.check = check;
-	}
-	public void setCheck(Element milkElement) {
-		this.check.setValueFromNode(milkElement);;
-	}
-	public void setNullCheck(Element milkElement) {
-		this.check.setValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods

@@ -52,6 +52,23 @@ public class ToggleEvent extends Toggle implements Cloneable {
 		return things;
 	}
 	
+	@SuppressWarnings("rawtypes")
+	public static Vector getMilkVarList(Element elementlist) {
+		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
+		ToggleEvent thing=new ToggleEvent();
+		Element elements = thing.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=thing.getMilkElement(elements,i);
+			if (tempE != null){
+				thing.setValueFromNode(tempE);
+				things.add(thing);
+			}
+		}
+		return things;
+	}
+	/*
 	public static Vector<ToggleEvent> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
 		for (Element elementMilk: elementlist) {
@@ -63,7 +80,24 @@ public class ToggleEvent extends Toggle implements Cloneable {
 		}
 		return things;
 	}
-
+	@SuppressWarnings("rawtypes")
+	public static Vector getNullMilkVarList(Element elementlist) {
+		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
+		ToggleEvent thing=new ToggleEvent();
+		Element elements = thing.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=thing.getMilkElement(elements,i);
+			if (tempE != null){
+				thing=new ToggleEvent();
+				thing.setNullValueFromNode(tempE);
+				things.add(thing);
+			}
+		}
+		return things;
+	}*/
+	/*
 	private static void setInfos(Vector<ToggleEvent> toggleEvents, Vector<Element> elementInfos) {
 		for (Element elementInfo: elementInfos) {
 			try {
@@ -112,7 +146,7 @@ public class ToggleEvent extends Toggle implements Cloneable {
 				}
 			} catch (Exception e) {e.printStackTrace();}
 		}
-	}
+	}*/
 	
 	public static ToggleEvent getEvent() {
 		if(event==null){
@@ -137,40 +171,6 @@ public class ToggleEvent extends Toggle implements Cloneable {
 		}
 		return clone;
 	}
-	
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
-		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
-		ToggleEvent thing=new ToggleEvent();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing.setValueFromNode(tempE);
-				things.add(thing);
-			}
-		}
-		return things;
-	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
-		ToggleEvent thing=new ToggleEvent();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing=new ToggleEvent();
-				thing.setNullValueFromNode(tempE);
-				things.add(thing);
-			}
-		}
-		return things;
-	}
 
 	// Constructors
 	
@@ -187,11 +187,11 @@ public class ToggleEvent extends Toggle implements Cloneable {
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
-	}
+	}/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
-	}
+	}*/
 	
 	// field methods
 	

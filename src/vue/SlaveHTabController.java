@@ -105,7 +105,7 @@ public class SlaveHTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(SlaveHuman.getListes());
+    	selectVar.setItems(SlaveHuman.getSHFullListe());
 		changeVar(selectVar.getValue());
 	}
         

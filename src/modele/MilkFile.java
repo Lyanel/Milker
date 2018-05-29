@@ -65,6 +65,7 @@ public class MilkFile extends MilkId implements Cloneable {
 		}
 		return milkFiles;
 	}
+	/*
 	public static Vector<MilkFile> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<MilkFile> milkFiles = new Vector<MilkFile>();
 		for (Element elementMilk: elementlist) {
@@ -75,7 +76,9 @@ public class MilkFile extends MilkId implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return milkFiles;
-	}
+	}*/
+	
+	// Fields
 	
 	private String path;
 	private String name;
@@ -103,12 +106,25 @@ public class MilkFile extends MilkId implements Cloneable {
 		this.setName(milkElement);
 		this.setPath(milkElement);
 	}
+	public void setName(Element milkElement) {
+		this.name = ParseMilkFile.getXmlStringValue(milkElement,xmlName);
+	}
+	public void setPath(Element milkElement) {
+		this.path = ParseMilkFile.getXmlStringValue(milkElement,xmlPath);
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullName(milkElement);
 		this.setNullPath(milkElement);
 	}
+	public void setNullName(Element milkElement) {
+		this.name = ParseMilkFile.getXmlStringValue(milkElement,xmlName);
+	}
+	public void setNullPath(Element milkElement) {
+		this.path = ParseMilkFile.getXmlStringValue(milkElement,xmlPath);
+	}*/
 	
 	// field methods
 	
@@ -128,12 +144,6 @@ public class MilkFile extends MilkId implements Cloneable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setName(Element milkElement) {
-		this.name = ParseMilkFile.getXmlStringValue(milkElement,xmlName);
-	}
-	public void setNullName(Element milkElement) {
-		this.name = ParseMilkFile.getXmlStringValue(milkElement,xmlName);
-	}
 	
 	public String getPath() {
 		return this.path;
@@ -150,12 +160,6 @@ public class MilkFile extends MilkId implements Cloneable {
 	}
 	public void setPath(String path) {
 		this.path = path;
-	}
-	public void setPath(Element milkElement) {
-		this.path = ParseMilkFile.getXmlStringValue(milkElement,xmlPath);
-	}
-	public void setNullPath(Element milkElement) {
-		this.path = ParseMilkFile.getXmlStringValue(milkElement,xmlPath);
 	}
 	
 	// toString & toXml methods

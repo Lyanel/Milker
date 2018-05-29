@@ -1,10 +1,46 @@
 package modele;
 
+import java.util.Vector;
+
 import org.w3c.dom.Element;
 
 import modele.carac.Need;
 
 public class MilkXmlObj extends MilkObj implements Cloneable {
+	
+	public static void setInfo(@SuppressWarnings("rawtypes") Vector things, Vector<Element> elementlInfos) {
+		for (Element elementlInfo: elementlInfos) {
+			try {
+				MilkXmlObj test = new MilkXmlObj(elementlInfo);
+				test.setInfo(elementlInfo);
+				for (Object object:things){
+					MilkXmlObj thing = (MilkXmlObj) object;
+					if (test.getId().intValue() == thing.getId().intValue()){
+						thing.setInfo(test.getInfo());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+	}
+	
+	public static void setIcon(@SuppressWarnings("rawtypes") Vector things, Vector<Element> elementIcons) {
+		for (Element elementIcon: elementIcons) {
+			try {
+				MilkXmlObj test = new MilkXmlObj(elementIcon);
+				test.setIcon(elementIcon);
+				for (Object object:things){
+					MilkXmlObj thing = (MilkXmlObj) object;
+					if (test.getId().intValue() == thing.getId().intValue()){
+						thing.setIcon(test.getIcon());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+	}
+
+	// Fields
 	
 	private MilkInfo info;
 	private Need need;
@@ -35,37 +71,37 @@ public class MilkXmlObj extends MilkObj implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setNeed(milkElement);
 	}
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullNeed(milkElement);
+	public void setNeed(Element milkElement) {
+		this.need.setValueFromNode(milkElement);
 	}
-	
 	@Override
 	public void setTextValueFromNode(Element milkElement) {
 		super.setTextValueFromNode(milkElement);
 		this.setInfo(milkElement);
 	}
-	
-	public void setNeed(Element milkElement) {
-		this.need.setValueFromNode(milkElement);;
-	}
-	public void setNullNeed(Element milkElement) {
-		this.need.setValueFromNode(milkElement);
+	public void setInfo(Element milkElement) {
+		this.info.setTextValueFromNode(milkElement);
 	}
 	public void addIntel(Element milkElement) {
 		this.need.addIntel(milkElement);
 	}
-	public void addNullIntel(Element milkElement) {
-		this.need.addNullIntel(milkElement);
-	}
-	
-	public void setInfo(Element milkElement) {
-		this.info.setTextValueFromNode(milkElement);
-	}
 	public void setIcon(Element milkElement) {
 		this.icon.setValueFromNode(milkElement);
 	}
+	
+/*
+	@Override
+	public void setNullValueFromNode(Element milkElement) {
+		super.setNullValueFromNode(milkElement);
+		this.setNullNeed(milkElement);
+	}
+	public void setNullNeed(Element milkElement) {
+		this.need.setValueFromNode(milkElement);
+	}
+	public void addNullIntel(Element milkElement) {
+		this.need.addNullIntel(milkElement);
+	}
+	*/
 	
 	// field methods
 	

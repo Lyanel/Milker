@@ -1,8 +1,8 @@
 package modele.thing;
 
 import modele.MilkKind;
-import modele.carac.ThingAttrib;
 import modele.carac.Sacrifice;
+
 
 import org.w3c.dom.Element;
 
@@ -14,80 +14,81 @@ public class Slave extends Thing implements Cloneable {
 	
 	public static String noeud = "slave";
 	public String getNoeud() {return noeud;}
-
-	public static ObservableList<Slave> getNeutralListes() {		
-		ObservableList<Slave> clone = FXCollections.observableArrayList();
-		for (SlaveHuman hs:SlaveHuman.getListes()){
-			try {
-				if(hs.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((SlaveHuman) hs.clone());
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	
+	private static ObservableList<Slave> modelListe;
+	private static ObservableList<Slave> modelNeutralListe;
+	private static ObservableList<Slave> modelScienceListe;
+	private static ObservableList<Slave> modelMagicListe;
+	
+	@SafeVarargs
+	private static ObservableList<Slave> merge(ObservableList<Slave> into, ObservableList<? extends Slave>... lists) {
+        final ObservableList<Slave> list = into;
+        for (ObservableList<? extends Slave> l : lists) {
+            list.addAll(l);
+            l.addListener((javafx.collections.ListChangeListener.Change<? extends Slave> c) -> {
+                while (c.next()) {
+                    if (c.wasAdded()) {
+                        list.addAll(c.getAddedSubList());
+                    }
+                    if (c.wasRemoved()) {
+                        list.removeAll(c.getRemoved());
+                    }
+                    if (c.wasUpdated()) {
+                        list.removeAll(c.getRemoved());
+                        list.addAll(c.getAddedSubList());
+                    }
+                }
+            });
+        }
+        return list;
+    }
+	
+	public static ObservableList<Slave> getFullListe() {
+		if (modelListe==null){
+			if (modelNeutralListe==null)getNeutralListe();
+			if (modelScienceListe==null)getScienceListe();
+			if (modelMagicListe==null)getMagicListe();
+			modelListe = FXCollections.observableArrayList();
+			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
 		}
-		for (SlaveAnimal as:SlaveAnimal.getListes()){
-			try {
-				if(as.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((SlaveAnimal) as.clone());
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		return modelListe;
+	}
+	
+	public static ObservableList<Slave> getNeutralListe() {
+		if (modelNeutralListe==null){
+			modelNeutralListe = FXCollections.observableArrayList();
+			merge(modelNeutralListe, SlaveAnimal.getSANeutralListe(), SlaveHuman.getSHNeutralListe()/*, SlaveWorker.getSWNeutralListe()*/);
 		}
-		return clone;
+		return modelNeutralListe;
+	}
+	
+	public static ObservableList<Slave> getScienceListe() {
+		if (modelScienceListe==null){
+			modelScienceListe = FXCollections.observableArrayList();
+			merge(modelScienceListe, SlaveAnimal.getSAScienceListe(), SlaveHuman.getSHScienceListe()/*, SlaveWorker.getSWScienceListe()*/);
+		}
+		return modelScienceListe;
+	}
+	
+	public static ObservableList<Slave> getMagicListe() {
+		if (modelMagicListe==null){
+			modelMagicListe = FXCollections.observableArrayList();
+			merge(modelMagicListe, SlaveAnimal.getSAMagicListe(), SlaveHuman.getSHMagicListe()/*, SlaveWorker.getSWMagicListe()*/);
+		}
+		return modelMagicListe;
 	}
 
-	public static ObservableList<Slave> getScienceListes() {
-		ObservableList<Slave> clone = FXCollections.observableArrayList();
-		for (SlaveHuman hs:SlaveHuman.getListes()){
-			try {
-				if(hs.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((SlaveHuman) hs.clone());
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		for (SlaveAnimal as:SlaveAnimal.getListes()){
-			try {
-				if(as.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((SlaveAnimal) as.clone());
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return clone;
-		
-	}
-
-	public static ObservableList<Slave> getMagicListes() {
-		ObservableList<Slave> clone = FXCollections.observableArrayList();
-		for (SlaveHuman hs:SlaveHuman.getListes()){
-			try {
-				if(hs.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((SlaveHuman) hs.clone());
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		for (SlaveAnimal as:SlaveAnimal.getListes()){
-			try {
-				if(as.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((SlaveAnimal) as.clone());
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return clone;
-		
-	}
-
-	public static double getIncomeFromList(ObservableList<Slave> thingList, double toolProdBonus, double toolQualBonus, double cattleProdBonus,
+	public static double getIncomeFromList(double toolProdBonus, double toolQualBonus, double cattleProdBonus,
 			double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+		if (modelListe==null)getFullListe();
 		double tIncome = 0;
-		for (Thing thing:thingList){
+		for (Slave thing:modelListe){
 			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
 		}
 		return tIncome;
 	}
+
+	// Fields
 	
 	private Sacrifice sacrifice;
 	
@@ -114,11 +115,17 @@ public class Slave extends Thing implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setSacrifice(milkElement);
 	}
+	public void setSacrifice(Element milkElement) {
+		this.sacrifice.setValueFromNode(milkElement);;
+	}/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullSacrifice(milkElement);
 	}
+	public void setNullSacrifice(Element milkElement) {
+		this.sacrifice.setValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -127,12 +134,6 @@ public class Slave extends Thing implements Cloneable {
 	}
 	public void setSacrifice(Sacrifice sacrifice) {
 		this.sacrifice = sacrifice;
-	}
-	public void setSacrifice(Element milkElement) {
-		this.sacrifice.setValueFromNode(milkElement);;
-	}
-	public void setNullSacrifice(Element milkElement) {
-		this.sacrifice.setValueFromNode(milkElement);
 	}
 		
 	// toString & toXml methods

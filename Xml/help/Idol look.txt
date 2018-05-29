@@ -7,11 +7,12 @@ All worker and slave	Need their living counterpart *100.
 
 Possible new look : 
 
-Porcelain			Milking parlor
-Rag doll			Animal Barn
+Porcelain		Milking parlor
+Rag doll		Animal Barn
 Wood			Factory
 Plastic			Warehouse
-Wax			Business center
+Wax				Business center
+leather			Slave Barn
 
 Glass			Clinic
 Marble			Temple

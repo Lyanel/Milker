@@ -14,10 +14,37 @@ import modele.carac.ThingAttrib;
 
 public class Worker extends Thing implements Cloneable {
 
-	private static Vector<Worker> workers;
-	public static final String file		= "Worker";
-	public static final String noeud = "worker";
+	public static final String file	= "Worker", noeud = "worker";
 	public String getNoeud() {return noeud;}
+
+	private static Vector<Worker> workers;
+	private static ObservableList<Worker> modelListe;
+	private static ObservableList<Worker> modelNeutralListe;
+	private static ObservableList<Worker> modelScienceListe;
+	private static ObservableList<Worker> modelMagicListe;
+
+	@SafeVarargs
+	private static ObservableList<Worker> merge(ObservableList<Worker> into, ObservableList<Worker>... lists) {
+        final ObservableList<Worker> list = into;
+        for (ObservableList<Worker> l : lists) {
+            list.addAll(l);
+            l.addListener((javafx.collections.ListChangeListener.Change<? extends Worker> c) -> {
+                while (c.next()) {
+                    if (c.wasAdded()) {
+                        list.addAll(c.getAddedSubList());
+                    }
+                    if (c.wasRemoved()) {
+                        list.removeAll(c.getRemoved());
+                    }
+                    if (c.wasUpdated()) {
+                        list.removeAll(c.getRemoved());
+                        list.addAll(c.getAddedSubList());
+                    }
+                }
+            });
+        }
+        return list;
+    }
 	
 	private static Vector<Worker> setMilkVarFromFiles() {
 		if (workers==null) workers = new Vector<Worker>();
@@ -41,119 +68,7 @@ public class Worker extends Thing implements Cloneable {
 		
 		return workers;
 	}
-
-	private static void setInfo(Vector<Worker> workers, Vector<Element> elementlInfos) {
-		for (Element elementlInfo: elementlInfos) {
-			try {
-				Worker workerInfo = new Worker(elementlInfo);
-				workerInfo.setInfo(elementlInfo);
-				for (Worker worker:workers){
-					if (workerInfo.equals(worker)){
-						worker.setInfo(workerInfo.getInfo());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setIcon(Vector<Worker> workers, Vector<Element> elementIcons) {
-		for (Element elementIcon: elementIcons) {
-			try {
-				Worker workerIcon = new Worker(elementIcon);
-				workerIcon.setIcon(elementIcon);
-				for (Worker worker:workers){
-					if (workerIcon.equals(worker)){
-						worker.setIcon(workerIcon.getIcon());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setScene(Vector<Worker> workers, Vector<Element> elementScenes) {
-		for (Element elementScene: elementScenes) {
-			try {
-				Worker workerScene = new Worker(elementScene);
-				workerScene.setScene(elementScene);
-				for (Worker worker:workers){
-					if (workerScene.equals(worker)){
-						worker.setScene(workerScene.getScene());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	public static ObservableList<Worker> getListes() {
-		if (workers==null)setMilkVarFromFiles();
-		ObservableList<Worker> clone = FXCollections.observableArrayList();
-		if (workers!=null){
-			for (Worker worker:workers){
-				try {
-					clone.add((Worker) worker.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	public static ObservableList<Worker> getNeutralListes() {
-		if (workers==null)setMilkVarFromFiles();
-		ObservableList<Worker> clone = FXCollections.observableArrayList();
-		if (workers!=null){
-			for (Worker worker:workers){
-				try {
-					if(worker.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((Worker) worker.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-
-	public static ObservableList<Worker> getScienceListes() {
-		if (workers==null)setMilkVarFromFiles();
-		ObservableList<Worker> clone = FXCollections.observableArrayList();
-		if (workers!=null){
-			for (Worker worker:workers){
-				try {
-					if(worker.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((Worker) worker.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-
-	public static ObservableList<Worker> getMagicListes() {
-		if (workers==null)setMilkVarFromFiles();
-		ObservableList<Worker> clone = FXCollections.observableArrayList();
-		if (workers!=null){
-			for (Worker worker:workers){
-				try {
-					if(worker.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((Worker) worker.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-
+	
 	public static Vector<Worker> getMilkVarList(Vector<Element> elementlist) {
 		Vector<Worker> workers = new Vector<Worker>();
 		for (Element elementMilk: elementlist) {
@@ -164,7 +79,7 @@ public class Worker extends Thing implements Cloneable {
 		}
 		return workers;
 	}
-	
+	/*
 	public static Vector<Worker> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<Worker> workers = new Vector<Worker>();
 		for (Element elementMilk: elementlist) {
@@ -175,12 +90,78 @@ public class Worker extends Thing implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return workers;
+	}*/
+	
+	public static ObservableList<Worker> getFullListe() {
+		if (modelListe==null){
+			if (workers==null)setMilkVarFromFiles();
+			if (modelNeutralListe==null)getNeutralListe();
+			if (modelScienceListe==null)getScienceListe();
+			if (modelMagicListe==null)getMagicListe();
+			modelListe = FXCollections.observableArrayList();
+			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
+		}
+		return modelListe;
 	}
 
-	public static double getIncomeFromList(ObservableList<Worker> thingList, double toolProdBonus, double toolQualBonus, double cattleProdBonus,
-			double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+	public static ObservableList<Worker> getNeutralListe() {
+		if (modelNeutralListe==null){
+			if (workers==null)setMilkVarFromFiles();
+			modelNeutralListe = FXCollections.observableArrayList();
+			if (workers!=null){
+				for (Worker worker:workers){
+					try {
+						if(worker.getAttrib().getTree()==ThingAttrib.Tree_Neutral)modelNeutralListe.add((Worker) worker.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelNeutralListe;
+	}
+
+	public static ObservableList<Worker> getScienceListe() {
+		if (modelScienceListe==null){
+			if (workers==null)setMilkVarFromFiles();
+			modelScienceListe = FXCollections.observableArrayList();
+			if (workers!=null){
+				for (Worker worker:workers){
+					try {
+						if(worker.getAttrib().getTree()==ThingAttrib.Tree_Science)modelScienceListe.add((Worker) worker.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelScienceListe;
+	}
+
+	public static ObservableList<Worker> getMagicListe() {
+		if (modelMagicListe==null){
+			if (workers==null)setMilkVarFromFiles();
+			modelMagicListe = FXCollections.observableArrayList();
+			if (workers!=null){
+				for (Worker worker:workers){
+					try {
+						if(worker.getAttrib().getTree()==ThingAttrib.Tree_Magic)modelMagicListe.add((Worker) worker.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelMagicListe;
+	}
+
+	public static double getIncomeFromList(double toolProdBonus, double toolQualBonus, double cattleProdBonus, double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+		if (modelListe==null)getFullListe();
 		double tIncome = 0;
-		for (Thing thing:thingList){
+		for (Worker thing:modelListe){
 			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
 		}
 		return tIncome;

@@ -116,7 +116,7 @@ public class BuildingTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Building.getListes());
+    	selectVar.setItems(Building.getFullListe());
 		changeVar(selectVar.getValue());
 	}
     

@@ -13,31 +13,85 @@ import javafx.collections.ObservableList;
 
 public class Toggle extends Intel implements Cloneable {
 
-	private static Vector<Toggle> toggles;
 	public static final String noeud = "toggle";
 	public String getNoeud() {return noeud;}
 
+	private static Vector<Toggle> toggles;
+	private static ObservableList<Toggle> modeltoggles;
 	
-	public static ObservableList<Toggle> getListes() {
-		if (toggles==null){
-			toggles = new Vector<Toggle>();
-			toggles.add(ToggleTool.getTool());
-			toggles.add(ToggleIdol.getIdol());
-			toggles.add(ToggleEvent.getEvent());
+	public static void setInfos(Vector<? extends Toggle> toggles, Vector<Element> elements) {
+		for (Element element: elements) {
+			try {
+				Toggle test = new Toggle(element);
+				test.setInfo(element);
+				for (Toggle thing:toggles){
+					if (test.getId().intValue() == thing.getId().intValue()){
+						thing.setInfo(test.getInfo());
+						thing.setToggleOptionsInfo(test.getToggleOptions());
+						ToggleOption.setOptionsInfos(thing.getToggleOptions(),element);
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
 		}
-		ObservableList<Toggle> clone = FXCollections.observableArrayList();
-		if (toggles!=null){
-			for (Toggle toggle:toggles){
-				clone.add(toggle);
+	}
+
+	public static void setIcons(Vector<? extends Toggle> toggles, Vector<Element> elements) {
+		for (Element element: elements) {
+			try {
+				Toggle test = new Toggle(element);
+				test.setIcon(element);
+				for (Toggle thing:toggles){
+					if (test.getId().intValue() == thing.getId().intValue()){
+						thing.setIcon(test.getIcon());
+						thing.setToggleOptionsIcon(test.getToggleOptions());
+						ToggleOption.setOptionsIcons(thing.getToggleOptions(),element);
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+	}
+
+	public static void setScenes(Vector<? extends Toggle> toggles, Vector<Element> elements) {
+		for (Element element: elements) {
+			try {
+				Toggle test = new Toggle(element);
+				test.setScenes(element);
+				for (Toggle thing:toggles){
+					if (test.getId().intValue() == thing.getId().intValue()){
+						thing.setToggleOptionsScene(test.getToggleOptions());
+						ToggleOption.setOptionsScenes(thing.getToggleOptions(),element);
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+	}
+	
+	public static ObservableList<Toggle> getToggleListe() {
+		if (modeltoggles==null){
+			if (toggles==null){
+				toggles = new Vector<Toggle>();
+				toggles.add(ToggleTool.getTool());
+				toggles.add(ToggleIdol.getIdol());
+				toggles.add(ToggleEvent.getEvent());
+			}
+			modeltoggles = FXCollections.observableArrayList();
+			if (toggles!=null){
+				for (Toggle toggle:toggles){
+					modeltoggles.add(toggle);
+				}
 			}
 		}
-		return clone;
+		return modeltoggles;
 	}
 
 	// field
 
 	private Agent agent;
 	private Vector<ToggleOption> toggleOptions = null;	
+	private ObservableList<ToggleOption> modelOptions = null;	
 
 	// Constructors
 	
@@ -61,51 +115,49 @@ public class Toggle extends Intel implements Cloneable {
 		this.setAgent(milkElement);
 		this.setToggleOptions(milkElement);
 	}
+	public void setAgent(Element milkElement) {
+		this.agent.setValueFromNode(milkElement);;
+	}
+	public void setToggleOptions(Element milkElement) {
+		toggleOptions.addAll(ToggleOption.getMilkVarList(milkElement));
+	}
+	public void addOption(Element milkElement) {
+		ToggleOption newOption = new ToggleOption(milkElement);
+		newOption.setValueFromNode(milkElement);
+		toggleOptions.add(newOption);
+	}
+	public void setScenes(Element milkElement) {
+		this.setToggleOptionsScenes(milkElement);
+	}
+	public void setToggleOptionsScenes(Element milkElement) {
+		toggleOptions.addAll(ToggleOption.getMilkVarList(milkElement));
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullAgent(milkElement);
 		this.setNullToggleOptions(milkElement);
 	}
-	
-	public void setAgent(Element milkElement) {
-		this.agent.setValueFromNode(milkElement);;
-	}
 	public void setNullAgent(Element milkElement) {
 		this.agent.setValueFromNode(milkElement);
-	}
-	
-	public void addOption(Element milkElement) {
-		ToggleOption newOption = new ToggleOption(milkElement);
-		newOption.setValueFromNode(milkElement);
-		toggleOptions.add(newOption);
 	}
 	public void addNullOption(Element milkElement) {
 		ToggleOption newOption = new ToggleOption();
 		newOption.setNullValueFromNode(milkElement);
 		toggleOptions.add(newOption);
 	}
-	public void setToggleOptions(Element milkElement) {
-		toggleOptions.addAll(ToggleOption.getMilkVarList(milkElement));
-	}
 	@SuppressWarnings("unchecked")
 	public void setNullToggleOptions(Element milkElement) {
 		toggleOptions.addAll(ToggleOption.getNullMilkVarList(milkElement));
 	}
-	
-	public void setScenes(Element milkElement) {
-		this.setToggleOptionsScenes(milkElement);
-	}
 	public void setNullScenes(Element milkElement) {
 		this.setNullToggleOptionsScenes(milkElement);
-	}
-	public void setToggleOptionsScenes(Element milkElement) {
-		toggleOptions.addAll(ToggleOption.getMilkVarList(milkElement));
 	}
 	@SuppressWarnings("unchecked")
 	public void setNullToggleOptionsScenes(Element milkElement) {
 		toggleOptions.addAll(ToggleOption.getNullMilkVarList(milkElement));
-	}
+	}*/
 	
 	// field methods
 
@@ -113,7 +165,6 @@ public class Toggle extends Intel implements Cloneable {
 	public Float getPriceValue() {
 		return super.getPriceValue();
 	}
-	
 	public Agent getAgent() {
 		return this.agent;
 	}
@@ -150,6 +201,16 @@ public class Toggle extends Intel implements Cloneable {
 					toggleOption.setScene(toggleOptions.get(toggleOptions.indexOf(toggleOption)).getScene());
 			}
 		}
+	}
+	
+	public ObservableList<ToggleOption> getObservableOptions() {
+		if (modelOptions==null){
+			modelOptions = FXCollections.observableArrayList();
+			for (ToggleOption option:toggleOptions){
+				modelOptions.add(option);
+			}
+		}
+		return modelOptions;
 	}
 	
 	// toString & toXml methods

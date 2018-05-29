@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="rootPane" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.ThingCellController">
+<AnchorPane fx:id="rootPane" prefHeight="-1.0" prefWidth="-1.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MilkCellThingController">
    <children>
       <Accordion>
         <panes>

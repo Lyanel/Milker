@@ -31,11 +31,20 @@ public class MilkCoin extends MilkVar implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setCoin(milkElement);
 	}
+	public void setCoin(Element milkElement) {
+		Float temp=null;
+		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoin);
+		if (temp != null) this.coin=temp;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullCoin(milkElement);
 	}
+	public void setNullCoin(Element milkElement) {
+		coin = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoin);
+	}*/
 	
 	// field methods
 	
@@ -55,15 +64,7 @@ public class MilkCoin extends MilkVar implements Cloneable {
 	public void setCoin(Float coin) {
 		this.coin = coin;
 	}
-	public void setCoin(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoin);
-		if (temp != null) this.coin=temp;
-	}
-	public void setNullCoin(Element milkElement) {
-		coin = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoin);
-	}
-		
+	
 	// toString & toXml methods
 	
 	@Override

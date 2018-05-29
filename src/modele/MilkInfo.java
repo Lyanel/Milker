@@ -7,6 +7,9 @@ import org.w3c.dom.Element;
 public class MilkInfo extends MilkVar implements Cloneable {
 	
 	public static final String xmlName = "name", xmlTxEffect= "effect", xmlDesc= "desc", xmlQuote = "quote";
+	
+	// Fields
+	
 	private String name, txEffect, desc, quote;
 
 	// Constructors

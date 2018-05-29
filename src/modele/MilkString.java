@@ -20,7 +20,7 @@ public class MilkString extends MilkId implements Cloneable {
 		}
 		return milkStrings;
 	}
-	
+	/*
 	public static Vector<MilkString> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<MilkString> milkStrings = new Vector<MilkString>();
 		for (Element elementMilk: elementlist) {
@@ -31,7 +31,9 @@ public class MilkString extends MilkId implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return milkStrings;
-	}
+	}*/
+
+	// Fields
 	
 	private String text;
 
@@ -56,11 +58,18 @@ public class MilkString extends MilkId implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setText(milkElement);
 	}
+	public void setText(Element milkElement) {
+		this.text = ParseMilkFile.getXmlStringValue(milkElement, "");
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullText(milkElement);
 	}
+	public void setNullText(Element milkElement) {
+		this.text = ParseMilkFile.getXmlStringValue(milkElement, "");
+	}*/
 	
 	// field methods
 	
@@ -79,12 +88,6 @@ public class MilkString extends MilkId implements Cloneable {
 	}
 	public void setText(String text) {
 		this.text = text;
-	}
-	public void setText(Element milkElement) {
-		this.text = ParseMilkFile.getXmlStringValue(milkElement, "");
-	}
-	public void setNullText(Element milkElement) {
-		this.text = ParseMilkFile.getXmlStringValue(milkElement, "");
 	}
 	
 	// toString & toXml methods

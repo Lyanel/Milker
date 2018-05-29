@@ -7,13 +7,15 @@ import org.w3c.dom.Element;
 import controleur.ParseMilkFile;
 
 public class MilkVar implements Cloneable {
-
+	
+	public static final String noeud="";
+	public String getNoeud() {return noeud;}
+	
 	/**
 	 * meant to be @Override. Set a list of milk object from an Xml element
 	 * note that you can't override a static method in java so this is just a mask that you can copy past.
 	 */
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
+	public static Vector<? extends MilkVar> getMilkVarList(Vector<Element> elementlist) {
 		Vector<MilkVar> milkVars = new Vector<MilkVar>();
 		for (Element elementMilk: elementlist) {
 			try {
@@ -23,25 +25,6 @@ public class MilkVar implements Cloneable {
 		}
 		return milkVars;
 	}
-	/**
-	 * meant to be @Override. Set a list of milk null object from an Xml element
-	 * note that you can't override a static method in java so this is just a mask that you can copy past.
-	 */
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<MilkVar> milkVars = new Vector<MilkVar>();
-		for (Element elementMilk: elementlist) {
-			try {
-				MilkVar milkVar = new MilkVar();
-				milkVar.setNullValueFromNode(elementMilk);
-				milkVars.add(milkVar);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return milkVars;
-	}
-	
-	public static final String noeud="";
-	public String getNoeud() {return noeud;}
 	
 	// Constructors
 		
@@ -89,11 +72,6 @@ public class MilkVar implements Cloneable {
 	 */
 	public void setValueFromNode(Element milkElement) {}
 	/**
-	 * meant to be @Override. Set the various object from an Xml element, if an element don't exist the object value are set to null.
-	 * generally call getThisElementFromParent, so it return the element obtained or null.
-	 */
-	public void setNullValueFromNode(Element milkElement){}
-	/**
 	 * meant to be @Override. Set the various text object from an Xml element, if an element don't exist the object is set to "".
 	 */
 	public void setTextValueFromNode(Element milkElement){}
@@ -105,15 +83,7 @@ public class MilkVar implements Cloneable {
 		Element child = (getMilkElement(milkElement,0)!=null)? getMilkElement(milkElement,0):milkElement;
 		return child;
 	}
-	/**
-	 * Check if this element exist as a child and return it, else return null.
-	 */
-	public Element getThisElementFromParentNull(Element milkElement) {
-		Element child = (getMilkElement(milkElement,0)!=null)? getMilkElement(milkElement,0):null;
-		return child;
-	}
-	
-	
+		
 	// toString & toXml methods
 	
 	/**

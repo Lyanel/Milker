@@ -13,12 +13,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Upgrade extends Research implements Cloneable {
-	
-	public static final String noeud = "upgrade";
+
+	public static final String file="Upgrade", noeud="upgrade";
 	public String getNoeud() {return noeud;}
 
 	private static Vector<Upgrade> upgrades;
-	public static final String file		= "Upgrade";
+	private static ObservableList<Upgrade> modelUpgrades;
+	
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static Vector setMilkVarFromFiles() {
@@ -33,6 +34,32 @@ public class Upgrade extends Research implements Cloneable {
 		return upgrades;
 	}
 
+	@SuppressWarnings("rawtypes")
+	public static Vector getMilkVarList(Vector<Element> elementlist) {
+		Vector<Upgrade> upgrades = new Vector<Upgrade>();
+		for (Element elementMilk: elementlist) {
+			try {
+				Upgrade upgrade = new Upgrade(elementMilk);
+				upgrades.add(upgrade);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return upgrades;
+	}
+/*
+	@SuppressWarnings("rawtypes")
+	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
+		Vector<Upgrade> upgrades = new Vector<Upgrade>();
+		for (Element elementMilk: elementlist) {
+			try {
+				Upgrade upgrade = new Upgrade();
+				upgrade.setNullValueFromNode(elementMilk);
+				upgrades.add(upgrade);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return upgrades;
+	}
+	*/
+/*
 	private static void setInfo(Vector<Upgrade> upgrades, Vector<Element> elementlInfos) {
 		for (Element elementlInfo: elementlInfos) {
 			try {
@@ -46,49 +73,27 @@ public class Upgrade extends Research implements Cloneable {
 				}
 			} catch (Exception e) {e.printStackTrace();}
 		}
-	}
+	}*/
 
-	@SuppressWarnings("rawtypes")
-	public static ObservableList getListes() {
-		if (upgrades==null)setMilkVarFromFiles();
-		ObservableList<Upgrade> clone = FXCollections.observableArrayList();
-		if (upgrades!=null){
-			for (Upgrade upgrade:upgrades){
-				try {
-					clone.add((Upgrade) upgrade.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+	public static ObservableList<Upgrade> getUpgradeListe() {
+		if (modelUpgrades==null){
+			if (upgrades==null)setMilkVarFromFiles();
+			modelUpgrades = FXCollections.observableArrayList();
+			if (upgrades!=null){
+				for (Upgrade upgrade:upgrades){
+					try {
+						modelUpgrades.add((Upgrade) upgrade.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		}
-		return clone;
+		return modelUpgrades;
 	}
 
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<Upgrade> upgrades = new Vector<Upgrade>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Upgrade upgrade = new Upgrade(elementMilk);
-				upgrades.add(upgrade);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return upgrades;
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Upgrade> upgrades = new Vector<Upgrade>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Upgrade upgrade = new Upgrade();
-				upgrade.setNullValueFromNode(elementMilk);
-				upgrades.add(upgrade);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return upgrades;
-	}
+	// Fields
 	
 	private Effect effect;
 
@@ -113,11 +118,17 @@ public class Upgrade extends Research implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setEffect(milkElement);
 	}
-	@Override
+	public void setEffect(Element milkElement) {
+		this.effect.setValueFromNode(milkElement);
+	}
+/*	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullEffect(milkElement);
 	}
+	public void setNullEffect(Element milkElement) {
+		this.effect.setValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -126,12 +137,6 @@ public class Upgrade extends Research implements Cloneable {
 	}
 	public void setEffect(Effect effect) {
 		this.effect = effect;
-	}
-	public void setEffect(Element milkElement) {
-		this.effect.setValueFromNode(milkElement);
-	}
-	public void setNullEffect(Element milkElement) {
-		this.effect.setValueFromNode(milkElement);
 	}
 		
 	// toString & toXml methods

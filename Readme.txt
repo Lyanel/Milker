@@ -10,6 +10,10 @@ V0.X
 Projected :	?
 Need	:	An artist, a good programer.
 
+v0.03 :	
+Done	:	Research (most of the game things can know be "unlocked".)
+continued:	Code picture & toggle, added new picture.
+
 v0.02 :	
 Started	:	Code for showing picture, added picture to test it.
 		Code for toggle, they also have their own tab.

@@ -10,19 +10,21 @@ import modele.MilkDate;
 import modele.MilkKind;
 import modele.MilkXmlObj;
 import modele.carac.NeededIntel;
+import modele.carac.NeededThing;
+import modele.intel.Ascension;
+import modele.intel.Intel;
 import modele.intel.Research;
 import modele.intel.Synergy;
 import modele.intel.Upgrade;
 import modele.thing.Animal;
 import modele.thing.Building;
 import modele.thing.Slave;
+import modele.thing.SlaveAnimal;
+import modele.thing.SlaveHuman;
 import modele.thing.Thing;
 import modele.thing.Worker;
 import modele.toggle.Toggle;
-import modele.toggle.ToggleEvent;
-import modele.toggle.ToggleIdol;
 import modele.toggle.ToggleOption;
-import modele.toggle.ToggleTool;
 import javafx.util.Duration;
 
 public class GameModele {
@@ -31,60 +33,8 @@ public class GameModele {
 	private String name;
 	private DoubleProperty milkCoin = new SimpleDoubleProperty(0.0);
 	
-	private ObservableList<Research> researchs;
-	private ObservableList<Upgrade> upgrades;
-	private ObservableList<Synergy> synergy;
-
-	private ObservableList<Toggle> toggle;
-	private ObservableList<ToggleOption> idol;
-	private ObservableList<ToggleOption> tool;
-	private ObservableList<ToggleOption> event;
-	
-	private ObservableList<Building> buildingNeutral;
-	private ObservableList<Building> buildingScience;
-	private ObservableList<Building> buildingMagic;
-	
-	private ObservableList<Worker> workerNeutral;
-	private ObservableList<Worker> workerScience;
-	private ObservableList<Worker> workerMagic;
-	
-	private ObservableList<Slave> slaveNeutral;
-	private ObservableList<Slave> slaveScience;
-	private ObservableList<Slave> slaveMagic;
-	
-	private ObservableList<Animal> animalNeutral;
-	private ObservableList<Animal> animalScience;
-	private ObservableList<Animal> animalMagic;
-	
-	@SuppressWarnings("unchecked")
 	public GameModele() {
 		plaYear = new MilkDate () ;
-		
-		researchs = Research.getListes();
-		upgrades = Upgrade.getListes();
-		synergy = Synergy.getListes();
-
-		toggle = Toggle.getListes();
-		idol = ToggleIdol.getOptionListes();
-		tool = ToggleTool.getOptionListes();
-		event = ToggleEvent.getOptionListes();
-    	
-		buildingNeutral=Building.getNeutralListes();
-		buildingScience=Building.getScienceListes();
-    	buildingMagic=Building.getMagicListes();
-
-    	workerNeutral=Worker.getNeutralListes();
-    	workerScience=Worker.getScienceListes();
-    	workerMagic=Worker.getMagicListes();
-
-    	slaveNeutral=Slave.getNeutralListes();
-    	slaveScience=Slave.getScienceListes();
-    	slaveMagic=Slave.getMagicListes();
-    	
-    	animalNeutral=Animal.getNeutralListes();
-    	animalScience=Animal.getScienceListes();
-    	animalMagic=Animal.getMagicListes();
-
     	
 		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0),
 				event -> milkCoin.setValue(milkCoin.doubleValue() + getIncome())),
@@ -107,22 +57,10 @@ public class GameModele {
 		double cattleQualBonus = 0.0;
 		double buildProdBonus = 0.0;
 		double buildQualBonus = 0.0;
-		
-		tIncome+=Building.getIncomeFromList(buildingNeutral,buildProdBonus,buildQualBonus); 
-		tIncome+=Building.getIncomeFromList(buildingScience,buildProdBonus,buildQualBonus); 
-		tIncome+=Building.getIncomeFromList(buildingMagic,buildProdBonus,buildQualBonus); 
-		
-		tIncome+=Animal.getIncomeFromList(animalNeutral,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Animal.getIncomeFromList(animalScience,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Animal.getIncomeFromList(animalMagic,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		
-		tIncome+=Slave.getIncomeFromList(slaveNeutral,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Slave.getIncomeFromList(slaveScience,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Slave.getIncomeFromList(slaveMagic,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		
-		tIncome+=Worker.getIncomeFromList(workerNeutral,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Worker.getIncomeFromList(workerScience,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Worker.getIncomeFromList(workerMagic,toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Building.getIncomeFromList(buildProdBonus,buildQualBonus); 
+		tIncome+=Animal.getIncomeFromList(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Slave.getIncomeFromList(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=Worker.getIncomeFromList(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus);
 		return tIncome;
 	}
 
@@ -150,124 +88,234 @@ public class GameModele {
 		this.plaYear = plaYear;
 	}
 
-	public ObservableList<Research> getResearch() {
-		return researchs;
-	}
+	public ObservableList<Research> getResearch() {return Research.getResearchListe();}
+	public ObservableList<Upgrade> getUpgrade() {return Upgrade.getUpgradeListe();}
+	public ObservableList<Synergy> getSynergy() {return Synergy.getSynergyListe();}
+	public ObservableList<Ascension> getAscension() {return null;}
+	//public ObservableList<Event> getEvent() {return null;}
 
-	public ObservableList<Upgrade> getUpgrade() {
-		return upgrades;
-	}
+	public ObservableList<Toggle> getToggles() {return Toggle.getToggleListe();}
 
-	public ObservableList<Synergy> getSynergy() {
-		return synergy;
-	}
+	public ObservableList<Building> getBuildingNeutral() {return Building.getNeutralListe();}
+	public ObservableList<Building> getBuildingScience() {return Building.getScienceListe();}
+	public ObservableList<Building> getBuildingMagic() {return Building.getMagicListe();}
 
-	public ObservableList<Toggle> getToggle() {
-		return toggle;
-	}
+	public ObservableList<Worker> getWorkerNeutral() {return Worker.getNeutralListe();}
+	public ObservableList<Worker> getWorkerScience() {return Worker.getScienceListe();}
+	public ObservableList<Worker> getWorkerMagic() {return Worker.getMagicListe();}
 
-	public ObservableList<ToggleOption> getIdol() {
-		return idol;
-	}
+	public ObservableList<Slave> getSlaveNeutral() {return Slave.getNeutralListe();}
+	public ObservableList<Slave> getSlaveScience() {return Slave.getScienceListe();}
+	public ObservableList<Slave> getSlaveMagic() {return Slave.getMagicListe();}
 
-	public ObservableList<ToggleOption> getTool() {
-		return tool;
-	}
-
-	public ObservableList<ToggleOption> getEvent() {
-		return event;
-	}
-
-	public ObservableList<Building> getBuildingNeutral() {
-		return buildingNeutral;
-	}
-
-	public ObservableList<Building> getBuildingScience() {
-		return buildingScience;
-	}
-
-	public ObservableList<Building> getBuildingMagic() {
-		return buildingMagic;
-	}
-
-	public ObservableList<Worker> getWorkerNeutral() {
-		return workerNeutral;
-	}
-
-	public ObservableList<Worker> getWorkerScience() {
-		return workerScience;
-	}
-
-	public ObservableList<Worker> getWorkerMagic() {
-		return workerMagic;
-	}
-
-	public ObservableList<Slave> getSlaveNeutral() {
-		return slaveNeutral;
-	}
-
-	public ObservableList<Slave> getSlaveScience() {
-		return slaveScience;
-	}
-
-	public ObservableList<Slave> getSlaveMagic() {
-		return slaveMagic;
-	}
-
-	public ObservableList<Animal> getAnimalNeutral() {
-		return animalNeutral;
-	}
-
-	public ObservableList<Animal> getAnimalScience() {
-		return animalScience;
-	}
-
-	public ObservableList<Animal> getAnimalMagic() {
-		return animalMagic;
-	}
-
-	public boolean isThingVisible(Thing thing) {
+	public ObservableList<Animal> getAnimalNeutral() {return Animal.getNeutralListe();}
+	public ObservableList<Animal> getAnimalScience() {return Animal.getScienceListe();}
+	public ObservableList<Animal> getAnimalMagic() {return Animal.getMagicListe();}
+	
+	public boolean isMilkObjVisible(MilkXmlObj value) {
 		boolean visible = true;
-		for (NeededIntel neededIntel: thing.getNeed().getNeededIntels()) {
-			switch (neededIntel.getKind().getKind()) {
-			
-			case MilkKind.kind_Upgrade: {
-					boolean bought = false;
-					for (Upgrade upgrade: this.upgrades) {
-						if (upgrade.isBought() && upgrade.getId().intValue()==neededIntel.getId().intValue()) bought=true;
+		if(value.getNeed().getNeededIntels().size()>0) visible = isMilkObjResearched(value);
+		if(visible && value.getNeed().getNeededThings().size()>0) visible = isMilkObjOwned(value);
+		if(visible && value instanceof Research){
+			Research tempResearch = (Research)value;
+			if(tempResearch.getCheck().getNeededThings().size()>0)visible = areMilkObjOwned(tempResearch);
+		}
+		return visible;
+	}
+	
+	public boolean isMilkObjResearched(MilkXmlObj value) {
+		boolean visible = true;
+		for (NeededIntel need: value.getNeed().getNeededIntels()) {
+			switch (need.getKind().getKind()) {
+				case MilkKind.kind_Research: {
+						visible = MilkCheck.checkIntel(need, getResearch());
 					}
-					if(!bought)visible=false;
+					break;
+				case MilkKind.kind_Upgrade: {
+						visible = MilkCheck.checkIntel(need, getUpgrade());
+					}
+					break;
+				case MilkKind.kind_Synergy: {
+						visible = MilkCheck.checkIntel(need, getSynergy());
+					}
+					break;
+				case MilkKind.kind_Ascension: {
+					visible = false; //MilkCheck.checkIntel(need, getAscension());
 				}
 				break;
-			case MilkKind.kind_Research: {
-					boolean bought = false;
-					for (Research research: this.researchs) {
-						if (research.isBought() && research.getId().intValue()==neededIntel.getId().intValue()) bought=true;
-					}
-					if(!bought)visible=false;
+				case MilkKind.kind_Event: {
+					visible = false; //MilkCheck.checkIntel(need, getEvent());
 				}
 				break;
-				
-			default:
-				break;
+				default:
+					break;
 			}
 		}
 		return visible;
 	}
-
-	public boolean isThingbuyable(Thing thing) {
-		return (thing.getPriceValue()<=milkCoin.doubleValue());
+	
+	public boolean isMilkObjOwned(MilkXmlObj value) {
+		boolean visible = true;
+		for (NeededThing need: value.getNeed().getNeededThings()) {
+			switch (need.getKind().getKind()) {
+				case MilkKind.kind_Building: {
+					visible = MilkCheck.checkThing(need, Building.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Worker: {
+					visible = MilkCheck.checkThing(need, Worker.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Slave_Human: {
+					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Slave_Animal: {
+					visible = MilkCheck.checkThing(need, SlaveAnimal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Animal: {
+					visible = MilkCheck.checkThing(need, Animal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Semi_Human: {
+					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Slaves: {
+					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Semi_Animal: {
+					visible = MilkCheck.checkThing(need, SlaveAnimal.getFullListe(), Animal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Earthling_People: {
+					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Natural_Cattle: {
+					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe(), Animal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_People: {
+					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), SlaveAnimal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Cattle: {
+					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Earthling_Being: {
+					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Natural_Being: {
+					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe());
+				}
+				break;
+				case MilkKind.kind_Living_Being: {
+					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe(), Animal.getFullListe());
+				}
+				break;
+				default:
+					break;
+			}
+		}
+		return visible;
+	}
+	
+	public boolean areMilkObjOwned(Research value) {
+		int count = 0;
+		for (NeededThing need: value.getCheck().getNeededThings()) {
+			switch (need.getKind().getKind()) {
+				case MilkKind.kind_Building: {
+					if(MilkCheck.checkThing(need, Building.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Worker: {
+					if(MilkCheck.checkThing(need, Worker.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Slave_Human: {
+					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Slave_Animal: {
+					if(MilkCheck.checkThing(need, SlaveAnimal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Animal: {
+					if(MilkCheck.checkThing(need, Animal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Semi_Human: {
+					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Slaves: {
+					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Semi_Animal: {
+					if(MilkCheck.checkThing(need, SlaveAnimal.getFullListe(), Animal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Earthling_People: {
+					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Natural_Cattle: {
+					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe(), Animal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_People: {
+					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), SlaveAnimal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Cattle: {
+					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Earthling_Being: {
+					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Natural_Being: {
+					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe()))count+=1;
+				}
+				break;
+				case MilkKind.kind_Living_Being: {
+					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe(), Animal.getFullListe()))count+=1;
+				}
+				break;
+				default:
+					break;
+			}
+			if(count >= value.getCheck().getMod())return true;
+				
+		}
+		return false;
 	}
 
-	public void buyThing(Thing thing) {
-		if (thing.getPriceValue()<=milkCoin.doubleValue()){
-			thing.buy();
-			milkCoin.setValue(milkCoin.doubleValue() - thing.getPriceValue());
+	public boolean isThingbuyable(Intel value) {
+		boolean result = false;
+		if(value.getPriceValue()<=milkCoin.doubleValue()){
+			if(value instanceof Thing)result = true;
+			else if (!value.bought()) result = true;
+		}
+		return result;
+	}
+
+	public void buyThing(Intel value) {
+		if(isThingbuyable(value)){
+			value.buy();
+			milkCoin.setValue(milkCoin.doubleValue() - value.getPriceValue());
 		}
 	}
 
 	public void statueClicked() {
-		for(Building building: this.buildingNeutral) {
+		for(Building building: Building.getNeutralListe()) {
 			if (building.getId().intValue()==10) milkCoin.setValue(milkCoin.doubleValue() + (building.getIncome().getProd()*(building.getAttrib().getQuant()+building.getStart())));
 		}
 		
@@ -278,8 +326,13 @@ public class GameModele {
 		return true;
 	}
 
-	public boolean isThingVisible(MilkXmlObj milkXmlObj) {
+	public boolean isToggleSwitchable(Toggle value) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
+	}
+
+	public void switchToggle(ToggleOption value) {
+		// TODO Auto-generated method stub
+		
 	}
 }

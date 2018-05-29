@@ -32,7 +32,6 @@
 	</slave>
 	<slave id="25">
 		<name>ESPer</name>
-		<effect>Give Milk.</effect>
 		<path>Img/Icon/SlaveH/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>

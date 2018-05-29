@@ -124,8 +124,10 @@
 	</research>
 	<research id="44">
 		<check>
-			<thing kind="1" id="24">1</thing>
-			<thing kind="1" id="34">1</thing>
+			<things>
+				<thing kind="1" id="24">1</thing>
+				<thing kind="1" id="34">1</thing>
+			</things>
 		</check>
 		<price coin="1" coef="1"/>
 	</research>
@@ -176,8 +178,10 @@
 			</things>
 		</need>
 		<check>
-			<thing kind="1" id="24">5</thing>
-			<thing kind="1" id="34">5</thing>
+			<things>
+				<thing kind="1" id="24">5</thing>
+				<thing kind="1" id="34">5</thing>
+			</things>
 		</check>
 		<price coin="1" coef="1"/>
 	</research>
@@ -188,8 +192,10 @@
 			</intels>
 		</need>
 		<check>
-			<thing kind="1" id="55">10</thing>
-			<thing kind="1" id="65">10</thing>
+			<things>
+				<thing kind="1" id="55">10</thing>
+				<thing kind="1" id="65">10</thing>
+			</things>
 		</check>
 		<price coin="1" coef="1"/>
 	</research>
@@ -301,8 +307,10 @@
 			</things>
 		</need>
 		<check>
-			<thing kind="1" id="24">5</thing>
-			<thing kind="1" id="34">5</thing>
+			<things>
+				<thing kind="1" id="24">5</thing>
+				<thing kind="1" id="34">5</thing>
+			</things>
 		</check>
 		<sacrifice kind="5" id="12">10</sacrifice>
 		<price coin="1" coef="1"/>
@@ -315,8 +323,10 @@
 			</things>
 		</need>
 		<check>
-			<thing kind="1" id="24">10</thing>
-			<thing kind="1" id="34">10</thing>
+			<things>
+				<thing kind="1" id="24">10</thing>
+				<thing kind="1" id="34">10</thing>
+			</things>
 		</check>
 		<sacrifice kind="5" id="13">10</sacrifice>
 		<price coin="1" coef="1"/>
@@ -329,8 +339,10 @@
 			</things>
 		</need>
 		<check>
-			<thing kind="1" id="24">50</thing>
-			<thing kind="1" id="34">50</thing>
+			<things>
+				<thing kind="1" id="24">50</thing>
+				<thing kind="1" id="34">50</thing>
+			</things>
 		</check>
 		<sacrifice kind="5" id="14">10</sacrifice>
 		<price coin="1" coef="1"/>
@@ -343,8 +355,10 @@
 			</things>
 		</need>
 		<check>
-			<thing kind="1" id="24">100</thing>
-			<thing kind="1" id="34">100</thing>
+			<things>
+				<thing kind="1" id="24">100</thing>
+				<thing kind="1" id="34">100</thing>
+			</things>
 		</check>
 		<sacrifice kind="5" id="15">10</sacrifice>
 		<price coin="1" coef="1"/>

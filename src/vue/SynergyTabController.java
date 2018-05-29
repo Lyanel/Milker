@@ -94,12 +94,11 @@ public class SynergyTabController extends MilkTabControleur {
     @FXML
 	private TextField quoteInput;
 	
-    @SuppressWarnings("unchecked")
 	@FXML
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Synergy.getListes());
+    	selectVar.setItems(Synergy.getSynergyListe());
 		changeVar(selectVar.getValue());
 	}
     

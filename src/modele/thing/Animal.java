@@ -14,11 +14,37 @@ import modele.carac.ThingAttrib;
 
 public class Animal extends Thing implements Cloneable {
 
-	private static Vector<Animal> animals;
-	public static final String file		= "Animal";
-	public static final String noeud = "animal";
+	public static final String file	= "Animal", noeud	= "animal";
 	public String getNoeud() {return noeud;}
-	
+
+	private static Vector<Animal> animals;
+	private static ObservableList<Animal> modelListe;
+	private static ObservableList<Animal> modelNeutralListe;
+	private static ObservableList<Animal> modelScienceListe;
+	private static ObservableList<Animal> modelMagicListe;
+
+	@SafeVarargs
+	private static ObservableList<Animal> merge(ObservableList<Animal> into, ObservableList<Animal>... lists) {
+        final ObservableList<Animal> list = into;
+        for (ObservableList<Animal> l : lists) {
+            list.addAll(l);
+            l.addListener((javafx.collections.ListChangeListener.Change<? extends Animal> c) -> {
+                while (c.next()) {
+                    if (c.wasAdded()) {
+                        list.addAll(c.getAddedSubList());
+                    }
+                    if (c.wasRemoved()) {
+                        list.removeAll(c.getRemoved());
+                    }
+                    if (c.wasUpdated()) {
+                        list.removeAll(c.getRemoved());
+                        list.addAll(c.getAddedSubList());
+                    }
+                }
+            });
+        }
+        return list;
+    }
 	private static Vector<Animal> setMilkVarFromFiles() {
 		if (animals==null) animals = new Vector<Animal>();
 		else animals.removeAllElements();
@@ -42,117 +68,6 @@ public class Animal extends Thing implements Cloneable {
 		return animals;
 	}
 
-	private static void setInfo(Vector<Animal> animals, Vector<Element> elementlInfos) {
-		for (Element elementlInfo: elementlInfos) {
-			try {
-				Animal animalInfo = new Animal(elementlInfo);
-				animalInfo.setInfo(elementlInfo);
-				for (Animal animal:animals){
-					if (animalInfo.equals(animal)){
-						animal.setInfo(animalInfo.getInfo());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setIcon(Vector<Animal> animals, Vector<Element> elementIcons) {
-		for (Element elementIcon: elementIcons) {
-			try {
-				Animal animalIcon = new Animal(elementIcon);
-				animalIcon.setIcon(elementIcon);
-				for (Animal animal:animals){
-					if (animalIcon.equals(animal)){
-						animal.setIcon(animalIcon.getIcon());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		
-	}
-
-	private static void setScene(Vector<Animal> animals, Vector<Element> elementScenes) {
-		for (Element elementScene: elementScenes) {
-			try {
-				Animal animalScene = new Animal(elementScene);
-				animalScene.setScene(elementScene);
-				for (Animal animal:animals){
-					if (animalScene.equals(animal)){
-						animal.setScene(animalScene.getScene());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		
-	}
-
-	public static ObservableList<Animal> getListes() {
-		if (animals==null)setMilkVarFromFiles();
-		ObservableList<Animal> clone = FXCollections.observableArrayList();
-		if (animals!=null){
-			for (Animal animal:animals){
-				try {
-					clone.add((Animal) animal.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	public static ObservableList<Animal> getNeutralListes() {
-		if (animals==null)setMilkVarFromFiles();
-		ObservableList<Animal> clone = FXCollections.observableArrayList();
-		if (animals!=null){
-			for (Animal animal:animals){
-				try {
-					if(animal.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((Animal) animal.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	public static ObservableList<Animal> getScienceListes() {
-		if (animals==null)setMilkVarFromFiles();
-		ObservableList<Animal> clone = FXCollections.observableArrayList();
-		if (animals!=null){
-			for (Animal animal:animals){
-				try {
-					if(animal.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((Animal) animal.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	public static ObservableList<Animal> getMagicListes() {
-		if (animals==null)setMilkVarFromFiles();
-		ObservableList<Animal> clone = FXCollections.observableArrayList();
-		if (animals!=null){
-			for (Animal animal:animals){
-				try {
-					if(animal.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((Animal) animal.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
 	public static Vector<Animal> getMilkVarList(Vector<Element> elementlist) {
 		Vector<Animal> animals = new Vector<Animal>();
 		for (Element elementMilk: elementlist) {
@@ -163,7 +78,7 @@ public class Animal extends Thing implements Cloneable {
 		}
 		return animals;
 	}
-	
+	/*
 	public static Vector<Animal> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<Animal> animals = new Vector<Animal>();
 		for (Element elementMilk: elementlist) {
@@ -174,12 +89,78 @@ public class Animal extends Thing implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return animals;
+	}*/
+	
+	public static ObservableList<Animal> getFullListe() {
+		if (modelListe==null){
+			if (animals==null)setMilkVarFromFiles();
+			if (modelNeutralListe==null)getNeutralListe();
+			if (modelScienceListe==null)getScienceListe();
+			if (modelMagicListe==null)getMagicListe();
+			modelListe = FXCollections.observableArrayList();
+			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
+		}
+		return modelListe;
 	}
 
-	public static double getIncomeFromList(ObservableList<Animal> thingList, double toolProdBonus, double toolQualBonus, double cattleProdBonus,
-			double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+	public static ObservableList<Animal> getNeutralListe() {
+		if (modelNeutralListe==null){
+			if (animals==null)setMilkVarFromFiles();
+			modelNeutralListe = FXCollections.observableArrayList();
+			if (animals!=null){
+				for (Animal animal:animals){
+					try {
+						if(animal.getAttrib().getTree()==ThingAttrib.Tree_Neutral)modelNeutralListe.add((Animal) animal.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelNeutralListe;
+	}
+
+	public static ObservableList<Animal> getScienceListe() {
+		if (modelScienceListe==null){
+			if (animals==null)setMilkVarFromFiles();
+			modelScienceListe = FXCollections.observableArrayList();
+			if (animals!=null){
+				for (Animal animal:animals){
+					try {
+						if(animal.getAttrib().getTree()==ThingAttrib.Tree_Science)modelScienceListe.add((Animal) animal.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelScienceListe;
+	}
+
+	public static ObservableList<Animal> getMagicListe() {
+		if (modelMagicListe==null){
+			if (animals==null)setMilkVarFromFiles();
+			modelMagicListe = FXCollections.observableArrayList();
+			if (animals!=null){
+				for (Animal animal:animals){
+					try {
+						if(animal.getAttrib().getTree()==ThingAttrib.Tree_Magic)modelMagicListe.add((Animal) animal.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelMagicListe;
+	}
+
+	public static double getIncomeFromList(double toolProdBonus, double toolQualBonus, double cattleProdBonus, double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
+		if (modelListe==null)Animal.getFullListe();
 		double tIncome = 0;
-		for (Thing thing:thingList){
+		for (Animal thing:modelListe){
 			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
 		}
 		return tIncome;

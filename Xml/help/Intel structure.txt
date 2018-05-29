@@ -10,11 +10,6 @@ ID :
 	
 in effect, need & check, the thing reference id, tree & lvl are not needed (id="0", tree="0", lvl="0" by default)
 	if you leave them, all the thing of the specified kind will be affected/checked.
-
-Level have 2 way of working : 
-	If lvl<0 the Level of the thing must be = to lvl
-	if lvl>0 the Level of the thing must be > to lvl.
-	
 	
 effect	
 	mod="x" : num indicate if the effect is a fixed value (1) or a percentage (0) or change the value (-1).

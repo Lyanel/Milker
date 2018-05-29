@@ -1,4 +1,4 @@
-Kind :  Refer to the Kind of the thing you have/need :
+Kind :  	Refer to the Kind of the thing you have/need.... needed object always have a kind.... :
 	object : 1 (buildings), 2 (workers), 3 (human slaves (SH)), 4 (animal slaves (SA)), 5 (animals), 
 		need/check :  x=0 (all), 6 (Semi-Humans (workers+SH)), 7 (slaves (SH+SA)), 8 (Semi-animals (SA+animals)),
 			09 (Earthling People (workers+SA)),			10 (natural Cattle (SH+animals)), 
@@ -6,8 +6,20 @@ Kind :  Refer to the Kind of the thing you have/need :
 			13 (Earthling being (workers+SA+animals)),	14 (natural being (workers+SH+animals)), 
 			15 (Livings being (workers+SH+SA+animals)).
 	intel : 1 (research), 2 (upgrade), 3 (synergy), 4 (ascension), 5 (event).
+
+Id :	If Id is present, kind will always be a specific one (beetwen 1 & 5), indicating a specific object (Ex : kind:11 & id:11 => Farm), in that case Level & tree are not needed.
 	
-For things X = the quantity needed.
+Level :	have 2 way of working :
+	If lvl<0 the Level of the thing must be = to lvl
+	if lvl>0 the Level of the thing must be > to lvl.
+	 (if lvl=0 no need to check it)
+
+Tree :  Refer to the tree in which you can have the object : 
+	 object : 0 (none), 1 (neutral), 2 (science) or 3 (magic).
+	 need/check : 9 (all tree), 5 (neutral & science), 6 (neutral & magic) or 7 (science & magic).
+	 Generally 0=9=null=no test needed.
+
+For things : X = the quantity needed.
 	
 Need : Look what the thing need to be bought
 

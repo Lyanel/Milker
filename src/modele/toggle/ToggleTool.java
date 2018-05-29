@@ -51,7 +51,23 @@ public class ToggleTool extends Toggle implements Cloneable {
 		}
 		return things;
 	}
-	
+	@SuppressWarnings("rawtypes")
+	public static Vector getMilkVarList(Element elementlist) {
+		Vector<ToggleTool> things = new Vector<ToggleTool>();
+		ToggleTool thing=new ToggleTool();
+		Element elements = thing.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=thing.getMilkElement(elements,i);
+			if (tempE != null){
+				thing.setValueFromNode(tempE);
+				things.add(thing);
+			}
+		}
+		return things;
+	}
+	/*
 	public static Vector<ToggleTool> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<ToggleTool> things = new Vector<ToggleTool>();
 		for (Element elementMilk: elementlist) {
@@ -63,7 +79,24 @@ public class ToggleTool extends Toggle implements Cloneable {
 		}
 		return things;
 	}
-
+	@SuppressWarnings("rawtypes")
+	public static Vector getNullMilkVarList(Element elementlist) {
+		Vector<ToggleTool> things = new Vector<ToggleTool>();
+		ToggleTool thing=new ToggleTool();
+		Element elements = thing.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=thing.getMilkElement(elements,i);
+			if (tempE != null){
+				thing=new ToggleTool();
+				thing.setNullValueFromNode(tempE);
+				things.add(thing);
+			}
+		}
+		return things;
+	}*/
+	/*
 	private static void setInfos(Vector<ToggleTool> toggleTools, Vector<Element> elementInfos) {
 		for (Element elementInfo: elementInfos) {
 			try {
@@ -112,7 +145,7 @@ public class ToggleTool extends Toggle implements Cloneable {
 				}
 			} catch (Exception e) {e.printStackTrace();}
 		}
-	}
+	}*/
 	
 	public static ToggleTool getTool() {
 		if(tool==null){
@@ -137,40 +170,6 @@ public class ToggleTool extends Toggle implements Cloneable {
 		}
 		return clone;
 	}
-	
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
-		Vector<ToggleTool> things = new Vector<ToggleTool>();
-		ToggleTool thing=new ToggleTool();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing.setValueFromNode(tempE);
-				things.add(thing);
-			}
-		}
-		return things;
-	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<ToggleTool> things = new Vector<ToggleTool>();
-		ToggleTool thing=new ToggleTool();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing=new ToggleTool();
-				thing.setNullValueFromNode(tempE);
-				things.add(thing);
-			}
-		}
-		return things;
-	}
 
 	// Constructors
 	
@@ -188,10 +187,11 @@ public class ToggleTool extends Toggle implements Cloneable {
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
 	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
-	}
+	}*/
 	
 	// field methods
 	

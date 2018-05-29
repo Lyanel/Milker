@@ -11,6 +11,10 @@ public class Intel extends MilkXmlObj implements Cloneable {
 	
 	public static final String noeud = "intel", xmlStart = "start";
 	public String getNoeud() {return noeud;}
+	
+
+	// Fields
+	
 	private Integer start;
 	private Price price;
 
@@ -36,12 +40,27 @@ public class Intel extends MilkXmlObj implements Cloneable {
 		this.setStart(milkElement);
 		this.setPrice(milkElement);
 	}
+	public void setStart(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlStart);
+		if (temp != null) this.start=temp;
+	}
+	public void setPrice(Element milkElement) {
+		this.price.setValueFromNode(milkElement);;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullStart(milkElement);
 		this.setNullPrice(milkElement);
 	}
+	public void setNullStart(Element milkElement) {
+		start = ParseMilkFile.getXmlIntAttribute(milkElement,xmlStart);
+	}
+	public void setNullPrice(Element milkElement) {
+		this.price.setValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 
@@ -61,15 +80,7 @@ public class Intel extends MilkXmlObj implements Cloneable {
 	public void setStart(Integer start) {
 		this.start = start;
 	}
-	public void setStart(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlStart);
-		if (temp != null) this.start=temp;
-	}
-	public void setNullStart(Element milkElement) {
-		start = ParseMilkFile.getXmlIntAttribute(milkElement,xmlStart);
-	}
-
+	
 	public Float getPriceValue() {
 		return this.price.getCoin()*this.price.getCoef();
 	}
@@ -81,12 +92,6 @@ public class Intel extends MilkXmlObj implements Cloneable {
 	}
 	public void setPrice(Price price) {
 		this.price = price;
-	}
-	public void setPrice(Element milkElement) {
-		this.price.setValueFromNode(milkElement);;
-	}
-	public void setNullPrice(Element milkElement) {
-		this.price.setValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods
@@ -119,18 +124,12 @@ public class Intel extends MilkXmlObj implements Cloneable {
 	
 	// other object methods
 
-	public boolean buyable()  {
-		return true;
-	}
-
-	public boolean isBought() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean bought()  {
+		return (getStart().intValue()==1)?true:false;
 	}
 
 	public void buy() {
-		// TODO Auto-generated method stub
-		
+		setStart(1);
 	}
 
 	@Override

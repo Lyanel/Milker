@@ -21,6 +21,8 @@ public class MilkLanguage extends MilkFile {
 		}
 		return milkFiles;
 	}
+
+	// Fields
 	
 	private String iso;
 	
@@ -45,11 +47,18 @@ public class MilkLanguage extends MilkFile {
 		super.setValueFromNode(milkElement);
 		this.setIso(milkElement);
 	}
+	public void setIso(Element milkElement) {
+		this.iso = ParseMilkFile.getXmlStringValue(milkElement,xmlIso);
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullIso(milkElement);
 	}
+	public void setNullIso(Element milkElement) {
+		this.iso = ParseMilkFile.getXmlStringValue(milkElement,xmlIso);
+	}*/
 	
 	// field methods
 	
@@ -68,12 +77,6 @@ public class MilkLanguage extends MilkFile {
 	}
 	public void setIso(String iso) {
 		this.iso = iso;
-	}
-	public void setIso(Element milkElement) {
-		this.iso = ParseMilkFile.getXmlStringValue(milkElement,xmlIso);
-	}
-	public void setNullIso(Element milkElement) {
-		this.iso = ParseMilkFile.getXmlStringValue(milkElement,xmlIso);
 	}
 		
 	// toString & toXml methods

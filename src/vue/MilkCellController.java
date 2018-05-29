@@ -4,39 +4,33 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Milker;
-import javafx.application.Application;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import modele.MilkInfo;
 import modele.MilkXmlObj;
 
 /**
  * The controller for the Menu Bar.  
  * @author Lyanel Pheles
  */
-public class MilkCellController implements Initializable {
+public class MilkCellController extends MilkBoxController implements Initializable {
 
     @FXML
-    private AnchorPane rootPane;
+    protected AnchorPane rootPane;
+    @FXML
+    protected GridPane textPan;
 
     @FXML
-    private GridPane varPan;
+    protected GridPane varPan;
     @FXML
-    private Label iLabel;
+    protected Label iLabel;
     @FXML
-    private GridPane textPan;
-    @FXML
-    private Label nameLabel;
+    protected Label nameLabel;
 
-    public MilkCellController() {
-        valueProperty().addListener(valueChangeListener);
-    }
+	public MilkCellController() {}
 
     /**
      * Initialisation du contrôleur.
@@ -45,17 +39,20 @@ public class MilkCellController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     	iLabel.setText(null);
     	nameLabel.setText(null);
+    	iLabel.setOnMousePressed(event -> showThing());
+    	textPan.setOnMousePressed(event -> buyThing());
+    	varPan.setOnMouseExited(event -> setInfoVisible (null,false));
     }
 
     /**
     * Cet écouteur est appelé lorsque la propriété value change.
-    */
+    *
     private final ChangeListener<MilkXmlObj> valueChangeListener = (ObservableValue<? extends MilkXmlObj> observableValue, MilkXmlObj oldValue, MilkXmlObj newValue) -> {
         updateUI(newValue);
-    };
+    };*/
 
-    private void updateUI(MilkXmlObj milkXmlObj) {
-    	if(((Milker) getApplication()).getModel().isThingVisible(milkXmlObj) ){
+    protected void updateUI(MilkXmlObj milkXmlObj) {
+    	if(((Milker) getApplication()).getModel().isMilkObjVisible(milkXmlObj) ){
     		rootPane.setVisible(true);
     		if(milkXmlObj.getIcon().getName()=="") iLabel.setText(milkXmlObj.getStringId());
     		else {
@@ -66,43 +63,11 @@ public class MilkCellController implements Initializable {
     	} else rootPane.setVisible(false);
     }
 
-    /**
-    * Contient la valeur à afficher.
-    */
-    private final ObjectProperty<MilkXmlObj> value = new SimpleObjectProperty<>(this, "value");
+    public void showThing() {}
 
-    public final MilkXmlObj getValue() {
-        return value.get();
-    }
+    public void buyThing() {}
 
-	public void setValue(MilkXmlObj value) {
-        this.value.set(value);
-    }
-
-
-    public final ObjectProperty<MilkXmlObj> valueProperty() {
-        return value;
-    }
-
-    public final void showMilkXmlObj() {
-    	((Milker) getApplication()).showMilkObject(getValue());
-    	updateUI(getValue());
-    }
-    
-    /**
-    * Contient une référence vers l'application parente.
-    */
-    private final ObjectProperty<Application> application = new SimpleObjectProperty<>(this, "application");
-
-    public final Application getApplication() {
-        return application.get();
-    }
-
-    public final void setApplication(Application value) {
-        this.application.set(value);
-    }
-
-    public final ObjectProperty<Application> applicationProperty() {
-        return application;
+    public void setInfoVisible(MilkInfo value, boolean visibility) {
+    	((Milker) getApplication()).setInfoPanVisible(value,visibility);
     }
 }

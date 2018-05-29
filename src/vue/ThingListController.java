@@ -58,7 +58,7 @@ public class ThingListController extends MilkerController {
     	listBuildingPan.setCellFactory(new Callback<ListView<Building>, ListCell<Building>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<Building> p) {
-    	        return new ThingCell(getMainApp());
+    	        return new MilkCellThing(getMainApp());
     	    }
     	});
     }
@@ -67,7 +67,7 @@ public class ThingListController extends MilkerController {
     	listWorkerPan.setCellFactory(new Callback<ListView<Worker>, ListCell<Worker>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<Worker> p) {
-    	        return new ThingCell(getMainApp());
+    	        return new MilkCellThing(getMainApp());
     	    }
     	});
     }
@@ -76,7 +76,7 @@ public class ThingListController extends MilkerController {
     	listSlavePan.setCellFactory(new Callback<ListView<Slave>, ListCell<Slave>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<Slave> p) {
-    	        return new ThingCell(getMainApp());
+    	        return new MilkCellThing(getMainApp());
     	    }
     	});
     }
@@ -85,7 +85,7 @@ public class ThingListController extends MilkerController {
     	listAnimalPan.setCellFactory(new Callback<ListView<Animal>, ListCell<Animal>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<Animal> p) {
-    	        return new ThingCell(getMainApp());
+    	        return new MilkCellThing(getMainApp());
     	    }
     	});
     }

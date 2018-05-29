@@ -5,7 +5,6 @@ import java.util.Vector;
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -106,6 +105,8 @@ public class MilkImage extends MilkFile {
 		return milkImage;
 	}
 
+	// Fields
+
 	private String extension;
 	private String desc;
 	private Image img;
@@ -137,15 +138,22 @@ public class MilkImage extends MilkFile {
 		this.setDesc(milkElement);
 		setImage();
 	}
-
+	public void setDesc(Element milkElement) {
+		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullDesc(milkElement);
 		setImage();
 	}
+	public void setNullDesc(Element milkElement) {
+		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
+	}*/
 	
 	// field methods
+	
 	public void setExt(String ext) {
 		this.extension = ext;
 	}
@@ -168,12 +176,6 @@ public class MilkImage extends MilkFile {
 	}
 	public void setDesc(String desc) {
 		this.desc = desc;
-	}
-	public void setDesc(Element milkElement) {
-		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
-	}
-	public void setNullDesc(Element milkElement) {
-		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
 	}
 	
 	public void setImage(Image image) {
@@ -210,11 +212,9 @@ public class MilkImage extends MilkFile {
 	}
     
 	public double getHeight() {
-		// TODO Auto-generated method stub
 		return IMG_HEIGHT;
 	}
 	public double getWidth() {
-		// TODO Auto-generated method stub
 		return IMG_WIDTH;
 	}
 	public void setAsIcon() {

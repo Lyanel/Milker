@@ -98,7 +98,7 @@ public class AnimalTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Animal.getListes());
+    	selectVar.setItems(Animal.getFullListe());
 		changeVar(selectVar.getValue());
 	}
     

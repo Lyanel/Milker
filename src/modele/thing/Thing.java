@@ -1,10 +1,8 @@
 package modele.thing;
 
 import modele.carac.ThingAttrib;
-import modele.MilkImage;
 import modele.carac.Income;
 import modele.carac.MilkAttrib;
-import modele.intel.Intel;
 
 import java.util.Vector;
 
@@ -16,7 +14,7 @@ public class Thing extends NearThing implements Cloneable {
 	
 	public static final String noeud = "thing", xmlLvl="lvl", xmlGet="get";
 	public String getNoeud() {return noeud;}
-
+	
 	@SuppressWarnings("rawtypes")
 	public static Vector getMilkVarList(Element elementlist) {
 		Vector<Thing> things = new Vector<Thing>();
@@ -33,24 +31,7 @@ public class Thing extends NearThing implements Cloneable {
 		}
 		return things;
 	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<Thing> things = new Vector<Thing>();
-		Thing thing=new Thing();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing=new Thing();
-				thing.setNullValueFromNode(tempE);
-				things.add(thing);
-			}
-		}
-		return things;
-	}
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector getMilkVarList(Vector<Element> elementlist) {
 		Vector<Thing> things = new Vector<Thing>();
 		for (Element elementMilk: elementlist) {
@@ -61,20 +42,8 @@ public class Thing extends NearThing implements Cloneable {
 		}
 		return things;
 	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Thing> things = new Vector<Thing>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Thing thing = new Thing();
-				thing.setNullValueFromNode(elementMilk);
-				things.add(thing);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return things;
-	}
 
-	// field
+	// Fields
 	
 	private Integer lvl, get;
 	private ThingAttrib attrib;
@@ -108,14 +77,22 @@ public class Thing extends NearThing implements Cloneable {
 		this.setAttrib(milkElement);
 		this.setIncome(milkElement);
 	}
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullLvl(milkElement);
-		this.setNullGet(milkElement);
-		this.setNullAttrib(milkElement);
-		this.setNullIncome(milkElement);
+	public void setLvl(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
+		if (temp != null) this.lvl=temp;
 	}
+	public void setGet(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
+		if (temp != null) this.get=temp;
+	}
+	public void setAttrib(Element milkElement) {
+		this.attrib.setValueFromNode(milkElement);;
+	}
+	public void setIncome(Element milkElement) {
+		this.income.setValueFromNode(milkElement);
+	}	
 	
 	// field methods
 
@@ -140,14 +117,6 @@ public class Thing extends NearThing implements Cloneable {
 	public void setLvl(Integer lvl) {
 		this.lvl = lvl;
 	}
-	public void setLvl(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
-		if (temp != null) this.lvl=temp;
-	}
-	public void setNullLvl(Element milkElement) {
-		lvl = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
-	}
 
 	public Integer getGet() {
 		return this.get;
@@ -165,26 +134,11 @@ public class Thing extends NearThing implements Cloneable {
 	public void setGet(Integer get) {
 		this.get = get;
 	}
-	public void setGet(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
-		if (temp != null) this.get=temp;
-	}
-	public void setNullGet(Element milkElement) {
-		get = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
-	}
-	
 	public ThingAttrib getAttrib() {
 		return this.attrib;
 	}
 	public void setAttrib(ThingAttrib attrib) {
 		this.attrib = attrib;
-	}
-	public void setAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);;
-	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setNullValueFromNode(milkElement);
 	}
 
 	public Income getIncome() {
@@ -221,12 +175,6 @@ public class Thing extends NearThing implements Cloneable {
 	public void setIncome(Income income) {
 		this.income = income;
 	}
-	public void setIncome(Element milkElement) {
-		this.income.setValueFromNode(milkElement);
-	}
-	public void setNullIncome(Element milkElement) {
-		this.income.setNullValueFromNode(milkElement);
-	}
 	
 	// toString & toXml methods
 
@@ -262,7 +210,7 @@ public class Thing extends NearThing implements Cloneable {
 	}
 	
 	// other object methods
-
+	
 	@Override
 	public void buy() {
 		this.getAttrib().setQuant(this.getAttrib().getQuant()+1);

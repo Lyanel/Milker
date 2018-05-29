@@ -6,12 +6,12 @@ import org.w3c.dom.Element;
 
 /**
  * Kind :  Refer to the Kind of the thing you have/need :<br/>
- * object : 1 (buildings), 2 (workers), 3 (slaves A (human)), 4 (slaves B (animal)), 5 (animals), <br/>
- * 	need/check :  x=0 (all), 6 (Semi-Humans (workers+SA)), 7 (slaves (SA+SB)), 8 (Semi-animals (SB+animals)),<br/>
-			09 (Earthling People (workers+SB)),			10 (natural Cattle (SA+animals)), <br/>
-			11 (People (workers+SA+SB)),				12 (cattle (SA+SB+animals)),<br/>
-			13 (Earthling being (workers+SB+animals)),	14 (natural being (workers+SA+animals)), <br/>
-			15 (Livings being (workers+SA+SB+animals)).<br/>
+ * object : 1 (buildings), 2 (workers), 3 (slaves H (human)), 4 (slaves A (animal)), 5 (animals), <br/>
+ * 	need/check :  x=0 (all), 6 (Semi-Humans (workers+SH)), 7 (slaves (SH+SA)), 8 (Semi-animals (SA+animals)),<br/>
+			09 (Earthling People (workers+SA)),			10 (natural Cattle (SH+animals)), <br/>
+			11 (People (workers+SH+SA)),				12 (cattle (SH+SA+animals)),<br/>
+			13 (Earthling being (workers+SA+animals)),	14 (natural being (workers+SH+animals)), <br/>
+			15 (Livings being (workers+SH+SA+animals)).<br/>
 	intel : 1 (research), 2 (upgrade), 3 (synergy), 4 (ascension), 5 (event).
 	
  * @author Slade Chaos
@@ -44,6 +44,9 @@ public class MilkKind extends MilkVar implements Cloneable {
 	public static final int kind_Event = 5;
 	
 	public static final String xmlKind = "kind";
+
+	// Fields
+	
 	private Integer kind;
 	private int mod; //Check kind->Xml : 0 no, 0< as attrib (1 thing, 2 intel).
 
@@ -71,11 +74,20 @@ public class MilkKind extends MilkVar implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setKind(milkElement);
 	}
+	public void setKind(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlKind);
+		if (temp != null) this.kind=temp;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullKind(milkElement);
 	}
+	public void setNullKind(Element milkElement) {
+		kind = ParseMilkFile.getXmlIntAttribute(milkElement,xmlKind);
+	}*/
 	
 	// field methods
 	
@@ -126,14 +138,6 @@ public class MilkKind extends MilkVar implements Cloneable {
 	}
 	public void setKind(Integer kind) {
 		this.kind = kind;
-	}
-	public void setKind(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlKind);
-		if (temp != null) this.kind=temp;
-	}
-	public void setNullKind(Element milkElement) {
-		kind = ParseMilkFile.getXmlIntAttribute(milkElement,xmlKind);
 	}
 	
 	public int getMod() {

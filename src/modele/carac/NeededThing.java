@@ -5,6 +5,7 @@ import java.util.Vector;
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
+import modele.thing.Thing;
 
 public class NeededThing extends NeededIntel implements Cloneable {
 	
@@ -29,23 +30,6 @@ public class NeededThing extends NeededIntel implements Cloneable {
 		return neededThings;
 	}
 	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<NeededThing> neededThings = new Vector<NeededThing>();
-		NeededThing neededThing=new NeededThing();
-		Element elements = neededThing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=neededThing.getMilkElement(elements,i);
-			if (tempE != null){
-				neededThing=new NeededThing();
-				neededThing.setNullValueFromNode(tempE);
-				neededThings.add(neededThing);
-			}
-		}
-		return neededThings;
-	}
-	@SuppressWarnings("rawtypes")
 	public static Vector getMilkVarList(Vector<Element> elementlist) {
 		Vector<NeededThing> neededThings = new Vector<NeededThing>();
 		for (Element elementMilk: elementlist) {
@@ -56,18 +40,26 @@ public class NeededThing extends NeededIntel implements Cloneable {
 		}
 		return neededThings;
 	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<NeededThing> neededThings = new Vector<NeededThing>();
-		for (Element elementMilk: elementlist) {
-			try {
-				NeededThing neededThing = new NeededThing();
-				neededThing.setNullValueFromNode(elementMilk);
-				neededThings.add(neededThing);
-			} catch (Exception e) {e.printStackTrace();}
+
+	/**
+	 * Level :	have 2 way of working : </br>
+	 *		If wanted lvl<0 the Level of the tested thing must be = to the wanted lvl.</br>
+	 *		if wanted lvl>0 the Level of the tested thing must be > to the wanted lvl. (if wanted lvl=0 no need to check it since that will alwais return true)</br>
+	 * 		ex if wanted = 7, tested thing must also have a lvl = to 7 return true.</br>
+	 * 			if =-7 then all tested thing with a lvl>=7 will return true.</br>
+	 */
+	public static boolean checkLevel(NeededThing wanted, Thing tested) {
+		boolean result = true;
+		int wlvl = wanted.getLvl();
+		int tlvl = tested.getLvl();
+		if (wlvl!=0){
+			if(wlvl<0 && (wlvl*-1) > tlvl )result=false;
+			if(wlvl>0 && wlvl != tlvl)result=false;
 		}
-		return neededThings;
+		return result;
 	}
+	
+	// Fields
 	
 	private Integer lvl;
 	private ThingAttrib attrib;
@@ -95,11 +87,13 @@ public class NeededThing extends NeededIntel implements Cloneable {
 		this.setLvl(milkElement);
 		this.setAttrib(milkElement);
 	}
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullLvl(milkElement);
-		this.setNullAttrib(milkElement);
+	public void setLvl(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
+		if (temp != null) this.lvl=temp;
+	}
+	public void setAttrib(Element milkElement) {
+		this.attrib.setValueFromNode(milkElement);;
 	}
 	
 	// field methods
@@ -120,26 +114,12 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	public void setLvl(Integer lvl) {
 		this.lvl = lvl;
 	}
-	public void setLvl(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
-		if (temp != null) this.lvl=temp;
-	}
-	public void setNullLvl(Element milkElement) {
-		lvl = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
-	}
 	
 	public ThingAttrib getAttrib() {
 		return this.attrib;
 	}
 	public void setAttrib(ThingAttrib attrib) {
 		this.attrib = attrib;
-	}
-	public void setAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);;
-	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods

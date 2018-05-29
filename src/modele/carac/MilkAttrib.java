@@ -8,6 +8,9 @@ import org.w3c.dom.Element;
 public class MilkAttrib extends MilkVar implements Cloneable {
 	
 	public static final String xmlQuant = "quan", xmlQual = "qual";
+	
+	// Fields
+	
 	private Float quant, qual; //Quantity & Quality of milk production.
 		
 	// Constructors
@@ -34,6 +37,17 @@ public class MilkAttrib extends MilkVar implements Cloneable {
 		this.setQuant(thisElement);
 		this.setQual(thisElement);
 	}
+	public void setQuant(Element milkElement) {
+		Float temp=null;
+		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQuant);
+		if (temp != null) this.setQuant(temp);
+	}
+	public void setQual(Element milkElement) {
+		Float temp=null;
+		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQual);
+		if (temp != null) this.qual=temp;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisElementFromParent(milkElement);
@@ -41,6 +55,12 @@ public class MilkAttrib extends MilkVar implements Cloneable {
 		this.setNullQuant(thisElement);
 		this.setNullQual(thisElement);
 	}
+	public void setNullQuant(Element milkElement) {
+		this.setQuant(ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQuant));
+	}
+	public void setNullQual(Element milkElement) {
+		qual = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQual);
+	}*/
 	
 	// field methods
 	
@@ -60,14 +80,6 @@ public class MilkAttrib extends MilkVar implements Cloneable {
 	public void setQuant(Float quant) {
 		this.quant = quant;
 	}
-	public void setQuant(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQuant);
-		if (temp != null) this.setQuant(temp);
-	}
-	public void setNullQuant(Element milkElement) {
-		this.setQuant(ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQuant));
-	}
 	
 	public Float getQual() {
 		return this.qual;
@@ -84,14 +96,6 @@ public class MilkAttrib extends MilkVar implements Cloneable {
 	}
 	public void setQual(Float qual) {
 		this.qual = qual;
-	}
-	public void setQual(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQual);
-		if (temp != null) this.qual=temp;
-	}
-	public void setNullQual(Element milkElement) {
-		qual = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlQual);
 	}
 	
 	// toString & toXml methods

@@ -30,24 +30,8 @@ public class Effect extends MilkVar implements Cloneable {
 		}
 		return effects;
 	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<Effect> effects = new Vector<Effect>();
-		Effect effect=new Effect();
-		Element elements = effect.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=effect.getMilkElement(elements,i);
-			if (tempE != null){
-				effect=new Effect();
-				effect.setNullValueFromNode(tempE);
-				effects.add(effect);
-			}
-		}
-		return effects;
-	}
-	@SuppressWarnings("rawtypes")
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static Vector getMilkVarList(Vector<Element> elementlist) {
 		Vector<Effect> effects = new Vector<Effect>();
 		for (Element elementMilk: elementlist) {
@@ -58,18 +42,8 @@ public class Effect extends MilkVar implements Cloneable {
 		}
 		return effects;
 	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Effect> effects = new Vector<Effect>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Effect effect = new Effect();
-				effect.setNullValueFromNode(elementMilk);
-				effects.add(effect);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return effects;
-	}
+
+	// Fields
 	
 	private Float coef;
 	private Integer mod;
@@ -102,15 +76,24 @@ public class Effect extends MilkVar implements Cloneable {
 		this.setMod(milkElement);
 		this.setAgents(milkElement);
 		this.setThings(milkElement);
-		
 	}
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullCoef(milkElement);
-		this.setNullMod(milkElement);
-		this.setNullAgents(milkElement);
-		this.setNullThings(milkElement);
+	public void setCoef(Element milkElement) {
+		Float temp=null;
+		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
+		if (temp != null) this.coef=temp;
+	}
+	public void setMod(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlMod);
+		if (temp != null) this.mod=temp;
+	}
+	@SuppressWarnings("unchecked")
+	public void setAgents(Element milkElement) {
+		this.agents.addAll(Agent.getMilkVarList(milkElement));
+	}
+	@SuppressWarnings("unchecked")
+	public void setThings(Element milkElement) {
+		this.things.addAll(Thing.getMilkVarList(milkElement));
 	}
 	
 	// field methods
@@ -131,15 +114,6 @@ public class Effect extends MilkVar implements Cloneable {
 	public void setCoef(Float coef) {
 		this.coef = coef;
 	}
-	public void setCoef(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
-		if (temp != null) this.coef=temp;
-	}
-	public void setNullCoef(Element milkElement) {
-		coef = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
-	}
-
 	public Integer getMod() {
 		return this.mod;
 	}
@@ -156,14 +130,6 @@ public class Effect extends MilkVar implements Cloneable {
 	public void setMod(Integer mod) {
 		this.mod = mod;
 	}
-	public void setMod(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlMod);
-		if (temp != null) this.mod=temp;
-	}
-	public void setNullMod(Element milkElement) {
-		mod = ParseMilkFile.getXmlIntAttribute(milkElement,xmlMod);
-	}
 	
 	public Vector<Agent> getAgents() {
 		return agents;
@@ -171,28 +137,12 @@ public class Effect extends MilkVar implements Cloneable {
 	public void setAgents(Vector<Agent> agents) {
 		this.agents = agents;
 	}
-	@SuppressWarnings("unchecked")
-	public void setAgents(Element milkElement) {
-		this.agents.addAll(Agent.getMilkVarList(milkElement));
-	}
-	@SuppressWarnings("unchecked")
-	public void setNullAgents(Element milkElement) {
-		this.agents.addAll(Agent.getNullMilkVarList(milkElement));
-	}
 	
 	public Vector<Thing> getThings() {
 		return things;
 	}
 	public void setThings(Vector<Thing> things) {
 		this.things = things;
-	}
-	@SuppressWarnings("unchecked")
-	public void setThings(Element milkElement) {
-		this.things.addAll(Thing.getMilkVarList(milkElement));
-	}
-	@SuppressWarnings("unchecked")
-	public void setNullThings(Element milkElement) {
-		this.things.addAll(Thing.getNullMilkVarList(milkElement));
 	}
 	
 	// toString & toXml methods

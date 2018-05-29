@@ -10,11 +10,40 @@ import modele.MilkFile;
 import modele.MilkImage;
 import modele.MilkInterface;
 import modele.MilkKind;
+import modele.carac.ThingAttrib;
 
 public class SlaveHuman extends Slave implements Cloneable {
 	
-	private static Vector<SlaveHuman> slaveHumans;
 	public static final String file		= "SlaveHuman";
+
+	private static Vector<SlaveHuman> slaveHumans;
+	private static ObservableList<SlaveHuman> modelListe;
+	private static ObservableList<SlaveHuman> modelNeutralListe;
+	private static ObservableList<SlaveHuman> modelScienceListe;
+	private static ObservableList<SlaveHuman> modelMagicListe;
+	
+	@SafeVarargs
+	private static ObservableList<SlaveHuman> merge(ObservableList<SlaveHuman> into, ObservableList<SlaveHuman>... lists) {
+        final ObservableList<SlaveHuman> list = into;
+        for (ObservableList<SlaveHuman> l : lists) {
+            list.addAll(l);
+            l.addListener((javafx.collections.ListChangeListener.Change<? extends SlaveHuman> c) -> {
+                while (c.next()) {
+                    if (c.wasAdded()) {
+                        list.addAll(c.getAddedSubList());
+                    }
+                    if (c.wasRemoved()) {
+                        list.removeAll(c.getRemoved());
+                    }
+                    if (c.wasUpdated()) {
+                        list.removeAll(c.getRemoved());
+                        list.addAll(c.getAddedSubList());
+                    }
+                }
+            });
+        }
+        return list;
+    }
 	
 	private static Vector<SlaveHuman> setMilkVarFromFiles() {
 		if (slaveHumans==null) slaveHumans = new Vector<SlaveHuman>();
@@ -31,55 +60,12 @@ public class SlaveHuman extends Slave implements Cloneable {
 		Vector<Element> elementlIcon = new Vector<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcon(slaveHumans, elementlIcon);
+		//Set scene
+		Vector<Element> elementlScene = new Vector<Element>();
+		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
+		setScene(slaveHumans, elementlScene);
 		
 		return slaveHumans;
-	}
-
-	private static void setInfo(Vector<SlaveHuman> slaveHumans, Vector<Element> elementlInfos) {
-		for (Element elementlInfo: elementlInfos) {
-			try {
-				SlaveHuman slaveHumanInfo = new SlaveHuman(elementlInfo);
-				slaveHumanInfo.setInfo(elementlInfo);
-				for (SlaveHuman slaveHuman:slaveHumans){
-					if (slaveHumanInfo.equals(slaveHuman)){
-						slaveHuman.setInfo(slaveHumanInfo.getInfo());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setIcon(Vector<SlaveHuman> slaveHumans, Vector<Element> elementIcons) {
-		for (Element elementIcon: elementIcons) {
-			try {
-				SlaveHuman slaveHumanIcon = new SlaveHuman(elementIcon);
-				slaveHumanIcon.setIcon(elementIcon);
-				for (SlaveHuman slaveHuman:slaveHumans){
-					if (slaveHumanIcon.equals(slaveHuman)){
-						slaveHuman.setIcon(slaveHumanIcon.getIcon());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		
-	}
-
-	public static ObservableList<SlaveHuman> getListes() {
-		if (slaveHumans==null)setMilkVarFromFiles();
-		ObservableList<SlaveHuman> clone = FXCollections.observableArrayList();
-		if (slaveHumans!=null){
-			for (SlaveHuman slaveHuman:slaveHumans){
-				try {
-					clone.add((SlaveHuman) slaveHuman.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
 	}
 
 	public static Vector<SlaveHuman> getMilkVarList(Vector<Element> elementlist) {
@@ -92,7 +78,7 @@ public class SlaveHuman extends Slave implements Cloneable {
 		}
 		return slaveHumans;
 	}
-	
+	/*
 	public static Vector<SlaveHuman> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<SlaveHuman> slaveHumans = new Vector<SlaveHuman>();
 		for (Element elementMilk: elementlist) {
@@ -103,6 +89,72 @@ public class SlaveHuman extends Slave implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return slaveHumans;
+	}*/
+
+	public static ObservableList<SlaveHuman> getSHFullListe() {
+		if (modelListe==null){
+			if (slaveHumans==null)setMilkVarFromFiles();
+			if (modelNeutralListe==null)getNeutralListe();
+			if (modelScienceListe==null)getScienceListe();
+			if (modelMagicListe==null)getMagicListe();
+			modelListe = FXCollections.observableArrayList();
+			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
+		}
+		return modelListe;
+	}
+
+	public static ObservableList<SlaveHuman> getSHNeutralListe() {
+		if (modelNeutralListe==null){
+			if (slaveHumans==null)setMilkVarFromFiles();
+			modelNeutralListe = FXCollections.observableArrayList();
+			if (slaveHumans!=null){
+				for (SlaveHuman slaveHuman:slaveHumans){
+					try {
+						if(slaveHuman.getAttrib().getTree()==ThingAttrib.Tree_Neutral)modelNeutralListe.add((SlaveHuman) slaveHuman.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelNeutralListe;
+	}
+
+	public static ObservableList<SlaveHuman> getSHScienceListe() {
+		if (modelScienceListe==null){
+			if (slaveHumans==null)setMilkVarFromFiles();
+			modelScienceListe = FXCollections.observableArrayList();
+			if (slaveHumans!=null){
+				for (SlaveHuman slaveHuman:slaveHumans){
+					try {
+						if(slaveHuman.getAttrib().getTree()==ThingAttrib.Tree_Science)modelScienceListe.add((SlaveHuman) slaveHuman.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelScienceListe;
+	}
+
+	public static ObservableList<SlaveHuman> getSHMagicListe() {
+		if (modelMagicListe==null){
+			if (slaveHumans==null)setMilkVarFromFiles();
+			modelMagicListe = FXCollections.observableArrayList();
+			if (slaveHumans!=null){
+				for (SlaveHuman slaveHuman:slaveHumans){
+					try {
+						if(slaveHuman.getAttrib().getTree()==ThingAttrib.Tree_Magic)modelMagicListe.add((SlaveHuman) slaveHuman.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelMagicListe;
 	}
 	
 	// Constructors

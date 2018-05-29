@@ -3,9 +3,27 @@ package modele.thing;
 import modele.MilkImage;
 import modele.intel.Intel;
 
+import java.util.Vector;
+
 import org.w3c.dom.Element;
 
 public class NearThing extends Intel implements Cloneable {
+	
+	public static void setScene(@SuppressWarnings("rawtypes") Vector things, Vector<Element> elementScenes) {
+		for (Element elementScene: elementScenes) {
+			try {
+				NearThing test = new NearThing(elementScene);
+				test.setScene(elementScene);
+				for (Object object:things){
+					NearThing thing = (NearThing) object;
+					if (test.getId().intValue() == thing.getId().intValue()){
+						thing.setScene(test.getScene());
+						break;
+					}
+				}
+			} catch (Exception e) {e.printStackTrace();}
+		}
+	}
 	
 	// field
 	
@@ -22,12 +40,15 @@ public class NearThing extends Intel implements Cloneable {
 		this.scene = new MilkImage();
 		this.setValueFromNode(milkElement);
 	}
-	
-	// field methods
+
+	// Set value from Element methods
 
 	public void setScene(Element milkElement) {
 		this.scene.setValueFromNode(milkElement);
 	}
+	
+	// field methods
+	
 	public void setScene(MilkImage scene) {
 		this.scene = scene;
 	}

@@ -1,13 +1,164 @@
 package modele.thing;
 
+import modele.MilkFile;
+import modele.MilkImage;
+import modele.MilkInterface;
 import modele.MilkKind;
 import modele.carac.Agent;
+import modele.carac.ThingAttrib;
+
+import java.util.Vector;
 
 import org.w3c.dom.Element;
 
-public class SlaveWorker extends SlaveHuman implements Cloneable {
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-	public static final String noeud = Slave.noeud;
+public class SlaveWorker extends Slave implements Cloneable {
+
+	public static final String file		= "SlaveWorker";
+
+	private static Vector<SlaveWorker> slaveWorkers;
+	private static ObservableList<SlaveWorker> modelListe;
+	private static ObservableList<SlaveWorker> modelNeutralListe;
+	private static ObservableList<SlaveWorker> modelScienceListe;
+	private static ObservableList<SlaveWorker> modelMagicListe;
+	
+	@SafeVarargs
+	private static ObservableList<SlaveWorker> merge(ObservableList<SlaveWorker> into, ObservableList<SlaveWorker>... lists) {
+        final ObservableList<SlaveWorker> list = into;
+        for (ObservableList<SlaveWorker> l : lists) {
+            list.addAll(l);
+            l.addListener((javafx.collections.ListChangeListener.Change<? extends SlaveWorker> c) -> {
+                while (c.next()) {
+                    if (c.wasAdded()) {
+                        list.addAll(c.getAddedSubList());
+                    }
+                    if (c.wasRemoved()) {
+                        list.removeAll(c.getRemoved());
+                    }
+                    if (c.wasUpdated()) {
+                        list.removeAll(c.getRemoved());
+                        list.addAll(c.getAddedSubList());
+                    }
+                }
+            });
+        }
+        return list;
+    }
+	
+	private static Vector<SlaveWorker> setMilkVarFromFiles() {
+		if (slaveWorkers==null) slaveWorkers = new Vector<SlaveWorker>();
+		else slaveWorkers.removeAllElements();
+		//Set stats
+		Vector<Element> elementlist = new Vector<Element>();
+		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
+		slaveWorkers = getMilkVarList(elementlist);
+		//Set info
+		Vector<Element> elementlInfos = new Vector<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfo(slaveWorkers, elementlInfos);
+		//Set icon
+		Vector<Element> elementlIcon = new Vector<Element>();
+		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
+		setIcon(slaveWorkers, elementlIcon);
+		//Set scene
+		Vector<Element> elementlScene = new Vector<Element>();
+		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
+		setScene(slaveWorkers, elementlScene);
+		
+		return slaveWorkers;
+	}
+
+	public static Vector<SlaveWorker> getMilkVarList(Vector<Element> elementlist) {
+		Vector<SlaveWorker> slaveWorkers = new Vector<SlaveWorker>();
+		for (Element elementMilk: elementlist) {
+			try {
+				SlaveWorker slaveWorker = new SlaveWorker(elementMilk);
+				slaveWorkers.add(slaveWorker);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return slaveWorkers;
+	}
+	/*
+	public static Vector<SlaveWorker> getNullMilkVarList(Vector<Element> elementlist) {
+		Vector<SlaveWorker> slaveWorkers = new Vector<SlaveWorker>();
+		for (Element elementMilk: elementlist) {
+			try {
+				SlaveWorker slaveWorker = new SlaveWorker();
+				slaveWorker.setNullValueFromNode(elementMilk);
+				slaveWorkers.add(slaveWorker);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return slaveWorkers;
+	}*/
+
+	public static ObservableList<SlaveWorker> getSWFullListe() {
+		if (modelListe==null){
+			if (slaveWorkers==null)setMilkVarFromFiles();
+			if (modelNeutralListe==null)getNeutralListe();
+			if (modelScienceListe==null)getScienceListe();
+			if (modelMagicListe==null)getMagicListe();
+			modelListe = FXCollections.observableArrayList();
+			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
+		}
+		return modelListe;
+	}
+
+	public static ObservableList<SlaveWorker> getSWNeutralListe() {
+		if (modelNeutralListe==null){
+			if (slaveWorkers==null)setMilkVarFromFiles();
+			modelNeutralListe = FXCollections.observableArrayList();
+			if (slaveWorkers!=null){
+				for (SlaveWorker slaveWorker:slaveWorkers){
+					try {
+						if(slaveWorker.getAttrib().getTree()==ThingAttrib.Tree_Neutral)modelNeutralListe.add((SlaveWorker) slaveWorker.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelNeutralListe;
+	}
+
+	public static ObservableList<SlaveWorker> getSWScienceListe() {
+		if (modelScienceListe==null){
+			if (slaveWorkers==null)setMilkVarFromFiles();
+			modelScienceListe = FXCollections.observableArrayList();
+			if (slaveWorkers!=null){
+				for (SlaveWorker slaveWorker:slaveWorkers){
+					try {
+						if(slaveWorker.getAttrib().getTree()==ThingAttrib.Tree_Science)modelScienceListe.add((SlaveWorker) slaveWorker.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelScienceListe;
+	}
+
+	public static ObservableList<SlaveWorker> getSWMagicListe() {
+		if (modelMagicListe==null){
+			if (slaveWorkers==null)setMilkVarFromFiles();
+			modelMagicListe = FXCollections.observableArrayList();
+			if (slaveWorkers!=null){
+				for (SlaveWorker slaveWorker:slaveWorkers){
+					try {
+						if(slaveWorker.getAttrib().getTree()==ThingAttrib.Tree_Magic)modelMagicListe.add((SlaveWorker) slaveWorker.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelMagicListe;
+	}
+	
 	private Agent agent;
 
 	// Constructors
@@ -31,11 +182,17 @@ public class SlaveWorker extends SlaveHuman implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setAgent(milkElement);
 	}
-	@Override
+	public void setAgent(Element milkElement) {
+		this.agent.setValueFromNode(milkElement);;
+	}
+	/*@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setAgent(milkElement);
 	}
+	public void setNullAgent(Element milkElement) {
+		this.agent.setNullValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 
@@ -45,14 +202,9 @@ public class SlaveWorker extends SlaveHuman implements Cloneable {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
-	public void setAgent(Element milkElement) {
-		this.agent.setValueFromNode(milkElement);;
-	}
-	public void setNullAgent(Element milkElement) {
-		this.agent.setNullValueFromNode(milkElement);
-	}
 	
 	// toString & toXml methods
+	
 	@Override
 	public String toStringStatChild() {
 		String temp = super.toStringStatChild();

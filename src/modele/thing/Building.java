@@ -19,11 +19,38 @@ import javafx.collections.ObservableList;
 
 public class Building extends Thing implements Cloneable {
 
-	private static Vector<Building> buildings;
-	public static final String file		= "Building";
-	public static final String noeud	= "building";
+	public static final String file	= "Building", noeud	= "building";
 	public String getNoeud() {return noeud;}
 
+	private static Vector<Building> buildings;
+	private static ObservableList<Building> modelListe;
+	private static ObservableList<Building> modelNeutralListe;
+	private static ObservableList<Building> modelScienceListe;
+	private static ObservableList<Building> modelMagicListe;
+	
+	@SafeVarargs
+	private static ObservableList<Building> merge(ObservableList<Building> into, ObservableList<Building>... lists) {
+        final ObservableList<Building> list = into;
+        for (ObservableList<Building> l : lists) {
+            list.addAll(l);
+            l.addListener((javafx.collections.ListChangeListener.Change<? extends Building> c) -> {
+                while (c.next()) {
+                    if (c.wasAdded()) {
+                        list.addAll(c.getAddedSubList());
+                    }
+                    if (c.wasRemoved()) {
+                        list.removeAll(c.getRemoved());
+                    }
+                    if (c.wasUpdated()) {
+                        list.removeAll(c.getRemoved());
+                        list.addAll(c.getAddedSubList());
+                    }
+                }
+            });
+        }
+        return list;
+    }
+	
 	private static Vector<Building> setMilkVarFromFiles() {
 		if (buildings==null) buildings = new Vector<Building>();
 		else buildings.removeAllElements();
@@ -47,116 +74,6 @@ public class Building extends Thing implements Cloneable {
 		return buildings;
 	}
 
-	private static void setInfo(Vector<Building> buildings, Vector<Element> elementInfos) {
-		for (Element elementInfo: elementInfos) {
-			try {
-				Building buildingInfo = new Building(elementInfo);
-				buildingInfo.setInfo(elementInfo);
-				for (Building building:buildings){
-					if (buildingInfo.equals(building)){
-						building.setInfo(buildingInfo.getInfo());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setIcon(Vector<Building> buildings, Vector<Element> elementIcons) {
-		for (Element elementIcon: elementIcons) {
-			try {
-				Building buildingIcon = new Building(elementIcon);
-				buildingIcon.setIcon(elementIcon);
-				for (Building building:buildings){
-					if (buildingIcon.equals(building)){
-						building.setIcon(buildingIcon.getIcon());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setScene(Vector<Building> buildings, Vector<Element> elementScenes) {
-		for (Element elementScene: elementScenes) {
-			try {
-				Building buildingScene = new Building(elementScene);
-				buildingScene.setScene(elementScene);
-				for (Building building:buildings){
-					if (buildingScene.equals(building)){
-						building.setScene(buildingScene.getScene());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-
-	public static ObservableList<Building> getListes() {
-		if (buildings==null)setMilkVarFromFiles();
-		ObservableList<Building> clone = FXCollections.observableArrayList();
-		if (buildings!=null){
-			for (Building building:buildings){
-				try {
-					clone.add((Building) building.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	public static ObservableList<Building> getNeutralListes() {
-		if (buildings==null)setMilkVarFromFiles();
-		ObservableList<Building> clone = FXCollections.observableArrayList();
-		if (buildings!=null){
-			for (Building building:buildings){
-				try {
-					if(building.getAttrib().getTree()==ThingAttrib.Tree_Neutral)clone.add((Building) building.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	public static ObservableList<Building> getScienceListes() {
-		if (buildings==null)setMilkVarFromFiles();
-		ObservableList<Building> clone = FXCollections.observableArrayList();
-		if (buildings!=null){
-			for (Building building:buildings){
-				try {
-					if(building.getAttrib().getTree()==ThingAttrib.Tree_Science)clone.add((Building) building.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
-	public static ObservableList<Building> getMagicListes() {
-		if (buildings==null)setMilkVarFromFiles();
-		ObservableList<Building> clone = FXCollections.observableArrayList();
-		if (buildings!=null){
-			for (Building building:buildings){
-				try {
-					if(building.getAttrib().getTree()==ThingAttrib.Tree_Magic)clone.add((Building) building.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
 	public static Vector<Building> getMilkVarList(Vector<Element> elementlist) {
 		Vector<Building> buildings = new Vector<Building>();
 		for (Element elementMilk: elementlist) {
@@ -167,7 +84,7 @@ public class Building extends Thing implements Cloneable {
 		}
 		return buildings;
 	}
-	
+	/*
 	public static Vector<Building> getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<Building> buildings = new Vector<Building>();
 		for (Element elementMilk: elementlist) {
@@ -178,16 +95,84 @@ public class Building extends Thing implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return buildings;
+	}*/
+	
+	public static ObservableList<Building> getFullListe() {
+		if (modelListe==null){
+			if (buildings==null)setMilkVarFromFiles();
+			if (modelNeutralListe==null)getNeutralListe();
+			if (modelScienceListe==null)getScienceListe();
+			if (modelMagicListe==null)getMagicListe();
+			modelListe = FXCollections.observableArrayList();
+			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
+		}
+		return modelListe;
 	}
 
-	public static double getIncomeFromList(ObservableList<Building> thingList, double buildProdBonus,
-			double buildQualBonus) {
+	public static ObservableList<Building> getNeutralListe() {
+		if (modelNeutralListe==null){
+			if (buildings==null)setMilkVarFromFiles();
+			modelNeutralListe = FXCollections.observableArrayList();
+			if (buildings!=null){
+				for (Building building:buildings){
+					try {
+						if(building.getAttrib().getTree()==ThingAttrib.Tree_Neutral)modelNeutralListe.add((Building) building.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelNeutralListe;
+	}
+
+	public static ObservableList<Building> getScienceListe() {
+		if (modelScienceListe==null){
+			if (buildings==null)setMilkVarFromFiles();
+			modelScienceListe = FXCollections.observableArrayList();
+			if (buildings!=null){
+				for (Building building:buildings){
+					try {
+						if(building.getAttrib().getTree()==ThingAttrib.Tree_Science)modelScienceListe.add((Building) building.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelScienceListe;
+	}
+
+	public static ObservableList<Building> getMagicListe() {
+		if (modelMagicListe==null){
+			if (buildings==null)setMilkVarFromFiles();
+			modelMagicListe = FXCollections.observableArrayList();
+			if (buildings!=null){
+				for (Building building:buildings){
+					try {
+						if(building.getAttrib().getTree()==ThingAttrib.Tree_Magic)modelMagicListe.add((Building) building.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		return modelMagicListe;
+	}
+
+	public static double getIncomeFromList(double buildProdBonus, double buildQualBonus) {
+		if (modelListe==null)getFullListe();
 		double tIncome = 0;
-		for (Thing thing:thingList){
+		for (Building thing:modelListe){
 			tIncome += thing.getIncome(buildProdBonus,buildQualBonus) ;
 		}
 		return tIncome;
 	}
+
+	// Fields
 
 	private Agent agent;
 	private Bonus bonus;
@@ -222,6 +207,16 @@ public class Building extends Thing implements Cloneable {
 		this.setBonus(milkElement);
 		this.setPopulation(milkElement);
 	}
+	public void setAgent(Element milkElement) {
+		this.agent.setValueFromNode(milkElement);;
+	}
+	public void setBonus(Element milkElement) {
+		this.bonus.setValueFromNode(milkElement);;
+	}
+	public void setPopulation(Element milkElement) {
+		this.population.setValueFromNode(milkElement);;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
@@ -229,6 +224,15 @@ public class Building extends Thing implements Cloneable {
 		this.setNullBonus(milkElement);
 		this.setNullPopulation(milkElement);
 	}
+	public void setNullAgent(Element milkElement) {
+		this.agent.setValueFromNode(milkElement);
+	}
+	public void setNullBonus(Element milkElement) {
+		this.bonus.setNullValueFromNode(milkElement);
+	}
+	public void setNullPopulation(Element milkElement) {
+		this.population.setNullValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -238,12 +242,6 @@ public class Building extends Thing implements Cloneable {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
-	public void setAgent(Element milkElement) {
-		this.agent.setValueFromNode(milkElement);;
-	}
-	public void setNullAgent(Element milkElement) {
-		this.agent.setValueFromNode(milkElement);
-	}
 	
 	public Bonus getBonus() {
 		return this.bonus;
@@ -251,24 +249,12 @@ public class Building extends Thing implements Cloneable {
 	public void setBonus(Bonus bonus) {
 		this.bonus = bonus;
 	}
-	public void setBonus(Element milkElement) {
-		this.bonus.setValueFromNode(milkElement);;
-	}
-	public void setNullBonus(Element milkElement) {
-		this.bonus.setNullValueFromNode(milkElement);
-	}
 	
 	public Population getPopulation() {
 		return this.population;
 	}
 	public void setPopulation(Population population) {
 		this.population = population;
-	}
-	public void setPopulation(Element milkElement) {
-		this.population.setValueFromNode(milkElement);;
-	}
-	public void setNullPopulation(Element milkElement) {
-		this.population.setNullValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods

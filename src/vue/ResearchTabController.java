@@ -89,12 +89,11 @@ public class ResearchTabController extends MilkTabControleur {
     @FXML
 	private TextField quoteInput;
 	
-    @SuppressWarnings("unchecked")
 	@FXML
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Research.getListes());
+    	selectVar.setItems(Research.getResearchListe());
 		changeVar(selectVar.getValue());
 	}
     

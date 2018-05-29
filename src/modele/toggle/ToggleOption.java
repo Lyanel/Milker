@@ -27,6 +27,47 @@ public class ToggleOption extends ToggleScene implements Cloneable {
 		}
 		return toggleOptions;
 	}
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static Vector getMilkVarList(Vector<Element> elementlist) {
+		Vector<ToggleOption> toggleOptions = new Vector<ToggleOption>();
+		for (Element elementMilk: elementlist) {
+			try {
+				ToggleOption toggleOption = new ToggleOption(elementMilk);
+				toggleOptions.add(toggleOption);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return toggleOptions;
+	}
+	/*
+	@SuppressWarnings("rawtypes")
+	public static Vector getNullMilkVarList(Element elementlist) {
+		Vector<ToggleOption> toggleOptions = new Vector<ToggleOption>();
+		ToggleOption toggleOption=new ToggleOption();
+		Element elements = toggleOption.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=toggleOption.getMilkElement(elements,i);
+			if (tempE != null){
+				toggleOption=new ToggleOption();
+				toggleOption.setNullValueFromNode(tempE);
+				toggleOptions.add(toggleOption);
+			}
+		}
+		return toggleOptions;
+	}
+	@SuppressWarnings("rawtypes")
+	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
+		Vector<ToggleOption> toggleOptions = new Vector<ToggleOption>();
+		for (Element elementMilk: elementlist) {
+			try {
+				ToggleOption toggleOption = new ToggleOption();
+				toggleOption.setNullValueFromNode(elementMilk);
+				toggleOptions.add(toggleOption);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return toggleOptions;
+	}*/
 	
 	public static Vector<ToggleOption> setOptionsInfos(Vector<ToggleOption> toggleOptions, Element elementlist) {
 		ToggleOption toggleOption=new ToggleOption();
@@ -78,47 +119,6 @@ public class ToggleOption extends ToggleScene implements Cloneable {
 		}
 		return toggleOptions;
 	}
-	
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<ToggleOption> toggleOptions = new Vector<ToggleOption>();
-		ToggleOption toggleOption=new ToggleOption();
-		Element elements = toggleOption.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=toggleOption.getMilkElement(elements,i);
-			if (tempE != null){
-				toggleOption=new ToggleOption();
-				toggleOption.setNullValueFromNode(tempE);
-				toggleOptions.add(toggleOption);
-			}
-		}
-		return toggleOptions;
-	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleOption> toggleOptions = new Vector<ToggleOption>();
-		for (Element elementMilk: elementlist) {
-			try {
-				ToggleOption toggleOption = new ToggleOption(elementMilk);
-				toggleOptions.add(toggleOption);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return toggleOptions;
-	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleOption> toggleOptions = new Vector<ToggleOption>();
-		for (Element elementMilk: elementlist) {
-			try {
-				ToggleOption toggleOption = new ToggleOption();
-				toggleOption.setNullValueFromNode(elementMilk);
-				toggleOptions.add(toggleOption);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return toggleOptions;
-	}
 
 	// field
 
@@ -142,30 +142,29 @@ public class ToggleOption extends ToggleScene implements Cloneable {
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
 	}
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-	}
-
 	public void addLevel(Element milkElement) {
 		ToggleLevel newlevel = new ToggleLevel(milkElement);
 		newlevel.setValueFromNode(milkElement);
 		levels.add(newlevel);
+	}
+	@SuppressWarnings("unchecked")
+	public void setLevels(Element milkElement) {
+		this.levels.addAll(ToggleLevel.getMilkVarList(milkElement));
+	}
+	/*
+	@Override
+	public void setNullValueFromNode(Element milkElement) {
+		super.setNullValueFromNode(milkElement);
 	}
 	public void addNullLevel(Element milkElement) {
 		ToggleLevel newlevel = new ToggleLevel();
 		newlevel.setNullValueFromNode(milkElement);
 		levels.add(newlevel);
 	}
-	
-	@SuppressWarnings("unchecked")
-	public void setLevels(Element milkElement) {
-		this.levels.addAll(ToggleLevel.getMilkVarList(milkElement));
-	}
 	@SuppressWarnings("unchecked")
 	public void setNullLevels(Element milkElement) {
 		this.levels.addAll(ToggleLevel.getNullMilkVarList(milkElement));
-	}
+	}*/
 	
 	// field methods
 	

@@ -8,6 +8,9 @@ public class Bonus extends MilkKind implements Cloneable {
 	
 	public static final String noeud = "bonus";
 	public String getNoeud() {return noeud;}
+
+	// Fields
+	
 	private MilkAttrib attrib;
 		
 	// Constructors
@@ -34,12 +37,19 @@ public class Bonus extends MilkKind implements Cloneable {
 		super.setValueFromNode(thisElement);
 		this.setAttrib(thisElement);
 	}
+	public void setAttrib(Element milkElement) {
+		this.attrib.setValueFromNode(milkElement);
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisElementFromParent(milkElement);
 		super.setValueFromNode(thisElement);
 		this.setNullAttrib(thisElement);
 	}
+	public void setNullAttrib(Element milkElement) {
+		this.attrib.setNullValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -48,12 +58,6 @@ public class Bonus extends MilkKind implements Cloneable {
 	}
 	public void setAttrib(MilkAttrib attrib) {
 		this.attrib = attrib;
-	}
-	public void setAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);
-	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setNullValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods

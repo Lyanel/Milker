@@ -26,17 +26,24 @@ public class Population extends MilkKind implements Cloneable {
 	
 	@Override
 	public void setValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParentNull(milkElement);
+		Element thisElement = this.getThisElementFromParent(milkElement);
 		super.setValueFromNode(thisElement);
 		this.setAttrib(thisElement);
 		if(this.getAttrib().getQuant()>0)this.setMod(1);		
 	}
+	public void setAttrib(Element milkElement) {
+		this.attrib.setValueFromNode(milkElement);
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
+		Element thisElement = this.getThisElementFromParentNull(milkElement);
 		super.setNullValueFromNode(thisElement);
 		this.setNullAttrib(thisElement);
 	}
+	public void setNullAttrib(Element milkElement) {
+		this.attrib.setNullValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -45,12 +52,6 @@ public class Population extends MilkKind implements Cloneable {
 	}
 	public void setAttrib(ThingAttrib attrib) {
 		this.attrib = attrib;
-	}
-	public void setAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);
-	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setNullValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods

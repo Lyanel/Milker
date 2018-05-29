@@ -8,6 +8,9 @@ public class Income extends MilkCoin implements Cloneable {
 	
 	public static final String noeud = "income", xmlProd = "prod";
 	public String getNoeud() {return noeud;}
+	
+	// Fields
+	
 	private MilkAttrib attrib;
 	private Integer prod; //productivity (1/0 yes or no), sorry i was to leazy to convert a boolean from xml.
 	private int mod; //Check prod->Xml : 0 no, 1 as attrib.
@@ -39,6 +42,15 @@ public class Income extends MilkCoin implements Cloneable {
 		this.setAttrib(thisElement);
 		this.setProd(thisElement);
 	}
+	public void setAttrib(Element milkElement) {
+		this.attrib.setValueFromNode(milkElement);
+	}
+	public void setProd(Element milkElement) {
+		Integer temp=0;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlProd);
+		if (temp != null) this.prod=temp;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisElementFromParent(milkElement);
@@ -46,6 +58,12 @@ public class Income extends MilkCoin implements Cloneable {
 		this.setNullAttrib(thisElement);
 		this.setNullProd(thisElement);
 	}
+	public void setNullAttrib(Element milkElement) {
+		this.attrib.setNullValueFromNode(milkElement);
+	}
+	public void setNullProd(Element milkElement) {
+		prod = ParseMilkFile.getXmlIntAttribute(milkElement,xmlProd);
+	}*/
 	
 	// field methods
 	
@@ -54,12 +72,6 @@ public class Income extends MilkCoin implements Cloneable {
 	}
 	public void setAttrib(MilkAttrib attrib) {
 		this.attrib = attrib;
-	}
-	public void setAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);
-	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setNullValueFromNode(milkElement);
 	}
 	
 	public Integer getProd() {
@@ -84,14 +96,6 @@ public class Income extends MilkCoin implements Cloneable {
 	}
 	public void setProd(Integer prod) {
 		this.prod = prod;
-	}
-	public void setProd(Element milkElement) {
-		Integer temp=0;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlProd);
-		if (temp != null) this.prod=temp;
-	}
-	public void setNullProd(Element milkElement) {
-		prod = ParseMilkFile.getXmlIntAttribute(milkElement,xmlProd);
 	}
 	
 	public int getMod() {

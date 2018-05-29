@@ -3,11 +3,12 @@ package modele.carac;
 import controleur.ParseMilkFile;
 import modele.MilkInterface;
 import modele.MilkVar;
+import modele.thing.Thing;
 
 import org.w3c.dom.Element;
 	/**
 	 * Tree :  Refer to the tree in which you can have the object : 
-	 *	object : 0 (neutral), 2 (science) or 3 (magic).
+	 *	object : 1 (neutral), 2 (science) or 3 (magic).
 	 *	need/check : 9 (all tree), 5 (neutral & science), 6 (neutral & magic) or 7 (science & magic).
 	 *
 	 * @author Slade Chaos
@@ -23,6 +24,25 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 	public static final int Tree_MagiScience = 7;
 	public static final int tree_All = 9;
 	public static final String xmlTree = "tree", xmlQuant = "quant";
+	
+	/**
+	 * Test if tree match : </br>
+	 * Return true if </br>
+	 * tested.tree=1 & wanted.tree=0,1,5,6or9 for Neutral ||</br> 
+	 * tested.tree=2 & wanted.tree=0,2,5,7or9 for Science || </br>
+	 * tested.tree=3 & wanted.tree=0,3,6,7or9 for Magic </br>
+	 */
+	public static boolean checkAttrib(ThingAttrib wanted, Thing tested) {
+		boolean result = false;
+		ThingAttrib test = tested.getAttrib();
+		if (test.tree==1 && (wanted.tree==0 || wanted.tree==1 || wanted.tree==5 || wanted.tree==6 || wanted.tree==9)) result = true;
+		else if (test.tree==2 && (wanted.tree==0 || wanted.tree==2 || wanted.tree==5 || wanted.tree==7 || wanted.tree==9)) result = true;
+		else if (test.tree==3 && (wanted.tree==0 || wanted.tree==3 || wanted.tree==6 || wanted.tree==7 || wanted.tree==9)) result = true;
+		return result;
+	}
+
+	// Fields
+	
 	private Integer tree, quant;
 	
 	// Constructors
@@ -48,12 +68,29 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 		this.setTree(milkElement);
 		this.setQuant(milkElement);
 	}
+	public void setTree(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlTree);
+		if (temp != null) this.tree=temp;
+	}
+	public void setQuant(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntValue(milkElement);
+		if (temp != null) this.quant=temp;
+	}
+/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullTree(milkElement);
 		this.setNullQuant(milkElement);
 	}
+	public void setNullTree(Element milkElement) {
+		this.tree = ParseMilkFile.getXmlIntAttribute(milkElement,xmlTree);
+	}
+	public void setNullQuant(Element milkElement) {
+		this.quant = ParseMilkFile.getXmlIntValue(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -82,15 +119,6 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 	public void setTree(Integer tree) {
 		this.tree = tree;
 	}
-	public void setTree(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlTree);
-		if (temp != null) this.tree=temp;
-	}
-	public void setNullTree(Element milkElement) {
-		this.tree = ParseMilkFile.getXmlIntAttribute(milkElement,xmlTree);
-	}
-
 	public Integer getQuant() {
 		return this.quant;
 	}
@@ -106,14 +134,6 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 	}
 	public void setQuant(Integer quant) {
 		this.quant = quant;
-	}
-	public void setQuant(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntValue(milkElement);
-		if (temp != null) this.quant=temp;
-	}
-	public void setNullQuant(Element milkElement) {
-		this.quant = ParseMilkFile.getXmlIntValue(milkElement);
 	}
 	
 	// toString & toXml methods

@@ -13,12 +13,12 @@ import modele.MilkRs;
 import modele.carac.Effect;
 
 public class Synergy extends Research implements Cloneable {
-	
-	public static final String noeud = "synergy";
+
+	public static final String file	= "Synergy", noeud = "synergy";
 	public String getNoeud() {return noeud;}
 
 	private static Vector<Synergy> synergys;
-	public static final String file		= "Synergy";
+	private static ObservableList<Synergy> modelSynergys;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static Vector setMilkVarFromFiles() {
@@ -33,38 +33,6 @@ public class Synergy extends Research implements Cloneable {
 		return synergys;
 	}
 
-	private static void setInfo(Vector<Synergy> synergys, Vector<Element> elementlInfos) {
-		for (Element elementlInfo: elementlInfos) {
-			try {
-				Synergy synergyInfo = new Synergy(elementlInfo);
-				synergyInfo.setInfo(elementlInfo);
-				for (Synergy synergy:synergys){
-					if (synergyInfo.equals(synergy)){
-						synergy.setInfo(synergyInfo.getInfo());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	@SuppressWarnings("rawtypes")
-	public static ObservableList getListes() {
-		if (synergys==null)setMilkVarFromFiles();
-		ObservableList<Synergy> clone = FXCollections.observableArrayList();
-		if (synergys!=null){
-			for (Synergy synergy:synergys){
-				try {
-					clone.add((Synergy) synergy.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return clone;
-	}
-
 	@SuppressWarnings("rawtypes")
 	public static Vector getMilkVarList(Vector<Element> elementlist) {
 		Vector<Synergy> synergys = new Vector<Synergy>();
@@ -76,20 +44,27 @@ public class Synergy extends Research implements Cloneable {
 		}
 		return synergys;
 	}
-
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Synergy> synergys = new Vector<Synergy>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Synergy synergy = new Synergy();
-				synergy.setNullValueFromNode(elementMilk);
-				synergys.add(synergy);
-			} catch (Exception e) {e.printStackTrace();}
+	
+	public static ObservableList<Synergy> getSynergyListe() {
+		if (modelSynergys==null){
+			if (synergys==null)setMilkVarFromFiles();
+			modelSynergys = FXCollections.observableArrayList();
+			if (synergys!=null){
+				for (Synergy synergy:synergys){
+					try {
+						modelSynergys.add((Synergy) synergy.clone());
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 		}
-		return synergys;
+		return modelSynergys;
 	}
 
+	// Fields
+	
 	private Vector<Effect> effects = null;
 
 	// Constructors
@@ -114,10 +89,9 @@ public class Synergy extends Research implements Cloneable {
 		this.setEffects(milkElement);
 		
 	}
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullEffects(milkElement);
+	@SuppressWarnings("unchecked")
+	public void setEffects(Element milkElement) {
+		effects.addAll(Effect.getMilkVarList(milkElement));
 	}
 	
 	// field methods
@@ -127,14 +101,6 @@ public class Synergy extends Research implements Cloneable {
 	}
 	public void setEffects(Vector<Effect> effects) {
 		this.effects = effects;
-	}
-	@SuppressWarnings("unchecked")
-	public void setEffects(Element milkElement) {
-		effects.addAll(Effect.getMilkVarList(milkElement));
-	}
-	@SuppressWarnings("unchecked")
-	public void setNullEffects(Element milkElement) {
-		effects.addAll(Effect.getNullMilkVarList(milkElement));
 	}
 	
 	// toString & toXml methods

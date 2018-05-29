@@ -9,6 +9,9 @@ public class MilkId extends MilkVar implements Cloneable {
 	public static final String xmlId = "id";
 	public static final String noeud = "";
 	public String getNoeud() {return noeud;}
+	
+	// Fields
+	
 	private Integer id;
 
 	// Constructors
@@ -32,11 +35,20 @@ public class MilkId extends MilkVar implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setId(milkElement);
 	}
+	public void setId(Element milkElement) {
+		Integer temp=null;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlId);
+		if (temp != null) this.id=temp;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullId(milkElement);
 	}
+	public void setNullId(Element milkElement) {
+		id = ParseMilkFile.getXmlIntAttribute(milkElement,xmlId);
+	}*/
 	
 	// field methods
 	
@@ -55,14 +67,6 @@ public class MilkId extends MilkVar implements Cloneable {
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public void setId(Element milkElement) {
-		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlId);
-		if (temp != null) this.id=temp;
-	}
-	public void setNullId(Element milkElement) {
-		id = ParseMilkFile.getXmlIntAttribute(milkElement,xmlId);
 	}
 	
 	// toString & toXml methods

@@ -3,6 +3,8 @@ package modele;
 import org.w3c.dom.Element;
 
 public class MilkObj extends MilkId implements Cloneable {
+
+	// Fields
 	
 	private MilkKind kind;
 
@@ -25,11 +27,18 @@ public class MilkObj extends MilkId implements Cloneable {
 		super.setValueFromNode(milkElement);
 		this.setKind(milkElement);
 	}
+	public void setKind(Element milkElement) {
+		this.kind.setValueFromNode(milkElement);;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		super.setNullValueFromNode(milkElement);
 		this.setNullKind(milkElement);
 	}
+	public void setNullKind(Element milkElement) {
+		this.kind.setValueFromNode(milkElement);
+	}*/
 	
 	// field methods
 	
@@ -42,12 +51,6 @@ public class MilkObj extends MilkId implements Cloneable {
 	}
 	public void setKind(MilkKind kind) {
 		this.kind = kind;
-	}
-	public void setKind(Element milkElement) {
-		this.kind.setValueFromNode(milkElement);;
-	}
-	public void setNullKind(Element milkElement) {
-		this.kind.setValueFromNode(milkElement);
 	}
 	
 	// toString & toXml methods

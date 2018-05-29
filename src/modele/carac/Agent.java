@@ -27,6 +27,18 @@ public class Agent extends NeededThing implements Cloneable {
 		return agents;
 	}
 	@SuppressWarnings("rawtypes")
+	public static Vector getMilkVarList(Vector<Element> elementlist) {
+		Vector<Agent> agents = new Vector<Agent>();
+		for (Element elementMilk: elementlist) {
+			try {
+				Agent agent = new Agent(elementMilk);
+				agents.add(agent);
+			} catch (Exception e) {e.printStackTrace();}
+		}
+		return agents;
+	}
+	/*
+	@SuppressWarnings("rawtypes")
 	public static Vector getNullMilkVarList(Element elementlist) {
 		Vector<Agent> agents = new Vector<Agent>();
 		Agent agent=new Agent();
@@ -44,17 +56,6 @@ public class Agent extends NeededThing implements Cloneable {
 		return agents;
 	}
 	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<Agent> agents = new Vector<Agent>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Agent agent = new Agent(elementMilk);
-				agents.add(agent);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return agents;
-	}
-	@SuppressWarnings("rawtypes")
 	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
 		Vector<Agent> agents = new Vector<Agent>();
 		for (Element elementMilk: elementlist) {
@@ -65,7 +66,7 @@ public class Agent extends NeededThing implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return agents;
-	}
+	}*/
 
 	// Constructors
 	
@@ -84,11 +85,12 @@ public class Agent extends NeededThing implements Cloneable {
 		Element thisElement = this.getThisElementFromParent(milkElement);
 		if(milkElement != thisElement) super.setValueFromNode(thisElement);
 	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisElementFromParent(milkElement);
 		super.setNullValueFromNode(thisElement);
-	}
+	}*/
 	
 	// other object methods
 	

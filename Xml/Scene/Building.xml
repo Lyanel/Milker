@@ -45,6 +45,7 @@
 	<building id="23">
 		<name>clinic_13_by_stefanieodendahl-d60bkep</name>
 		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
 		<desc>https://stefanieodendahl.deviantart.com/art/clinic-363336721</desc>
 	</building>
 	<building id="24">
@@ -116,6 +117,7 @@
 	<building id="44">
 		<name>inquisitioninstallation_by_evitaer-dcazl4a</name>
 		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
 		<desc>https://evitaer.deviantart.com/art/InquisitionInstallation-744050602</desc>
 	</building>
 	<building id="51">
@@ -133,6 +135,7 @@
 	<building id="55">
 		<name>10_hunterprison_final_by_evitaer-dcazk6r</name>
 		<path>Img/Scene/Building/</path>
+		<ext>.jpg</ext>
 		<desc>https://evitaer.deviantart.com/art/10-Hunterprison-final-744049395</desc>
 	</building>
 	<building id="61">

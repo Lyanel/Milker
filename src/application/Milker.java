@@ -17,8 +17,9 @@ import modele.thing.Building;
 import modele.thing.Slave;
 import modele.thing.Thing;
 import modele.thing.Worker;
+import modele.toggle.ToggleOption;
 import vue.MilkEditorController;
-import vue.MilkGameSController;
+import vue.MilkGameController;
 import vue.MilkMenuController;
 import vue.MilkStatutController;
 import vue.MilkerController;
@@ -42,7 +43,7 @@ public class Milker extends Application {
 	private BorderPane rootLayout;
 	private GameModele model;
 	private MilkStatutController statutController;
-	private MilkGameSController gameController;
+	private MilkGameController gameController;
 	
     @Override
     public void start(Stage primaryStage) {
@@ -127,7 +128,7 @@ public class Milker extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
           //  loader.setLocation(Milker.class.getResource(MilkRs.milkGame));
-            loader.setLocation(Milker.class.getResource(MilkRs.milkGameS));
+            loader.setLocation(Milker.class.getResource(MilkRs.milkGame));
             AnchorPane game = (AnchorPane) loader.load();
             rootLayout.setCenter(game);
 
@@ -147,20 +148,16 @@ public class Milker extends Application {
      */
 	public void setInfoPanVisible(MilkInfo info, boolean visible) {
 		gameController.setInfoVisible(info, visible);
-		if(info!=null && visible){
-			setStatutMessage(info.toStringTextChild());
-		} else{
-			setStatutMessage("");
-		}
 	}
-	public void showThing(Thing value) {
-		if (value instanceof Building) gameController.setBGScene(value);
-		if (value instanceof Slave || value instanceof Worker || value instanceof Animal) gameController.setNPCScene(value);
+	
+	public void showMilkXmlObj(MilkXmlObj value) {
+		if (value instanceof Building) gameController.setBGScene((Thing) value);
+		if (value instanceof Slave || value instanceof Worker || value instanceof Animal) gameController.setNPCScene((Thing) value);
+		if (value instanceof ToggleOption) gameController.setIdolScene((ToggleOption) value);
 	}
 
-	public void showMilkObject(MilkXmlObj value) {
-		// TODO Auto-generated method stub
-		
+	public void setSlavesTabVisible(boolean visible) {
+		gameController.setSlavesTabVisible(visible);
 	}
 
     /*

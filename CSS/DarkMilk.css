@@ -1,6 +1,9 @@
 .NotBuyable {
     -fx-text-fill: red;
 }
+.Bought {
+    -fx-text-fill: green;
+}
 /*
 .background {
     -fx-background-color: #1d1d1d;

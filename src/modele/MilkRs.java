@@ -5,9 +5,8 @@ public class MilkRs {
 	public static final String LIGNE_BREAK	= System.getProperty("line.separator");
 	public static final String LIGNE_TAB	= "\t";
 	public static final String DATE_FORMAT	= "HH:mm:ss";
-	public static final String cssNotBuyable= "NotBuyable";
-	
-	//fxml file list.
+
+	// fxml file list.
 	
 	public static final String fxBasePath	= "/vue/fxml/";
 	public static final String milker		= fxBasePath+"Milker.fxml";
@@ -27,7 +26,14 @@ public class MilkRs {
 	public static final String synergyPan	= fxBasePath+"SynergyTab.fxml";
 	public static final String ascensionPan	= fxBasePath+"AscensionTab.fxml";
 	public static final String eventPan		= fxBasePath+"EventTab.fxml";
-	public static final String thingCell	= fxBasePath+"ThingCell.fxml";
-	public static final String milkCell		= fxBasePath+"MilkCell.fxml";
 	public static final String infoCell		= fxBasePath+"InfoCell.fxml";
+	public static final String milkCellIntel	= fxBasePath+"MilkCellIntel.fxml";
+	public static final String milkCellThing	= fxBasePath+"MilkCellThing.fxml";
+	public static final String milkCellOption	= fxBasePath+"MilkCellOption.fxml";
+	public static final String milkTitledCell	= fxBasePath+"MilkTitledCell.fxml";
+
+	// CSS.
+	
+	public static final String cssNotBuyable= "NotBuyable";
+	public static final String cssBought	= "Bought";
 }

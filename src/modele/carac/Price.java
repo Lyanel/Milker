@@ -34,6 +34,17 @@ public class Price extends MilkCoin implements Cloneable {
 		this.setCoef(thisElement);
 		this.setSell(thisElement);
 	}
+	public void setCoef(Element milkElement) {
+		Float temp=null;
+		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
+		if (temp != null) this.coef=temp;
+	}
+	public void setSell(Element milkElement) {
+		Float temp=null;
+		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlSell);
+		if (temp != null) this.sell=temp;
+	}
+	/*
 	@Override
 	public void setNullValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisElementFromParent(milkElement);
@@ -41,6 +52,12 @@ public class Price extends MilkCoin implements Cloneable {
 		this.setNullCoef(thisElement);
 		this.setNullSell(thisElement);
 	}
+	public void setNullCoef(Element milkElement) {
+		coef = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
+	}
+	public void setNullSell(Element milkElement) {
+		sell = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlSell);
+	}*/
 	
 	// field methods
 	
@@ -60,14 +77,6 @@ public class Price extends MilkCoin implements Cloneable {
 	public void setCoef(Float coef) {
 		this.coef = coef;
 	}
-	public void setCoef(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
-		if (temp != null) this.coef=temp;
-	}
-	public void setNullCoef(Element milkElement) {
-		coef = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
-	}
 	
 	public Float getSell() {
 		return this.sell;
@@ -84,14 +93,6 @@ public class Price extends MilkCoin implements Cloneable {
 	}
 	public void setSell(Float sell) {
 		this.sell = sell;
-	}
-	public void setSell(Element milkElement) {
-		Float temp=null;
-		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlSell);
-		if (temp != null) this.sell=temp;
-	}
-	public void setNullSell(Element milkElement) {
-		sell = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlSell);
 	}
 	
 	// toString & toXml methods

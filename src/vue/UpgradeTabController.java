@@ -94,12 +94,11 @@ public class UpgradeTabController extends MilkTabControleur {
     @FXML
 	private TextField quoteInput;
 	
-    @SuppressWarnings("unchecked")
 	@FXML
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Upgrade.getListes());
+    	selectVar.setItems(Upgrade.getUpgradeListe());
 		changeVar(selectVar.getValue());
 	}
     
