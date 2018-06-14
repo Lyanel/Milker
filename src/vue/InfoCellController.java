@@ -39,6 +39,7 @@ public class InfoCellController {
     	effectPan.setText(getValue().getTxEffect());
     	descPan.setText(getValue().getDesc());
     	quotePan.setText(getValue().getQuote());
+    	infoPan.managedProperty().bind(rootPane.visibleProperty());
     }
 
     /**

@@ -32,6 +32,7 @@ public class MilkCellThing extends ListCell<Thing> {
             renderer = (Node) fxmlLoader.load();
             rendererController = (MilkCellThingController) fxmlLoader.getController();
             rendererController.setApplication(this.application);
+            this.managedProperty().bind(this.visibleProperty());
         } catch (IOException ex) {
             Logger.getLogger(MilkCellThing.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }

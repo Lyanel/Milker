@@ -32,6 +32,7 @@ public class MilkCellOption extends ListCell<ToggleOption> {
             renderer = (Node) fxmlLoader.load();
             rendererController = (MilkCellOptionController) fxmlLoader.getController();
             rendererController.setApplication(this.application);
+            this.managedProperty().bind(this.visibleProperty());
         } catch (IOException ex) {
             Logger.getLogger(MilkCellOption.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }

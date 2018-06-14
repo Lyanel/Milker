@@ -40,16 +40,6 @@ public class Bonus extends MilkKind implements Cloneable {
 	public void setAttrib(Element milkElement) {
 		this.attrib.setValueFromNode(milkElement);
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
-		super.setValueFromNode(thisElement);
-		this.setNullAttrib(thisElement);
-	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setNullValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 	

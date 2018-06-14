@@ -30,6 +30,7 @@ public class MilkRs {
 	public static final String milkCellIntel	= fxBasePath+"MilkCellIntel.fxml";
 	public static final String milkCellThing	= fxBasePath+"MilkCellThing.fxml";
 	public static final String milkCellOption	= fxBasePath+"MilkCellOption.fxml";
+	public static final String milkCellOptLvl	= fxBasePath+"MilkCellOptLvl.fxml";
 	public static final String milkTitledCell	= fxBasePath+"MilkTitledCell.fxml";
 
 	// CSS.

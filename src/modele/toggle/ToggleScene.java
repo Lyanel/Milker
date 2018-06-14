@@ -45,15 +45,6 @@ public class ToggleScene extends MilkXmlObj implements Cloneable {
 	public void setScene(Element milkElement) {
 		this.scene.setValueFromNode(milkElement);
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullLvl(milkElement);
-	}
-	public void setNullLvl(Element milkElement) {
-		lvl = ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
-	}*/
 	
 	// field methods
 

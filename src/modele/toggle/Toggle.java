@@ -27,7 +27,7 @@ public class Toggle extends Intel implements Cloneable {
 				for (Toggle thing:toggles){
 					if (test.getId().intValue() == thing.getId().intValue()){
 						thing.setInfo(test.getInfo());
-						thing.setToggleOptionsInfo(test.getToggleOptions());
+				//		thing.setToggleOptionsInfo(test.getToggleOptions());
 						ToggleOption.setOptionsInfos(thing.getToggleOptions(),element);
 						break;
 					}
@@ -44,7 +44,7 @@ public class Toggle extends Intel implements Cloneable {
 				for (Toggle thing:toggles){
 					if (test.getId().intValue() == thing.getId().intValue()){
 						thing.setIcon(test.getIcon());
-						thing.setToggleOptionsIcon(test.getToggleOptions());
+				//		thing.setToggleOptionsIcon(test.getToggleOptions());
 						ToggleOption.setOptionsIcons(thing.getToggleOptions(),element);
 						break;
 					}
@@ -60,7 +60,7 @@ public class Toggle extends Intel implements Cloneable {
 				test.setScenes(element);
 				for (Toggle thing:toggles){
 					if (test.getId().intValue() == thing.getId().intValue()){
-						thing.setToggleOptionsScene(test.getToggleOptions());
+				//		thing.setToggleOptionsScene(test.getToggleOptions());
 						ToggleOption.setOptionsScenes(thing.getToggleOptions(),element);
 						break;
 					}
@@ -132,32 +132,6 @@ public class Toggle extends Intel implements Cloneable {
 	public void setToggleOptionsScenes(Element milkElement) {
 		toggleOptions.addAll(ToggleOption.getMilkVarList(milkElement));
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullAgent(milkElement);
-		this.setNullToggleOptions(milkElement);
-	}
-	public void setNullAgent(Element milkElement) {
-		this.agent.setValueFromNode(milkElement);
-	}
-	public void addNullOption(Element milkElement) {
-		ToggleOption newOption = new ToggleOption();
-		newOption.setNullValueFromNode(milkElement);
-		toggleOptions.add(newOption);
-	}
-	@SuppressWarnings("unchecked")
-	public void setNullToggleOptions(Element milkElement) {
-		toggleOptions.addAll(ToggleOption.getNullMilkVarList(milkElement));
-	}
-	public void setNullScenes(Element milkElement) {
-		this.setNullToggleOptionsScenes(milkElement);
-	}
-	@SuppressWarnings("unchecked")
-	public void setNullToggleOptionsScenes(Element milkElement) {
-		toggleOptions.addAll(ToggleOption.getNullMilkVarList(milkElement));
-	}*/
 	
 	// field methods
 

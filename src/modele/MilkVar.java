@@ -83,6 +83,16 @@ public class MilkVar implements Cloneable {
 		Element child = (getMilkElement(milkElement,0)!=null)? getMilkElement(milkElement,0):milkElement;
 		return child;
 	}
+	/**
+	 * Check if this element exist as a child and return it, else return null.
+	 */
+	public Element getOptionalChild(Element milkElement) {
+		Element child = null;
+		try {
+			child = XmlHelper.getOptionalChild(milkElement, this.getNoeud());
+		} catch (Exception e) {e.printStackTrace();}
+		return child;
+	}
 		
 	// toString & toXml methods
 	

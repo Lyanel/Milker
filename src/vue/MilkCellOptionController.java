@@ -38,9 +38,8 @@ public class MilkCellOptionController extends MilkCellController implements Init
         updateUI(newValue);
     };
 
-    private void updateUI(ToggleOption thing) {
-    	super.updateUI(thing);
-    	if(((Milker) getApplication()).getModel().isMilkObjVisible(thing) )rootPane.setVisible(true);
+    public void updateUI(ToggleOption thing) {
+    	if(((Milker) getApplication()).getModel().isMilkObjVisible(thing) )super.updateUIVisible(thing);
     	else rootPane.setVisible(false);
     }
 

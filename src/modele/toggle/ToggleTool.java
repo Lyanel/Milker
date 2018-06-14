@@ -67,85 +67,6 @@ public class ToggleTool extends Toggle implements Cloneable {
 		}
 		return things;
 	}
-	/*
-	public static Vector<ToggleTool> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleTool> things = new Vector<ToggleTool>();
-		for (Element elementMilk: elementlist) {
-			try {
-				ToggleTool thing = new ToggleTool();
-				thing.setNullValueFromNode(elementMilk);
-				things.add(thing);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return things;
-	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<ToggleTool> things = new Vector<ToggleTool>();
-		ToggleTool thing=new ToggleTool();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing=new ToggleTool();
-				thing.setNullValueFromNode(tempE);
-				things.add(thing);
-			}
-		}
-		return things;
-	}*/
-	/*
-	private static void setInfos(Vector<ToggleTool> toggleTools, Vector<Element> elementInfos) {
-		for (Element elementInfo: elementInfos) {
-			try {
-				ToggleTool toggleToolInfo = new ToggleTool(elementInfo);
-				toggleToolInfo.setInfo(elementInfo);
-				for (ToggleTool toggleTool:toggleTools){
-					if (toggleToolInfo.equals(toggleTool)){
-						toggleTool.setInfo(toggleToolInfo.getInfo());
-						toggleTool.setToggleOptionsInfo(toggleToolInfo.getToggleOptions());
-						ToggleOption.setOptionsInfos(toggleTool.getToggleOptions(),elementInfo);
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setIcons(Vector<ToggleTool> toggleTools, Vector<Element> elementIcons) {
-		for (Element elementIcon: elementIcons) {
-			try {
-				ToggleTool toggleToolIcon = new ToggleTool(elementIcon);
-				toggleToolIcon.setIcon(elementIcon);
-				for (ToggleTool toggleTool:toggleTools){
-					if (toggleToolIcon.equals(toggleTool)){
-						toggleTool.setIcon(toggleToolIcon.getIcon());
-						toggleTool.setToggleOptionsIcon(toggleToolIcon.getToggleOptions());
-						ToggleOption.setOptionsIcons(toggleTool.getToggleOptions(),elementIcon);
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setScenes(Vector<ToggleTool> toggleTools, Vector<Element> elementScenes) {
-		for (Element elementScene: elementScenes) {
-			try {
-				ToggleTool toggleToolScene = new ToggleTool(elementScene);
-				toggleToolScene.setScenes(elementScene);
-				for (ToggleTool toggleTool:toggleTools){
-					if (toggleToolScene.equals(toggleTool)){
-						toggleTool.setToggleOptionsScene(toggleToolScene.getToggleOptions());
-						ToggleOption.setOptionsScenes(toggleTool.getToggleOptions(),elementScene);
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}*/
 	
 	public static ToggleTool getTool() {
 		if(tool==null){
@@ -187,11 +108,6 @@ public class ToggleTool extends Toggle implements Cloneable {
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 	

@@ -68,85 +68,6 @@ public class ToggleEvent extends Toggle implements Cloneable {
 		}
 		return things;
 	}
-	/*
-	public static Vector<ToggleEvent> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
-		for (Element elementMilk: elementlist) {
-			try {
-				ToggleEvent thing = new ToggleEvent();
-				thing.setNullValueFromNode(elementMilk);
-				things.add(thing);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return things;
-	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
-		ToggleEvent thing=new ToggleEvent();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing=new ToggleEvent();
-				thing.setNullValueFromNode(tempE);
-				things.add(thing);
-			}
-		}
-		return things;
-	}*/
-	/*
-	private static void setInfos(Vector<ToggleEvent> toggleEvents, Vector<Element> elementInfos) {
-		for (Element elementInfo: elementInfos) {
-			try {
-				ToggleEvent toggleEventInfo = new ToggleEvent(elementInfo);
-				toggleEventInfo.setInfo(elementInfo);
-				for (ToggleEvent toggleEvent:toggleEvents){
-					if (toggleEventInfo.equals(toggleEvent)){
-						toggleEvent.setInfo(toggleEventInfo.getInfo());
-						toggleEvent.setToggleOptionsInfo(toggleEventInfo.getToggleOptions());
-						ToggleOption.setOptionsInfos(toggleEvent.getToggleOptions(),elementInfo);
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setIcons(Vector<ToggleEvent> toggleEvents, Vector<Element> elementIcons) {
-		for (Element elementIcon: elementIcons) {
-			try {
-				ToggleEvent toggleEventIcon = new ToggleEvent(elementIcon);
-				toggleEventIcon.setIcon(elementIcon);
-				for (ToggleEvent toggleEvent:toggleEvents){
-					if (toggleEventIcon.equals(toggleEvent)){
-						toggleEvent.setIcon(toggleEventIcon.getIcon());
-						toggleEvent.setToggleOptionsIcon(toggleEventIcon.getToggleOptions());
-						ToggleOption.setOptionsIcons(toggleEvent.getToggleOptions(),elementIcon);
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}
-
-	private static void setScenes(Vector<ToggleEvent> toggleEvents, Vector<Element> elementScenes) {
-		for (Element elementScene: elementScenes) {
-			try {
-				ToggleEvent toggleEventScene = new ToggleEvent(elementScene);
-				toggleEventScene.setScenes(elementScene);
-				for (ToggleEvent toggleEvent:toggleEvents){
-					if (toggleEventScene.equals(toggleEvent)){
-						toggleEvent.setToggleOptionsScene(toggleEventScene.getToggleOptions());
-						ToggleOption.setOptionsScenes(toggleEvent.getToggleOptions(),elementScene);
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}*/
 	
 	public static ToggleEvent getEvent() {
 		if(event==null){
@@ -187,11 +108,7 @@ public class ToggleEvent extends Toggle implements Cloneable {
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
-	}/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-	}*/
+	}
 	
 	// field methods
 	

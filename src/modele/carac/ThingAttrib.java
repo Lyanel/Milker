@@ -42,7 +42,7 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 	}
 
 	// Fields
-	
+	private QuantityListener listener;
 	private Integer tree, quant;
 	
 	// Constructors
@@ -133,8 +133,12 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 		return temp;
 	}
 	public void setQuant(Integer quant) {
+		if (listener != null) listener.quantityChanged(this.quant, quant);
 		this.quant = quant;
 	}
+    public void addQuantityListener(QuantityListener listener) {
+		this.listener = listener;
+    }
 	
 	// toString & toXml methods
 	

@@ -1,5 +1,7 @@
 package controleur;
 
+import java.util.Vector;
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -11,6 +13,7 @@ import modele.MilkKind;
 import modele.MilkXmlObj;
 import modele.carac.NeededIntel;
 import modele.carac.NeededThing;
+import modele.carac.QuantityListener;
 import modele.intel.Ascension;
 import modele.intel.Intel;
 import modele.intel.Research;
@@ -19,11 +22,10 @@ import modele.intel.Upgrade;
 import modele.thing.Animal;
 import modele.thing.Building;
 import modele.thing.Slave;
-import modele.thing.SlaveAnimal;
-import modele.thing.SlaveHuman;
 import modele.thing.Thing;
 import modele.thing.Worker;
 import modele.toggle.Toggle;
+import modele.toggle.ToggleLevel;
 import modele.toggle.ToggleOption;
 import javafx.util.Duration;
 
@@ -31,7 +33,7 @@ public class GameModele {
 	
 	private MilkDate plaYear;
 	private String name;
-	private DoubleProperty milkCoin = new SimpleDoubleProperty(0.0);
+	private DoubleProperty toolTogglePrice = new SimpleDoubleProperty(0.0), idolTogglePrice = new SimpleDoubleProperty(0.0), eventTogglePrice = new SimpleDoubleProperty(0.0), milkCoin = new SimpleDoubleProperty(0.0);
 	
 	public GameModele() {
 		plaYear = new MilkDate () ;
@@ -41,9 +43,30 @@ public class GameModele {
 				new KeyFrame(Duration.seconds(1)));
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
-		
+		setListenerFromToggle();
 	}
-	
+
+	private void setListenerFromToggle() {
+		Utility.addQuantityListenerToThings(getToggles().get(0).getAgent(), new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				setToolTogglePrice();
+			}
+		});
+		Utility.addQuantityListenerToThings(getToggles().get(1).getAgent(), new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				setIdolTogglePrice();
+			}
+		});
+		Utility.addQuantityListenerToThings(getToggles().get(2).getAgent(), new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				setEventTogglePrice();
+			}
+		});
+	}
+
 	/*
 	 * Method retournant le gain de jetonlait/seconde.
 	 * Par encore programmé. 
@@ -77,6 +100,34 @@ public class GameModele {
 
 	public DoubleProperty getMilkCoin() {
 		return this.milkCoin;
+	}
+
+	
+	protected void setToolTogglePrice() {
+		int quant = Utility.getThingsQuantity(getToggles().get(0).getAgent());
+		toolTogglePrice.setValue(quant*getToggles().get(0).getPriceValue());
+	}
+	
+	protected void setIdolTogglePrice() {
+		int quant = Utility.getThingsQuantity(getToggles().get(1).getAgent());
+		idolTogglePrice.setValue(quant*getToggles().get(1).getPriceValue());
+	}
+	
+	protected void setEventTogglePrice() {
+		int quant = Utility.getThingsQuantity(getToggles().get(2).getAgent());
+		eventTogglePrice.setValue(quant*getToggles().get(2).getPriceValue());
+	}
+	
+	public DoubleProperty getToolTogglePrice() {
+		return toolTogglePrice;
+	}
+
+	public DoubleProperty getIdolTogglePrice() {
+		return idolTogglePrice;
+	}
+
+	public DoubleProperty getEventTogglePrice() {
+		return eventTogglePrice;
 	}
 	
 	
@@ -122,21 +173,32 @@ public class GameModele {
 		}
 		return visible;
 	}
+
+	public int getToolLevel(ToggleOption thing) {
+		Vector<ToggleLevel> lvls = thing.getLevels();
+		int retlvl=1;
+		for (ToggleLevel lvl:lvls){
+			for (NeededIntel need: lvl.getNeed().getNeededIntels()) {
+				if (Utility.checkIntel(need, getResearch()) && lvl.getLvl() > retlvl) retlvl = lvl.getLvl();
+			}
+		}
+		return retlvl;
+	}
 	
 	public boolean isMilkObjResearched(MilkXmlObj value) {
 		boolean visible = true;
 		for (NeededIntel need: value.getNeed().getNeededIntels()) {
 			switch (need.getKind().getKind()) {
 				case MilkKind.kind_Research: {
-						visible = MilkCheck.checkIntel(need, getResearch());
+						visible = Utility.checkIntel(need, getResearch());
 					}
 					break;
 				case MilkKind.kind_Upgrade: {
-						visible = MilkCheck.checkIntel(need, getUpgrade());
+						visible = Utility.checkIntel(need, getUpgrade());
 					}
 					break;
 				case MilkKind.kind_Synergy: {
-						visible = MilkCheck.checkIntel(need, getSynergy());
+						visible = Utility.checkIntel(need, getSynergy());
 					}
 					break;
 				case MilkKind.kind_Ascension: {
@@ -157,143 +219,16 @@ public class GameModele {
 	public boolean isMilkObjOwned(MilkXmlObj value) {
 		boolean visible = true;
 		for (NeededThing need: value.getNeed().getNeededThings()) {
-			switch (need.getKind().getKind()) {
-				case MilkKind.kind_Building: {
-					visible = MilkCheck.checkThing(need, Building.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Worker: {
-					visible = MilkCheck.checkThing(need, Worker.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Slave_Human: {
-					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Slave_Animal: {
-					visible = MilkCheck.checkThing(need, SlaveAnimal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Animal: {
-					visible = MilkCheck.checkThing(need, Animal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Semi_Human: {
-					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Slaves: {
-					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Semi_Animal: {
-					visible = MilkCheck.checkThing(need, SlaveAnimal.getFullListe(), Animal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Earthling_People: {
-					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Natural_Cattle: {
-					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe(), Animal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_People: {
-					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), SlaveAnimal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Cattle: {
-					visible = MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Earthling_Being: {
-					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Natural_Being: {
-					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe());
-				}
-				break;
-				case MilkKind.kind_Living_Being: {
-					visible = MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe(), Animal.getFullListe());
-				}
-				break;
-				default:
-					break;
-			}
+			visible = Utility.checkThing(need, Utility.getThingsListsFromKind(need.getKind()));
 		}
 		return visible;
 	}
 	
 	public boolean areMilkObjOwned(Research value) {
 		int count = 0;
-		for (NeededThing need: value.getCheck().getNeededThings()) {
-			switch (need.getKind().getKind()) {
-				case MilkKind.kind_Building: {
-					if(MilkCheck.checkThing(need, Building.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Worker: {
-					if(MilkCheck.checkThing(need, Worker.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Slave_Human: {
-					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Slave_Animal: {
-					if(MilkCheck.checkThing(need, SlaveAnimal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Animal: {
-					if(MilkCheck.checkThing(need, Animal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Semi_Human: {
-					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Slaves: {
-					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Semi_Animal: {
-					if(MilkCheck.checkThing(need, SlaveAnimal.getFullListe(), Animal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Earthling_People: {
-					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Natural_Cattle: {
-					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe(), Animal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_People: {
-					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), SlaveAnimal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Cattle: {
-					if(MilkCheck.checkThing(need, SlaveHuman.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Earthling_Being: {
-					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveAnimal.getFullListe(), Animal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Natural_Being: {
-					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe()))count+=1;
-				}
-				break;
-				case MilkKind.kind_Living_Being: {
-					if(MilkCheck.checkThing(need, Worker.getFullListe(), SlaveHuman.getFullListe(), Animal.getFullListe(), Animal.getFullListe()))count+=1;
-				}
-				break;
-				default:
-					break;
-			}
+		for (NeededThing need: value.getNeed().getNeededThings()) {
+			if(Utility.checkThing(need, Utility.getThingsListsFromKind(need.getKind())))count+=1;
 			if(count >= value.getCheck().getMod())return true;
-				
 		}
 		return false;
 	}

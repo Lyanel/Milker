@@ -8,6 +8,7 @@
 		<options>
 			<option id="510">
 				<name>Hand Milking</name>
+				<effect>Gives a milking generally balanced between quantity and quality.</effect>
 				<desc>Cattle are milked directly by the milkmaid.</desc>
 				<quote></quote>
 				<levels>
@@ -50,6 +51,7 @@
 			</option>
 			<option id="520">
 				<name>Machine Milking</name>
+				<effect>Gives a milking usually based on quantity.</effect>
 				<desc>Cattle are milked with the help of machine.</desc>
 				<quote></quote>
 				<levels>
@@ -87,6 +89,7 @@
 			</option>
 			<option id="530">
 				<name>Tentacle Milking</name>
+				<effect>Gives a milking usually based on quality.</effect>
 				<desc>Cattle are milked by organic creatures called tentacles.</desc>
 				<quote></quote>
 				<levels>

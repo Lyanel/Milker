@@ -65,18 +65,6 @@ public class MilkFile extends MilkId implements Cloneable {
 		}
 		return milkFiles;
 	}
-	/*
-	public static Vector<MilkFile> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<MilkFile> milkFiles = new Vector<MilkFile>();
-		for (Element elementMilk: elementlist) {
-			try {
-				MilkFile milkFile = new MilkFile();
-				milkFile.setNullValueFromNode(elementMilk);
-				milkFiles.add(milkFile);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return milkFiles;
-	}*/
 	
 	// Fields
 	
@@ -112,19 +100,6 @@ public class MilkFile extends MilkId implements Cloneable {
 	public void setPath(Element milkElement) {
 		this.path = ParseMilkFile.getXmlStringValue(milkElement,xmlPath);
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullName(milkElement);
-		this.setNullPath(milkElement);
-	}
-	public void setNullName(Element milkElement) {
-		this.name = ParseMilkFile.getXmlStringValue(milkElement,xmlName);
-	}
-	public void setNullPath(Element milkElement) {
-		this.path = ParseMilkFile.getXmlStringValue(milkElement,xmlPath);
-	}*/
 	
 	// field methods
 	

@@ -4,6 +4,7 @@ package vue;
 import java.io.IOException;
 
 import application.Milker;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -23,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.util.Callback;
@@ -48,6 +50,7 @@ import modele.toggle.ToggleOption;
  */
 public class MilkGameController extends MilkTabControleur {
 	private MouseEvent event;
+	private EventHandler<MouseEvent> InfoPanMover;
 	
     @FXML
     private BorderPane gamePanel;
@@ -61,13 +64,14 @@ public class MilkGameController extends MilkTabControleur {
     @FXML
     private Label agnelLabel;
     @FXML
-    private Label bgLab;
+    private ImageView npcPic;
     @FXML
-    private Label npcLab;
-    @FXML
-    private Label idolLab;
+    private ImageView idolPic;
     @FXML
     private Pane infoPan;
+    
+    @FXML
+    private GridPane gameTab;
     
     @FXML
     private Tab neutralTab;
@@ -137,11 +141,29 @@ public class MilkGameController extends MilkTabControleur {
     @FXML
     private TitledPane eventTab;
     @FXML
+    private ImageView toolIcon;
+    @FXML
+    private ImageView idolIcon;
+    @FXML
+    private ImageView eventIcon;
+    @FXML
     private Label toolLabel;
     @FXML
     private Label idolLabel;
     @FXML
     private Label eventLabel;
+    @FXML
+    private Label priceLabel1;
+    @FXML
+    private Label priceLabel2;
+    @FXML
+    private Label priceLabel3;
+    @FXML
+    private Label toolPrice;
+    @FXML
+    private Label idolPrice;
+    @FXML
+    private Label eventPrice;
     @FXML
     private ListView<ToggleOption> toolPan;
     @FXML
@@ -169,41 +191,43 @@ public class MilkGameController extends MilkTabControleur {
 	
     public void initList() {
     	initInfoPan(centerAnchor);
-    	gamePanel.addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
+    	InfoPanMover = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
             	event = e;
-            	if (infocell.isVisible()) infoPan.relocate(event.getSceneX()+10, event.getSceneY()+10);
+            	Platform.runLater(new Runnable() {
+					public void run() {
+						infoPan.relocate(0, event.getSceneY()-(infoPan.getHeight()/2));
+					}
+				});
             }
-        });
-
-    	
+        };
+        
     	coinLabel.textProperty().bind(this.getMainApp().getModel().getMilkCoin().asString());
     	agnelLabel.setText(MilkInterface.getStringsFromId(602));
     	
-    	idolLab.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+    	idolPic.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	if (event.getButton()==MouseButton.PRIMARY) getMainApp().getModel().statueClicked();
             }
         });
-    	bgLab.setText("");
-    	npcLab.setText("");
-    	idolLab.setText("");
-    	
 
     	neutralTab.setText(MilkInterface.getStringsFromId(613)+" "+MilkInterface.getStringsFromId(561));
     	neutralTab.setGraphic(MilkImage.getSmallIconFromID(301).getImageView());
-    	
     	neutralBuildingTab.setText(MilkInterface.getStringsFromId(501));
+    	neutralBuildingPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	neutralBuildingPan.setItems(this.getMainApp().getModel().getBuildingNeutral());
     	neutralBuildingPan.setCellFactory(new Callback<ListView<Building>, ListCell<Building>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<Building> p) {
-    	        return new MilkCellThing(getMainApp());
+    	    	MilkCellThing cell = new MilkCellThing(getMainApp());
+    	    	cell.addEventHandler(MouseEvent.MOUSE_CLICKED, InfoPanMover);
+    	        return cell;
     	    }
     	});
     	neutralWorkerTab.setText(MilkInterface.getStringsFromId(502));
+    	neutralWorkerPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	neutralWorkerPan.setItems(this.getMainApp().getModel().getWorkerNeutral());
     	neutralWorkerPan.setCellFactory(new Callback<ListView<Worker>, ListCell<Worker>>() {
     	    @SuppressWarnings("rawtypes")
@@ -212,6 +236,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	neutralSlaveTab.setText(MilkInterface.getStringsFromId(503));
+    	neutralSlavePan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	neutralSlavePan.setItems(this.getMainApp().getModel().getSlaveNeutral());
     	neutralSlavePan.setCellFactory(new Callback<ListView<Slave>, ListCell<Slave>>() {
     	    @SuppressWarnings("rawtypes")
@@ -220,6 +245,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	neutralAnimalTab.setText(MilkInterface.getStringsFromId(505));
+    	neutralAnimalPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	neutralAnimalPan.setItems(this.getMainApp().getModel().getAnimalNeutral());
     	neutralAnimalPan.setCellFactory(new Callback<ListView<Animal>, ListCell<Animal>>() {
     	    @SuppressWarnings("rawtypes")
@@ -231,6 +257,7 @@ public class MilkGameController extends MilkTabControleur {
     	scienceTab.setText(MilkInterface.getStringsFromId(613)+" "+MilkInterface.getStringsFromId(562));
     	scienceTab.setGraphic(MilkImage.getSmallIconFromID(302).getImageView());
     	scienceBuildingTab.setText(MilkInterface.getStringsFromId(501));
+    	scienceBuildingPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	scienceBuildingPan.setItems(this.getMainApp().getModel().getBuildingScience());
     	scienceBuildingPan.setCellFactory(new Callback<ListView<Building>, ListCell<Building>>() {
     	    @SuppressWarnings("rawtypes")
@@ -239,6 +266,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	scienceWorkerTab.setText(MilkInterface.getStringsFromId(502));
+    	scienceWorkerPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	scienceWorkerPan.setItems(this.getMainApp().getModel().getWorkerScience());
     	scienceWorkerPan.setCellFactory(new Callback<ListView<Worker>, ListCell<Worker>>() {
     	    @SuppressWarnings("rawtypes")
@@ -247,6 +275,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	scienceSlaveTab.setText(MilkInterface.getStringsFromId(503));
+    	scienceSlavePan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	scienceSlavePan.setItems(this.getMainApp().getModel().getSlaveScience());
     	scienceSlavePan.setCellFactory(new Callback<ListView<Slave>, ListCell<Slave>>() {
     	    @SuppressWarnings("rawtypes")
@@ -255,6 +284,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	scienceAnimalTab.setText(MilkInterface.getStringsFromId(505));
+    	scienceAnimalPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	scienceAnimalPan.setItems(this.getMainApp().getModel().getAnimalScience());
     	scienceAnimalPan.setCellFactory(new Callback<ListView<Animal>, ListCell<Animal>>() {
     	    @SuppressWarnings("rawtypes")
@@ -266,6 +296,7 @@ public class MilkGameController extends MilkTabControleur {
     	magicTab.setText(MilkInterface.getStringsFromId(613)+" "+MilkInterface.getStringsFromId(563));
     	magicTab.setGraphic(MilkImage.getSmallIconFromID(303).getImageView());
     	magicBuildingTab.setText(MilkInterface.getStringsFromId(501));
+    	magicBuildingPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	magicBuildingPan.setItems(this.getMainApp().getModel().getBuildingMagic());
     	magicBuildingPan.setCellFactory(new Callback<ListView<Building>, ListCell<Building>>() {
     	    @SuppressWarnings("rawtypes")
@@ -274,6 +305,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	magicWorkerTab.setText(MilkInterface.getStringsFromId(502));
+    	magicWorkerPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	magicWorkerPan.setItems(this.getMainApp().getModel().getWorkerMagic());
     	magicWorkerPan.setCellFactory(new Callback<ListView<Worker>, ListCell<Worker>>() {
     	    @SuppressWarnings("rawtypes")
@@ -282,6 +314,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	magicSlaveTab.setText(MilkInterface.getStringsFromId(503));
+    	magicSlavePan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	magicSlavePan.setItems(this.getMainApp().getModel().getSlaveMagic());
     	magicSlavePan.setCellFactory(new Callback<ListView<Slave>, ListCell<Slave>>() {
     	    @SuppressWarnings("rawtypes")
@@ -290,6 +323,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	magicAnimalTab.setText(MilkInterface.getStringsFromId(505));
+    	magicAnimalPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	magicAnimalPan.setItems(this.getMainApp().getModel().getAnimalMagic());
     	magicAnimalPan.setCellFactory(new Callback<ListView<Animal>, ListCell<Animal>>() {
     	    @SuppressWarnings("rawtypes")
@@ -306,6 +340,7 @@ public class MilkGameController extends MilkTabControleur {
     	intelTab.setGraphic(MilkImage.getSmallIconFromID(305).getImageView());
     	
         researchTab.setText(MilkInterface.getStringsFromId(551));
+        researchPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	researchPan.setItems(this.getMainApp().getModel().getResearch());
     	researchPan.setCellFactory(new Callback<ListView<Research>, ListCell<Research>>() {
     	    @SuppressWarnings("rawtypes")
@@ -314,6 +349,7 @@ public class MilkGameController extends MilkTabControleur {
     	    }
     	});
     	upgradeTab.setText(MilkInterface.getStringsFromId(552));
+    	upgradePan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	upgradePan.setItems(this.getMainApp().getModel().getUpgrade());
     	upgradePan.setCellFactory(new Callback<ListView<Upgrade>, ListCell<Upgrade>>() {
     	    @SuppressWarnings("rawtypes")
@@ -323,6 +359,7 @@ public class MilkGameController extends MilkTabControleur {
     	});
     	synergyTab.setText(MilkInterface.getStringsFromId(553));
     	synergyPan.setItems(this.getMainApp().getModel().getSynergy());
+    	synergyPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	synergyPan.setCellFactory(new Callback<ListView<Synergy>, ListCell<Synergy>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<Synergy> p) {
@@ -331,6 +368,10 @@ public class MilkGameController extends MilkTabControleur {
     	});
     	
 
+		npcPic.fitHeightProperty().bind(centerAnchor.heightProperty());
+		npcPic.setPreserveRatio(true);
+		idolPic.fitHeightProperty().bind(centerAnchor.heightProperty());
+		idolPic.setPreserveRatio(true);
     	setBGScene(this.getMainApp().getModel().getBuildingNeutral().get(0));
     }
     
@@ -343,34 +384,47 @@ public class MilkGameController extends MilkTabControleur {
 		
     	toolTab.setText(null);
     	toolLabel.setText(toggles.get(0).getInfo().getName());
+    	priceLabel1.setText(MilkInterface.getStringsFromId(600)+" :");
+    	toolPrice.textProperty().bind(this.getMainApp().getModel().getToolTogglePrice().asString());
     	toolPan.setItems(toggles.get(0).getObservableOptions());
+    	toolPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	toolPan.setCellFactory(new Callback<ListView<ToggleOption>, ListCell<ToggleOption>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<ToggleOption> p) {
-    	        return new MilkCellOption(getMainApp());
+    	        return new MilkCellOptLvl(getMainApp());
     	    }
     	});
+    	toolIcon.setImage(toggles.get(0).getIcon().getImage());
+    	
     	
     	idolTab.setText(null);
     	idolLabel.setText(toggles.get(1).getInfo().getName());
+    	priceLabel2.setText(MilkInterface.getStringsFromId(600)+" :");
+    	idolPrice.textProperty().bind(this.getMainApp().getModel().getIdolTogglePrice().asString());
     	idolPan.setItems(toggles.get(1).getObservableOptions());
+    	idolPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	idolPan.setCellFactory(new Callback<ListView<ToggleOption>, ListCell<ToggleOption>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<ToggleOption> p) {
     	        return new MilkCellOption(getMainApp());
     	    }
     	});
+    	idolIcon.setImage(toggles.get(1).getIcon().getImage());
 
     	eventTab.setVisible(false);
     	eventTab.setText(null);
     	eventLabel.setText(toggles.get(2).getInfo().getName());
+    	priceLabel3.setText(MilkInterface.getStringsFromId(600)+" :");
+    	eventPrice.textProperty().bind(this.getMainApp().getModel().getEventTogglePrice().asString());
     	eventPan.setItems(toggles.get(2).getObservableOptions());
+    	eventPan.addEventHandler(MouseEvent.MOUSE_MOVED, InfoPanMover);
     	eventPan.setCellFactory(new Callback<ListView<ToggleOption>, ListCell<ToggleOption>>() {
     	    @SuppressWarnings("rawtypes")
 			public ListCell call(ListView<ToggleOption> p) {
     	        return new MilkCellOption(getMainApp());
     	    }
     	});
+    	eventIcon.setImage(toggles.get(2).getIcon().getImage());
     	
     	setIdolScene(toggles.get(1).getToggleOptions().get(0));
 	}
@@ -409,9 +463,8 @@ public class MilkGameController extends MilkTabControleur {
             loader.setLocation(Milker.class.getResource(MilkRs.infoCell));
             AnchorPane infoPanAnch = (AnchorPane) loader.load();
             infoPan.getChildren().add(infoPanAnch);
-            
-           // infoPan.setPrefSize( ((AnchorPane)rootLayout.getCenter()).getWidth(), ((AnchorPane)rootLayout.getCenter()).getHeight());
             infocell = loader.getController();
+            setInfoVisible(null,false);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -426,11 +479,17 @@ public class MilkGameController extends MilkTabControleur {
 	public void setInfoVisible(MilkInfo info, boolean visible) {
 		if(info!=null && visible){
 			infocell.setValue(info);
+			infocell.setVisible(visible);
 		}else{
 			infocell.setValue(new MilkInfo());
+			infocell.setVisible(visible);
+        	Platform.runLater(new Runnable() {
+				public void run() {
+					infoPan.relocate(-1000, 0);
+				}
+			});
 		}
 		infocell.setVisible(visible);
-    	if (infocell.isVisible() && event!=null) infoPan.relocate(0, event.getSceneY());
 	}
 
 	public void setBGScene(Thing value) {		
@@ -438,17 +497,11 @@ public class MilkGameController extends MilkTabControleur {
 	}
 
 	public void setNPCScene(Thing value) {
-		ImageView img = value.getScene().getImageView();
-		img.fitHeightProperty().bind(centerAnchor.heightProperty());
-		img.setPreserveRatio(true);
-		npcLab.setGraphic(img);
+		npcPic.setImage(value.getScene().getImage());
 	}
 
 	public void setIdolScene(ToggleOption value) {
-		ImageView img = value.getScene().getImageView();
-		img.fitHeightProperty().bind(centerAnchor.heightProperty());
-		img.setPreserveRatio(true);
-		idolLab.setGraphic(img);
+		idolPic.setImage(value.getScene().getImage());
 	}
     
     

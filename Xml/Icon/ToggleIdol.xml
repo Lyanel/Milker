@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <toggles>
 	<toggle id="1">
-		<name>matt-icons_file-x-unknown</name>
-		<path>Img/Icon/</path>
-		<desc>matt-icons_file-x-unknown</desc>
+		<name>Artifact_Greek_Statue-icon</name>
+		<path>Img/Icon/Tool/</path>
+		<desc>http://hiddenchronicles.wikia.com/wiki/File:Artifact_Greek_Statue-icon.png</desc>
 		<options>
 			<option id="10">
 				<name>Milo-Clay</name>

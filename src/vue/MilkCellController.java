@@ -54,13 +54,17 @@ public class MilkCellController extends MilkBoxController implements Initializab
     protected void updateUI(MilkXmlObj milkXmlObj) {
     	if(((Milker) getApplication()).getModel().isMilkObjVisible(milkXmlObj) ){
     		rootPane.setVisible(true);
-    		if(milkXmlObj.getIcon().getName()=="") iLabel.setText(milkXmlObj.getStringId());
-    		else {
-    			milkXmlObj.getIcon().setAsIcon();
-    			iLabel.setGraphic(milkXmlObj.getIcon().getImageView());
-    		}
-            nameLabel.setText(milkXmlObj.getInfo().getName());
+    		updateUIVisible(milkXmlObj);
     	} else rootPane.setVisible(false);
+    }
+    
+    protected void updateUIVisible(MilkXmlObj milkXmlObj) {
+		if(milkXmlObj.getIcon().getName()=="") iLabel.setText(milkXmlObj.getStringId());
+		else {
+			milkXmlObj.getIcon().setAsIcon();
+			iLabel.setGraphic(milkXmlObj.getIcon().getImageView());
+		}
+        nameLabel.setText(milkXmlObj.getInfo().getName());
     }
 
     public void showThing() {}

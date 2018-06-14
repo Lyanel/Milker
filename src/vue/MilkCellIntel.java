@@ -32,6 +32,7 @@ public class MilkCellIntel extends ListCell<Intel> {
             renderer = (Node) fxmlLoader.load();
             rendererController = (MilkCellIntelController) fxmlLoader.getController();
             rendererController.setApplication(this.application);
+            this.managedProperty().bind(this.visibleProperty());
         } catch (IOException ex) {
             Logger.getLogger(MilkCellIntel.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
         }

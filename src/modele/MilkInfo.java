@@ -39,6 +39,18 @@ public class MilkInfo extends MilkVar implements Cloneable {
 		this.setDesc(milkElement);
 		this.setQuote(milkElement);
 	}
+	public void setName(Element milkElement) {
+		this.name = ParseMilkFile.getXmlStringValue(milkElement,xmlName);
+	}
+	public void setTxEffect(Element milkElement) {
+		this.txEffect = ParseMilkFile.getXmlChildStringValue(milkElement,xmlTxEffect);
+	}
+	public void setDesc(Element milkElement) {
+		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
+	}
+	public void setQuote(Element milkElement) {
+		this.quote = ParseMilkFile.getXmlStringValue(milkElement,xmlQuote);
+	}
 	
 	// field methods
 	
@@ -58,9 +70,6 @@ public class MilkInfo extends MilkVar implements Cloneable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setName(Element milkElement) {
-		this.name = ParseMilkFile.getXmlStringValue(milkElement,xmlName);
-	}
 
 	public String getTxEffect() {
 		return this.txEffect;
@@ -77,9 +86,6 @@ public class MilkInfo extends MilkVar implements Cloneable {
 	}
 	public void setTxEffect(String txEffect) {
 		this.txEffect = txEffect;
-	}
-	public void setTxEffect(Element milkElement) {
-		this.txEffect = ParseMilkFile.getXmlStringValue(milkElement,xmlTxEffect);
 	}
 
 	public String getDesc() {
@@ -98,9 +104,6 @@ public class MilkInfo extends MilkVar implements Cloneable {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	public void setDesc(Element milkElement) {
-		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
-	}
 
 	public String getQuote() {
 		return quote;
@@ -117,9 +120,6 @@ public class MilkInfo extends MilkVar implements Cloneable {
 	}
 	public void setQuote(String quote) {
 		this.quote = quote;
-	}
-	public void setQuote(Element milkElement) {
-		this.quote = ParseMilkFile.getXmlStringValue(milkElement,xmlQuote);
 	}
 	
 	// toString & toXml methods

@@ -93,11 +93,7 @@ public class ToggleIdol extends Toggle implements Cloneable {
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
-	}/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-	}*/
+	}
 	
 	// field methods
 	

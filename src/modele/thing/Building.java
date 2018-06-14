@@ -84,18 +84,6 @@ public class Building extends Thing implements Cloneable {
 		}
 		return buildings;
 	}
-	/*
-	public static Vector<Building> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Building> buildings = new Vector<Building>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Building building = new Building();
-				building.setNullValueFromNode(elementMilk);
-				buildings.add(building);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return buildings;
-	}*/
 	
 	public static ObservableList<Building> getFullListe() {
 		if (modelListe==null){
@@ -216,24 +204,7 @@ public class Building extends Thing implements Cloneable {
 	public void setPopulation(Element milkElement) {
 		this.population.setValueFromNode(milkElement);;
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullAgent(milkElement);
-		this.setNullBonus(milkElement);
-		this.setNullPopulation(milkElement);
-	}
-	public void setNullAgent(Element milkElement) {
-		this.agent.setValueFromNode(milkElement);
-	}
-	public void setNullBonus(Element milkElement) {
-		this.bonus.setNullValueFromNode(milkElement);
-	}
-	public void setNullPopulation(Element milkElement) {
-		this.population.setNullValueFromNode(milkElement);
-	}*/
-	
+
 	// field methods
 	
 	public Agent getAgent() {

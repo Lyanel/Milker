@@ -24,6 +24,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class ParseMilkFile{
+	
+	// Méthode lié au fichier
+	
 	/**
 	 * méthode renvoyant le document "path/"+fichier+".xml".
 	 * @throws ParserConfigurationException 
@@ -48,7 +51,25 @@ public class ParseMilkFile{
 	}
 	
 	/**
-	 * méthode renvoyant un Vector de milkFile sous forme d'element depuis une NodeList.
+	 * méthode renvoyant un Vector de milkFile sous forme d'element après lecture du fichier.
+	 * @throws IOException 
+	 * @throws SAXException 
+	 * @throws ParserConfigurationException 
+	 * */
+	public static Vector<Element> getMilkElementLists(String fichier,String node) {
+		Vector<Element> temp=null;
+		try {
+			temp = getElementLists(getXmlList(fichier,node));
+		} catch (ParserConfigurationException | SAXException | IOException e) {e.printStackTrace();}
+		return temp;
+	}
+
+	
+	// Méthode lié a un élèment ou un list d'élèment
+	
+	
+	/**
+	 * méthode renvoyant un Vector de milkFile sous forme d'élèment depuis une NodeList.
 	 * @throws IOException 
 	 * @throws SAXException 
 	 * @throws ParserConfigurationException 
@@ -62,20 +83,6 @@ public class ParseMilkFile{
 	}
 	
 	/**
-	 * méthode renvoyant un Vector de milkFile sous forme d'element après lecture du fichier.
-	 * @throws IOException 
-	 * @throws SAXException 
-	 * @throws ParserConfigurationException 
-	 * */
-	public static Vector<Element> getMilkElementLists(String fichier,String node) {
-		Vector<Element> temp=null;
-		try {
-			temp = getElementLists(getXmlList(fichier,node));
-		} catch (ParserConfigurationException | SAXException | IOException e) {e.printStackTrace();}
-		return temp;
-	}
-	
-	/**
 	 * méthode renvoyant un élèment "name" à l'index "range" dans l'élèment "element", ou null...
 	 * @param element
 	 * @param nodeName
@@ -84,6 +91,10 @@ public class ParseMilkFile{
 	public static Element getMilkElement(Element element,String name, int range) {
 		return (element != null) ?(Element)element.getElementsByTagName(name).item(range):null;
 	}
+
+	
+	// Méthode lié a un attribut
+	
 	
 	/**
 	 * méthode renvoyant un Float trouvé dans un attribut d'un élément xml.
@@ -100,16 +111,6 @@ public class ParseMilkFile{
 	}
 	
 	/**
-	 * méthode renvoyant un Float trouvé dans un élément xml.
-	 * Si l'élément est vide ou qu'il n'existe pas, la méthode renvoie null.
-	 * */
-	public static Float getXmlFloatValue(Element milknode) {
-		String temp = "";
-		temp += (milknode != null) ? milknode.getTextContent():"";
-		return  (temp != null && !temp.equals("")) ? Float.parseFloat(temp) : null ;
-	}
-	
-	/**
 	 * méthode renvoyant un Integer trouvé dans un attribut d'un élément xml.
 	 * Si l'attribut est vide ou qu'il n'existe pas, la méthode renvoie null.
 	 * */
@@ -117,6 +118,20 @@ public class ParseMilkFile{
 		String temp = "";
 		temp += (milknode != null) ? milknode.getAttribute(attribute):"";
 		return  (temp != null && !temp.equals("")) ? Integer.parseInt(temp) : null ;
+	}
+
+	
+	// Méthode lié a un contenu text d'un noeud
+	
+	
+	/**
+	 * méthode renvoyant un Float trouvé dans un élément xml.
+	 * Si l'élément est vide ou qu'il n'existe pas, la méthode renvoie null.
+	 * */
+	public static Float getXmlFloatValue(Element milknode) {
+		String temp = "";
+		temp += (milknode != null) ? milknode.getTextContent():"";
+		return  (temp != null && !temp.equals("")) ? Float.parseFloat(temp) : null ;
 	}
 	
 	/**
@@ -135,7 +150,8 @@ public class ParseMilkFile{
 	
 	/**
 	 * méthode renvoyant une String trouvé dans un élément xml
-	 * Si l'élément est vide ou qu'il n'existe pas, la méthode renvoie une chaine vide ("").
+	 * Si l'élément est vide renvoie le text du parent.
+	 * S'il n'existe pas, la méthode renvoie une chaine vide ("").
 	 * */
 	public static String getXmlStringValue(Element milknode, String nodename) {
 		String temp="";
@@ -146,6 +162,44 @@ public class ParseMilkFile{
 		}
 		return  (temp != null) ? temp : "" ;
 	}
+	
+	/**
+	 * méthode renvoyant une String trouvé dans un élément xml
+	 * Si l'élément est vide ou qu'il n'existe pas, la méthode renvoie une chaine vide ("").
+	 * */
+	public static String getXmlChildStringValue(Element milknode, String nodename) {
+		String temp="";
+		if (milknode != null){
+			if (milknode.getElementsByTagName(nodename).item(0) != null)temp = milknode.getElementsByTagName(nodename).item(0).getTextContent();
+			
+		}
+		return  (temp != null) ? temp : "" ;
+	}
+	
+	
+	// Méthode de sauvegarde dans le xml
+
+	
+	/**
+	 * méthode écrivant une liste de nom dans le fichier demander.
+	 * */
+	public static void saveMilkElementLists(String fichier, String xmlString) {
+		String path = fichier+".xml";
+		BufferedWriter writer = null;
+		try{
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"UTF-8"));
+			writer.write(xmlString);
+		}catch ( IOException e){
+		}finally{
+			try{
+				if ( writer != null)writer.close( );
+			} catch ( IOException e) {e.printStackTrace();}
+		}
+	}
+	
+	
+	// Méthode non lié a du xml
+	
 	
 	/**
 	 * méthode renvoyant une liste de nom depuis le fichier demander.
@@ -195,19 +249,5 @@ public class ParseMilkFile{
 			}
 			in.close();
 		} catch (Exception e) {e.printStackTrace();}
-	}
-
-	public static void saveMilkElementLists(String fichier, String xmlString) {
-		String path = fichier+".xml";
-		BufferedWriter writer = null;
-		try{
-			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),"UTF-8"));
-			writer.write(xmlString);
-		}catch ( IOException e){
-		}finally{
-			try{
-				if ( writer != null)writer.close( );
-			} catch ( IOException e) { }
-		}
 	}
 }

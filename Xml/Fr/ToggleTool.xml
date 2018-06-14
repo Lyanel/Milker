@@ -8,6 +8,7 @@
 		<options>
 			<option id="510">
 				<name>Traite manuel</name>
+				<effect>Donne une traite généralement équilibré entre quantité et qualité.</effect>
 				<desc>Le bétail est trait directement par les trayeuses (humaines...).</desc>
 				<quote></quote>
 				<levels>
@@ -50,6 +51,7 @@
 			</option>
 			<option id="520">
 				<name>Traite par machine</name>
+				<effect>Donne une traite généralement basé sur la quantité.</effect>
 				<desc>Le bétail est trait à l'aide de machine.</desc>
 				<quote></quote>
 				<levels>
@@ -87,6 +89,7 @@
 			</option>
 			<option id="530">
 				<name>Traite par tentacule</name>
+				<effect>Donne une traite généralement basé sur la qualité</effect>
 				<desc>Le bétail est trait par des créatures organiques appelée tentacules.</desc>
 				<quote></quote>
 				<levels>

@@ -49,7 +49,7 @@
 	<slave id="24" tree="2" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="223" />
+				<intel kind="1" id="224" />
 			</intels>
 		</need>
 		<price coin="1" coef="1.15"/>

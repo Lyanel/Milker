@@ -10,9 +10,8 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 	
 	public static final String noeud = "level";
 	public String getNoeud() {return noeud;}
-
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
+	
+	public static Vector<ToggleLevel> getMilkVarList(Element elementlist) {
 		Vector<ToggleLevel> toggleLevels = new Vector<ToggleLevel>();
 		ToggleLevel toggleLevel=new ToggleLevel();
 		Element elements = toggleLevel.getMilkElementList(elementlist);
@@ -39,10 +38,8 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 		}
 		return toggleLevels;
 	}
-	/*
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Element elementlist) {
-		Vector<ToggleLevel> toggleLevels = new Vector<ToggleLevel>();
+	
+	public static Vector<ToggleLevel> setLevelsInfos(Vector<ToggleLevel> toggleLevels, Element elementlist) {
 		ToggleLevel toggleLevel=new ToggleLevel();
 		Element elements = toggleLevel.getMilkElementList(elementlist);
 		int size = (elements!=null)? elements.getChildNodes().getLength():0;
@@ -50,25 +47,48 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 			Element tempE=null;
 			tempE=toggleLevel.getMilkElement(elements,i);
 			if (tempE != null){
-				toggleLevel=new ToggleLevel();
-				toggleLevel.setNullValueFromNode(tempE);
-				toggleLevels.add(toggleLevel);
+				toggleLevel=new ToggleLevel(tempE);
+				if(toggleLevels.contains(toggleLevel)){
+					toggleLevels.get(toggleLevels.indexOf(toggleLevel)).setInfo(tempE);
+				}
 			}
 		}
 		return toggleLevels;
 	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleLevel> toggleLevels = new Vector<ToggleLevel>();
-		for (Element elementMilk: elementlist) {
-			try {
-				ToggleLevel toggleLevel = new ToggleLevel();
-				toggleLevel.setNullValueFromNode(elementMilk);
-				toggleLevels.add(toggleLevel);
-			} catch (Exception e) {e.printStackTrace();}
+	
+	public static Vector<ToggleLevel> setLevelsIcons(Vector<ToggleLevel> toggleLevels, Element elementlist) {
+		ToggleLevel toggleLevel=new ToggleLevel();
+		Element elements = toggleLevel.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=toggleLevel.getMilkElement(elements,i);
+			if (tempE != null){
+				toggleLevel=new ToggleLevel(tempE);
+				if(toggleLevels.contains(toggleLevel)){
+					toggleLevels.get(toggleLevels.indexOf(toggleLevel)).setIcon(tempE);
+				}
+			}
 		}
 		return toggleLevels;
-	}*/
+	}
+	
+	public static Vector<ToggleLevel> setLevelsScenes(Vector<ToggleLevel> toggleLevels, Element elementlist) {
+		ToggleLevel toggleLevel=new ToggleLevel();
+		Element elements = toggleLevel.getMilkElementList(elementlist);
+		int size = (elements!=null)? elements.getChildNodes().getLength():0;
+		for (int i=0;i<size;i++){ 
+			Element tempE=null;
+			tempE=toggleLevel.getMilkElement(elements,i);
+			if (tempE != null){
+				toggleLevel=new ToggleLevel(tempE);
+				if(toggleLevels.contains(toggleLevel)){
+					toggleLevels.get(toggleLevels.indexOf(toggleLevel)).setScene(tempE);
+				}
+			}
+		}
+		return toggleLevels;
+	}
 
 	// field
 	
@@ -96,15 +116,6 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 	public void setBonus(Element milkElement) {
 		this.bonus.setValueFromNode(milkElement);;
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullBonus(milkElement);
-	}
-	public void setNullBonus(Element milkElement) {
-		this.bonus.setNullValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 	

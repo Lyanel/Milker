@@ -85,6 +85,8 @@
 	<string id="621">Agent</string>
 	<string id="622">Need</string>
 	<string id="623">Check</string>
+	<string id="631">Quantity</string>
+	<string id="632">Quality</string>
 	<string id="651">Name</string>
 	<string id="652">Effect</string>
 	<string id="653">Description</string>
