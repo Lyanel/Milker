@@ -44,6 +44,34 @@ public static Iterator getChildrenByTagName(Element element, String tagName) {
     }
     return goodChildren.iterator();
   }
+  
+  /**
+   * Returns an ArrayList of the children of the given element with the given
+   * tag name.
+   * 
+   * @param element
+   *          The parent element
+   * @param tagName
+   *          The name of the desired child
+   * @return An ArrayList of children or null if element is null.
+   */
+public static ArrayList<Element> getChildrenListByTagName(Element element, String tagName) {
+    if (element == null)
+      return null;
+    // getElementsByTagName gives the corresponding elements in the whole
+    // descendance. We want only children
+
+    NodeList children = element.getChildNodes();
+    ArrayList<Element> goodChildren = new ArrayList<Element>();
+    for (int i = 0; i < children.getLength(); i++) {
+      Node currentChild = children.item(i);
+      if (currentChild.getNodeType() == Node.ELEMENT_NODE
+          && ((Element) currentChild).getTagName().equals(tagName)) {
+        goodChildren.add((Element)currentChild);
+      }
+    }
+    return goodChildren;
+  }
 
   /**
    * Gets the child of the specified element having the specified unique name.

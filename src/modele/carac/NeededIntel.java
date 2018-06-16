@@ -1,37 +1,34 @@
 package modele.carac;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
 import modele.MilkObj;
+import modele.XmlHelper;
 
 public class NeededIntel extends MilkObj implements Cloneable {
 	
 	public static final String noeud = "intel";
 	public String getNoeud() {return noeud;}
 
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
-		Vector<NeededIntel> neededIntels = new Vector<NeededIntel>();
-		NeededIntel neededIntel=new NeededIntel();
-		Element elements = neededIntel.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=neededIntel.getMilkElement(elements,i);
-			if (tempE != null){
-				neededIntel=new NeededIntel();
-				neededIntel.setValueFromNode(tempE);
-				neededIntels.add(neededIntel);
-			}
+	public static ArrayList<Element> getElementListfromParent(Element parent) {
+		ArrayList<Element> temp = null;
+		try {
+			temp = XmlHelper.getChildrenListByTagName(XmlHelper.getOptionalChild(parent, noeud+"s"),noeud);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return neededIntels;
+		return (temp !=null)?temp:new ArrayList<Element>();
 	}
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<NeededIntel> neededIntels = new Vector<NeededIntel>();
-		for (Element elementMilk: elementlist) {
+	public static ArrayList<? extends NeededIntel> getMilkVarList(Element parent) {
+		return getMilkVarList(getElementListfromParent(parent));
+	}
+	
+	public static ArrayList<? extends NeededIntel> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<NeededIntel> neededIntels = new ArrayList<NeededIntel>();
+		if(elementlist != null) for (Element elementMilk: elementlist) {
 			try {
 				NeededIntel neededIntel = new NeededIntel(elementMilk);
 				neededIntels.add(neededIntel);
@@ -56,7 +53,7 @@ public class NeededIntel extends MilkObj implements Cloneable {
 	
 	@Override
 	public void setValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
+		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
 		super.setValueFromNode(thisElement);
 	}
 	

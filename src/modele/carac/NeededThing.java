@@ -1,10 +1,11 @@
 package modele.carac;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
+import modele.XmlHelper;
 import modele.thing.Thing;
 
 public class NeededThing extends NeededIntel implements Cloneable {
@@ -12,27 +13,23 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	public static final String noeud = "thing", xmlLvl = "lvl";
 	public String getNoeud() {return noeud;}
 
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
-		Vector<NeededThing> neededThings = new Vector<NeededThing>();
-		NeededThing neededThing=new NeededThing();
-		Element elements = neededThing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=neededThing.getMilkElement(elements,i);
-			if (tempE != null){
-				neededThing=new NeededThing();
-				neededThing.setValueFromNode(tempE);
-				neededThings.add(neededThing);
-			}
+	public static ArrayList<Element> getElementListfromParent(Element parent) {
+		ArrayList<Element> temp = null;
+		try {
+			temp = XmlHelper.getChildrenListByTagName(XmlHelper.getOptionalChild(parent, noeud+"s"),noeud);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return neededThings;
+		return (temp !=null)?temp:new ArrayList<Element>();
 	}
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<NeededThing> neededThings = new Vector<NeededThing>();
-		for (Element elementMilk: elementlist) {
+	public static ArrayList<? extends NeededThing> getMilkVarList(Element parent) {
+		return getMilkVarList(getElementListfromParent(parent));
+	}
+
+	public static ArrayList<? extends NeededThing>  getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<NeededThing> neededThings = new ArrayList<NeededThing>();
+		if (elementlist !=null) for (Element elementMilk: elementlist) {
 			try {
 				NeededThing neededThing = new NeededThing(elementMilk);
 				neededThings.add(neededThing);

@@ -9,7 +9,7 @@ import modele.carac.ThingAttrib;
 import modele.carac.Bonus;
 import modele.carac.Population;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -22,7 +22,7 @@ public class Building extends Thing implements Cloneable {
 	public static final String file	= "Building", noeud	= "building";
 	public String getNoeud() {return noeud;}
 
-	private static Vector<Building> buildings;
+	private static ArrayList<Building> buildings;
 	private static ObservableList<Building> modelListe;
 	private static ObservableList<Building> modelNeutralListe;
 	private static ObservableList<Building> modelScienceListe;
@@ -51,31 +51,31 @@ public class Building extends Thing implements Cloneable {
         return list;
     }
 	
-	private static Vector<Building> setMilkVarFromFiles() {
-		if (buildings==null) buildings = new Vector<Building>();
-		else buildings.removeAllElements();
+	private static ArrayList<Building> setMilkVarFromFiles() {
+		if (buildings==null) buildings = new ArrayList<Building>();
+		else buildings.clear();
 		//Set stats
-		Vector<Element> elementlist = new Vector<Element>();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		buildings = getMilkVarList(elementlist);
 		//Set info
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(buildings, elementlInfos);
 		//Set icon
-		Vector<Element> elementlIcon = new Vector<Element>();
+		ArrayList<Element> elementlIcon = new ArrayList<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcon(buildings, elementlIcon);
 		//Set scene
-		Vector<Element> elementlScene = new Vector<Element>();
+		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScene(buildings, elementlScene);
 		
 		return buildings;
 	}
 
-	public static Vector<Building> getMilkVarList(Vector<Element> elementlist) {
-		Vector<Building> buildings = new Vector<Building>();
+	public static ArrayList<Building> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Building> buildings = new ArrayList<Building>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Building building = new Building(elementMilk);
@@ -154,8 +154,8 @@ public class Building extends Thing implements Cloneable {
 	public static double getIncomeFromList(double buildProdBonus, double buildQualBonus) {
 		if (modelListe==null)getFullListe();
 		double tIncome = 0;
-		for (Building thing:modelListe){
-			tIncome += thing.getIncome(buildProdBonus,buildQualBonus) ;
+		for (Building building:modelListe){
+			tIncome += building.getIncome(buildProdBonus,buildQualBonus) ;
 		}
 		return tIncome;
 	}

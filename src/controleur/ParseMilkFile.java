@@ -8,9 +8,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,7 +20,6 @@ import modele.MilkRs;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class ParseMilkFile{
@@ -44,20 +43,40 @@ public class ParseMilkFile{
 	 * @throws ParserConfigurationException 
 	 * @throws IOException 
 	 * @throws SAXException 
-	 * */
+	 * *
 	private static NodeList getXmlList(String fichier, String node) throws ParserConfigurationException, SAXException, IOException {
 		Document ciblexml = getXmlDocument(fichier);
 		return ciblexml.getElementsByTagName(node);
-	}
+	}*/
 	
 	/**
-	 * méthode renvoyant un Vector de milkFile sous forme d'element après lecture du fichier.
+	 * méthode renvoyant un ArrayList de milkFile sous forme d'element après lecture du fichier.
 	 * @throws IOException 
 	 * @throws SAXException 
 	 * @throws ParserConfigurationException 
 	 * */
-	public static Vector<Element> getMilkElementLists(String fichier,String node) {
-		Vector<Element> temp=null;
+	public static Element getXmlRacine(String fichier,String node) {
+		Element temp=null;
+		try {
+			temp = getXmlDocument(fichier).getDocumentElement();
+			if(!((Element) temp).getTagName().equals(node))throw new Exception("Expected racine tag name : " + node);
+		} catch (Exception e) {e.printStackTrace();}
+		return temp;
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * méthode renvoyant un ArrayList de milkFile sous forme d'element après lecture du fichier.
+	 * @throws IOException 
+	 * @throws SAXException 
+	 * @throws ParserConfigurationException 
+	 * *
+	public static ArrayList<Element> getMilkElementLists(String fichier,String node) {
+		ArrayList<Element> temp=null;
 		try {
 			temp = getElementLists(getXmlList(fichier,node));
 		} catch (ParserConfigurationException | SAXException | IOException e) {e.printStackTrace();}
@@ -69,13 +88,13 @@ public class ParseMilkFile{
 	
 	
 	/**
-	 * méthode renvoyant un Vector de milkFile sous forme d'élèment depuis une NodeList.
+	 * méthode renvoyant un ArrayList de milkFile sous forme d'élèment depuis une NodeList.
 	 * @throws IOException 
 	 * @throws SAXException 
 	 * @throws ParserConfigurationException 
-	 * */
-	public static Vector<Element> getElementLists(NodeList milkObjetlist) throws ParserConfigurationException, SAXException, IOException {
-		Vector<Element> milkObjet = new Vector<Element>();
+	 * *
+	public static ArrayList<Element> getElementLists(NodeList milkObjetlist) throws ParserConfigurationException, SAXException, IOException {
+		ArrayList<Element> milkObjet = new ArrayList<Element>();
 		for (int i=0;i<milkObjetlist.getLength();i++) {
 			milkObjet.add((Element)milkObjetlist.item(i));
 		}
@@ -87,10 +106,10 @@ public class ParseMilkFile{
 	 * @param element
 	 * @param nodeName
 	 * @return
-	 */
+	 *
 	public static Element getMilkElement(Element element,String name, int range) {
 		return (element != null) ?(Element)element.getElementsByTagName(name).item(range):null;
-	}
+	}*/
 
 	
 	// Méthode lié a un attribut
@@ -204,8 +223,8 @@ public class ParseMilkFile{
 	/**
 	 * méthode renvoyant une liste de nom depuis le fichier demander.
 	 * */
-	public static Vector<String> getNamesLists(String file) {
-		Vector<String> namelist = new Vector<String>();
+	public static ArrayList<String> getNamesLists(String file) {
+		ArrayList<String> namelist = new ArrayList<String>();
 		String chaine = "";
 		try {
 			File fileDir = new File("Data/Xml/"+file+".txt");
@@ -228,7 +247,7 @@ public class ParseMilkFile{
 	/**
 	 * méthode écrivant une liste de nom dans le fichier demander.
 	 * */
-	public static void whriteNamesLists(String file,Vector<String> namelist) {
+	public static void whriteNamesLists(String file,ArrayList<String> namelist) {
 		HashSet<String> set = new HashSet<String>(namelist);
 		namelist.clear();
 		namelist.addAll(set);

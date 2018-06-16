@@ -188,7 +188,7 @@ public class MilkGameController extends MilkTabControleur {
 
 	@FXML
     private void initialize() {}
-	
+    
     public void initList() {
     	initInfoPan(centerAnchor);
     	InfoPanMover = new EventHandler<MouseEvent>() {
@@ -470,10 +470,23 @@ public class MilkGameController extends MilkTabControleur {
         }
 	}
 
+
+	public void setScienceTabVisible(boolean visible) {
+		scienceTab.setDisable(visible);
+	}
+
+	public void setMagicTabVisible(boolean visible) {
+		magicTab.setDisable(visible);
+	}
+	
 	public void setSlavesTabVisible(boolean visible) {
-		neutralSlavePan.setVisible(visible);
+		neutralSlaveTab.setVisible(visible);
 		scienceSlaveTab.setVisible(visible);
 		magicSlaveTab.setVisible(visible);
+	}
+
+	public void setIdolTabVisible(boolean visible) {
+		idolTab.setVisible(visible);
 	}
 
 	public void setInfoVisible(MilkInfo info, boolean visible) {
@@ -503,8 +516,7 @@ public class MilkGameController extends MilkTabControleur {
 	public void setIdolScene(ToggleOption value) {
 		idolPic.setImage(value.getScene().getImage());
 	}
-    
-    
+	
     /**
     * Cet écouteur est appelé lorsque la propriété value change.
     */

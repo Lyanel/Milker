@@ -22,14 +22,9 @@ public class Sacrifice extends NeededThing implements Cloneable {
 	
 	@Override
 	public void setValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
-		if(milkElement != thisElement) super.setValueFromNode(thisElement);
+		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
+		if(thisElement != null) super.setValueFromNode(thisElement);
 	}
-/*	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
-		super.setNullValueFromNode(thisElement);
-	}*/
 	
 	// other object methods
 	

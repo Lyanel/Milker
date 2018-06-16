@@ -81,8 +81,8 @@ public class Intel extends MilkXmlObj implements Cloneable {
 		this.start = start;
 	}
 	
-	public Float getPriceValue() {
-		return this.price.getCoin()*this.price.getCoef();
+	public Double getPriceValue() {
+		return (double) (this.price.getCoin()*this.price.getCoef());
 	}
 	public Price getPrice() {
 		return this.price;

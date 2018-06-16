@@ -1,11 +1,10 @@
 package modele;
 
 import java.util.Locale;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-import controleur.ParseMilkFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,28 +12,28 @@ public class MilkInterface extends MilkLanguage implements Cloneable {
 	
 	public static final String file			= "Interface";
 	
-	private static Vector<MilkLanguage> languages = setMilkLanguagesFromFiles();
+	private static ArrayList<MilkLanguage> languages = setMilkLanguagesFromFiles();
 	private static MilkLanguage language;
-	private static Vector<MilkString> languagesString;
+	private static ArrayList<MilkString> languagesString;
 
 	
-	private static Vector<MilkLanguage> setMilkLanguagesFromFiles() {
-		if (languages==null) languages = new Vector<MilkLanguage>();
-		else languages.removeAllElements();
-		Vector<Element> elementlist = new Vector<Element>();
-		elementlist = getMilkElementsFromFiles(getXmlFilePath(file)+file, noeud);
-		languages = getMilkLanguageList(elementlist);
+	private static ArrayList<MilkLanguage> setMilkLanguagesFromFiles() {
+		if (languages==null) languages = new ArrayList<MilkLanguage>();
+		else languages.clear();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
+		elementlist = MilkFile.getMilkElementsFromFiles(getXmlFilePath(file)+file, noeud);
+		languages = MilkLanguage.getMilkLanguageList(elementlist);
 		changeLanguage(Locale.getDefault().getLanguage());
 		if(language==null) changeLanguage(11);
 		return languages;
 	}
 	
 	private static void setLanguageStrings() {
-		if (languagesString==null) languagesString = new Vector<MilkString>();
-		else languagesString.removeAllElements();
-		Vector<Element> elementlist = new Vector<Element>();
+		if (languagesString==null) languagesString = new ArrayList<MilkString>();
+		else languagesString.clear();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		try {
-			elementlist = ParseMilkFile.getMilkElementLists(getXmlFilePath(file)+language.getPath()+"/"+file,MilkString.noeud);
+			elementlist = MilkFile.getMilkElementsFromFiles(getXmlFilePath(file)+language.getPath()+"/"+file,MilkString.noeud);
 			languagesString = MilkString.getMilkVarList(elementlist);
 		} catch (Exception e) {e.printStackTrace();}
 	}
@@ -46,10 +45,7 @@ public class MilkInterface extends MilkLanguage implements Cloneable {
 			for (MilkLanguage temp:languages){
 				try {
 					clone.add((MilkLanguage) temp.clone());
-				} catch (CloneNotSupportedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				} catch (CloneNotSupportedException e) {}
 			}
 		}
 		return clone;

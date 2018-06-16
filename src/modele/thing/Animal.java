@@ -1,6 +1,6 @@
 package modele.thing;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -17,7 +17,7 @@ public class Animal extends Thing implements Cloneable {
 	public static final String file	= "Animal", noeud	= "animal";
 	public String getNoeud() {return noeud;}
 
-	private static Vector<Animal> animals;
+	private static ArrayList<Animal> animals;
 	private static ObservableList<Animal> modelListe;
 	private static ObservableList<Animal> modelNeutralListe;
 	private static ObservableList<Animal> modelScienceListe;
@@ -45,31 +45,31 @@ public class Animal extends Thing implements Cloneable {
         }
         return list;
     }
-	private static Vector<Animal> setMilkVarFromFiles() {
-		if (animals==null) animals = new Vector<Animal>();
-		else animals.removeAllElements();
+	private static ArrayList<Animal> setMilkVarFromFiles() {
+		if (animals==null) animals = new ArrayList<Animal>();
+		else animals.clear();
 		//Set stats
-		Vector<Element> elementlist = new Vector<Element>();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		animals = getMilkVarList(elementlist);
 		//Set info
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(animals, elementlInfos);
 		//Set icon
-		Vector<Element> elementlIcon = new Vector<Element>();
+		ArrayList<Element> elementlIcon = new ArrayList<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcon(animals, elementlIcon);
 		//Set scene
-		Vector<Element> elementlScene = new Vector<Element>();
+		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScene(animals, elementlScene);
 		
 		return animals;
 	}
 
-	public static Vector<Animal> getMilkVarList(Vector<Element> elementlist) {
-		Vector<Animal> animals = new Vector<Animal>();
+	public static ArrayList<Animal> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Animal> animals = new ArrayList<Animal>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Animal animal = new Animal(elementMilk);
@@ -79,8 +79,8 @@ public class Animal extends Thing implements Cloneable {
 		return animals;
 	}
 	/*
-	public static Vector<Animal> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Animal> animals = new Vector<Animal>();
+	public static ArrayList<Animal> getNullMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Animal> animals = new ArrayList<Animal>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Animal animal = new Animal();

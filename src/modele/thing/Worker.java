@@ -1,6 +1,6 @@
 package modele.thing;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -17,7 +17,7 @@ public class Worker extends Thing implements Cloneable {
 	public static final String file	= "Worker", noeud = "worker";
 	public String getNoeud() {return noeud;}
 
-	private static Vector<Worker> workers;
+	private static ArrayList<Worker> workers;
 	private static ObservableList<Worker> modelListe;
 	private static ObservableList<Worker> modelNeutralListe;
 	private static ObservableList<Worker> modelScienceListe;
@@ -46,31 +46,31 @@ public class Worker extends Thing implements Cloneable {
         return list;
     }
 	
-	private static Vector<Worker> setMilkVarFromFiles() {
-		if (workers==null) workers = new Vector<Worker>();
-		else workers.removeAllElements();
+	private static ArrayList<Worker> setMilkVarFromFiles() {
+		if (workers==null) workers = new ArrayList<Worker>();
+		else workers.clear();
 		//Set stats
-		Vector<Element> elementlist = new Vector<Element>();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		workers = getMilkVarList(elementlist);
 		//Set info
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(workers, elementlInfos);
 		//Set icon
-		Vector<Element> elementlIcon = new Vector<Element>();
+		ArrayList<Element> elementlIcon = new ArrayList<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcon(workers, elementlIcon);
 		//Set scene
-		Vector<Element> elementlScene = new Vector<Element>();
+		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScene(workers, elementlScene);
 		
 		return workers;
 	}
 	
-	public static Vector<Worker> getMilkVarList(Vector<Element> elementlist) {
-		Vector<Worker> workers = new Vector<Worker>();
+	public static ArrayList<Worker> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Worker> workers = new ArrayList<Worker>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Worker worker = new Worker(elementMilk);
@@ -80,8 +80,8 @@ public class Worker extends Thing implements Cloneable {
 		return workers;
 	}
 	/*
-	public static Vector<Worker> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Worker> workers = new Vector<Worker>();
+	public static ArrayList<Worker> getNullMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Worker> workers = new ArrayList<Worker>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Worker worker = new Worker();

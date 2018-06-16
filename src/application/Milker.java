@@ -160,6 +160,10 @@ public class Milker extends Application {
 		gameController.setSlavesTabVisible(visible);
 	}
 
+	public void setIdolTabVisible(boolean visible) {
+		gameController.setIdolTabVisible(visible);
+	}
+
     /*
      * Open the editor window.
      */

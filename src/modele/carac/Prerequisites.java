@@ -30,7 +30,6 @@ public class Prerequisites extends MilkVar implements Cloneable {
 		this.setNeededThings(milkElement);
 		
 	}
-	@SuppressWarnings("unchecked")
 	public void setNeededThings(Element milkElement) {
 		this.neededThings.addAll(NeededThing.getMilkVarList(milkElement));
 		if(neededThings.size()==0){

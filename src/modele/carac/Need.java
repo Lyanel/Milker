@@ -30,13 +30,13 @@ public class Need extends Prerequisites implements Cloneable {
 	
 	@Override
 	public void setValueFromNode(Element milkElement) {
-		Element thisElement = this.getOptionalChild(milkElement);
+		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
 		if(thisElement!=null){
 			super.setValueFromNode(thisElement);
 			this.setNeededIntels(thisElement);
 		}
 	}
-	@SuppressWarnings("unchecked")
+	
 	public void setNeededIntels(Element milkElement) {
 		neededIntels.addAll(NeededIntel.getMilkVarList(milkElement));
 	}

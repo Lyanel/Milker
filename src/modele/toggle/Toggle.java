@@ -4,7 +4,7 @@ import modele.MilkRs;
 import modele.carac.Agent;
 import modele.intel.Intel;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -16,10 +16,10 @@ public class Toggle extends Intel implements Cloneable {
 	public static final String noeud = "toggle";
 	public String getNoeud() {return noeud;}
 
-	private static Vector<Toggle> toggles;
+	private static ArrayList<Toggle> toggles;
 	private static ObservableList<Toggle> modeltoggles;
 	
-	public static void setInfos(Vector<? extends Toggle> toggles, Vector<Element> elements) {
+	public static void setInfos(ArrayList<? extends Toggle> toggles, ArrayList<Element> elements) {
 		for (Element element: elements) {
 			try {
 				Toggle test = new Toggle(element);
@@ -27,7 +27,6 @@ public class Toggle extends Intel implements Cloneable {
 				for (Toggle thing:toggles){
 					if (test.getId().intValue() == thing.getId().intValue()){
 						thing.setInfo(test.getInfo());
-				//		thing.setToggleOptionsInfo(test.getToggleOptions());
 						ToggleOption.setOptionsInfos(thing.getToggleOptions(),element);
 						break;
 					}
@@ -36,7 +35,7 @@ public class Toggle extends Intel implements Cloneable {
 		}
 	}
 
-	public static void setIcons(Vector<? extends Toggle> toggles, Vector<Element> elements) {
+	public static void setIcons(ArrayList<? extends Toggle> toggles, ArrayList<Element> elements) {
 		for (Element element: elements) {
 			try {
 				Toggle test = new Toggle(element);
@@ -44,7 +43,6 @@ public class Toggle extends Intel implements Cloneable {
 				for (Toggle thing:toggles){
 					if (test.getId().intValue() == thing.getId().intValue()){
 						thing.setIcon(test.getIcon());
-				//		thing.setToggleOptionsIcon(test.getToggleOptions());
 						ToggleOption.setOptionsIcons(thing.getToggleOptions(),element);
 						break;
 					}
@@ -53,7 +51,7 @@ public class Toggle extends Intel implements Cloneable {
 		}
 	}
 
-	public static void setScenes(Vector<? extends Toggle> toggles, Vector<Element> elements) {
+	public static void setScenes(ArrayList<? extends Toggle> toggles, ArrayList<Element> elements) {
 		for (Element element: elements) {
 			try {
 				Toggle test = new Toggle(element);
@@ -72,7 +70,7 @@ public class Toggle extends Intel implements Cloneable {
 	public static ObservableList<Toggle> getToggleListe() {
 		if (modeltoggles==null){
 			if (toggles==null){
-				toggles = new Vector<Toggle>();
+				toggles = new ArrayList<Toggle>();
 				toggles.add(ToggleTool.getTool());
 				toggles.add(ToggleIdol.getIdol());
 				toggles.add(ToggleEvent.getEvent());
@@ -90,7 +88,7 @@ public class Toggle extends Intel implements Cloneable {
 	// field
 
 	private Agent agent;
-	private Vector<ToggleOption> toggleOptions = null;	
+	private ArrayList<ToggleOption> toggleOptions = null;	
 	private ObservableList<ToggleOption> modelOptions = null;	
 
 	// Constructors
@@ -98,12 +96,12 @@ public class Toggle extends Intel implements Cloneable {
 	public Toggle() {
 		super();
 		this.agent = new Agent();
-		this.toggleOptions = new Vector<ToggleOption>();
+		this.toggleOptions = new ArrayList<ToggleOption>();
 	}
 	public Toggle(Element milkElement) {
 		super();
 		this.agent = new Agent();
-		this.toggleOptions = new Vector<ToggleOption>();
+		this.toggleOptions = new ArrayList<ToggleOption>();
 		this.setValueFromNode(milkElement);
 	}
 	
@@ -120,6 +118,7 @@ public class Toggle extends Intel implements Cloneable {
 	}
 	public void setToggleOptions(Element milkElement) {
 		toggleOptions.addAll(ToggleOption.getMilkVarList(milkElement));
+		setOptionSelected(this.getStart().intValue());
 	}
 	public void addOption(Element milkElement) {
 		ToggleOption newOption = new ToggleOption(milkElement);
@@ -136,7 +135,7 @@ public class Toggle extends Intel implements Cloneable {
 	// field methods
 
 	@Override
-	public Float getPriceValue() {
+	public Double getPriceValue() {
 		return super.getPriceValue();
 	}
 	public Agent getAgent() {
@@ -146,13 +145,13 @@ public class Toggle extends Intel implements Cloneable {
 		this.agent = agent;
 	}
 	
-	public Vector<ToggleOption> getToggleOptions() {
+	public ArrayList<ToggleOption> getToggleOptions() {
 		return toggleOptions;
 	}
-	public void setToggleOptions(Vector<ToggleOption> toggleOptions) {
+	public void setToggleOptions(ArrayList<ToggleOption> toggleOptions) {
 		this.toggleOptions = toggleOptions;
 	}
-	public void setToggleOptionsInfo(Vector<ToggleOption> toggleOptions) {
+	public void setToggleOptionsInfo(ArrayList<ToggleOption> toggleOptions) {
 		if (this.toggleOptions!=null && toggleOptions!=null){
 			for (ToggleOption toggleOption:this.toggleOptions) {
 				if(toggleOptions.contains(toggleOption))
@@ -160,7 +159,7 @@ public class Toggle extends Intel implements Cloneable {
 			}
 		}
 	}
-	public void setToggleOptionsIcon(Vector<ToggleOption> toggleOptions) {
+	public void setToggleOptionsIcon(ArrayList<ToggleOption> toggleOptions) {
 		if (this.toggleOptions!=null && toggleOptions!=null){
 			for (ToggleOption toggleOption:this.toggleOptions) {
 				if(toggleOptions.contains(toggleOption))
@@ -168,13 +167,34 @@ public class Toggle extends Intel implements Cloneable {
 			}
 		}
 	}
-	public void setToggleOptionsScene(Vector<ToggleOption> toggleOptions) {
+	public void setToggleOptionsScene(ArrayList<ToggleOption> toggleOptions) {
 		if (this.toggleOptions!=null && toggleOptions!=null){
 			for (ToggleOption toggleOption:this.toggleOptions) {
 				if(toggleOptions.contains(toggleOption))
 					toggleOption.setScene(toggleOptions.get(toggleOptions.indexOf(toggleOption)).getScene());
 			}
 		}
+	}
+	
+	public void setOptionSelected(ToggleOption value) {
+		setOptionSelected(value.getId().intValue());
+	}
+	public void setOptionSelected(int optionId) {
+		this.setStart(optionId);
+		for (ToggleOption option : toggleOptions){
+			if(option.getId().intValue()==optionId)option.setSelected(true);
+			else option.setSelected(false);
+		}
+	}
+	public ToggleOption getselectedOption() {
+		ToggleOption value = new ToggleOption();
+		for (ToggleOption option : toggleOptions){
+			if(option.getId().intValue()==getStart().intValue()){
+				value = option;
+				break;
+			}
+		}
+		return value;
 	}
 	
 	public ObservableList<ToggleOption> getObservableOptions() {
@@ -215,8 +235,8 @@ public class Toggle extends Intel implements Cloneable {
 	
 	// other object methods
 
-	public Vector<ToggleOption> getCloneToggleOptions() throws CloneNotSupportedException {
-		Vector<ToggleOption> clone = new Vector<ToggleOption>();
+	public ArrayList<ToggleOption> getCloneToggleOptions() throws CloneNotSupportedException {
+		ArrayList<ToggleOption> clone = new ArrayList<ToggleOption>();
 		if (this.toggleOptions!=null) for (ToggleOption toggleOption:this.toggleOptions) clone.add((ToggleOption) toggleOption.clone());
 		return clone;
 	}

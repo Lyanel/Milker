@@ -1,12 +1,13 @@
 package modele.carac;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
 import controleur.ParseMilkFile;
 import modele.MilkRs;
 import modele.MilkVar;
+import modele.XmlHelper;
 import modele.thing.Thing;
 
 public class Effect extends MilkVar implements Cloneable {
@@ -14,26 +15,13 @@ public class Effect extends MilkVar implements Cloneable {
 	public static final String noeud = "effect", xmlMod = "mod", xmlCoef = "coef";
 	public String getNoeud() {return noeud;}
 
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
-		Vector<Effect> effects = new Vector<Effect>();
-		Effect effect=new Effect();
-		Element elements = effect.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=effect.getMilkElement(elements,i);
-			if (tempE != null){
-				effect.setValueFromNode(tempE);
-				effects.add(effect);
-			}
-		}
-		return effects;
+	
+	public static ArrayList<? extends Effect> getMilkVarList(Element parent) {
+		return getMilkVarList(XmlHelper.getChildrenListByTagName(parent,noeud));
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<Effect> effects = new Vector<Effect>();
+	public static ArrayList<? extends Effect> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Effect> effects = new ArrayList<Effect>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Effect effect = new Effect(elementMilk);
@@ -47,23 +35,23 @@ public class Effect extends MilkVar implements Cloneable {
 	
 	private Float coef;
 	private Integer mod;
-	private Vector<Agent> agents = null;	
-	private Vector<Thing> things = null;	
+	private ArrayList<Agent> agents = null;	
+	private ArrayList<Thing> things = null;	
 	
 	// Constructors
 	
 	public Effect() {
 		this.coef = (float)1;
 		this.mod = 1;
-		this.agents = new Vector<Agent>();
-		this.things = new Vector<Thing>();
+		this.agents = new ArrayList<Agent>();
+		this.things = new ArrayList<Thing>();
 	}
 	public Effect(Element milkElement) {
 		super();
 		this.coef = (float)1;
 		this.mod = 1;
-		this.agents = new Vector<Agent>();
-		this.things = new Vector<Thing>();
+		this.agents = new ArrayList<Agent>();
+		this.things = new ArrayList<Thing>();
 		this.setValueFromNode(milkElement);
 	}
 
@@ -87,11 +75,11 @@ public class Effect extends MilkVar implements Cloneable {
 		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlMod);
 		if (temp != null) this.mod=temp;
 	}
-	@SuppressWarnings("unchecked")
+	
 	public void setAgents(Element milkElement) {
 		this.agents.addAll(Agent.getMilkVarList(milkElement));
 	}
-	@SuppressWarnings("unchecked")
+	
 	public void setThings(Element milkElement) {
 		this.things.addAll(Thing.getMilkVarList(milkElement));
 	}
@@ -131,17 +119,17 @@ public class Effect extends MilkVar implements Cloneable {
 		this.mod = mod;
 	}
 	
-	public Vector<Agent> getAgents() {
+	public ArrayList<Agent> getAgents() {
 		return agents;
 	}
-	public void setAgents(Vector<Agent> agents) {
+	public void setAgents(ArrayList<Agent> agents) {
 		this.agents = agents;
 	}
 	
-	public Vector<Thing> getThings() {
+	public ArrayList<Thing> getThings() {
 		return things;
 	}
-	public void setThings(Vector<Thing> things) {
+	public void setThings(ArrayList<Thing> things) {
 		this.things = things;
 	}
 	
@@ -200,13 +188,13 @@ public class Effect extends MilkVar implements Cloneable {
 
 	// other object methods
 	
-	public Vector<Agent> getCloneAgents() throws CloneNotSupportedException {
-		Vector<Agent> clone = new Vector<Agent>();
+	public ArrayList<Agent> getCloneAgents() throws CloneNotSupportedException {
+		ArrayList<Agent> clone = new ArrayList<Agent>();
 		if (this.agents!=null) for (Agent agent:this.agents) clone.add((Agent) agent.clone());
 		return clone;
 	}
-	public Vector<Thing> getCloneThings() throws CloneNotSupportedException {
-		Vector<Thing> clone = new Vector<Thing>();
+	public ArrayList<Thing> getCloneThings() throws CloneNotSupportedException {
+		ArrayList<Thing> clone = new ArrayList<Thing>();
 		if (this.things!=null) for (Thing neededThing:this.things) clone.add((Thing) neededThing.clone());
 		return clone;
 	}

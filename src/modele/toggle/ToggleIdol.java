@@ -3,34 +3,35 @@ package modele.toggle;
 import modele.MilkFile;
 import modele.MilkImage;
 import modele.MilkInterface;
+import modele.XmlHelper;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
 public class ToggleIdol extends Toggle implements Cloneable {
 
 	public static final String file	= "ToggleIdol";
-	private static Vector<ToggleIdol> idols;
+	private static ArrayList<ToggleIdol> idols;
 	private static ToggleIdol idol;
 	
-	private static Vector<ToggleIdol> setMilkVarFromFiles() {
-		if (idols==null) idols = new Vector<ToggleIdol>();
-		else idols.removeAllElements();
+	private static ArrayList<ToggleIdol> setMilkVarFromFiles() {
+		if (idols==null) idols = new ArrayList<ToggleIdol>();
+		else idols.clear();
 		//Set stats
-		Vector<Element> elementlist = new Vector<Element>();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		idols = getMilkVarList(elementlist);
 		//Set info
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfos(idols, elementlInfos);
 		//Set icon
-		Vector<Element> elementlIcon = new Vector<Element>();
+		ArrayList<Element> elementlIcon = new ArrayList<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcons(idols, elementlIcon);
 		//Set scene
-		Vector<Element> elementlScene = new Vector<Element>();
+		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScenes(idols, elementlScene);
 		
@@ -38,29 +39,17 @@ public class ToggleIdol extends Toggle implements Cloneable {
 		return idols;
 	}
 	
-	public static Vector<ToggleIdol> getMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleIdol> things = new Vector<ToggleIdol>();
+	public static ArrayList<ToggleIdol> getMilkVarList(Element parent) {
+		return getMilkVarList(XmlHelper.getChildrenListByTagName(parent,noeud));
+	}
+	
+	public static ArrayList<ToggleIdol> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<ToggleIdol> things = new ArrayList<ToggleIdol>();
 		for (Element elementMilk: elementlist) {
 			try {
 				ToggleIdol thing = new ToggleIdol(elementMilk);
 				things.add(thing);
 			} catch (Exception e) {e.printStackTrace();}
-		}
-		return things;
-	}
-	
-	public static Vector<? extends Toggle> getMilkVarList(Element elementlist) {
-		Vector<ToggleIdol> things = new Vector<ToggleIdol>();
-		ToggleIdol thing=new ToggleIdol();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing.setValueFromNode(tempE);
-				things.add(thing);
-			}
 		}
 		return things;
 	}

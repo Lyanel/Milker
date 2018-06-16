@@ -26,7 +26,7 @@ public class Population extends MilkKind implements Cloneable {
 	
 	@Override
 	public void setValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
+		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
 		super.setValueFromNode(thisElement);
 		this.setAttrib(thisElement);
 		if(this.getAttrib().getQuant()>0)this.setMod(1);		

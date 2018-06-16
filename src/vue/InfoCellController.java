@@ -74,7 +74,6 @@ public class InfoCellController {
 
 	public void setVisible(boolean visible) {
 		infoPan.setVisible(visible);
-		
 	}
 
 	public boolean isVisible() {

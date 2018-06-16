@@ -78,19 +78,6 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 		temp=ParseMilkFile.getXmlIntValue(milkElement);
 		if (temp != null) this.quant=temp;
 	}
-/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullTree(milkElement);
-		this.setNullQuant(milkElement);
-	}
-	public void setNullTree(Element milkElement) {
-		this.tree = ParseMilkFile.getXmlIntAttribute(milkElement,xmlTree);
-	}
-	public void setNullQuant(Element milkElement) {
-		this.quant = ParseMilkFile.getXmlIntValue(milkElement);
-	}*/
 	
 	// field methods
 	
@@ -132,9 +119,12 @@ public class ThingAttrib extends MilkVar implements Cloneable {
 		if (this.quant != null) temp = ""+quant+"";
 		return temp;
 	}
-	public void setQuant(Integer quant) {
+	public void setQuant(Integer newQuant) {
 		if (listener != null) listener.quantityChanged(this.quant, quant);
-		this.quant = quant;
+		this.quant = newQuant;
+	}
+	public void incrementeQuant(Integer quantToAdd) {
+		setQuant(this.quant + quantToAdd);
 	}
     public void addQuantityListener(QuantityListener listener) {
 		this.listener = listener;

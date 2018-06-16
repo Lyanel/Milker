@@ -6,7 +6,7 @@ import modele.MilkKind;
 import modele.carac.Check;
 import modele.carac.Sacrifice;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -18,25 +18,25 @@ public class Research extends Intel implements Cloneable {
 	public static final String file = "Research", noeud = "research";
 	public String getNoeud() {return noeud;}
 
-	private static Vector<Research> researchs;
+	private static ArrayList<Research> researchs;
 	private static ObservableList<Research> modelResearchs;
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private static Vector setMilkVarFromFiles() {
-		if (researchs==null) researchs = new Vector<Research>();
-		else researchs.removeAllElements();
-		Vector<Element> elementlist = new Vector<Element>();
+	private static ArrayList setMilkVarFromFiles() {
+		if (researchs==null) researchs = new ArrayList<Research>();
+		else researchs.clear();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		researchs = getMilkVarList(elementlist);
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(researchs, elementlInfos);
 		return researchs;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<Research> researchs = new Vector<Research>();
+	public static ArrayList getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Research> researchs = new ArrayList<Research>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Research research = new Research(elementMilk);

@@ -43,16 +43,12 @@ public class MilkCellIntel extends ListCell<Intel> {
         super.updateItem(value, empty);
         String text = null;
         Node graphic = null;
-        if (!empty && renderer != null && value != null && ((Milker) application).getModel().isSwitchable(value)) {
+        if (!empty && renderer != null && value != null && ((Milker) application).getModel().isMilkObjVisible(value)) {
         	this.setVisible(true);
-            if (((Milker) application).getModel().isSwitchable(value)) {
-                graphic = renderer;
-                rendererController.setValue(value);
-            } else {
-                text = String.valueOf(value);
-            }
+            graphic = renderer;
+            rendererController.setValue(value);
+            setText(text);
+            setGraphic(graphic);
         }else this.setVisible(false);
-        setText(text);
-        setGraphic(graphic);
     }
 }

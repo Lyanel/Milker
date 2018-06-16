@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -11,8 +11,8 @@ public class MilkLanguage extends MilkFile {
 	public static final String noeud = "language", xmlIso= "iso";
 	public String getNoeud() {return noeud;}
 	
-	public static Vector<MilkLanguage> getMilkLanguageList(Vector<Element> elementlist) {
-		Vector<MilkLanguage> milkFiles = new Vector<MilkLanguage>();
+	public static ArrayList<MilkLanguage> getMilkLanguageList(ArrayList<Element> elementlist) {
+		ArrayList<MilkLanguage> milkFiles = new ArrayList<MilkLanguage>();
 		for (Element elementMilk: elementlist) {
 			try {
 				MilkLanguage milkFile = new MilkLanguage(elementMilk);

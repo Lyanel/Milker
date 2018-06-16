@@ -3,8 +3,9 @@ package modele.toggle;
 import modele.MilkFile;
 import modele.MilkImage;
 import modele.MilkInterface;
+import modele.XmlHelper;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -13,27 +14,27 @@ import javafx.collections.ObservableList;
 
 public class ToggleEvent extends Toggle implements Cloneable {
 
-	private static Vector<ToggleEvent> events;
+	private static ArrayList<ToggleEvent> events;
 	private static ToggleEvent event;
 	public static final String file		= "ToggleEvent";
 	
-	private static Vector<ToggleEvent> setMilkVarFromFiles() {
-		if (events==null) events = new Vector<ToggleEvent>();
-		else events.removeAllElements();
+	private static ArrayList<ToggleEvent> setMilkVarFromFiles() {
+		if (events==null) events = new ArrayList<ToggleEvent>();
+		else events.clear();
 		//Set stats
-		Vector<Element> elementlist = new Vector<Element>();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		events = getMilkVarList(elementlist);
 		//Set info
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfos(events, elementlInfos);
 		//Set icon
-		Vector<Element> elementlIcon = new Vector<Element>();
+		ArrayList<Element> elementlIcon = new ArrayList<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcons(events, elementlIcon);
 		//Set scene
-		Vector<Element> elementlScene = new Vector<Element>();
+		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScenes(events, elementlScene);
 		
@@ -41,30 +42,17 @@ public class ToggleEvent extends Toggle implements Cloneable {
 		return events;
 	}
 	
-	public static Vector<ToggleEvent> getMilkVarList(Vector<Element> elementlist) {
-		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
+	public static ArrayList<ToggleEvent> getMilkVarList(Element parent) {
+		return getMilkVarList(XmlHelper.getChildrenListByTagName(parent,noeud));
+	}
+	
+	public static ArrayList<ToggleEvent> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<ToggleEvent> things = new ArrayList<ToggleEvent>();
 		for (Element elementMilk: elementlist) {
 			try {
 				ToggleEvent thing = new ToggleEvent(elementMilk);
 				things.add(thing);
 			} catch (Exception e) {e.printStackTrace();}
-		}
-		return things;
-	}
-	
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
-		Vector<ToggleEvent> things = new Vector<ToggleEvent>();
-		ToggleEvent thing=new ToggleEvent();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing.setValueFromNode(tempE);
-				things.add(thing);
-			}
 		}
 		return things;
 	}
@@ -85,7 +73,7 @@ public class ToggleEvent extends Toggle implements Cloneable {
 	public static ObservableList<ToggleOption> getOptionListes() {
 		if (event==null) ToggleEvent.getEvent();
 		ObservableList<ToggleOption> clone = FXCollections.observableArrayList();
-		Vector<ToggleOption> optionlist;
+		ArrayList<ToggleOption> optionlist;
 		optionlist = event.getToggleOptions();
 		for (ToggleOption option:optionlist){
 			clone.add(option);

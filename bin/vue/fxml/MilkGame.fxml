@@ -183,7 +183,7 @@
                                                 </GridPane>
                                              </graphic>
                                           </TitledPane>
-                                          <TitledPane fx:id="idolTab" animated="false" text="Idol">
+                                          <TitledPane fx:id="idolTab" animated="false" text="Idol" visible="false">
                                              <content>
                                                 <ListView fx:id="idolPan" />
                                              </content>

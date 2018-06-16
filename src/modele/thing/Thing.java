@@ -4,6 +4,7 @@ import modele.carac.ThingAttrib;
 import modele.carac.Income;
 import modele.carac.MilkAttrib;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import org.w3c.dom.Element;
@@ -15,25 +16,22 @@ public class Thing extends NearThing implements Cloneable {
 	public static final String noeud = "thing", xmlLvl="lvl", xmlGet="get";
 	public String getNoeud() {return noeud;}
 	
-	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Element elementlist) {
-		Vector<Thing> things = new Vector<Thing>();
+	public static ArrayList<? extends Thing> getMilkVarList(Element elementParent) {
+		ArrayList<Thing> things = new ArrayList<Thing>();
 		Thing thing=new Thing();
-		Element elements = thing.getMilkElementList(elementlist);
-		int size = (elements!=null)? elements.getChildNodes().getLength():0;
-		for (int i=0;i<size;i++){ 
-			Element tempE=null;
-			tempE=thing.getMilkElement(elements,i);
-			if (tempE != null){
-				thing.setValueFromNode(tempE);
+		Element elementlist = thing.getThisChildFromParentAsAContainer(elementParent);
+		ArrayList<Element> elements = thing.getThisChildListFromParent(elementlist);
+		if(elements !=null) for (Element element:elements){ 
+			if (element != null){
+				thing.setValueFromNode(element);
 				things.add(thing);
 			}
 		}
 		return things;
 	}
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<Thing> things = new Vector<Thing>();
+
+	public static ArrayList<? extends Thing> getMilkVarList(Vector<Element> elementlist) {
+		ArrayList<Thing> things = new ArrayList<Thing>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Thing thing = new Thing(elementMilk);
@@ -76,6 +74,7 @@ public class Thing extends NearThing implements Cloneable {
 		this.setGet(milkElement);
 		this.setAttrib(milkElement);
 		this.setIncome(milkElement);
+		if(this.getStart().intValue()>0)this.attrib.incrementeQuant(this.getStart().intValue());
 	}
 	public void setLvl(Element milkElement) {
 		Integer temp=null;
@@ -97,8 +96,8 @@ public class Thing extends NearThing implements Cloneable {
 	// field methods
 
 	@Override
-	public Float getPriceValue() {
-		return super.getPriceValue()*this.getAttrib().getQuant();
+	public Double getPriceValue() {
+		return super.getPrice().getCoin()*(1+Math.pow(this.getAttrib().getQuant()/100,super.getPrice().getCoef()));
 	}
 	
 	public Integer getLvl() {
@@ -140,6 +139,9 @@ public class Thing extends NearThing implements Cloneable {
 	public void setAttrib(ThingAttrib attrib) {
 		this.attrib = attrib;
 	}
+	public void incrementeQuant(Integer quantToAdd) {
+		this.attrib.incrementeQuant(quantToAdd);
+	}
 
 	public Income getIncome() {
 		return this.income;
@@ -151,7 +153,7 @@ public class Thing extends NearThing implements Cloneable {
 		if(thingQuant>0 && this.getIncome().canProdMilk()){
 			double milkQuant = attrib.getQuant();
 			double milkQual = attrib.getQual();
-			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus/100 ) * (milkQual+milkQual*buildQualBonus/100) ;
+			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
 		}
 		if(thingQuant>0 && this.getIncome().canProdCoin()){
 			tIncome += thingQuant * this.getIncome().getCoin() ;
@@ -163,9 +165,9 @@ public class Thing extends NearThing implements Cloneable {
 		Integer thingQuant = this.getAttrib().getQuant();
 		MilkAttrib attrib = this.getIncome().getAttrib();
 		if(thingQuant>0 && this.getIncome().canProdMilk()){
-			double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus/100)*toolProdBonus;
-			double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus/100)*toolQualBonus;
-			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus/100 ) * (milkQual+milkQual*buildQualBonus/100) ;
+			double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus;
+			double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus;
+			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
 		}
 		return tIncome;
 	}

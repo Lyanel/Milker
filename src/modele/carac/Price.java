@@ -29,7 +29,7 @@ public class Price extends MilkCoin implements Cloneable {
 	
 	@Override
 	public void setValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
+		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
 		super.setValueFromNode(thisElement);
 		this.setCoef(thisElement);
 		this.setSell(thisElement);
@@ -44,20 +44,6 @@ public class Price extends MilkCoin implements Cloneable {
 		temp=ParseMilkFile.getXmlFloatAttribute(milkElement,xmlSell);
 		if (temp != null) this.sell=temp;
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
-		super.setNullValueFromNode(thisElement);
-		this.setNullCoef(thisElement);
-		this.setNullSell(thisElement);
-	}
-	public void setNullCoef(Element milkElement) {
-		coef = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlCoef);
-	}
-	public void setNullSell(Element milkElement) {
-		sell = ParseMilkFile.getXmlFloatAttribute(milkElement,xmlSell);
-	}*/
 	
 	// field methods
 	

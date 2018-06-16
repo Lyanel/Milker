@@ -1,6 +1,6 @@
 package modele.intel;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -17,25 +17,25 @@ public class Synergy extends Research implements Cloneable {
 	public static final String file	= "Synergy", noeud = "synergy";
 	public String getNoeud() {return noeud;}
 
-	private static Vector<Synergy> synergys;
+	private static ArrayList<Synergy> synergys;
 	private static ObservableList<Synergy> modelSynergys;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private static Vector setMilkVarFromFiles() {
-		if (synergys==null) synergys = new Vector<Synergy>();
-		else synergys.removeAllElements();
-		Vector<Element> elementlist = new Vector<Element>();
+	private static ArrayList setMilkVarFromFiles() {
+		if (synergys==null) synergys = new ArrayList<Synergy>();
+		else synergys.clear();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		synergys = getMilkVarList(elementlist);
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(synergys, elementlInfos);
 		return synergys;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<Synergy> synergys = new Vector<Synergy>();
+	public static ArrayList getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Synergy> synergys = new ArrayList<Synergy>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Synergy synergy = new Synergy(elementMilk);
@@ -65,18 +65,18 @@ public class Synergy extends Research implements Cloneable {
 
 	// Fields
 	
-	private Vector<Effect> effects = null;
+	private ArrayList<Effect> effects = null;
 
 	// Constructors
 	
 	public Synergy() {
 		super();
-		this.effects = new Vector<Effect>();
+		this.effects = new ArrayList<Effect>();
 		this.setKind(MilkKind.kind_Synergy);
 	}
 	public Synergy(Element milkElement) {
 		super();
-		this.effects = new Vector<Effect>();
+		this.effects = new ArrayList<Effect>();
 		this.setValueFromNode(milkElement);
 		this.setKind(MilkKind.kind_Synergy);
 	}
@@ -89,17 +89,16 @@ public class Synergy extends Research implements Cloneable {
 		this.setEffects(milkElement);
 		
 	}
-	@SuppressWarnings("unchecked")
 	public void setEffects(Element milkElement) {
 		effects.addAll(Effect.getMilkVarList(milkElement));
 	}
 	
 	// field methods
 	
-	public Vector<Effect> getEffects() {
+	public ArrayList<Effect> getEffects() {
 		return effects;
 	}
-	public void setEffects(Vector<Effect> effects) {
+	public void setEffects(ArrayList<Effect> effects) {
 		this.effects = effects;
 	}
 	
@@ -131,8 +130,8 @@ public class Synergy extends Research implements Cloneable {
 
 	// other object methods
 	
-	public Vector<Effect> getCloneEffects() throws CloneNotSupportedException {
-		Vector<Effect> clone = new Vector<Effect>();
+	public ArrayList<Effect> getCloneEffects() throws CloneNotSupportedException {
+		ArrayList<Effect> clone = new ArrayList<Effect>();
 		if (this.effects!=null) for (Effect effect:this.effects) clone.add((Effect) effect.clone());
 		return clone;
 	}

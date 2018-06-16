@@ -7,7 +7,7 @@ import modele.MilkKind;
 import modele.carac.Agent;
 import modele.carac.ThingAttrib;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -18,7 +18,7 @@ public class SlaveWorker extends Slave implements Cloneable {
 
 	public static final String file		= "SlaveWorker";
 
-	private static Vector<SlaveWorker> slaveWorkers;
+	private static ArrayList<SlaveWorker> slaveWorkers;
 	private static ObservableList<SlaveWorker> modelListe;
 	private static ObservableList<SlaveWorker> modelNeutralListe;
 	private static ObservableList<SlaveWorker> modelScienceListe;
@@ -47,31 +47,31 @@ public class SlaveWorker extends Slave implements Cloneable {
         return list;
     }
 	
-	private static Vector<SlaveWorker> setMilkVarFromFiles() {
-		if (slaveWorkers==null) slaveWorkers = new Vector<SlaveWorker>();
-		else slaveWorkers.removeAllElements();
+	private static ArrayList<SlaveWorker> setMilkVarFromFiles() {
+		if (slaveWorkers==null) slaveWorkers = new ArrayList<SlaveWorker>();
+		else slaveWorkers.clear();
 		//Set stats
-		Vector<Element> elementlist = new Vector<Element>();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		slaveWorkers = getMilkVarList(elementlist);
 		//Set info
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(slaveWorkers, elementlInfos);
 		//Set icon
-		Vector<Element> elementlIcon = new Vector<Element>();
+		ArrayList<Element> elementlIcon = new ArrayList<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcon(slaveWorkers, elementlIcon);
 		//Set scene
-		Vector<Element> elementlScene = new Vector<Element>();
+		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScene(slaveWorkers, elementlScene);
 		
 		return slaveWorkers;
 	}
 
-	public static Vector<SlaveWorker> getMilkVarList(Vector<Element> elementlist) {
-		Vector<SlaveWorker> slaveWorkers = new Vector<SlaveWorker>();
+	public static ArrayList<SlaveWorker> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<SlaveWorker> slaveWorkers = new ArrayList<SlaveWorker>();
 		for (Element elementMilk: elementlist) {
 			try {
 				SlaveWorker slaveWorker = new SlaveWorker(elementMilk);
@@ -81,8 +81,8 @@ public class SlaveWorker extends Slave implements Cloneable {
 		return slaveWorkers;
 	}
 	/*
-	public static Vector<SlaveWorker> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<SlaveWorker> slaveWorkers = new Vector<SlaveWorker>();
+	public static ArrayList<SlaveWorker> getNullMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<SlaveWorker> slaveWorkers = new ArrayList<SlaveWorker>();
 		for (Element elementMilk: elementlist) {
 			try {
 				SlaveWorker slaveWorker = new SlaveWorker();

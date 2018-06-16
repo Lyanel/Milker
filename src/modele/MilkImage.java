@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -10,8 +10,8 @@ import javafx.scene.image.ImageView;
 
 public class MilkImage extends MilkFile {
 
-	private static Vector<MilkImage> milkInterfaceIcon;
-	private static Vector<MilkFile> milkIcon = null, milkScene = null;
+	private static ArrayList<MilkImage> milkInterfaceIcon;
+	private static ArrayList<MilkFile> milkIcon = null, milkScene = null;
 	
 	public static final String iconFile = "IconFileListe", sceneFile = "SceneFileListe";
 	public static final String noeud = "image", xmlExt= "ext", xmlDesc= "desc";
@@ -26,17 +26,17 @@ public class MilkImage extends MilkFile {
 	 * @param milkFiles 
 	 * @param imageType 
 	 */
-	private static Vector<MilkFile> setMilkImagesListFromFiles(String imageType) {
-		Vector<Element> elementlist = new Vector<Element>();
+	private static ArrayList<MilkFile> setMilkImagesListFromFiles(String imageType) {
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(imageType)+imageType);
-		Vector<MilkFile> milkFiles = getMilkVarList(elementlist);
+		ArrayList<MilkFile> milkFiles = MilkFile.getMilkVarList(elementlist);
 		return milkFiles;
 	}
 	
 	/**
 	 * Return the path of an xml image list after searching the file name in an imageFileList.
 	 */
-	private static String getXmlImagePath(String fileName, Vector<MilkFile> milkFiles, String imageType) {
+	private static String getXmlImagePath(String fileName, ArrayList<MilkFile> milkFiles, String imageType) {
 		String link = "";
 		for (MilkFile gamefile: milkFiles) {
 			if (fileName.equals(gamefile.getName())) link = xmlBasePath+gamefile.getPath();
@@ -48,7 +48,7 @@ public class MilkImage extends MilkFile {
 	 */
 	public static String getXmlScenesPath(String fileName) {
 		if (milkScene==null){
-			milkScene = new Vector<MilkFile>();
+			milkScene = new ArrayList<MilkFile>();
 			milkScene = setMilkImagesListFromFiles(sceneFile);
 		}
 		return getXmlImagePath(fileName,milkScene,sceneFile);
@@ -58,23 +58,23 @@ public class MilkImage extends MilkFile {
 	 */
 	public static String getXmlIconsPath(String fileName) {
 		if (milkIcon==null){
-			milkIcon = new Vector<MilkFile>();
+			milkIcon = new ArrayList<MilkFile>();
 			milkIcon = setMilkImagesListFromFiles(iconFile);
 		}
 		return getXmlImagePath(fileName,milkIcon,iconFile);
 	}
 	
-	private static Vector<MilkImage> setMilkInterfaceIconFromFiles() {
-		if (milkInterfaceIcon==null) milkInterfaceIcon = new Vector<MilkImage>();
-		else milkInterfaceIcon.removeAllElements();
-		Vector<Element> elementlist = new Vector<Element>();
+	private static ArrayList<MilkImage> setMilkInterfaceIconFromFiles() {
+		if (milkInterfaceIcon==null) milkInterfaceIcon = new ArrayList<MilkImage>();
+		else milkInterfaceIcon.clear();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = getMilkElementsFromFiles(getXmlIconsPath(MilkInterface.file)+MilkInterface.file, noeud);
 		milkInterfaceIcon = getMilkImageList(elementlist);
 		return milkInterfaceIcon;
 	}
 	
-	public static Vector<MilkImage> getMilkImageList(Vector<Element> elementlist) {
-		Vector<MilkImage> milkFiles = new Vector<MilkImage>();
+	public static ArrayList<MilkImage> getMilkImageList(ArrayList<Element> elementlist) {
+		ArrayList<MilkImage> milkFiles = new ArrayList<MilkImage>();
 		for (Element elementMilk: elementlist) {
 			try {
 				MilkImage milkFile = new MilkImage(elementMilk);
@@ -141,16 +141,6 @@ public class MilkImage extends MilkFile {
 	public void setDesc(Element milkElement) {
 		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullDesc(milkElement);
-		setImage();
-	}
-	public void setNullDesc(Element milkElement) {
-		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
-	}*/
 	
 	// field methods
 	

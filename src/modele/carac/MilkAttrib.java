@@ -17,6 +17,9 @@ public class MilkAttrib extends MilkVar implements Cloneable {
 	
 	public MilkAttrib() {
 		super();
+		this.quant = (float) 0;
+		this.qual = (float) 0;
+		
 	}
 	public MilkAttrib(Float quant,Float qual) {
 		super();
@@ -32,7 +35,7 @@ public class MilkAttrib extends MilkVar implements Cloneable {
 	
 	@Override
 	public void setValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
+		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
 		super.setValueFromNode(thisElement);
 		this.setQuant(thisElement);
 		this.setQual(thisElement);

@@ -63,13 +63,13 @@ public class MilkCellOptionController extends MilkCellController implements Init
 
     @Override
     public void showThing() {
-    	((Milker) getApplication()).showMilkXmlObj( getValue());
+    	((Milker) getApplication()).showMilkXmlObj(getValue());
     	updateUI(getValue());
     }
 
     @Override
     public void buyThing() {
-    	((Milker) getApplication()).getModel().switchToggle( getValue());
+    	((Milker) getApplication()).getModel().switchIdolToggle(getValue());
     	updateUI(getValue());
     }
 }

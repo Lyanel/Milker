@@ -52,9 +52,8 @@ public class MilkCellIntelController extends MilkCellController implements Initi
             if(intel.bought()){
             	nameLabel.getStyleClass().add(MilkRs.cssBought);
             	priceLabel.setVisible(false);
-            }
-            else{
-                if(!((Milker) getApplication()).getModel().isThingbuyable(intel))nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
+            } else {
+                if(!((Milker) getApplication()).getModel().isIntelbuyable(intel))nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
                 else nameLabel.getStyleClass().remove(MilkRs.cssNotBuyable);
             }
     	} else rootPane.setVisible(false);
@@ -81,9 +80,12 @@ public class MilkCellIntelController extends MilkCellController implements Initi
     @Override
     public void buyThing() {
     	if(!getValue().bought()) {
-    		((Milker) getApplication()).getModel().buyThing(getValue());
-			if(getValue().getClass().equals(Research.class) && getValue().getId().intValue()==44)((Milker) getApplication()).setSlavesTabVisible(getValue().bought());
-        	updateUI(getValue());
+    		((Milker) getApplication()).getModel().buyIntel(getValue());
+			if(getValue().getClass().equals(Research.class)){
+				if(getValue().getId().intValue()==44)((Milker) getApplication()).setSlavesTabVisible(getValue().bought());
+				if(getValue().getId().intValue()==501)((Milker) getApplication()).setIdolTabVisible(getValue().bought());
+			}
+			updateUI(getValue());
     	}
     }
 }

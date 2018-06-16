@@ -79,15 +79,6 @@ public class MilkKind extends MilkVar implements Cloneable {
 		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlKind);
 		if (temp != null) this.kind=temp;
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullKind(milkElement);
-	}
-	public void setNullKind(Element milkElement) {
-		kind = ParseMilkFile.getXmlIntAttribute(milkElement,xmlKind);
-	}*/
 	
 	// field methods
 	

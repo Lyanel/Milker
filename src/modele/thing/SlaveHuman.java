@@ -1,6 +1,6 @@
 package modele.thing;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -16,7 +16,7 @@ public class SlaveHuman extends Slave implements Cloneable {
 	
 	public static final String file		= "SlaveHuman";
 
-	private static Vector<SlaveHuman> slaveHumans;
+	private static ArrayList<SlaveHuman> slaveHumans;
 	private static ObservableList<SlaveHuman> modelListe;
 	private static ObservableList<SlaveHuman> modelNeutralListe;
 	private static ObservableList<SlaveHuman> modelScienceListe;
@@ -45,31 +45,31 @@ public class SlaveHuman extends Slave implements Cloneable {
         return list;
     }
 	
-	private static Vector<SlaveHuman> setMilkVarFromFiles() {
-		if (slaveHumans==null) slaveHumans = new Vector<SlaveHuman>();
-		else slaveHumans.removeAllElements();
+	private static ArrayList<SlaveHuman> setMilkVarFromFiles() {
+		if (slaveHumans==null) slaveHumans = new ArrayList<SlaveHuman>();
+		else slaveHumans.clear();
 		//Set stats
-		Vector<Element> elementlist = new Vector<Element>();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		slaveHumans = getMilkVarList(elementlist);
 		//Set info
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(slaveHumans, elementlInfos);
 		//Set icon
-		Vector<Element> elementlIcon = new Vector<Element>();
+		ArrayList<Element> elementlIcon = new ArrayList<Element>();
 		elementlIcon = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlIconsPath(file)+file, noeud);
 		setIcon(slaveHumans, elementlIcon);
 		//Set scene
-		Vector<Element> elementlScene = new Vector<Element>();
+		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScene(slaveHumans, elementlScene);
 		
 		return slaveHumans;
 	}
 
-	public static Vector<SlaveHuman> getMilkVarList(Vector<Element> elementlist) {
-		Vector<SlaveHuman> slaveHumans = new Vector<SlaveHuman>();
+	public static ArrayList<SlaveHuman> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<SlaveHuman> slaveHumans = new ArrayList<SlaveHuman>();
 		for (Element elementMilk: elementlist) {
 			try {
 				SlaveHuman slaveHuman = new SlaveHuman(elementMilk);
@@ -79,8 +79,8 @@ public class SlaveHuman extends Slave implements Cloneable {
 		return slaveHumans;
 	}
 	/*
-	public static Vector<SlaveHuman> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<SlaveHuman> slaveHumans = new Vector<SlaveHuman>();
+	public static ArrayList<SlaveHuman> getNullMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<SlaveHuman> slaveHumans = new ArrayList<SlaveHuman>();
 		for (Element elementMilk: elementlist) {
 			try {
 				SlaveHuman slaveHuman = new SlaveHuman();

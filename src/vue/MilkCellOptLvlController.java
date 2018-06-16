@@ -4,10 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Milker;
+import controleur.GameModele;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import modele.MilkInterface;
+import modele.MilkRs;
 import modele.toggle.ToggleLevel;
 import modele.toggle.ToggleOption;
 
@@ -59,6 +61,12 @@ public class MilkCellOptLvlController extends MilkCellOptionController implement
 	    	BonusQalLabel.setText(level.getBonus().getAttrib().getQual().toString());
 	    	level.getIcon().setAsIcon();
 			iLabel.setGraphic(level.getIcon().getImageView());
+
+            if(thing.isSelected())nameLabel.getStyleClass().add(MilkRs.cssBought);
+            else{
+                if(!((Milker) getApplication()).getModel().isToolToggleSwitchable())nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
+                else nameLabel.getStyleClass().remove(MilkRs.cssNotBuyable);
+            }
     	} else rootPane.setVisible(false);
     }
     
@@ -70,7 +78,8 @@ public class MilkCellOptLvlController extends MilkCellOptionController implement
 
     @Override
     public void buyThing() {
-    //	((Milker) getApplication()).getModel().switchToggle( getValue());
+    	GameModele model = ((Milker) getApplication()).getModel();
+    	if (model.isToolToggleSwitchable())model.switchToolToggle(getValue());
     	updateUI(getValue());
     }
 }

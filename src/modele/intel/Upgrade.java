@@ -5,7 +5,7 @@ import modele.MilkInterface;
 import modele.MilkKind;
 import modele.carac.Effect;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -17,26 +17,26 @@ public class Upgrade extends Research implements Cloneable {
 	public static final String file="Upgrade", noeud="upgrade";
 	public String getNoeud() {return noeud;}
 
-	private static Vector<Upgrade> upgrades;
+	private static ArrayList<Upgrade> upgrades;
 	private static ObservableList<Upgrade> modelUpgrades;
 	
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private static Vector setMilkVarFromFiles() {
-		if (upgrades==null) upgrades = new Vector<Upgrade>();
-		else upgrades.removeAllElements();
-		Vector<Element> elementlist = new Vector<Element>();
+	private static ArrayList setMilkVarFromFiles() {
+		if (upgrades==null) upgrades = new ArrayList<Upgrade>();
+		else upgrades.clear();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		upgrades = getMilkVarList(elementlist);
-		Vector<Element> elementlInfos = new Vector<Element>();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
 		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
 		setInfo(upgrades, elementlInfos);
 		return upgrades;
 	}
 
 	@SuppressWarnings("rawtypes")
-	public static Vector getMilkVarList(Vector<Element> elementlist) {
-		Vector<Upgrade> upgrades = new Vector<Upgrade>();
+	public static ArrayList getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<Upgrade> upgrades = new ArrayList<Upgrade>();
 		for (Element elementMilk: elementlist) {
 			try {
 				Upgrade upgrade = new Upgrade(elementMilk);
@@ -45,35 +45,6 @@ public class Upgrade extends Research implements Cloneable {
 		}
 		return upgrades;
 	}
-/*
-	@SuppressWarnings("rawtypes")
-	public static Vector getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<Upgrade> upgrades = new Vector<Upgrade>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Upgrade upgrade = new Upgrade();
-				upgrade.setNullValueFromNode(elementMilk);
-				upgrades.add(upgrade);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return upgrades;
-	}
-	*/
-/*
-	private static void setInfo(Vector<Upgrade> upgrades, Vector<Element> elementlInfos) {
-		for (Element elementlInfo: elementlInfos) {
-			try {
-				Upgrade upgradeInfo = new Upgrade(elementlInfo);
-				upgradeInfo.setInfo(elementlInfo);
-				for (Upgrade upgrade:upgrades){
-					if (upgradeInfo.equals(upgrade)){
-						upgrade.setInfo(upgradeInfo.getInfo());
-						break;
-					}
-				}
-			} catch (Exception e) {e.printStackTrace();}
-		}
-	}*/
 
 	public static ObservableList<Upgrade> getUpgradeListe() {
 		if (modelUpgrades==null){

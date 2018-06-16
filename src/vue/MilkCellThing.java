@@ -45,12 +45,8 @@ public class MilkCellThing extends ListCell<Thing> {
         Node graphic = null;
         if (!empty && renderer != null && value != null && ((Milker) application).getModel().isMilkObjVisible(value)) {
         	this.setVisible(true);
-            if (((Milker) application).getModel().isThingbuyable(value)) {
-                graphic = renderer;
-                rendererController.setValue(value);
-            } else {
-                text = String.valueOf(value);
-            }
+            graphic = renderer;
+            rendererController.setValue(value);
         }else this.setVisible(false);
         setText(text);
         setGraphic(graphic);

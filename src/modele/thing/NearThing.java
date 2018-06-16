@@ -3,19 +3,18 @@ package modele.thing;
 import modele.MilkImage;
 import modele.intel.Intel;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
 public class NearThing extends Intel implements Cloneable {
 	
-	public static void setScene(@SuppressWarnings("rawtypes") Vector things, Vector<Element> elementScenes) {
+	public static void setScene(ArrayList<? extends NearThing> things, ArrayList<Element> elementScenes) {
 		for (Element elementScene: elementScenes) {
 			try {
 				NearThing test = new NearThing(elementScene);
 				test.setScene(elementScene);
-				for (Object object:things){
-					NearThing thing = (NearThing) object;
+				for (NearThing thing:things){
 					if (test.getId().intValue() == thing.getId().intValue()){
 						thing.setScene(test.getScene());
 						break;

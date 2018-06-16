@@ -51,9 +51,9 @@ public class MilkCellThingController extends MilkCellController implements Initi
     private void updateUI(Thing thing) {
     	super.updateUI(thing);
     	if(((Milker) getApplication()).getModel().isMilkObjVisible(thing) ){
-            priceLabel.setText(thing.getPrice().getStringCoin());
+            priceLabel.setText(thing.getPriceValue().toString());
             quantLabel.setText(thing.getAttrib().getStringQuant());
-            if(!((Milker) getApplication()).getModel().isThingbuyable(thing))nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
+            if(!((Milker) getApplication()).getModel().isIntelbuyable(thing))nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
             else nameLabel.getStyleClass().remove(MilkRs.cssNotBuyable);
     	} else rootPane.setVisible(false);
     }
@@ -84,7 +84,7 @@ public class MilkCellThingController extends MilkCellController implements Initi
 
     @Override
     public void buyThing() {
-    	((Milker) getApplication()).getModel().buyThing( getValue());
+    	((Milker) getApplication()).getModel().buyIntel( getValue());
     	updateUI(getValue());
     }
 }

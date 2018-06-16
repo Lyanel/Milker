@@ -1,22 +1,29 @@
 package modele;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
-
-import controleur.ParseMilkFile;
 
 public class MilkVar implements Cloneable {
 	
 	public static final String noeud="";
 	public String getNoeud() {return noeud;}
+
 	
 	/**
-	 * meant to be @Override. Set a list of milk object from an Xml element
+	 * meant to be @Override (if not, noeud will be = to "", and you'll get nothing). Set a list of milk object from an Xml element,
 	 * note that you can't override a static method in java so this is just a mask that you can copy past.
 	 */
-	public static Vector<? extends MilkVar> getMilkVarList(Vector<Element> elementlist) {
-		Vector<MilkVar> milkVars = new Vector<MilkVar>();
+	public static ArrayList<? extends MilkVar> getMilkVarList(Element parent) {
+		return getMilkVarList(XmlHelper.getChildrenListByTagName(parent,noeud));
+	}
+	
+	/**
+	 * meant to be @Override (if not, you'll get an ArrayList<MilkVar>). Set a list of milk object from an Xml ArrayList<Element>,
+	 * note that you can't override a static method in java so this is just a mask that you can copy past.
+	 */
+	public static ArrayList<? extends MilkVar> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<MilkVar> milkVars = new ArrayList<MilkVar>();
 		for (Element elementMilk: elementlist) {
 			try {
 				MilkVar milkVar = new MilkVar(elementMilk);
@@ -40,12 +47,27 @@ public class MilkVar implements Cloneable {
 	}
 
 	// Set value from Element methods
+	
+	/**
+	 * meant to be @Override. Set the various object from an Xml element, 
+	 * generally call getThisElementFromParent, so it return the element obtained, null (if that method returned null), or the element received if the method was not call.
+	 */
+	public void setValueFromNode(Element milkElement) {}
+	
+	/**
+	 * meant to be @Override. Set the various text object from an Xml element, if an element don't exist the object is set to "".
+	 */
+	public void setTextValueFromNode(Element milkElement){}
 
+	
+	// Get this element from parent Element methods (Old version)
+	
+	
 	/**
 	 * get an element with a list of this object. ("node"+"s")
 	 * @param element
 	 * @return
-	 */
+	 *
 	public Element getMilkElementList(Element element) {
 		return ParseMilkFile.getMilkElement(element,this.getNoeud()+"s",0);
 	}
@@ -53,7 +75,7 @@ public class MilkVar implements Cloneable {
 	 * get an element of this object at index 0. ("node")
 	 * @param element
 	 * @return
-	 */
+	 *
 	public Element getMilkElement(Element element) {
 		return getMilkElement(element,0);
 	}
@@ -61,37 +83,87 @@ public class MilkVar implements Cloneable {
 	 * get an element of this object at index i. ("node")
 	 * @param element
 	 * @return
-	 */
+	 *
 	public Element getMilkElement(Element element, int i) {
 		return ParseMilkFile.getMilkElement(element,this.getNoeud(),i);
 	}
 	
 	/**
-	 * meant to be @Override. Set the various object from an Xml element, 
-	 * generally call getThisElementFromParent, so it return the element obtained, null (if that method returned null), or the element received if the method was not call.
-	 */
-	public void setValueFromNode(Element milkElement) {}
-	/**
-	 * meant to be @Override. Set the various text object from an Xml element, if an element don't exist the object is set to "".
-	 */
-	public void setTextValueFromNode(Element milkElement){}
-	
-	/**
 	 * Check if this element exist as a child and return it, else return milkElement.
-	 */
+	 *
 	public Element getThisElementFromParent(Element milkElement) {
 		Element child = (getMilkElement(milkElement,0)!=null)? getMilkElement(milkElement,0):milkElement;
 		return child;
+	}*/
+
+	
+	// Get this element from parent Element methods (new version)
+	
+	
+	/**
+	 * Check if this element exist as a child and return it, else you'll get an error.
+	 */
+	public Element getThisChildFromParent(Element milkParent) {
+		Element child = null;
+		try {
+			child = XmlHelper.getOptionalChild(milkParent, this.getNoeud());
+		} catch (Exception e) {e.printStackTrace();}
+		return child;
 	}
+	
+	/**
+	 * Check if this element exist as a child containing a list with child of the same name ("node"+"s"[node]) and return it, else you'll get an error.
+	 */
+	public Element getThisChildFromParentAsAContainer(Element milkParent) {
+		Element child = null;
+		try {
+			child = XmlHelper.getOptionalChild(milkParent, this.getNoeud()+"s");
+		} catch (Exception e) {e.printStackTrace();}
+		return child;
+	}
+	
+	/**
+	 * Check if this element contain a list of child of the same name and return it, else return null.
+	 */
+	public ArrayList<Element> getThisChildListFromParent(Element milkParent) {
+		ArrayList<Element> childs = null;
+		try {
+			childs = XmlHelper.getChildrenListByTagName(milkParent, this.getNoeud());
+		} catch (Exception e) {e.printStackTrace();}
+		return childs;
+	}
+	
 	/**
 	 * Check if this element exist as a child and return it, else return null.
 	 */
-	public Element getOptionalChild(Element milkElement) {
+	public Element getThisOptionalChildFromParent(Element milkParent) {
 		Element child = null;
 		try {
-			child = XmlHelper.getOptionalChild(milkElement, this.getNoeud());
+			child = XmlHelper.getOptionalChild(milkParent, this.getNoeud(),milkParent);
 		} catch (Exception e) {e.printStackTrace();}
 		return child;
+	}
+	
+	/**
+	 * Check if this element exist as a child containing a list with child of the same name ("node"+"s"[node]) and return it, else return null.
+	 */
+	public Element getThisOptionalChildFromParentAsAContainer(Element milkParent) {
+		Element child = null;
+		try {
+			child = XmlHelper.getOptionalChild(milkParent, this.getNoeud()+"s");
+		} catch (Exception e) {e.printStackTrace();}
+		return child;
+	}
+	
+	/**
+	 * Check if this element contain a non empty list of child of the same name and return it, else return null.
+	 */
+	public ArrayList<Element> getThisOptionalChildListFromParent(Element milkParent) {
+		ArrayList<Element> childs = null;
+		try {
+			childs = XmlHelper.getChildrenListByTagName(milkParent, this.getNoeud());
+		} catch (Exception e) {e.printStackTrace();}
+		return (childs.size()>0)?childs:null;
 	}
 		
 	// toString & toXml methods

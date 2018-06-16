@@ -12,7 +12,7 @@
 	<building id="12" tree="1" lvl="2">
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="12">1</agent>
-		<bonus quan="1" qual="1"/>
+		<bonus kind="15" quan="1" qual="1"/>
 	</building>
 	<building id="13" tree="1" lvl="3">
 		<need>
@@ -52,7 +52,7 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="22">3</agent>
-		<bonus quan="1" qual="2"/>
+		<bonus kind="15" quan="1" qual="2"/>
 	</building>
 	<building id="23" tree="2" lvl="3">
 		<need>
@@ -112,7 +112,7 @@
 		</need>
 		<price coin="1" coef="1.15"/>
 		<agent kind="2" id="32">3</agent>
-		<bonus quan="2" qual="1"/>
+		<bonus kind="15" quan="2" qual="1"/>
 	</building>
 	<building id="33" tree="3" lvl="3">
 		<need>

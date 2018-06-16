@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -11,38 +11,43 @@ public class MilkFile extends MilkId implements Cloneable {
 	public static final String xmlBasePath = "Xml/";
 	public static final String xmlFiles = "XmlFileListe";
 	public static final String noeud = "file";
+	public String getXmlFiles() {return xmlFiles;}
 	public String getNoeud() {return noeud;}
 	public static final String xmlName = "name", xmlPath = "path";
-	private static Vector<MilkFile> milkFiles = null;
+	private static ArrayList<MilkFile> milkFiles = null;
 	
 	// Static method playing with files.Xml.
 
 	/**
-	 * set the milkFiles from the xml found in the file XmlFileListe.
-	 */
-	private static void setMilkFilesFromFiles() {
-		if (milkFiles==null) milkFiles = new Vector<MilkFile>();
-		else milkFiles.removeAllElements();
-		Vector<Element> elementlist = new Vector<Element>();
-		elementlist = getMilkElementsFromFiles(xmlBasePath+xmlFiles);
-		milkFiles = getMilkVarList(elementlist);
-	}
-	/**
 	 * Return an element listing node found in the file xmlPathFile .
 	 */
-	public static Vector<Element> getMilkElementsFromFiles(String xmlPathFile,String node) {
-		Vector<Element> elementlist = new Vector<Element>();
+	public static ArrayList<Element> getMilkElementsFromFiles(String xmlPathFile,String node) {
+		ArrayList<Element> elementlist = new ArrayList<Element>();
 		try {
-			elementlist = ParseMilkFile.getMilkElementLists(xmlPathFile,node);
+			Element racine = ParseMilkFile.getXmlRacine(xmlPathFile,node+"s");
+			elementlist = XmlHelper.getChildrenListByTagName(racine, node);
 		} catch (Exception e) {e.printStackTrace();}
 		return elementlist;
 	}
+
 	/**
 	 * Return an element listing node found in the file xmlPathFile .
 	 */
-	public static Vector<Element> getMilkElementsFromFiles(String xmlPathFile) {
+	public static ArrayList<Element> getMilkElementsFromFiles(String xmlPathFile) {
 		return getMilkElementsFromFiles(xmlPathFile,noeud);
 	}
+	
+	/**
+	 * set the milkFiles from the xml found in the file XmlFileListe.
+	 */
+	private static void setMilkFilesFromFiles() {
+		if (milkFiles==null) milkFiles = new ArrayList<MilkFile>();
+		else milkFiles.clear();
+		ArrayList<Element> elementlist = new ArrayList<Element>();
+		elementlist = getMilkElementsFromFiles(xmlBasePath+xmlFiles);
+		milkFiles = getMilkVarList(elementlist);
+	}
+	
 	/**
 	 * Return the file path after searching the file name in XmlFileListe.
 	 */
@@ -55,8 +60,8 @@ public class MilkFile extends MilkId implements Cloneable {
 		return link;
 	}
 	
-	public static Vector<MilkFile> getMilkVarList(Vector<Element> elementlist) {
-		Vector<MilkFile> milkFiles = new Vector<MilkFile>();
+	public static ArrayList<MilkFile> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<MilkFile> milkFiles = new ArrayList<MilkFile>();
 		for (Element elementMilk: elementlist) {
 			try {
 				MilkFile milkFile = new MilkFile(elementMilk);

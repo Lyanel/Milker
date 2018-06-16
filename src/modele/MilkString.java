@@ -1,6 +1,6 @@
 package modele;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
@@ -10,8 +10,8 @@ public class MilkString extends MilkId implements Cloneable {
 	public static final String noeud = "string";
 	public String getNoeud() {return noeud;}
 
-	public static Vector<MilkString> getMilkVarList(Vector<Element> elementlist) {
-		Vector<MilkString> milkStrings = new Vector<MilkString>();
+	public static ArrayList<MilkString> getMilkVarList(ArrayList<Element> elementlist) {
+		ArrayList<MilkString> milkStrings = new ArrayList<MilkString>();
 		for (Element elementMilk: elementlist) {
 			try {
 				MilkString milkString = new MilkString(elementMilk);
@@ -20,18 +20,6 @@ public class MilkString extends MilkId implements Cloneable {
 		}
 		return milkStrings;
 	}
-	/*
-	public static Vector<MilkString> getNullMilkVarList(Vector<Element> elementlist) {
-		Vector<MilkString> milkStrings = new Vector<MilkString>();
-		for (Element elementMilk: elementlist) {
-			try {
-				MilkString milkString = new MilkString();
-				milkString.setNullValueFromNode(elementMilk);
-				milkStrings.add(milkString);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return milkStrings;
-	}*/
 
 	// Fields
 	
