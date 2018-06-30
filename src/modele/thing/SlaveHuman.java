@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import modele.MilkFile;
-import modele.MilkImage;
-import modele.MilkInterface;
-import modele.MilkKind;
+import javafx.util.Callback;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkImage;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkKind;
 import modele.carac.ThingAttrib;
 
 public class SlaveHuman extends Slave implements Cloneable {
@@ -21,29 +23,6 @@ public class SlaveHuman extends Slave implements Cloneable {
 	private static ObservableList<SlaveHuman> modelNeutralListe;
 	private static ObservableList<SlaveHuman> modelScienceListe;
 	private static ObservableList<SlaveHuman> modelMagicListe;
-	
-	@SafeVarargs
-	private static ObservableList<SlaveHuman> merge(ObservableList<SlaveHuman> into, ObservableList<SlaveHuman>... lists) {
-        final ObservableList<SlaveHuman> list = into;
-        for (ObservableList<SlaveHuman> l : lists) {
-            list.addAll(l);
-            l.addListener((javafx.collections.ListChangeListener.Change<? extends SlaveHuman> c) -> {
-                while (c.next()) {
-                    if (c.wasAdded()) {
-                        list.addAll(c.getAddedSubList());
-                    }
-                    if (c.wasRemoved()) {
-                        list.removeAll(c.getRemoved());
-                    }
-                    if (c.wasUpdated()) {
-                        list.removeAll(c.getRemoved());
-                        list.addAll(c.getAddedSubList());
-                    }
-                }
-            });
-        }
-        return list;
-    }
 	
 	private static ArrayList<SlaveHuman> setMilkVarFromFiles() {
 		if (slaveHumans==null) slaveHumans = new ArrayList<SlaveHuman>();
@@ -78,18 +57,17 @@ public class SlaveHuman extends Slave implements Cloneable {
 		}
 		return slaveHumans;
 	}
-	/*
-	public static ArrayList<SlaveHuman> getNullMilkVarList(ArrayList<Element> elementlist) {
-		ArrayList<SlaveHuman> slaveHumans = new ArrayList<SlaveHuman>();
-		for (Element elementMilk: elementlist) {
-			try {
-				SlaveHuman slaveHuman = new SlaveHuman();
-				slaveHuman.setNullValueFromNode(elementMilk);
-				slaveHumans.add(slaveHuman);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return slaveHumans;
-	}*/
+	
+	public static void updateInfoFromFiles() {
+		if (modelListe==null) getSHFullListe();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfo(modelListe, elementlInfos);
+	}
+
+	public static Callback<SlaveHuman, Observable[]> extractor() {
+        return (SlaveHuman p) -> new Observable[]{p.getInfo().getObrservableName(), p.getAttrib().getObrservableQuant(), p.getAttrib().getObrservableActives()};
+	}
 
 	public static ObservableList<SlaveHuman> getSHFullListe() {
 		if (modelListe==null){
@@ -97,7 +75,7 @@ public class SlaveHuman extends Slave implements Cloneable {
 			if (modelNeutralListe==null)getNeutralListe();
 			if (modelScienceListe==null)getScienceListe();
 			if (modelMagicListe==null)getMagicListe();
-			modelListe = FXCollections.observableArrayList();
+			modelListe = FXCollections.observableArrayList(extractor());
 			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
 		}
 		return modelListe;
@@ -106,7 +84,7 @@ public class SlaveHuman extends Slave implements Cloneable {
 	public static ObservableList<SlaveHuman> getSHNeutralListe() {
 		if (modelNeutralListe==null){
 			if (slaveHumans==null)setMilkVarFromFiles();
-			modelNeutralListe = FXCollections.observableArrayList();
+			modelNeutralListe = FXCollections.observableArrayList(extractor());
 			if (slaveHumans!=null){
 				for (SlaveHuman slaveHuman:slaveHumans){
 					try {
@@ -124,7 +102,7 @@ public class SlaveHuman extends Slave implements Cloneable {
 	public static ObservableList<SlaveHuman> getSHScienceListe() {
 		if (modelScienceListe==null){
 			if (slaveHumans==null)setMilkVarFromFiles();
-			modelScienceListe = FXCollections.observableArrayList();
+			modelScienceListe = FXCollections.observableArrayList(extractor());
 			if (slaveHumans!=null){
 				for (SlaveHuman slaveHuman:slaveHumans){
 					try {
@@ -142,7 +120,7 @@ public class SlaveHuman extends Slave implements Cloneable {
 	public static ObservableList<SlaveHuman> getSHMagicListe() {
 		if (modelMagicListe==null){
 			if (slaveHumans==null)setMilkVarFromFiles();
-			modelMagicListe = FXCollections.observableArrayList();
+			modelMagicListe = FXCollections.observableArrayList(extractor());
 			if (slaveHumans!=null){
 				for (SlaveHuman slaveHuman:slaveHumans){
 					try {

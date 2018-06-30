@@ -20,14 +20,16 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label fx:id="optionLab1" text="Language" />
-            <Label fx:id="optionLab2" text="Option 2" GridPane.rowIndex="1" />
+            <Label fx:id="optionLab2" text="CSS" GridPane.rowIndex="1" />
             <Label fx:id="optionLab3" text="Option 3" GridPane.rowIndex="2" />
             <ComboBox fx:id="optionSel1" prefWidth="150.0" GridPane.columnIndex="1" />
-            <Button fx:id="saveBT" mnemonicParsing="false" text="Save" GridPane.rowIndex="3" />
-            <Button fx:id="CancelBT" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="optionSel2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="saveBT" mnemonicParsing="false" text="Save" GridPane.rowIndex="4" />
+            <Button fx:id="CancelBT" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

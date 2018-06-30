@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import modele.MilkFile;
-import modele.MilkImage;
-import modele.MilkInterface;
-import modele.MilkKind;
+import javafx.util.Callback;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkImage;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkKind;
 import modele.carac.ThingAttrib;
 
-public class Worker extends Thing implements Cloneable {
+public class Worker extends LivingBeing implements Cloneable {
 
 	public static final String file	= "Worker", noeud = "worker";
 	public String getNoeud() {return noeud;}
@@ -22,29 +24,6 @@ public class Worker extends Thing implements Cloneable {
 	private static ObservableList<Worker> modelNeutralListe;
 	private static ObservableList<Worker> modelScienceListe;
 	private static ObservableList<Worker> modelMagicListe;
-
-	@SafeVarargs
-	private static ObservableList<Worker> merge(ObservableList<Worker> into, ObservableList<Worker>... lists) {
-        final ObservableList<Worker> list = into;
-        for (ObservableList<Worker> l : lists) {
-            list.addAll(l);
-            l.addListener((javafx.collections.ListChangeListener.Change<? extends Worker> c) -> {
-                while (c.next()) {
-                    if (c.wasAdded()) {
-                        list.addAll(c.getAddedSubList());
-                    }
-                    if (c.wasRemoved()) {
-                        list.removeAll(c.getRemoved());
-                    }
-                    if (c.wasUpdated()) {
-                        list.removeAll(c.getRemoved());
-                        list.addAll(c.getAddedSubList());
-                    }
-                }
-            });
-        }
-        return list;
-    }
 	
 	private static ArrayList<Worker> setMilkVarFromFiles() {
 		if (workers==null) workers = new ArrayList<Worker>();
@@ -79,18 +58,17 @@ public class Worker extends Thing implements Cloneable {
 		}
 		return workers;
 	}
-	/*
-	public static ArrayList<Worker> getNullMilkVarList(ArrayList<Element> elementlist) {
-		ArrayList<Worker> workers = new ArrayList<Worker>();
-		for (Element elementMilk: elementlist) {
-			try {
-				Worker worker = new Worker();
-				worker.setNullValueFromNode(elementMilk);
-				workers.add(worker);
-			} catch (Exception e) {e.printStackTrace();}
-		}
-		return workers;
-	}*/
+	
+	public static void updateInfoFromFiles() {
+		if (modelListe==null) getFullListe();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfo(modelListe, elementlInfos);
+	}
+
+	public static Callback<Worker, Observable[]> extractor() {
+        return (Worker p) -> new Observable[]{p.getInfo().getObrservableName(), p.getAttrib().getObrservableQuant(), p.getAttrib().getObrservableActives()};
+	}
 	
 	public static ObservableList<Worker> getFullListe() {
 		if (modelListe==null){
@@ -98,7 +76,7 @@ public class Worker extends Thing implements Cloneable {
 			if (modelNeutralListe==null)getNeutralListe();
 			if (modelScienceListe==null)getScienceListe();
 			if (modelMagicListe==null)getMagicListe();
-			modelListe = FXCollections.observableArrayList();
+			modelListe = FXCollections.observableArrayList(extractor());
 			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
 		}
 		return modelListe;
@@ -107,7 +85,7 @@ public class Worker extends Thing implements Cloneable {
 	public static ObservableList<Worker> getNeutralListe() {
 		if (modelNeutralListe==null){
 			if (workers==null)setMilkVarFromFiles();
-			modelNeutralListe = FXCollections.observableArrayList();
+			modelNeutralListe = FXCollections.observableArrayList(extractor());
 			if (workers!=null){
 				for (Worker worker:workers){
 					try {
@@ -125,7 +103,7 @@ public class Worker extends Thing implements Cloneable {
 	public static ObservableList<Worker> getScienceListe() {
 		if (modelScienceListe==null){
 			if (workers==null)setMilkVarFromFiles();
-			modelScienceListe = FXCollections.observableArrayList();
+			modelScienceListe = FXCollections.observableArrayList(extractor());
 			if (workers!=null){
 				for (Worker worker:workers){
 					try {
@@ -143,7 +121,7 @@ public class Worker extends Thing implements Cloneable {
 	public static ObservableList<Worker> getMagicListe() {
 		if (modelMagicListe==null){
 			if (workers==null)setMilkVarFromFiles();
-			modelMagicListe = FXCollections.observableArrayList();
+			modelMagicListe = FXCollections.observableArrayList(extractor());
 			if (workers!=null){
 				for (Worker worker:workers){
 					try {

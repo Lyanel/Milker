@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-import modele.MilkObj;
 import modele.XmlHelper;
+import modele.baseObject.MilkObj;
 
 public class NeededIntel extends MilkObj implements Cloneable {
 	

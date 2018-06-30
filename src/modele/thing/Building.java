@@ -1,9 +1,9 @@
 package modele.thing;
 
-import modele.MilkFile;
-import modele.MilkImage;
-import modele.MilkInterface;
-import modele.MilkKind;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkImage;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkKind;
 import modele.carac.Agent;
 import modele.carac.ThingAttrib;
 import modele.carac.Bonus;
@@ -13,8 +13,10 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 
 public class Building extends Thing implements Cloneable {
@@ -27,29 +29,6 @@ public class Building extends Thing implements Cloneable {
 	private static ObservableList<Building> modelNeutralListe;
 	private static ObservableList<Building> modelScienceListe;
 	private static ObservableList<Building> modelMagicListe;
-	
-	@SafeVarargs
-	private static ObservableList<Building> merge(ObservableList<Building> into, ObservableList<Building>... lists) {
-        final ObservableList<Building> list = into;
-        for (ObservableList<Building> l : lists) {
-            list.addAll(l);
-            l.addListener((javafx.collections.ListChangeListener.Change<? extends Building> c) -> {
-                while (c.next()) {
-                    if (c.wasAdded()) {
-                        list.addAll(c.getAddedSubList());
-                    }
-                    if (c.wasRemoved()) {
-                        list.removeAll(c.getRemoved());
-                    }
-                    if (c.wasUpdated()) {
-                        list.removeAll(c.getRemoved());
-                        list.addAll(c.getAddedSubList());
-                    }
-                }
-            });
-        }
-        return list;
-    }
 	
 	private static ArrayList<Building> setMilkVarFromFiles() {
 		if (buildings==null) buildings = new ArrayList<Building>();
@@ -73,7 +52,6 @@ public class Building extends Thing implements Cloneable {
 		
 		return buildings;
 	}
-
 	public static ArrayList<Building> getMilkVarList(ArrayList<Element> elementlist) {
 		ArrayList<Building> buildings = new ArrayList<Building>();
 		for (Element elementMilk: elementlist) {
@@ -85,13 +63,25 @@ public class Building extends Thing implements Cloneable {
 		return buildings;
 	}
 	
+	public static void updateInfoFromFiles() {
+		if (modelListe==null) getFullListe();
+		//Set stats
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfo(modelListe, elementlInfos);
+	}
+
+	public static Callback<Building, Observable[]> extractor() {
+        return (Building p) -> new Observable[]{p.getInfo().getObrservableName(), p.getAttrib().getObrservableQuant(), p.getAttrib().getObrservableActives()};
+	}
+	
 	public static ObservableList<Building> getFullListe() {
 		if (modelListe==null){
 			if (buildings==null)setMilkVarFromFiles();
 			if (modelNeutralListe==null)getNeutralListe();
 			if (modelScienceListe==null)getScienceListe();
 			if (modelMagicListe==null)getMagicListe();
-			modelListe = FXCollections.observableArrayList();
+			modelListe = FXCollections.observableArrayList(extractor());
 			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
 		}
 		return modelListe;
@@ -100,7 +90,7 @@ public class Building extends Thing implements Cloneable {
 	public static ObservableList<Building> getNeutralListe() {
 		if (modelNeutralListe==null){
 			if (buildings==null)setMilkVarFromFiles();
-			modelNeutralListe = FXCollections.observableArrayList();
+			modelNeutralListe = FXCollections.observableArrayList(extractor());
 			if (buildings!=null){
 				for (Building building:buildings){
 					try {
@@ -118,7 +108,7 @@ public class Building extends Thing implements Cloneable {
 	public static ObservableList<Building> getScienceListe() {
 		if (modelScienceListe==null){
 			if (buildings==null)setMilkVarFromFiles();
-			modelScienceListe = FXCollections.observableArrayList();
+			modelScienceListe = FXCollections.observableArrayList(extractor());
 			if (buildings!=null){
 				for (Building building:buildings){
 					try {
@@ -136,7 +126,7 @@ public class Building extends Thing implements Cloneable {
 	public static ObservableList<Building> getMagicListe() {
 		if (modelMagicListe==null){
 			if (buildings==null)setMilkVarFromFiles();
-			modelMagicListe = FXCollections.observableArrayList();
+			modelMagicListe = FXCollections.observableArrayList(extractor());
 			if (buildings!=null){
 				for (Building building:buildings){
 					try {
@@ -248,7 +238,7 @@ public class Building extends Thing implements Cloneable {
 	}
 	
 	// other object methods
-
+		
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();

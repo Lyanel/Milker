@@ -1,0 +1,30 @@
+Get "neutral house quantity" :  		H
+Get "number of agent needed / building" : 	N
+Get neutral house worker quantity : 		W
+Set neutral house worker active : 		A =  ? ( H * N =< W ) ? H*N : Math.floor( W / N ) * N  ;
+Set Neutral House active : 			B = A / N
+Get pop / neutral house :	 		P
+Get neutral house max pop : 		M = P * B
+Get remaining pop 				R = M - A.
+Get number of neutral non house worker kind :	K
+Set neutral non house worker active :		While (R >0) { for each (w in K) { w+1; R-1; } }		(Starting with w lvl0->lvlx)
+
+
+Do the same for science and magic
+
+
+Check remaing inactive non house worker
+Get Max Ascension Pop
+Make some of them (random) active if ascension pop unlocked.
+
+
+For each neutral non house : 
+Get "neutral non house quantity" :  		Hx
+Get "number of agent needed / building" : 	Nx
+Get "number of active related agent" : 		Ax
+Set "neutral non house active" :  		Bx =  ? ( Hx * Nx =< Ax ) ? Hx : Math.floor( Ax / Nx )  ;
+
+
+Do the same for science and magic
+
+

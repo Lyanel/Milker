@@ -3,27 +3,28 @@ package application;
 import java.io.IOException;
 
 import controleur.GameModele;
+import controleur.GameOption;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import modele.MilkInfo;
-import modele.MilkInterface;
 import modele.MilkRs;
-import modele.MilkXmlObj;
+import modele.baseObject.MilkInfo;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkXmlObj;
 import modele.thing.Animal;
 import modele.thing.Building;
 import modele.thing.Slave;
 import modele.thing.Thing;
 import modele.thing.Worker;
 import modele.toggle.ToggleOption;
-import vue.MilkEditorController;
-import vue.MilkGameController;
 import vue.MilkMenuController;
+import vue.MilkOptionController;
 import vue.MilkStatutController;
 import vue.MilkerController;
-
+import vue.editor.MilkEditorController;
+import vue.game.MilkGameController;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -48,9 +49,12 @@ public class Milker extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle(MilkInterface.getStringsFromId(1));
+       // this.primaryStage.setTitle(MilkInterface.getStringsFromId(1));
+       //this.primaryStage.titleProperty().bind( Bindings.selectString( MilkInterface.getMilkStringsFromId(1),"text" ) );
+        this.primaryStage.titleProperty().bind( MilkInterface.getMilkStringsFromId(1).getText()  );
+        
         this.primaryStage.setOnCloseRequest(e -> close(e));
-        this.model = new GameModele ();
+      //  this.model = new GameModele ();
         initMilker();
         initMilkMenu();
         initMilkStatut();
@@ -71,6 +75,7 @@ public class Milker extends Application {
             MilkerController controller = loader.getController();
             controller.setMainApp(this);
 
+	        setStageCss(rootLayout.getScene());
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -124,7 +129,7 @@ public class Milker extends Application {
      * Open the Game window.
      */
     public void openGame() {
-        model = new GameModele();
+        model = new GameModele(this);
         try {
             FXMLLoader loader = new FXMLLoader();
           //  loader.setLocation(Milker.class.getResource(MilkRs.milkGame));
@@ -203,12 +208,16 @@ public class Milker extends Application {
         try {
 	        FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Milker.class.getResource(MilkRs.milkOption));
-	        AnchorPane editor = (AnchorPane) loader.load();
+	        AnchorPane optionAnchor = (AnchorPane) loader.load();
 	        Stage stage = new Stage();
-	        stage.setTitle(MilkInterface.getStringsFromId(31));
-	        Scene scene = new Scene(editor);
+	  //      stage.setTitle(MilkInterface.getStringsFromId(31));
+	        stage.titleProperty().bind( MilkInterface.getMilkStringsFromId(31).getText()  );
+	        Scene scene = new Scene(optionAnchor);
 	        stage.setScene(scene);
+	        ((MilkOptionController) loader.getController()).setScene(scene);
+	        ((MilkOptionController) loader.getController()).setMainApp(this);
 	        stage.show();
+	        setStageCss(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -238,5 +247,19 @@ public class Milker extends Application {
 	public void close(WindowEvent e) {
 		Platform.exit();
         System.exit(0);
+	}
+	
+    /**
+     * Apply Css found in the option to the given scene.
+     * @param e 
+     */
+	public void setStageCss(Scene scene) {
+		scene.getStylesheets().clear();
+		scene.getStylesheets().add(GameOption.getCssUrl(GameOption.getOption().getCss()));
+	}
+
+	public Scene getScene() {
+		// TODO Auto-generated method stub
+		return rootLayout.getScene();
 	}
 }

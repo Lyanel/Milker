@@ -1,16 +1,17 @@
 package modele.thing;
 
-import modele.MilkKind;
+import modele.baseObject.MilkKind;
 import modele.carac.Sacrifice;
-
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 
-public class Slave extends Thing implements Cloneable {
+public class Slave extends LivingBeing implements Cloneable {
 	
 	public static String noeud = "slave";
 	public String getNoeud() {return noeud;}
@@ -20,35 +21,16 @@ public class Slave extends Thing implements Cloneable {
 	private static ObservableList<Slave> modelScienceListe;
 	private static ObservableList<Slave> modelMagicListe;
 	
-	@SafeVarargs
-	private static ObservableList<Slave> merge(ObservableList<Slave> into, ObservableList<? extends Slave>... lists) {
-        final ObservableList<Slave> list = into;
-        for (ObservableList<? extends Slave> l : lists) {
-            list.addAll(l);
-            l.addListener((javafx.collections.ListChangeListener.Change<? extends Slave> c) -> {
-                while (c.next()) {
-                    if (c.wasAdded()) {
-                        list.addAll(c.getAddedSubList());
-                    }
-                    if (c.wasRemoved()) {
-                        list.removeAll(c.getRemoved());
-                    }
-                    if (c.wasUpdated()) {
-                        list.removeAll(c.getRemoved());
-                        list.addAll(c.getAddedSubList());
-                    }
-                }
-            });
-        }
-        return list;
-    }
+	public static Callback<Slave, Observable[]> extractorSlave() {
+        return (Slave p) -> new Observable[]{p.getInfo().getObrservableName()};
+	}
 	
 	public static ObservableList<Slave> getFullListe() {
 		if (modelListe==null){
 			if (modelNeutralListe==null)getNeutralListe();
 			if (modelScienceListe==null)getScienceListe();
 			if (modelMagicListe==null)getMagicListe();
-			modelListe = FXCollections.observableArrayList();
+			modelListe = FXCollections.observableArrayList(extractorSlave());
 			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
 		}
 		return modelListe;
@@ -56,7 +38,7 @@ public class Slave extends Thing implements Cloneable {
 	
 	public static ObservableList<Slave> getNeutralListe() {
 		if (modelNeutralListe==null){
-			modelNeutralListe = FXCollections.observableArrayList();
+			modelNeutralListe = FXCollections.observableArrayList(extractorSlave());
 			merge(modelNeutralListe, SlaveAnimal.getSANeutralListe(), SlaveHuman.getSHNeutralListe()/*, SlaveWorker.getSWNeutralListe()*/);
 		}
 		return modelNeutralListe;
@@ -64,7 +46,7 @@ public class Slave extends Thing implements Cloneable {
 	
 	public static ObservableList<Slave> getScienceListe() {
 		if (modelScienceListe==null){
-			modelScienceListe = FXCollections.observableArrayList();
+			modelScienceListe = FXCollections.observableArrayList(extractorSlave());
 			merge(modelScienceListe, SlaveAnimal.getSAScienceListe(), SlaveHuman.getSHScienceListe()/*, SlaveWorker.getSWScienceListe()*/);
 		}
 		return modelScienceListe;
@@ -72,7 +54,7 @@ public class Slave extends Thing implements Cloneable {
 	
 	public static ObservableList<Slave> getMagicListe() {
 		if (modelMagicListe==null){
-			modelMagicListe = FXCollections.observableArrayList();
+			modelMagicListe = FXCollections.observableArrayList(extractorSlave());
 			merge(modelMagicListe, SlaveAnimal.getSAMagicListe(), SlaveHuman.getSHMagicListe()/*, SlaveWorker.getSWMagicListe()*/);
 		}
 		return modelMagicListe;

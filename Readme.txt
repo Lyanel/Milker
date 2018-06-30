@@ -8,19 +8,23 @@ Donc si des gens sont interressé, je dirait jamais non et même si vous souhaité 
 
 
 V0.X
-Projected :	Things that need to be done for finishing java version (in random order) : 
-			Encryption mechanism for xml and picture. 
-			Code for upgrade, synergy & ascension. 
-			Code for option (mainly changing game language at will and, maybe, a fullscreen mode). 
+Projected :	Things that need to be done for finishing the code of the java version (in random order) : 
+			Code for upgrade, synergy, ascension & achievement . 
+			Code for Event. 
 			Code for save game.
-			CSS (and an option to choose them).
-			Event. 
+			(In game XML editor is desactivate until finished)
 Need	:	An artist, a good programer.
+
+v0.05 :	
+Done	:	File system : Encryption mechanism for xml and picture & Compression mechanism for xml.
+		Option : Language & CSS can now be changed in option while the game is runing. In the menu, there is an option for fullscreen, she now work.
+		Active system : Income and unlocking now need active living/building, if part of them are not active you will get less :p.
+		Sacrifice : Various things need a sacrifice to be bought, that work now.
+continued:	Code, bug tracking.
 
 v0.04 :	
 Done	:	Toggle for Tool & Idol. Income with tool and building bonus (still missing upgrade, synergy & ascension).
 continued:	Code, added new picture.
-Started	:	Found an artist, Shovel, who started to draw picture. Those will be added when i have his green light and added an encryption mechanism.
 
 v0.03 :	
 Done	:	Research (most of the game things can know be "unlocked".)

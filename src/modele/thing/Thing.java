@@ -1,6 +1,7 @@
 package modele.thing;
 
 import modele.carac.ThingAttrib;
+import modele.ParseMilkFile;
 import modele.carac.Income;
 import modele.carac.MilkAttrib;
 
@@ -9,7 +10,7 @@ import java.util.Vector;
 
 import org.w3c.dom.Element;
 
-import controleur.ParseMilkFile;
+import javafx.collections.ObservableList;
 
 public class Thing extends NearThing implements Cloneable {
 	
@@ -40,6 +41,29 @@ public class Thing extends NearThing implements Cloneable {
 		}
 		return things;
 	}
+	
+	@SuppressWarnings({ "unchecked" }) @SafeVarargs
+	protected static ObservableList<Thing> merge(ObservableList<? extends Thing> into, ObservableList<? extends Thing>... lists) {
+        final ObservableList<Thing> list = (ObservableList<Thing>) into;
+        for (ObservableList<? extends Thing> l : lists) {
+            list.addAll(l);
+            l.addListener((javafx.collections.ListChangeListener.Change<? extends Thing> c) -> {
+                while (c.next()) {
+                    if (c.wasAdded()) {
+                        list.addAll(c.getAddedSubList());
+                    }
+                    if (c.wasRemoved()) {
+                        list.removeAll(c.getRemoved());
+                    }
+                    if (c.wasUpdated()) {
+                        list.removeAll(c.getRemoved());
+                        list.addAll(c.getAddedSubList());
+                    }
+                }
+            });
+        }
+        return list;
+    }
 
 	// Fields
 	
@@ -74,7 +98,10 @@ public class Thing extends NearThing implements Cloneable {
 		this.setGet(milkElement);
 		this.setAttrib(milkElement);
 		this.setIncome(milkElement);
-		if(this.getStart().intValue()>0)this.attrib.incrementeQuant(this.getStart().intValue());
+		if(this.getStart().intValue()>0){
+			this.attrib.incrementeQuant(this.getStart().intValue());
+			this.attrib.incrementeActive(this.getStart().intValue());
+		}
 	}
 	public void setLvl(Element milkElement) {
 		Integer temp=null;
@@ -148,29 +175,19 @@ public class Thing extends NearThing implements Cloneable {
 	}
 	public double getIncome(double buildProdBonus, double buildQualBonus) {
 		double tIncome = 0;
-		Integer thingQuant = this.getAttrib().getQuant();
+		Integer thingQuant = this.getAttrib().getActives();
 		MilkAttrib attrib = this.getIncome().getAttrib();
-		if(thingQuant>0 && this.getIncome().canProdMilk()){
-			double milkQuant = attrib.getQuant();
-			double milkQual = attrib.getQual();
-			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
+		if(thingQuant>0){
+			if(this.getIncome().canProdMilk()){
+				double milkQuant = attrib.getQuant();
+				double milkQual = attrib.getQual();
+				tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
+			} else if(this.getIncome().canProdCoin()) tIncome += thingQuant * this.getIncome().getCoin() ;
 		}
-		if(thingQuant>0 && this.getIncome().canProdCoin()){
-			tIncome += thingQuant * this.getIncome().getCoin() ;
-		}
+		
 		return tIncome;
 	}
-	public double getIncome(double toolProdBonus, double toolQualBonus, double cattleProdBonus,double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
-		double tIncome = 0;
-		Integer thingQuant = this.getAttrib().getQuant();
-		MilkAttrib attrib = this.getIncome().getAttrib();
-		if(thingQuant>0 && this.getIncome().canProdMilk()){
-			double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus;
-			double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus;
-			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
-		}
-		return tIncome;
-	}
+	
 	public void setProductivity(int prod) {
 		this.income.setProd(prod);
 	}

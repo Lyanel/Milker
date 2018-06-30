@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import modele.MilkFile;
-import modele.MilkInterface;
-import modele.MilkKind;
+import javafx.util.Callback;
 import modele.MilkRs;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkKind;
 import modele.carac.Effect;
 
 public class Synergy extends Research implements Cloneable {
@@ -48,7 +50,7 @@ public class Synergy extends Research implements Cloneable {
 	public static ObservableList<Synergy> getSynergyListe() {
 		if (modelSynergys==null){
 			if (synergys==null)setMilkVarFromFiles();
-			modelSynergys = FXCollections.observableArrayList();
+			modelSynergys = FXCollections.observableArrayList(extractorS());
 			if (synergys!=null){
 				for (Synergy synergy:synergys){
 					try {
@@ -61,6 +63,17 @@ public class Synergy extends Research implements Cloneable {
 			}
 		}
 		return modelSynergys;
+	}
+	
+	public static void updateInfoFromFiles() {
+		if (modelSynergys==null) getResearchListe();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfo(modelSynergys, elementlInfos);
+	}
+
+	public static Callback<Synergy, Observable[]> extractorS() {
+        return (Synergy p) -> new Observable[]{p.getInfo().getObrservableName()};
 	}
 
 	// Fields

@@ -5,11 +5,14 @@ import modele.carac.Agent;
 import modele.intel.Intel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 public class Toggle extends Intel implements Cloneable {
 
@@ -19,7 +22,7 @@ public class Toggle extends Intel implements Cloneable {
 	private static ArrayList<Toggle> toggles;
 	private static ObservableList<Toggle> modeltoggles;
 	
-	public static void setInfos(ArrayList<? extends Toggle> toggles, ArrayList<Element> elements) {
+	public static void setInfos(List<? extends Toggle> toggles, ArrayList<Element> elements) {
 		for (Element element: elements) {
 			try {
 				Toggle test = new Toggle(element);
@@ -66,6 +69,14 @@ public class Toggle extends Intel implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 	}
+
+	public static Callback<Toggle, Observable[]> extractor() {
+        return (Toggle p) -> new Observable[]{p.getInfo().getObrservableName()};
+	}
+	public static Callback<ToggleOption, Observable[]> extractorO() {
+        return (ToggleOption p) -> new Observable[]{p.getInfo().getObrservableName()};
+	}
+	
 	
 	public static ObservableList<Toggle> getToggleListe() {
 		if (modeltoggles==null){
@@ -75,7 +86,7 @@ public class Toggle extends Intel implements Cloneable {
 				toggles.add(ToggleIdol.getIdol());
 				toggles.add(ToggleEvent.getEvent());
 			}
-			modeltoggles = FXCollections.observableArrayList();
+			modeltoggles = FXCollections.observableArrayList(extractor());
 			if (toggles!=null){
 				for (Toggle toggle:toggles){
 					modeltoggles.add(toggle);
@@ -199,7 +210,7 @@ public class Toggle extends Intel implements Cloneable {
 	
 	public ObservableList<ToggleOption> getObservableOptions() {
 		if (modelOptions==null){
-			modelOptions = FXCollections.observableArrayList();
+			modelOptions = FXCollections.observableArrayList(extractorO());
 			for (ToggleOption option:toggleOptions){
 				modelOptions.add(option);
 			}

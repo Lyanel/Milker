@@ -1,20 +1,26 @@
 package controleur;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
+import application.Milker;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
-import modele.MilkDate;
-import modele.MilkKind;
-import modele.MilkXmlObj;
+import modele.Activity;
+import modele.Utility;
+import modele.baseObject.MilkDate;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkKind;
+import modele.baseObject.MilkXmlObj;
 import modele.carac.Agent;
 import modele.carac.NeededIntel;
 import modele.carac.NeededThing;
 import modele.carac.QuantityListener;
+import modele.carac.Sacrifice;
 import modele.intel.Ascension;
 import modele.intel.Intel;
 import modele.intel.Research;
@@ -31,13 +37,15 @@ import modele.toggle.ToggleOption;
 import javafx.util.Duration;
 
 public class GameModele {
-	
+
+    private Milker milker;
 	private MilkDate plaYear;
 	private String name;
 	private DoubleProperty milkCoin = new SimpleDoubleProperty(0.0), toolTogglePrice = new SimpleDoubleProperty(0.0), idolTogglePrice = new SimpleDoubleProperty(0.0), eventTogglePrice = new SimpleDoubleProperty(0.0);
 	private float cattleProdBonus = 0, cattleQualBonus = 0, buildProdBonus = 0, buildQualBonus = 0;
 	
-	public GameModele() {
+	public GameModele(Milker milker) {
+        this.milker = milker;
 		plaYear = new MilkDate () ;
     	
 		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0),
@@ -67,14 +75,51 @@ public class GameModele {
 				setEventTogglePrice();
 			}
 		});
-		Agent building = new Agent();
-		building.setKind(MilkKind.kind_Building);
-		Utility.addQuantityListenerToThings(building, new QuantityListener() {
+		
+		Agent eco = new Agent();
+		eco.setKind(MilkKind.kind_Building);
+		Utility.addQuantityListenerToThings(eco, new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				Activity.setActivesWandB();
+				Activity.setActivesCattle();
+			}
+		});
+		Activity.addActiveListenerToThings(eco, new QuantityListener() {
 			@Override
 			public void quantityChanged(double oldQuantity, double newQuantity) {
 				setIncomeBonus();
 			}
 		});
+		
+		eco.setKind(MilkKind.kind_Worker);
+		Utility.addQuantityListenerToThings(eco, new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				Activity.setActivesWandB();
+			}
+		});
+		Activity.addActiveListenerToThings(eco, new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				setIncomeBonus();
+			}
+		});
+		
+		eco.setKind(MilkKind.kind_Cattle);
+		Utility.addQuantityListenerToThings(eco, new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				Activity.setActivesCattle();
+			}
+		});
+		Activity.addActiveListenerToThings(eco, new QuantityListener() {
+			@Override
+			public void quantityChanged(double oldQuantity, double newQuantity) {
+				setIncomeBonus();
+			}
+		});
+		
 	}
 
 	/*
@@ -108,7 +153,6 @@ public class GameModele {
 	public DoubleProperty getMilkCoin() {
 		return this.milkCoin;
 	}
-
 	
 	protected void setIncomeBonus() {
 		cattleProdBonus = 0;
@@ -116,12 +160,13 @@ public class GameModele {
 		buildProdBonus = 0;
 		buildQualBonus = 0;
 		for (Building building:Building.getFullListe()){
+			int active = building.getAttrib().getActives();
 			if(building.getBonus().getKind().intValue()==MilkKind.kind_Living_Being){
-				cattleProdBonus+=(building.getBonus().getAttrib().getQuant().doubleValue()*building.getAttrib().getQuant().intValue());
-				cattleQualBonus+=(building.getBonus().getAttrib().getQual().doubleValue()*building.getAttrib().getQuant().intValue());
+				cattleProdBonus+=(building.getBonus().getAttrib().getQuant().doubleValue()*active);
+				cattleQualBonus+=(building.getBonus().getAttrib().getQual().doubleValue()*active);
 			}else{
-				buildProdBonus+=(building.getBonus().getAttrib().getQuant().doubleValue()*building.getAttrib().getQuant().intValue());
-				buildQualBonus+=(building.getBonus().getAttrib().getQual().doubleValue()*building.getAttrib().getQuant().intValue());
+				buildProdBonus+=(building.getBonus().getAttrib().getQuant().doubleValue()*active);
+				buildQualBonus+=(building.getBonus().getAttrib().getQual().doubleValue()*active);
 			}
 		}
 		cattleProdBonus = 1+cattleProdBonus/100;
@@ -131,7 +176,7 @@ public class GameModele {
 	}
 
 	protected void setToolTogglePrice() {
-		int quant = Utility.getThingsQuantity(getToggles().get(0).getAgent());
+		int quant = Activity.getActiveThingsQuantity(getToggles().get(0).getAgent());
 		toolTogglePrice.setValue(quant*getToggles().get(0).getPriceValue());
 	}
 	
@@ -254,7 +299,7 @@ public class GameModele {
 	public boolean isMilkObjOwned(MilkXmlObj value) {
 		boolean visible = true;
 		for (NeededThing need: value.getNeed().getNeededThings()) {
-			visible = Utility.checkThing(need, Utility.getThingsListsFromKind(need.getKind()));
+			visible = Activity.checkActiveThing(need, Utility.getThingsListsFromKind(need.getKind()));
 		}
 		return visible;
 	}
@@ -262,7 +307,7 @@ public class GameModele {
 	public boolean areMilkObjOwned(Research value) {
 		int count = 0;
 		for (NeededThing need: value.getCheck().getNeededThings()) {
-			if(Utility.checkThing(need, Utility.getThingsListsFromKind(need.getKind())))count+=1;
+			if(Activity.checkActiveThing(need, Utility.getThingsListsFromKind(need.getKind())))count+=1;
 			if(count >= value.getCheck().getMod().intValue())return true;
 		}
 		return false;
@@ -280,9 +325,51 @@ public class GameModele {
 
 	public void buyIntel(Intel value) {
 		if(isIntelbuyable(value)){
-			value.buy();
-			milkCoin.setValue(milkCoin.doubleValue() - value.getPriceValue());
+			boolean sacrified = true;
+			if(Utility.thatNeedaSacrifice(value)){
+				ArrayList<Thing> selecteds = GetSacrificesList(value);
+				//for now all sacrifice will be done at random.
+				if(selecteds.size()>0){
+					Collections.shuffle(selecteds);
+					Sacrifice need = null;
+					if(value instanceof Research) need = ((Research)value).getSacrifice();
+					else need = ((Slave)value).getSacrifice();
+					selecteds.get(0).getAttrib().incrementeQuant(-need.getAttrib().getQuant());
+				} else {
+					sacrified = false;
+					milker.setStatutMessage(value.getInfo().getName()+" "+MilkInterface.getMilkStringsFromId(1101).asText()
+							+" "+MilkInterface.getMilkStringsFromId(1102).asText()+" "+MilkInterface.getMilkStringsFromId(1103).asText());
+				}
+			}
+			if(sacrified){
+				value.buy();
+				milkCoin.setValue(milkCoin.doubleValue() - value.getPriceValue());
+				milker.setStatutMessage(value.getInfo().getName()+" "+MilkInterface.getMilkStringsFromId(1102).asText());
+			}
+		} else milker.setStatutMessage(value.getInfo().getName()+" "+MilkInterface.getMilkStringsFromId(1104).asText());
+	}
+
+	public ArrayList<Thing> GetSacrificesList(Intel value) {
+		Sacrifice need = null;
+		ArrayList<? extends Thing> candidates = null;
+		ArrayList<Thing> selected = new ArrayList<Thing>();
+		if(value instanceof Research){
+			need = ((Research)value).getSacrifice();
+			candidates = Utility.getThingsListsFromAgent(need);
+			for(Thing candidate : candidates){
+				if(need.getAttrib().getQuant().intValue()<candidate.getAttrib().getQuant().intValue())selected.add(candidate);
+			}
+		} else {
+			need = ((Slave)value).getSacrifice();
+			candidates = Utility.getThingsListsFromAgent(need);
+			for(Thing candidate : candidates){
+				if(MilkKind.checkThingKind(MilkKind.kind_Worker, candidate.getKind())){
+					if(need.getAttrib().getQuant().intValue()<
+							(candidate.getAttrib().getQuant().intValue()-candidate.getAttrib().getActives().intValue()-candidate.getAttrib().getSemiActives().intValue()))selected.add(candidate);
+				} else if(need.getAttrib().getQuant().intValue()<candidate.getAttrib().getQuant().intValue())selected.add(candidate);
+			}
 		}
+		return selected;
 	}
 
 	public boolean isToolToggleSwitchable() {

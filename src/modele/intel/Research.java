@@ -1,8 +1,8 @@
 package modele.intel;
 
-import modele.MilkFile;
-import modele.MilkInterface;
-import modele.MilkKind;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkKind;
 import modele.carac.Check;
 import modele.carac.Sacrifice;
 
@@ -10,8 +10,10 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 public class Research extends Intel implements Cloneable {
 
@@ -49,7 +51,7 @@ public class Research extends Intel implements Cloneable {
 	public static ObservableList<Research> getResearchListe() {
 		if (modelResearchs==null){
 			if (researchs==null)setMilkVarFromFiles();
-			modelResearchs = FXCollections.observableArrayList();
+			modelResearchs = FXCollections.observableArrayList(extractor());
 			if (researchs!=null){
 				for (Research research:researchs){
 					try {
@@ -62,6 +64,17 @@ public class Research extends Intel implements Cloneable {
 			}
 		}
 		return modelResearchs;
+	}
+	
+	public static void updateInfoFromFiles() {
+		if (modelResearchs==null) getResearchListe();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfo(modelResearchs, elementlInfos);
+	}
+
+	public static Callback<Research, Observable[]> extractor() {
+        return (Research p) -> new Observable[]{p.getInfo().getObrservableName()};
 	}
 
 	// Fields

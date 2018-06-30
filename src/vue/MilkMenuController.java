@@ -1,10 +1,11 @@
 package vue;
 
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import modele.MilkInterface;
+import modele.baseObject.MilkInterface;
 
 /**
  * The controller for the Menu Bar.  
@@ -44,24 +45,38 @@ public class MilkMenuController extends MilkerController {
     @FXML
 	public void initialize() {
     	setText();
+    	menuEdit.disableProperty().setValue(true);
 	}
     
 	public void setText() {
-		menuFile.setText(MilkInterface.getStringsFromId(10));
-		menuNew.setText(MilkInterface.getStringsFromId(11));
-		menuLoad.setText(MilkInterface.getStringsFromId(12));
-		menuSave.setText(MilkInterface.getStringsFromId(13));
-		menuSaveAs.setText(MilkInterface.getStringsFromId(13)+" "+MilkInterface.getStringsFromId(16));
-		menuEdit.setText(MilkInterface.getStringsFromId(4)+" - "+MilkInterface.getStringsFromId(5));
-		menuExit.setText(MilkInterface.getStringsFromId(15));
+	//	menuFile.setText(MilkInterface.getStringsFromId(10));
+		menuFile.textProperty().bind( MilkInterface.getMilkStringsFromId(10).getText()  );
+	//	menuNew.setText(MilkInterface.getStringsFromId(11));
+		menuNew.textProperty().bind( MilkInterface.getMilkStringsFromId(11).getText()  );
+	//	menuLoad.setText(MilkInterface.getStringsFromId(12));
+		menuLoad.textProperty().bind( MilkInterface.getMilkStringsFromId(12).getText()  );
+	//	menuSave.setText(MilkInterface.getStringsFromId(13));
+		menuSave.textProperty().bind( MilkInterface.getMilkStringsFromId(13).getText()  );
+	//	menuSaveAs.setText(MilkInterface.getStringsFromId(13)+" "+MilkInterface.getStringsFromId(16));
+		menuSaveAs.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(13).getText(), " ", MilkInterface.getMilkStringsFromId(16).getText() ) );
+	//	menuEdit.setText(MilkInterface.getStringsFromId(4)+" - "+MilkInterface.getStringsFromId(5));
+		menuEdit.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(4).getText(), " - ", MilkInterface.getMilkStringsFromId(5).getText() ) );
+	//	menuExit.setText(MilkInterface.getStringsFromId(15));
+		menuExit.textProperty().bind( MilkInterface.getMilkStringsFromId(15).getText()  );
 
-		menuDisplay.setText(MilkInterface.getStringsFromId(20));
-		menuFullScreen.setText(MilkInterface.getStringsFromId(21));
-		menuStatutBar.setText(MilkInterface.getStringsFromId(22));
+	//	menuDisplay.setText(MilkInterface.getStringsFromId(20));
+		menuDisplay.textProperty().bind( MilkInterface.getMilkStringsFromId(20).getText()  );
+	//	menuFullScreen.setText(MilkInterface.getStringsFromId(21));
+		menuFullScreen.textProperty().bind( MilkInterface.getMilkStringsFromId(21).getText()  );
+	//	menuStatutBar.setText(MilkInterface.getStringsFromId(22));
+		menuStatutBar.textProperty().bind( MilkInterface.getMilkStringsFromId(22).getText()  );
 
-		menuHelp.setText(MilkInterface.getStringsFromId(30));
-		menuOption.setText(MilkInterface.getStringsFromId(31));
-		menuAbout.setText(MilkInterface.getStringsFromId(32));
+	//	menuHelp.setText(MilkInterface.getStringsFromId(30));
+		menuHelp.textProperty().bind( MilkInterface.getMilkStringsFromId(30).getText()  );
+	//	menuOption.setText(MilkInterface.getStringsFromId(31));
+		menuOption.textProperty().bind( MilkInterface.getMilkStringsFromId(31).getText()  );
+	//	menuAbout.setText(MilkInterface.getStringsFromId(32));
+		menuAbout.textProperty().bind( MilkInterface.getMilkStringsFromId(32).getText()  );
     }
 
     /**
@@ -102,7 +117,7 @@ public class MilkMenuController extends MilkerController {
      */
     @FXML
     private void handleEdit() {
-    	this.getMainApp().openEditor();
+    	//this.getMainApp().openEditor();
     }
 
 	/**
@@ -118,7 +133,13 @@ public class MilkMenuController extends MilkerController {
      */
     @FXML
     private void handleFullScreen() {
-    	
+    	if(this.getMainApp().getPrimaryStage().isFullScreen()){
+    		this.getMainApp().getPrimaryStage().setFullScreen(false);
+    		menuFullScreen.setSelected(false);;
+    	} else {
+    		this.getMainApp().getPrimaryStage().setFullScreen(true);
+    		menuFullScreen.setSelected(true);;
+    	}
     }
     
     /**

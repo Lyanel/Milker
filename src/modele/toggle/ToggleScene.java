@@ -1,11 +1,10 @@
 package modele.toggle;
 
-import modele.MilkImage;
-import modele.MilkXmlObj;
-
 import org.w3c.dom.Element;
 
-import controleur.ParseMilkFile;
+import modele.ParseMilkFile;
+import modele.baseObject.MilkImage;
+import modele.baseObject.MilkXmlObj;
 
 public class ToggleScene extends MilkXmlObj implements Cloneable {
 

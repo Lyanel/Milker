@@ -1,13 +1,13 @@
 package modele.toggle;
 
-import modele.MilkFile;
-import modele.MilkImage;
-import modele.MilkInterface;
-import modele.XmlHelper;
-
 import java.util.ArrayList;
 
 import org.w3c.dom.Element;
+
+import modele.XmlHelper;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkImage;
+import modele.baseObject.MilkInterface;
 
 public class ToggleIdol extends Toggle implements Cloneable {
 
@@ -52,6 +52,12 @@ public class ToggleIdol extends Toggle implements Cloneable {
 			} catch (Exception e) {e.printStackTrace();}
 		}
 		return things;
+	}
+	
+	public static void updateInfoFromFiles() {
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfos(Toggle.getToggleListe(), elementlInfos);
 	}
 	
 	public static ToggleIdol getIdol() {

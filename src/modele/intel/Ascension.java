@@ -2,7 +2,7 @@ package modele.intel;
 
 import org.w3c.dom.Element;
 
-import modele.MilkKind;
+import modele.baseObject.MilkKind;
 
 public class Ascension extends Intel implements Cloneable {
 	

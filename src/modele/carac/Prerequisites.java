@@ -3,8 +3,9 @@ package modele.carac;
 import java.util.Vector;
 
 import org.w3c.dom.Element;
+
 import modele.MilkRs;
-import modele.MilkVar;
+import modele.baseObject.MilkVar;
 
 public class Prerequisites extends MilkVar implements Cloneable {
 

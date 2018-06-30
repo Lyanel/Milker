@@ -1,16 +1,13 @@
 package modele.toggle;
 
-import modele.MilkFile;
-import modele.MilkImage;
-import modele.MilkInterface;
-import modele.XmlHelper;
-
 import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import modele.XmlHelper;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkImage;
+import modele.baseObject.MilkInterface;
 
 public class ToggleTool extends Toggle implements Cloneable {
 
@@ -69,7 +66,13 @@ public class ToggleTool extends Toggle implements Cloneable {
 		return tool;
 	}
 	
-	public static ObservableList<ToggleOption> getOptionListes() {
+	public static void updateInfoFromFiles() {
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfos(Toggle.getToggleListe(), elementlInfos);
+	}
+	
+/*	public static ObservableList<ToggleOption> getOptionListes() {
 		if (tool==null) ToggleTool.getTool();
 		ObservableList<ToggleOption> clone = FXCollections.observableArrayList();
 		ArrayList<ToggleOption> optionlist;
@@ -78,7 +81,7 @@ public class ToggleTool extends Toggle implements Cloneable {
 			clone.add(option);
 		}
 		return clone;
-	}
+	}*/
 
 	// Constructors
 	

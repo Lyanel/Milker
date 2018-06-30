@@ -2,7 +2,7 @@ package modele.carac;
 
 import org.w3c.dom.Element;
 
-import controleur.ParseMilkFile;
+import modele.ParseMilkFile;
 
 public class Check extends Prerequisites implements Cloneable {
 

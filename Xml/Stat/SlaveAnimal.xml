@@ -6,17 +6,17 @@
 				<intel kind="1" id="242" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="12" />
+		<sacrifice kind="5" id="12" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="8" qual="6" />
 	</slave>
 	<slave id="43" tree="1" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="242" />
+				<intel kind="1" id="243" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="13" />
+		<sacrifice kind="5" id="13" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="10.08" qual="6.25" />
 	</slave>
@@ -26,7 +26,7 @@
 				<intel kind="1" id="244" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="14" />
+		<sacrifice kind="5" id="14" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="8" qual="10" />
 	</slave>
@@ -36,7 +36,7 @@
 				<intel kind="1" id="245" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="15" />
+		<sacrifice kind="5" id="15" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="22.5" qual="4" />
 	</slave>
@@ -46,7 +46,7 @@
 				<intel kind="1" id="251" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="21" />
+		<sacrifice kind="5" id="21" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="8" qual="4.375" />
 	</slave>
@@ -56,7 +56,7 @@
 				<intel kind="1" id="252" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="22" />
+		<sacrifice kind="5" id="22" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="9.6" qual="5" />
 	</slave>
@@ -66,7 +66,7 @@
 				<intel kind="1" id="253" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="23" />
+		<sacrifice kind="5" id="23" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="12" qual="5.25" />
 	</slave>
@@ -76,7 +76,7 @@
 				<intel kind="1" id="254" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="24" />
+		<sacrifice kind="5" id="24" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="16" qual="5" />
 	</slave>
@@ -86,7 +86,7 @@
 				<intel kind="1" id="261" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="31" />
+		<sacrifice kind="5" id="31" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="4" qual="8.75" />
 	</slave>
@@ -96,7 +96,7 @@
 				<intel kind="1" id="262" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="32" />
+		<sacrifice kind="5" id="32" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="7.5" qual="6.4" />
 	</slave>
@@ -106,7 +106,7 @@
 				<intel kind="1" id="263" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="33" />
+		<sacrifice kind="5" id="33" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="9.375" qual="6.72" />
 	</slave>
@@ -116,7 +116,7 @@
 				<intel kind="1" id="264" />
 			</intels>
 		</need>
-		<sacrifice kind="5" id="34" />
+		<sacrifice kind="5" id="34" >1</sacrifice>
 		<price coin="1" coef="1.15"/>
 		<income quan="10" qual="8" />
 	</slave>

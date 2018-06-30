@@ -1,16 +1,18 @@
 package modele.intel;
 
-import modele.MilkFile;
-import modele.MilkInterface;
-import modele.MilkKind;
+import modele.baseObject.MilkFile;
+import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkKind;
 import modele.carac.Effect;
 
 import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Callback;
 
 public class Upgrade extends Research implements Cloneable {
 
@@ -49,7 +51,7 @@ public class Upgrade extends Research implements Cloneable {
 	public static ObservableList<Upgrade> getUpgradeListe() {
 		if (modelUpgrades==null){
 			if (upgrades==null)setMilkVarFromFiles();
-			modelUpgrades = FXCollections.observableArrayList();
+			modelUpgrades = FXCollections.observableArrayList(extractorA());
 			if (upgrades!=null){
 				for (Upgrade upgrade:upgrades){
 					try {
@@ -62,6 +64,17 @@ public class Upgrade extends Research implements Cloneable {
 			}
 		}
 		return modelUpgrades;
+	}
+	
+	public static void updateInfoFromFiles() {
+		if (modelUpgrades==null) getResearchListe();
+		ArrayList<Element> elementlInfos = new ArrayList<Element>();
+		elementlInfos = MilkFile.getMilkElementsFromFiles(MilkInterface.getXmlLangPath()+file, noeud);
+		setInfo(modelUpgrades, elementlInfos);
+	}
+
+	public static Callback<Upgrade, Observable[]> extractorA() {
+        return (Upgrade p) -> new Observable[]{p.getInfo().getObrservableName()};
 	}
 
 	// Fields

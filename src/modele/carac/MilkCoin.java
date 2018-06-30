@@ -1,7 +1,7 @@
 package modele.carac;
 
-import controleur.ParseMilkFile;
-import modele.MilkVar;
+import modele.ParseMilkFile;
+import modele.baseObject.MilkVar;
 
 import org.w3c.dom.Element;
 

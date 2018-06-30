@@ -2,7 +2,7 @@ package modele.carac;
 
 import org.w3c.dom.Element;
 
-import modele.MilkKind;
+import modele.baseObject.MilkKind;
 
 public class Bonus extends MilkKind implements Cloneable {
 	

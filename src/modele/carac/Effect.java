@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-import controleur.ParseMilkFile;
 import modele.MilkRs;
-import modele.MilkVar;
+import modele.ParseMilkFile;
 import modele.XmlHelper;
+import modele.baseObject.MilkVar;
 import modele.thing.Thing;
 
 public class Effect extends MilkVar implements Cloneable {

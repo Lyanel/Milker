@@ -1,6 +1,6 @@
 package modele.thing;
 
-import modele.MilkImage;
+import modele.baseObject.MilkImage;
 import modele.intel.Intel;
 
 import java.util.ArrayList;

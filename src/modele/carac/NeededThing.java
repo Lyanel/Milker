@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-import controleur.ParseMilkFile;
+import modele.ParseMilkFile;
 import modele.XmlHelper;
 import modele.thing.Thing;
 

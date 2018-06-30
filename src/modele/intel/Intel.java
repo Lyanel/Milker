@@ -1,11 +1,10 @@
 package modele.intel;
 
-import modele.MilkXmlObj;
+import modele.ParseMilkFile;
+import modele.baseObject.MilkXmlObj;
 import modele.carac.Price;
 
 import org.w3c.dom.Element;
-
-import controleur.ParseMilkFile;
 
 public class Intel extends MilkXmlObj implements Cloneable {
 	

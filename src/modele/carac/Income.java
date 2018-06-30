@@ -1,8 +1,8 @@
 package modele.carac;
 
-import controleur.ParseMilkFile;
-
 import org.w3c.dom.Element;
+
+import modele.ParseMilkFile;
 
 public class Income extends MilkCoin implements Cloneable {
 	

@@ -8,8 +8,8 @@ import javafx.application.Application;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.Initializable;
-import modele.MilkInfo;
-import modele.MilkXmlObj;
+import modele.baseObject.MilkInfo;
+import modele.baseObject.MilkXmlObj;
 
 /**
  * The controller for the Menu Bar.  

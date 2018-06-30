@@ -2,4 +2,4 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane stylesheets="@../../../CSS/DarkMilk.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MilkerController" />
+<BorderPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MilkerController" />

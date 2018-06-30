@@ -1,0 +1,95 @@
+.Milker			:	.BorderPane
+
+.MilkMenu		:	.AnchorPane	
+						.MenuBar	
+							.Menu					#menuFile
+								.MenuItem				#menuNew, #menuLoad, #menuSave, #menuSaveAs, #menuEdit, #menuExit
+							.Menu					#menuDisplay
+								.MenuItem				#menuFullScreen, #menuStatutBar
+							.Menu					#menuHelp
+								.MenuItem				#menuOption, #menuAbout
+
+.MilkStatut		:	.AnchorPane	
+						.BorderPane	
+							.ProgressBar			#progress
+							.Label					#message
+							.DigitalClock			#timeLabel
+
+.MilkOption		:	.AnchorPane	
+						.GridPane
+							.Label					#optionLab1, #optionLab2, #optionLab3
+							.ComboBox				#optionSel1
+							.Button					#saveBT, #CancelBT
+
+.MilkGame		:	.AnchorPane					
+						.BorderPane					#gamePanel
+							.AnchorPane				#centerAnchor
+								.GridPane
+									.ImageView		#npcPic, #idolPic
+							.GridPane
+								.Label				#coinLabel, #agnelLabel
+								.TabPane		
+									.Tab						#neutralTab
+										.AnchorPane
+											.Accordion
+												.TitledPane			#neutralBuildingTab, #neutralWorkerTab, #neutralSlaveTab, #neutralAnimalTab
+													.ListView			#neutralBuildingPan, #neutralWorkerPan, #neutralSlavePan, #neutralAnimalPan
+									.Tab						#scienceTab
+										.AnchorPane
+											.Accordion
+												.TitledPane			#scienceBuildingTab, #scienceWorkerTab, #scienceSlaveTab, #scienceAnimalTab
+													.ListView			#scienceBuildingPan, #scienceWorkerPan, #scienceSlavePan, #scienceAnimalPan
+									.Tab						#magicTab
+										.AnchorPane
+											.Accordion
+												.TitledPane			#magicBuildingTab, #magicWorkerTab, #magicSlaveTab, #magicAnimalTab
+													.ListView			#magicBuildingPan, #magicWorkerPan, #magicSlavePan, #magicAnimalPan
+									.Tab						#toggleTab
+										.AnchorPane
+											.Accordion
+												.TitledPane			#toolTab
+													.ImageView			#toolIcon
+													.Label				#toolLabel, #priceLabel1, #toolPrice
+													.ListView			#toolPan
+												.TitledPane			#idolTab
+													.ImageView			#idolIcon
+													.Label				#idolLabel, #priceLabel2, #idolPrice
+													.ListView			#idolPan
+												.TitledPane			#eventTab
+													.ImageView			#eventIcon
+													.Label				#eventLabel, #priceLabel3, #eventPrice
+													.ListView			#eventPan
+									.Tab						#intelTab
+										.AnchorPane
+											.Accordion
+												.TitledPane			#researchTab, #upgradeTab, #synergyTab,		? #ascensionTab
+													.ListView			#researchPan, #upgradePan, #synergyPan, 	? #ascensionPan
+
+
+.InfoCell		:	.AnchorPane							#rootPane
+						.GridPane						#infoPan
+							.Label						#effectPan, #descPan, #quotePan
+
+.MilkCellThing	:	.AnchorPane							#rootPane
+						.GridPane						#varPan
+							.Label						#iLabel	
+								.GridPane				#textPan
+									.Label				#nameLabel, #priceLabel, #quantLabel
+
+.MilkCellIntel	:	.AnchorPane							#rootPane
+						.GridPane						#varPan
+							.Label						#iLabel	
+								.GridPane				#textPan
+									.Label				#nameLabel, #priceLabel	
+
+.MilkCellOption	:	.AnchorPane							#rootPane
+						.GridPane						#varPan
+							.Label						#iLabel	
+								.GridPane				#textPan
+									.Label				#nameLabel	
+
+.MilkCellOptLvl	:	.AnchorPane							#rootPane
+						.GridPane						#varPan
+							.Label						#iLabel	
+								.GridPane				#textPan
+									.Label				#nameLabel, #lvlNameLabel, #QntLabel, #BonusQntLabel, #QalLabel, #BonusQalLabel

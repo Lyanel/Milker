@@ -1,0 +1,9 @@
+.NotBuyable {
+    -fx-text-fill: red;
+}
+.TooMuch {
+    -fx-text-fill: darkviolet ;
+}
+.Bought {
+    -fx-text-fill: green;
+}
