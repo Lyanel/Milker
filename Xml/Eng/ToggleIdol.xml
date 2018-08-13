@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="2">
+		<name>Idol look</name>
+		<effect>Used to change the look of your statue.</effect>
+		<desc>This switch allows the statue to take further appearances, such as stone, gold, biscuit, or even those of your girls.</desc>
+		<quote></quote>
+		<options>
+			<option id="110">
+				<name>Clay look</name>
+				<desc>Her original appearance.</desc>
+				<quote></quote>
+			</option>
+			<option id="111">
+				<name>Straw look</name>
+				<desc>Simple appearance imitating a scarecrow.</desc>
+				<quote></quote>
+			</option>
+			<option id="211">
+				<name>Farm Girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="212">
+				<name>Milkmaid look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="213">
+				<name>Factory Girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="221">
+				<name>Maid look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="222">
+				<name>Veterinary look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="223">
+				<name>Scientist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="224">
+				<name>Mad scientist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="225">
+				<name>Astronaut look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="226">
+				<name>Evil scientist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="231">
+				<name>Hostess look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="232">
+				<name>Priestress look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="233">
+				<name>Alchemist look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="234">
+				<name>Witch look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="235">
+				<name>Planeswalker look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="236">
+				<name>Goddess look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="244">
+				<name>Slaver look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="411">
+				<name>Homeless girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="412">
+				<name>Asian slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="422">
+				<name>Russian slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="423">
+				<name>Mutant slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="424">
+				<name>Alien girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="425">
+				<name>ESPer slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="426">
+				<name>Succubus look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="432">
+				<name>Arabian slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="433">
+				<name>Familiar slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="434">
+				<name>Elf slave look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="435">
+				<name>Ghoul girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="436">
+				<name>Seraph look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="512">
+				<name>Sheep girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="513">
+				<name>Goat girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="514">
+				<name>Mare girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="515">
+				<name>Cow girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="521">
+				<name>Bunny girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="522">
+				<name>Sow girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="523">
+				<name>Bear girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="524">
+				<name>Orca girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="531">
+				<name>Cat girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="532">
+				<name>Wolf girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="533">
+				<name>Reindeer girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="534">
+				<name>Camel girl look</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+		</options>
+	</toggle>
+</toggles>

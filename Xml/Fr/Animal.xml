@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animals>
+	<animal id="12">
+		<name>Brebis</name>
+		<effect>Produit du lait.</effect>
+		<desc>D'une faible production en quantité ET en qualité, elle est facile à entretenir.</desc>
+		<quote></quote>
+	</animal>
+	<animal id="13">
+		<name>Chèvre</name>
+		<effect>Produit du lait.</effect>
+		<desc>Juste un peu mieux qu'une brebi, mais peut être plus agressif.</desc>
+		<quote></quote>
+	</animal>
+	<animal id="14">
+		<name>Jument</name>
+		<effect>Produit du lait.</effect>
+		<desc>L'animal avec la meilleure qualité de lait.</desc>
+		<quote></quote>
+	</animal>
+	<animal id="15">
+		<name>Vache</name>
+		<effect>Produit du lait.</effect>
+		<desc>L'animal avec la meilleure quantité de lait.</desc>
+		<quote></quote>
+	</animal>
+	<animal id="21">
+		<name>Lapine</name>
+		<effect>Les vendre pour obtenir des Jetonlaits ?</effect>
+		<desc>Ces lapins viennent en masse pendant Pâques, vous pouvez les attraper, mais ils sont inutiles ...</desc>
+		<quote></quote>
+	</animal>
+	<animal id="22">
+		<name>Truie</name>
+		<effect>Produit du lait.</effect>
+		<desc>Utilisé comme cobaye pour augmenter la production laitière, cela s'est soldé par un échec, mais, étrangement, la qualité n'est pas si mauvaise.</desc>
+		<quote></quote>
+	</animal>
+	<animal id="23">
+		<name>Ourse</name>
+		<effect>Produit du lait.</effect>
+		<desc>Cette pauvre bête a fini à vos soins après avoir suivi une formation militaire. Un reconditionnement pourrait être utile ...</desc>
+		<quote></quote>
+	</animal>
+	<animal id="24">
+		<name>Orque</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une icône de l'été, son lait est meilleur froid ...</desc>
+		<quote></quote>
+	</animal>
+	<animal id="31">
+		<name>Chatte</name>
+		<effect>Les vendre pour obtenir des Jetonlaits ?</effect>
+		<desc>Ces lil'cats ont été utilisés par une étrange Lol-Sect pour attirer des jeunes filles. Malheureusement, les chats ont commencé à devenir enragé...</desc>
+		<quote>C'est une chalamité...</quote>
+	</animal>
+	<animal id="32">
+		<name>Louve</name>
+		<effect>Produit du lait.</effect>
+		<desc>Utilisé comme cobaye par un l'alchimiste dérangé, cette louve produit un lait de bonne qualité, mais en petite quantité pour un animal de cette taille.</desc>
+		<quote></quote>
+	</animal>
+	<animal id="33">
+		<name>Renne</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une icône de l'hiver, son lait est meilleur chaud ...</desc>
+		<quote></quote>
+	</animal>
+	<animal id="34">
+		<name>Chamelle</name>
+		<effect>Produit du lait.</effect>
+		<desc>Les gens vont finir par penser que vous êtes la tête d'un zoo. Ce chameau vendu par un mage oriental en est une preuve évidente.</desc>
+		<quote>"Mais nooooon j'ai DEUX bosses, je suis un chameau, pas un dromadaire."</quote>
+	</animal>
+</animals>

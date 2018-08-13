@@ -16,6 +16,7 @@ Need	:	An artist, a good programmer.
 v0.06 :	
 Done	:	Magic & science tree only appear if you've bought their first research.
 			Code for upgrade.
+			Added a tittle screen.
 Started	:	Code for Event. (Magic & science animal now can be bought at their respective time.)
 			Code for save game (Coin, building, worker, cattle and intels. Only tool need to be done).
 			Changing price to be more challenging (but that will need a lot of balancing).

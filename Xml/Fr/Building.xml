@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<buildings>
+	<building id="10">
+		<name>Venus de mille lait</name>
+		<effect>Produit des Jetonlaits.</effect>
+		<desc>Un étrange artefact qui ressemble à une fille, produit quelque Jetonlaits par jour et un peu plus quand vous appuyez sur sa poitrine.</desc>
+		<quote>Demi-écrémé ?</quote>
+	</building>
+	<building id="11">
+		<name>Ferme</name>
+		<effect>Travailleuses neutre maximum +5.</effect>
+		<desc>Où vivent les filles neutres et où la nourriture est cultivée.</desc>
+		<quote></quote>
+	</building>
+	<building id="12">
+		<name>Salle de traite</name>
+		<effect>Augmente la production en quantité et qualité.</effect>
+		<desc>Salle spécialement aménagé pour traire le bétail dans de bonne conditions.</desc>
+		<quote></quote>
+	</building>
+	<building id="13">
+		<name>Usine</name>
+		<effect>Augmente la qualité du lait.</effect>
+		<desc>Bâtiment équipé pour le raffinage et l'emballage du lait.</desc>
+		<quote></quote>
+	</building>
+	<building id="14">
+		<name>Centre d'affaire</name>
+		<effect>Produit des Jetonlaits.</effect>
+		<desc>Là où sont signé les contrat.</desc>
+		<quote></quote>
+	</building>
+	<building id="21">
+		<name>Hôtels intelligent</name>
+		<effect>Travailleuses scientifique maximum +5.</effect>
+		<desc>Hôtels équipé du meilleur de la technologie, idéal pour scientifique en tout genre.</desc>
+		<quote></quote>
+	</building>
+	<building id="22">
+		<name>Clinique</name>
+		<effect>Augmente la production en quantité et qualité.</effect>
+		<desc>Installation dédié au contrôle de la santé du bétail.</desc>
+		<quote></quote>
+	</building>
+	<building id="23">
+		<name>Laboratoire scientifique</name>
+		<effect>Augmente la production en quantité et qualité.</effect>
+		<desc>Améliore bétail et installation en utilisant les connaissances de la science.</desc>
+		<quote></quote>
+	</building>
+	<building id="24">
+		<name>Laboratoire secret</name>
+		<effect>Augmente beaucoup la quantité mais réduit la qualité.</effect>
+		<desc>Ce laboratoire fait des recherches controversées, augmentant considérablement la quantité de lait, ... en tuant sa qualité.</desc>
+		<quote></quote>
+	</building>
+	<building id="25">
+		<name>Spatioport</name>
+		<effect>Produit du lait.</effect>
+		<desc>Importe du lait provenant d'autres systèmes planétaires.</desc>
+		<quote></quote>
+	</building>
+	<building id="26">
+		<name>Condenseur d'énèrgie sombre</name>
+		<effect>Produit du lait.</effect>
+		<desc>Transforme l'énergie sombre en lait.</desc>
+		<quote>Un condenseur est un dispositif thermomécanique, qui transforme une matière à l'état gazeux en liquide,...</quote>
+	</building>
+	<building id="31">
+		<name>Auberge fantaisie</name>
+		<effect>Travailleuses magique maximum +5.</effect>
+		<desc>Auberge magique style septième siècle, un havre de paix pour sorcière de tout horizon.</desc>
+		<quote></quote>
+	</building>
+	<building id="32">
+		<name>Temple</name>
+		<effect>Augmente la production en quantité et qualité.</effect>
+		<desc>Bâtiment pyramidale où des filles parées de bijoux prie pour la bonne récolte et la santé du bétail.</desc>
+		<quote></quote>
+	</building>
+	<building id="33">
+		<name>Tour d'alchimie</name>
+		<effect>Augmente la production en quantité et qualité.</effect>
+		<desc>Améliore bétail et installation en utilisant les connaissances de l'alchimie.</desc>
+		<quote></quote>
+	</building>
+	<building id="34">
+		<name>Tour de sorcellerie</name>
+		<effect>Augmente beaucoup la qualité mais réduit la quantité.</effect>
+		<desc>Tour magique où le bétail est fortement optimisé, améliorant considérablement la qualité, ... en laissant tomber la quantité.</desc>
+		<quote></quote>
+	</building>
+	<building id="35">
+		<name>Portail</name>
+		<effect>Produit du lait.</effect>
+		<desc>Importe du lait provenant d'autres univers.</desc>
+		<quote></quote>
+	</building>
+	<building id="36">
+		<name>Prisme</name>
+		<effect>Produit du lait.</effect>
+		<desc>Transformer la lumière en lait.</desc>
+		<quote>La véritable signification de voie lactée.</quote>
+	</building>
+	<building id="42">
+		<name>Étable à animaux</name>
+		<effect>Animaux neutre maximum +10.</effect>
+		<desc>Où vivent les animaux.</desc>
+		<quote></quote>
+	</building>
+	<building id="43">
+		<name>Entrepôt</name>
+		<effect>Augmenter la production laitière.</effect>
+		<desc>Bâtiment équipé pour le stockage des produits laitier.</desc>
+		<quote></quote>
+	</building>
+	<building id="44">
+		<name>Étable à esclave</name>
+		<effect>Esclaves neutre maximum +10.</effect>
+		<desc>Où vivent les esclaves.</desc>
+		<quote></quote>
+	</building>
+	<building id="51">
+		<name>Ferme intelligente</name>
+		<effect>Produit du lait.</effect>
+		<desc>Vos soubrettes répartissent leur temps de travail pour produire du lait végétal de diverses plantes dans cette ferme futuriste.</desc>
+		<quote></quote>
+	</building>
+	<building id="52">
+		<name>Étable intelligente</name>
+		<effect>Animaux scientifiques maximum +5.</effect>
+		<desc>Où vivent les animaux lié aux sciences.</desc>
+		<quote></quote>
+	</building>
+	<building id="55">
+		<name>Étable scientifique</name>
+		<effect>Esclaves scientifiques maximum +5.</effect>
+		<desc>Étable renforcée utilisé pour abriter les esclaves fortifiée par la science.</desc>
+		<quote></quote>
+	</building>
+	<building id="61">
+		<name>Ferme fantaisie</name>
+		<effect>Produit du lait.</effect>
+		<desc>Vos hôtesses utilisent une partie de leur temps pour produire du lait végétalien à partir de divers noix dans cette ferme féerique.</desc>
+		<quote></quote>
+	</building>
+	<building id="62">
+		<name>Étable fantaisie</name>
+		<effect>Animaux magiques maximum +5.</effect>
+		<desc>Où vivent les animaux lié aux magies.</desc>
+		<quote></quote>
+	</building>
+	<building id="65">
+		<name>Étable magique</name>
+		<effect>Esclaves magiques maximum +5.</effect>
+		<desc>Étable renforcée utilisé pour abriter les esclaves fortifiée par la magie.</desc>
+		<quote></quote>
+	</building>
+</buildings>

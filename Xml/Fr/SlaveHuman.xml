@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<slaves>
+	<slave id="11">
+		<name>Mendiante</name>
+		<effect>Produit du lait.</effect>
+		<desc>Choisir entre la rue et l'esclavage dû être un cauchemar, espérons qu'elle est heureuse maintenant.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="12">
+		<name>Esclave asiatique</name>
+		<effect>Produit du lait.</effect>
+		<desc>Cette fille a conclue un accord obscur avec des yakuzas pour devenir une idole. Et ils ont tenus parole, sa photo est visible dans toutes les bonnes laiteries.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="13">
+		<name>Esclave volontaire</name>
+		<effect>Produit du lait.</effect>
+		<desc>L'esclavage est si répandu dans la société que, lorsqu'une demande est faite, il y a toujours une personne pour changer de vie.</desc>
+		<quote>Sacrificez-moi.</quote>
+	</slave>
+	<slave id="22">
+		<name>Esclave russe</name>
+		<effect>Produit du lait.</effect>
+		<desc>Cette fille a été vendue par ses parents à la bratva locale pour la compensation d'une dette. Qui sait ce qu'elle a souffert avant de finir à votre service …</desc>
+		<quote></quote>
+	</slave>
+	<slave id="23">
+		<name>Esclave mutante</name>
+		<effect>Produit du lait.</effect>
+		<desc>Cette fille a été nourri de mutagène depuis son enfance, pas étonnant qu'elle mesure plus de 2,5 mètres et est capable de soulever trois tonnes.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="24">
+		<name>Fille alien</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille à la peau violette capturée dans l'espace, son lait peut être dangereux.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="25">
+		<name>Esclave ESPer</name>
+		<effect>Produit du lait.</effect>
+		<desc>Une fille rendu folle par sa perception extrasensorielle, certains disent que son lait donne des visions de l'avenir.</desc>
+		<quote>Osorubeki mirai...</quote>
+	</slave>
+	<slave id="26">
+		<name>Succube</name>
+		<effect>Produit du lait.</effect>
+		<desc>Cette fille a été contaminée par de l'énergie sombre, son lait pervertissant le corps et l'esprit.</desc>
+		<quote>Lorsque c'est arrivé, la fille de bien qu'était ta mêre à disparue.</quote>
+	</slave>
+	<slave id="32">
+		<name>Esclave arabe</name>
+		<effect>Produit du lait.</effect>
+		<desc>Cette fille a été condamnée à mort pour terrorisme. Naturellement, laisser mourir une fille mignonne n'est pas dans vos habitudes.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="33">
+		<name>Esclave familière</name>
+		<effect>Produit du lait.</effect>
+		<desc>Elle voulait être une "Magical girl", peut-être demander à un sorcier noir n'était pas une bonne idée. Maintenant, son lait donne des rêves magiques.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="34">
+		<name>Esclave elfe</name>
+		<effect>Produit du lait.</effect>
+		<desc>Capturée dans une dimension magique, son lait au goût de miel la rend extrêmement populaire.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="35">
+		<name>Fille goule</name>
+		<effect>Produit du lait.</effect>
+		<desc>Née dans une famille de mage noir, il était sûr que son attrait pour les cadavres lui causerait du tort.</desc>
+		<quote>Cette fille a été exposée trop jeune, trop longtemps, à de trop forte dose de trop sombre magie.</quote>
+	</slave>
+	<slave id="36">
+		<name>Séraphin</name>
+		<effect>Produit du lait.</effect>
+		<desc>Bénie par la lumière divine, elle a commencé une émeute pour sauver ses amis, mais elle a perdu …</desc>
+		<quote></quote>
+	</slave>
+</slaves>

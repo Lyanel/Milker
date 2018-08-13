@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<upgrades>
+	<upgrade id="102">
+		<name>Farm, second floor</name>
+		<effect>Farms can host 3 more peoples.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="103">
+		<name>Farm, third floor</name>
+		<effect>Farms can host 3 more peoples.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="111">
+		<name>Plantation of oats</name>
+		<effect>Farms produce milk, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="112">
+		<name>Plantation of coco</name>
+		<effect>Farm production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="113">
+		<name>Plantation of rice</name>
+		<effect>Farm production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="114">
+		<name>Plantation of soy</name>
+		<effect>Farm production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="122">
+		<name>Spelt cultivation</name>
+		<effect>Smart farm milk production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="123">
+		<name>Flax cultivation</name>
+		<effect>Smart farm milk production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="124">
+		<name>Hemp cultivation</name>
+		<effect>Smart farm milk production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="132">
+		<name>Growing cashew</name>
+		<effect>Fantasy farm milk production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="133">
+		<name>Growing hazelnut</name>
+		<effect>Fantasy farm milk production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="134">
+		<name>Growing almond</name>
+		<effect>Fantasy farm milk production increase, need 1 more worker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="201">
+		<name>Curiosity milking</name>
+		<effect>Workers level 1 produce milk.</effect>
+		<desc>Dint to see their cattle being milked, some Farm Girl got curious about the process ...</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="202">
+		<name>Volunteer milking</name>
+		<effect>Workers level 2 produce milk.</effect>
+		<desc>Dint to take care of slaves, some girls wanted to help them more.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="203">
+		<name>Experimental milking</name>
+		<effect>Workers level 3 produce milk.</effect>
+		<desc>Dint to make experiments, some girls began to take themselves for guinea pigs.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="204">
+		<name>Contaminated milking</name>
+		<effect>Workers level 4 produce milk.</effect>
+		<desc>Due to their not so legal activity some girls were contaminated with strange disease.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="205">
+		<name>Perverted milking</name>
+		<effect>Workers level 5 produce milk.</effect>
+		<desc>After eons, even the most stubborn eventually felt the need to be milked.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="206">
+		<name>Fated milking</name>
+		<effect>Workers level 6 produce milk.</effect>
+		<desc>In the end, even the greatest girls accepted to give their milk.</desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="211">
+		<name>Social contract</name>
+		<effect>The costs of dismissal are reduced by 50%.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="212">
+		<name>Disposable workers</name>
+		<effect>Workers can be dismissed for free.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="213">
+		<name>Owned workers</name>
+		<effect>Workers are sold for 30% of their buy price and can be reformed into cattle.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="214">
+		<name>Branded workers</name>
+		<effect>Workers are sold for 60% of their buy price and produce 200% milk.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="215">
+		<name>Tank workers</name>
+		<effect>Workers are sold for 90% of their buy price and produce 300% milk.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="401">
+		<name>Legalization of slavery</name>
+		<effect>Humans slaves can be sold for 90% of their buy price.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="402">
+		<name>Captive breeding</name>
+		<effect>Humans slaves don't need sacrifice anymore.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="403">
+		<name>human guinea pig</name>
+		<effect>Cattles workers can be changed into humans slaves.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="404">
+		<name>Animal genetic mastery</name>
+		<effect>Animals slaves can be changed into humans slaves.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="405">
+		<name>Animal recycling project</name>
+		<effect>Animals can be changed into humans slaves.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="501">
+		<name>Semi-animal are not human</name>
+		<effect>Animals slaves can be sold for 90% of their buy price.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="502">
+		<name>Impoved hybridization</name>
+		<effect>Animals slaves don't need sacrifice anymore.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="504">
+		<name>Human genetic mastery</name>
+		<effect>Humans slaves can be changed into animals slaves.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="505">
+		<name>Human recycling project</name>
+		<effect>Cattles workers can be changed into animals slaves.</effect>
+		<desc></desc>
+		<quote></quote>
+	</upgrade>
+	<upgrade id="601">
+		<name>Mimi milker</name>
+		<effect>Animals level 1 produce milk.</effect>
+		<desc>After collecting so much of them, maybe they can be put to use.</desc>
+		<quote>They're here...</quote>
+	</upgrade>
+</upgrades>

@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="2">
+		<name>Aspect de l'idole</name>
+		<effect>Utilisé pour changer l'aspect de votre statue.</effect>
+		<desc>Ce sélecteur permet à la statue de prendre d'autres apparences, comme la pierre, l'or, le biscuit, ou même celles de vos filles.</desc>
+		<quote></quote>
+		<options>
+			<option id="110">
+				<name>Aspect d'Argile</name>
+				<desc>Son apparence originelle.</desc>
+				<quote></quote>
+			</option>
+			<option id="111">
+				<name>Aspect de Paille</name>
+				<desc>Apparence simple imitant un épouvantail.</desc>
+				<quote></quote>
+			</option>
+			<option id="211">
+				<name>Aspect de Fermière</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="212">
+				<name>Aspect de Trayeuse</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="213">
+				<name>Aspect d'Ouvrière</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="221">
+				<name>Aspect de Soubrette</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="222">
+				<name>Aspect de Vétérinaire</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="223">
+				<name>Aspect de Scientifique</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="224">
+				<name>Aspect de Scientifique folle</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="225">
+				<name>Aspect de Spationaute</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="226">
+				<name>Aspect de Scientifique maléfique</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="231">
+				<name>Aspect d'Hôtesse</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="232">
+				<name>Aspect de Prêtresse</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="233">
+				<name>Aspect d'Alchimiste</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="234">
+				<name>Aspect de Sorcière</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="235">
+				<name>Aspect d'Arpenteuse de plan</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="236">
+				<name>Aspect de Déesse</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="244">
+				<name>Aspect d'Esclavagiste</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="411">
+				<name>Aspect de Mendiante</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="412">
+				<name>Aspect d'Esclave asiatique</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="422">
+				<name>Aspect d'Esclave russe</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="423">
+				<name>Aspect d'Esclave mutante</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="424">
+				<name>Aspect de Fille alien</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="425">
+				<name>Aspect d'Esclave ESPer</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="426">
+				<name>Aspect de Succube</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="432">
+				<name>Aspect d'Esclave arabe</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="433">
+				<name>Aspect d'Esclave familière</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="434">
+				<name>Aspect d'Esclave elfe</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="435">
+				<name>Aspect de Fille goule</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="436">
+				<name>Aspect de Séraphin</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="512">
+				<name>Aspect de Fille brebis</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="513">
+				<name>Aspect de Fille chèvre</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="514">
+				<name>Aspect de Fille jument</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="515">
+				<name>Aspect de Fille vache</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="521">
+				<name>Aspect de Fille lapine</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="522">
+				<name>Aspect de Fille truie</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="523">
+				<name>Aspect de Fille ourse</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="524">
+				<name>Aspect de Fille orque</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="531">
+				<name>Aspect de Fille chatte</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="532">
+				<name>Aspect de Fille louve</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="533">
+				<name>Aspect de Fille renne</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="534">
+				<name>Aspect de Fille chamelle</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+		</options>
+	</toggle>
+</toggles>

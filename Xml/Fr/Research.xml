@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<researchs>
+	<research id="113">
+		<name>Pour travailler le lait</name>
+		<effect>Débloque Usine et Ouvrière.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="114">
+		<name>Capitalisme</name>
+		<effect>Débloque Centre d'affaire et Femme d'affaires.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="121">
+		<name>Premier pas en science</name>
+		<effect>Débloque Hôtels intelligent, Ferme intelligente et Soubrette.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="122">
+		<name>Découvrir la Science</name>
+		<effect>Débloque Clinique et Vétérinaire.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="123">
+		<name>Étudier la science</name>
+		<effect>Débloque Laboratoire scientifique et Scientifique.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="124">
+		<name>Maîtriser la science</name>
+		<effect>Débloque Laboratoire secret et Scientifique folle.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="125">
+		<name>Recherche de nouveaux mondes par la science</name>
+		<effect>Débloque Spatioport et Spationaute.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="126">
+		<name>Maîtriser les Ténèbres</name>
+		<effect>Débloque Condenseur d'énèrgie sombre et Scientifique maléfique.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="131">
+		<name>Premier pas en magie</name>
+		<effect>Débloque Auberge fantaisie, Ferme fantaisie et Hôtesse.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="132">
+		<name>Découvrir la Magie</name>
+		<effect>Débloque Temple et Prêtresse.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="133">
+		<name>Étudier la Magie</name>
+		<effect>Débloque Tour d'alchimie et Alchimiste.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="134">
+		<name>Maîtriser la Magie</name>
+		<effect>Débloque Tour de sorcellerie et Sorcière.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="135">
+		<name>Recherche de nouveaux mondes par la magie</name>
+		<effect>Débloque Portail et Arpenteuse de plan.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="136">
+		<name>Maîtriser la Lumière</name>
+		<effect>Débloque Prisme et Déesse.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="143">
+		<name>Plan d'entrepôt</name>
+		<effect>Débloque l'Entrepôt.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="144">
+		<name>Asservissement humain</name>
+		<effect>Débloque Étable à esclave, Esclavagiste et Mendiante.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="151">
+		<name>Culture de quinoa</name>
+		<effect>Débloque Ferme intelligente.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="155">
+		<name>Asservir la Science</name>
+		<effect>Débloque Étable scientifique.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="161">
+		<name>Croitre des macadamias</name>
+		<effect>Débloque Ferme fantaisie.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="165">
+		<name>Asservir la Magie</name>
+		<effect>Débloque Étable magique.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="412">
+		<name>Marché noir</name>
+		<effect>Débloque Esclave asiatique, russe et arabe.</effect>
+		<desc>Recherche, investigation et corruption pour intégrer le monde souterrain et le commerce des êtres humains.</desc>
+		<quote></quote>
+	</research>
+	<research id="413">
+		<name>Démocratisation de l'esclavage</name>
+		<effect>Débloque Esclave volontaire.</effect>
+		<desc>Campagne de sensibilisation pour intégrer l'idée que l'esclavage est une bonne chose dans l'esprit de vos travailleuses.</desc>
+		<quote></quote>
+	</research>
+	<research id="423">
+		<name>Stabiliser l'ADN muté</name>
+		<effect>Débloque Esclave mutante.</effect>
+		<desc>Recherche maléfique visant à transformer des humains en arme militaire.</desc>
+		<quote></quote>
+	</research>
+	<research id="424">
+		<name>Prison spatiale</name>
+		<effect>Débloque Fille alien.</effect>
+		<desc>Recherche de dispositif utilisé pour capturer des humanoïdes alien.</desc>
+		<quote></quote>
+	</research>
+	<research id="425">
+		<name>Perception extrasensorielle</name>
+		<effect>Débloque Esclave ESPer.</effect>
+		<desc>Recherche de dispositif utilisé pour contrôler des humains ayant évolué en ESPer.</desc>
+		<quote></quote>
+	</research>
+	<research id="426">
+		<name>Expérience de mort imminente</name>
+		<effect>Débloque Succube.</effect>
+		<desc>Recherche de dispositif utilisé pour invoquer des êtres démoniaques.</desc>
+		<quote></quote>
+	</research>
+	<research id="433">
+		<name>Fusion d'ADN magique</name>
+		<effect>Débloque Esclave familière.</effect>
+		<desc>Recherche maléfique visant à transformer un humain en réservoir magique.</desc>
+		<quote></quote>
+	</research>
+	<research id="434">
+		<name>Géole déphasé</name>
+		<effect>Débloque Esclave elfe.</effect>
+		<desc>Recherche d'artefact utilisé pour capturer des humanoïdes magiques.</desc>
+		<quote></quote>
+	</research>
+	<research id="435">
+		<name>Énergie nécrotique</name>
+		<effect>Débloque Fille goule.</effect>
+		<desc>Recherche d'artefacts utilisés pour contrôler les humains qui se sont transformés en goule.</desc>
+		<quote></quote>
+	</research>
+	<research id="436">
+		<name>Projection astral</name>
+		<effect>Débloque Séraphin.</effect>
+		<desc>Recherche d'artefact utilisé pour invoquer des êtres angéliques.</desc>
+		<quote></quote>
+	</research>
+	<research id="512">
+		<name>Hybridation ovine-humaine</name>
+		<effect>Débloque Fille brebis.</effect>
+		<desc>Recherche démente pour changer une brebis en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="513">
+		<name>Hybridation caprine-humaine</name>
+		<effect>Débloque Fille chèvre.</effect>
+		<desc>Recherche démente pour changer une chèvre en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="514">
+		<name>Hybridation équine-humaine</name>
+		<effect>Débloque Fille jument.</effect>
+		<desc>Recherche démente pour changer une jument en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="515">
+		<name>Hybridation bovine-humaine</name>
+		<effect>Débloque Fille vache.</effect>
+		<desc>Recherche démente pour changer une vache en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="521">
+		<name>Évoluer l'ADN de léporidés</name>
+		<effect>Débloque Fille lapine.</effect>
+		<desc>Recherche démente pour changer une lapine en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="522">
+		<name>Évoluer l'ADN de suinae</name>
+		<effect>Débloque Fille truie.</effect>
+		<desc>Recherche démente pour changer une truie en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="523">
+		<name>Évoluer l'ADN d'ursidae</name>
+		<effect>Débloque Fille ourse.</effect>
+		<desc>Recherche démente pour changer une ourse en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="524">
+		<name>Évoluer l'ADN d'orcinus.</name>
+		<effect>Débloque Fille orque.</effect>
+		<desc>Recherche démente pour changer une orque en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="531">
+		<name>Morphose magique de chat</name>
+		<effect>Débloque Fille chatte.</effect>
+		<desc>Recherche démente pour changer une chatte en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="532">
+		<name>Morphose magique de loup</name>
+		<effect>Débloque Fille louve.</effect>
+		<desc>Recherche démente pour changer une louve en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="533">
+		<name>Morphose magique de renne</name>
+		<effect>Débloque Fille renne.</effect>
+		<desc>Recherche démente pour changer une renne en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="534">
+		<name>Morphose magique de chameau</name>
+		<effect>Débloque Fille chamelle.</effect>
+		<desc>Recherche démente pour changer une chamelle en une semi-humaine.</desc>
+		<quote></quote>
+	</research>
+	<research id="701">
+		<name>Statuemorphose</name>
+		<effect>Active le sélecteur Aspect de l'idole.</effect>
+		<desc>En étudiant la statue, vous remarquerez qu'elle peut faire plus que donner des Jetonlaits.</desc>
+		<quote></quote>
+	</research>
+	<research id="712">
+		<name>Main</name>
+		<effect>Remplace Main de noob par Main.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="713">
+		<name>Main expérimentée</name>
+		<effect>Remplace Main par Main expérimentée.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="714">
+		<name>Main professionnelle</name>
+		<effect>Remplace la Main expérimentée par Main professionnelle.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="715">
+		<name>Main de maître</name>
+		<effect>Remplace Main professionnelle par Main de maître.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="716">
+		<name>Main du Diable</name>
+		<effect>Remplace Main de maître par Main du Diable.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="717">
+		<name>Main de Dieu</name>
+		<effect>Remplace Main du Diable par Main de Dieu.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="722">
+		<name>Outil de traite</name>
+		<effect>Équiper la salle de traite avec Outil de traite.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="723">
+		<name>Machine de traite</name>
+		<effect>Remplace Outil de traite par Machine de traite.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="724">
+		<name>Machine médical</name>
+		<effect>Remplace Machine de traite par Machine médicale.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="725">
+		<name>Machine jouissive</name>
+		<effect>Remplace Machine médicale par Machine jouissive.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="726">
+		<name>Machine alien</name>
+		<effect>Remplace Machine jouissive par Machine alien.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="727">
+		<name>Machine ultime</name>
+		<effect>Remplace Machine alien par Machine ultime.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="732">
+		<name>Trayeuse organique</name>
+		<effect>Equipe la Salle de traite avec Trayeuse organique.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="733">
+		<name>Trayeuse vivante</name>
+		<effect>Remplace Trayeuse organique par Trayeuse vivante.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="734">
+		<name>Jeune tentacule</name>
+		<effect>Remplace Trayeuse vivante par Jeune tentacule.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="735">
+		<name>Tentacule</name>
+		<effect>Remplace Jeune tentacule par Tentacule.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="736">
+		<name>Tentacule ancienne</name>
+		<effect>Remplace Tentacule par Tentacule ancienne.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="737">
+		<name>Reine tentacule</name>
+		<effect>Remplace Tentacule ancienne par Reine tentacule.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+</researchs>

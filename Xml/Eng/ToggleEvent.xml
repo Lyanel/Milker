@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="3">
+		<name>Event controller</name>
+		<effect>Used to start events.</effect>
+		<desc>This switch allows the statue to mess with time, summoning event at will.</desc>
+		<quote></quote>
+		<options>
+			<option id="701">
+				<name>Normal time</name>
+				<desc>Let the time passe normally, event will come anyway.</desc>
+				<quote></quote>
+			</option>
+			<option id="702">
+				<name>Imbolc</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="703">
+				<name>Ostara</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="704">
+				<name>Beltaine</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="705">
+				<name>Litha</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="706">
+				<name>Lugnasad</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="707">
+				<name>Mabon</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="708">
+				<name>Samain</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+			<option id="709">
+				<name>Yule</name>
+				<desc></desc>
+				<quote></quote>
+			</option>
+		</options>
+	</toggle>
+</toggles>

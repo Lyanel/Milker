@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<researchs>
+	<research id="113">
+		<name>To Work the milk</name>
+		<effect>Unlock Factory and Factory Girl.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="114">
+		<name>Capitalism</name>
+		<effect>Unlock Business center and Business Woman.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="121">
+		<name>First step in Science</name>
+		<effect>Unlock Smart hotel, Smart farm and Maid.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="122">
+		<name>Discovering the Science</name>
+		<effect>Unlock Clinic and Veterinary.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="123">
+		<name>Studying the Science</name>
+		<effect>Unlock Science Lab and Scientist.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="124">
+		<name>Mastering the Science</name>
+		<effect>Unlock Secret Lab and Mad scientist.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="125">
+		<name>Looking for new worlds through science</name>
+		<effect>Unlock Astroport and Astronaut.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="126">
+		<name>Mastering the Darkness</name>
+		<effect>Unlock Darkmatter Condenser and Evil scientist.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="131">
+		<name>First step in Magic</name>
+		<effect>Unlock Fantasy inn, Fantasy farm and Hostesse.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="132">
+		<name>Discovering the Magic</name>
+		<effect>Unlock Temple and Priestress.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="133">
+		<name>Studying the Magic</name>
+		<effect>Unlock Alchemy tower and Alchemist.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="134">
+		<name>Mastering the Magic</name>
+		<effect>Unlock Witchcraft tower and Witch.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="135">
+		<name>Looking for new worlds through magic</name>
+		<effect>Unlock Portal and Planeswalker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="136">
+		<name>Mastering the Light</name>
+		<effect>Unlock Prism and Goddess.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="143">
+		<name>Warehouse layout</name>
+		<effect>Unlock Warehouse.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="144">
+		<name>human enslavement</name>
+		<effect>Unlock Slave barn, Slaver, Homely slave.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="151">
+		<name>Quinoa cultivation</name>
+		<effect>Unlock Smart farm.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="155">
+		<name>Enslaving the Science</name>
+		<effect>Unlock Science barn.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="161">
+		<name>Growing macadamias</name>
+		<effect>Unlock Fantasy farm.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="165">
+		<name>Enslaving the Magic</name>
+		<effect>Unlock Magic barn.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="412">
+		<name>Black market</name>
+		<effect>Unlock Asian, Russian and Arabian slave.</effect>
+		<desc>Research, investigation and corruption to integrate the underworld and trade human beings.</desc>
+		<quote></quote>
+	</research>
+	<research id="413">
+		<name>Slavery Democratization</name>
+		<effect>Unlock Voluntary slave.</effect>
+		<desc>Awareness campaign to integrate the idea that slavery is a good thing in the mind of your workers.</desc>
+		<quote></quote>
+	</research>
+	<research id="423">
+		<name>Stabilize mutated DNA</name>
+		<effect>Unlock Mutant slave.</effect>
+		<desc>Evil research aimed to change humans into military weapon.</desc>
+		<quote></quote>
+	</research>
+	<research id="424">
+		<name>Space jail</name>
+		<effect>Unlock Alien girl.</effect>
+		<desc>Research for device used to capture alien humanoids.</desc>
+		<quote></quote>
+	</research>
+	<research id="425">
+		<name>Extrasensory perception</name>
+		<effect>Unlock ESPer salve.</effect>
+		<desc>Research for device used to control humans which have evolved into ESPer.</desc>
+		<quote></quote>
+	</research>
+	<research id="426">
+		<name>Near death experience</name>
+		<effect>Unlock Succubus.</effect>
+		<desc>Research for device used to summon demonic beings.</desc>
+		<quote>Nothing can't be milked</quote>
+	</research>
+	<research id="433">
+		<name>Fusing magical DNA</name>
+		<effect>Unlock Familiar slave.</effect>
+		<desc>Evil research aimed to transform a human into magical tank.</desc>
+		<quote></quote>
+	</research>
+	<research id="434">
+		<name>Shifted gaol</name>
+		<effect>Unlock Elf slave.</effect>
+		<desc>Research for artifact used to capture magic humanoids.</desc>
+		<quote></quote>
+	</research>
+	<research id="435">
+		<name>Necrotic energy</name>
+		<effect>Unlock Ghoul girl.</effect>
+		<desc>Research for artifact used to control human which have turned into ghoul.</desc>
+		<quote>Fighting of the Unspirit</quote>
+	</research>
+	<research id="436">
+		<name>Astral projection</name>
+		<effect>Unlock Seraph.</effect>
+		<desc>Research for artifact used to summon angelic being.</desc>
+		<quote>Love is milk</quote>
+	</research>
+	<research id="512">
+		<name>Ovine-Human hybridization</name>
+		<effect>Unlock Sheep girl.</effect>
+		<desc>Mad research to change a sheep into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="513">
+		<name>Caprine-Human hybridization</name>
+		<effect>Unlock Goat girl.</effect>
+		<desc>Mad research to change a goat into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="514">
+		<name>Equine-Human hybridization</name>
+		<effect>Unlock Horse girl.</effect>
+		<desc>Mad research to change a horse into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="515">
+		<name>Bovine-Human hybridization</name>
+		<effect>Unlock Cow girl.</effect>
+		<desc>Mad research to change a cow into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="521">
+		<name>Evolve leporidae DNA</name>
+		<effect>Unlock Bunny girl.</effect>
+		<desc>Mad research to change a bunny into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="522">
+		<name>Evolve suinae DNA</name>
+		<effect>Unlock Sow girl.</effect>
+		<desc>Mad research to change a sow into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="523">
+		<name>Evolving ursidae DNA</name>
+		<effect>Unlock Bear girl.</effect>
+		<desc>Mad research to change a bear into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="524">
+		<name>Evolving orcinus DNA</name>
+		<effect>Unlock Orca girl.</effect>
+		<desc>Mad research to change a orca into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="531">
+		<name>Cat morphing magic</name>
+		<effect>Unlock Cat girl.</effect>
+		<desc>Mad research to change a cat into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="532">
+		<name>Wolf morphing magic</name>
+		<effect>Unlock Wolf girl.</effect>
+		<desc>Mad research to change a wolf into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="533">
+		<name>Reindeer morphing magic</name>
+		<effect>Unlock Reindeer girl.</effect>
+		<desc>Mad research to change a reindeer into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="534">
+		<name>Camel morphing magic</name>
+		<effect>Unlock Camel girl.</effect>
+		<desc>Mad research to change a camel into a semi-human.</desc>
+		<quote></quote>
+	</research>
+	<research id="701">
+		<name>Statuemorphose</name>
+		<effect>Unable Idol look toggle.</effect>
+		<desc>Studying the statue, you notice she may do more than giving milkcoin.</desc>
+		<quote></quote>
+	</research>
+	<research id="712">
+		<name>Hand</name>
+		<effect>Replace Noob Hand by Hand.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="713">
+		<name>Experimented Hand</name>
+		<effect>Replace Hand by Experimented Hand.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="714">
+		<name>Professional Hand</name>
+		<effect>Replace Experimented Hand by Professional Hand.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="715">
+		<name>Master Hand</name>
+		<effect>Replace Professional Hand by Master Hand.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="716">
+		<name>Devil Hand</name>
+		<effect>Replace Master Hand by Devil Hand.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="717">
+		<name>God Hand</name>
+		<effect>Replace Devil Hand by God Hand.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="722">
+		<name>Milking tool</name>
+		<effect>Equip Milking parlor with Milking tool.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="723">
+		<name>Milking machine</name>
+		<effect>Replace Milking tool by Milking machine.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="724">
+		<name>Medical machine</name>
+		<effect>Replace Milking machine by Medical machine.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="725">
+		<name>Enjoyment machine</name>
+		<effect>Replace Medical machine by Enjoyment machine.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="726">
+		<name>Alien machine</name>
+		<effect>Replace Enjoyment machine by Alien machine.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="727">
+		<name>Ultimate machine</name>
+		<effect>Replace Alien machine by Ultimate machine.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="732">
+		<name>Organic Milker</name>
+		<effect>Equip Milking parlor with Organic Milker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="733">
+		<name>Living Milker</name>
+		<effect>Replace Organic Milker by Living Milker.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="734">
+		<name>Young Tentacle</name>
+		<effect>Replace Living Milker by Young Tentacle.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="735">
+		<name>Tentacle</name>
+		<effect>Replace Young Tentacle by Tentacle.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="736">
+		<name>Elder Tentacle</name>
+		<effect>Replace Tentacle by Elder Tentacle.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+	<research id="737">
+		<name>Tentacle Queen</name>
+		<effect>Replace Elder Tentacle by Tentacle Queen.</effect>
+		<desc></desc>
+		<quote></quote>
+	</research>
+</researchs>

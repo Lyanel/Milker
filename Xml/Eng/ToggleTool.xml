@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<toggles>
+	<toggle id="1">
+		<name>Milker</name>
+		<effect>Select milking mode.</effect>
+		<desc>This switch let you choose how the cattle are milked.</desc>
+		<quote></quote>
+		<options>
+			<option id="710">
+				<name>Hand Milking</name>
+				<effect>Gives a milking generally balanced between quantity and quality.</effect>
+				<desc>Cattle are milked directly by the milkmaid.</desc>
+				<quote></quote>
+				<levels>
+					<level id="711">
+						<name>Noob Hand</name>
+						<desc>Cattle milked by trainee provide a low milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</level>
+					<level id="712">
+						<name>Hand</name>
+						<desc>Cattle milked by apprentice provide a somewhat weak milk but it's still better than trainees.</desc>
+						<quote></quote>
+					</level>
+					<level id="713">
+						<name>Experimented Hand</name>
+						<desc>Cattle milked by milkmaid provide a fair milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</level>
+					<level id="714">
+						<name>Professional Hand</name>
+						<desc>Cattle milked by expert milkmaid provide a good milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</level>
+					<level id="715">
+						<name>Master Hand</name>
+						<desc>Cattle milked by master milkmaid provide a very good milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</level>
+					<level id="716">
+						<name>Devil Hand</name>
+						<desc>This demonic hand know exactly how to pleasure cattle to get a milk with an excellent taste.</desc>
+						<quote></quote>
+					</level>
+					<level id="717">
+						<name>God Hand</name>
+						<desc>Cattle milked by this heaven hand provide divine milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</level>
+				</levels>
+			</option>
+			<option id="720">
+				<name>Machine Milking</name>
+				<effect>Gives a milking usually based on quantity.</effect>
+				<desc>Cattle are milked with the help of machine.</desc>
+				<quote></quote>
+				<levels>
+					<level id="722">
+						<name>Milking tool</name>
+						<desc>A basic tools make to facilitate the work of milkmaid.</desc>
+						<quote></quote>
+					</level>
+					<level id="723">
+						<name>Milking machine</name>
+						<desc>A machine created to increase the production of milk.</desc>
+						<quote></quote>
+					</level>
+					<level id="724">
+						<name>Medical machine</name>
+						<desc>A machine created to reduce the stress of the cattle.</desc>
+						<quote></quote>
+					</level>
+					<level id="725">
+						<name>Enjoyment machine</name>
+						<desc>A machine created to make the milking more enjoyable for the cattle.</desc>
+						<quote></quote>
+					</level>
+					<level id="726">
+						<name>Alien machine</name>
+						<desc>Cattle milked by this machine provide excellent milk, in both quality and quantity.</desc>
+						<quote></quote>
+					</level>
+					<level id="727">
+						<name>Ultimate machine</name>
+						<desc>The best machine created by human mind, nothing can beat this quantity.</desc>
+						<quote></quote>
+					</level>
+				</levels>
+			</option>
+			<option id="730">
+				<name>Tentacle Milking</name>
+				<effect>Gives a milking usually based on quality.</effect>
+				<desc>Cattle are milked by organic creatures called tentacles.</desc>
+				<quote></quote>
+				<levels>
+					<level id="732">
+						<name>Organic Milker</name>
+						<desc>A organism created to make the milking more natural for the cattle.</desc>
+						<quote></quote>
+					</level>
+					<level id="733">
+						<name>Living Milker</name>
+						<desc>A living thing created to simulate a baby cattle.</desc>
+						<quote></quote>
+					</level>
+					<level id="734">
+						<name>Young Tentacle</name>
+						<desc>A little Tentacle with a voracious appetite.</desc>
+						<quote></quote>
+					</level>
+					<level id="735">
+						<name>Tentacle</name>
+						<desc>Tentacles are worms like creatures who love milk more than anything.</desc>
+						<quote></quote>
+					</level>
+					<level id="736">
+						<name>Elder Tentacle</name>
+						<desc>An enormous tentacle favoring quantity over quality.</desc>
+						<quote></quote>
+					</level>
+					<level id="737">
+						<name>Tentacle Queen</name>
+						<desc>Queen of her kind, she produce the milk with the best taste.</desc>
+						<quote></quote>
+					</level>
+				</levels>
+			</option>
+		</options>
+	</toggle>
+</toggles>

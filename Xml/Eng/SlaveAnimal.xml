@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<slaves>
+	<slave id="12">
+		<name>Sheep girl</name>
+		<effect>Give Milk.</effect>
+		<desc>A girl with the dna of sheep, the embodied sweetness.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="13">
+		<name>Goat girl</name>
+		<effect>Give Milk.</effect>
+		<desc>A temperamental girl, or just a tsundere ?</desc>
+		<quote></quote>
+	</slave>
+	<slave id="14">
+		<name>Mare girl</name>
+		<effect>Give Milk.</effect>
+		<desc>Although she produces in small quantities, her milk is really good.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="15">
+		<name>Cow girl</name>
+		<effect>Give Milk.</effect>
+		<desc>Although she produces in huge quantities, her milk is just average.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="21">
+		<name>Bunny girl</name>
+		<effect>Give Milk.</effect>
+		<desc>She only think about making babies, beware of overcrowding.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="22">
+		<name>Sow girl</name>
+		<effect>Give Milk.</effect>
+		<desc>Although her hygienic habits are unattractive, she is a very clean girl.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="23">
+		<name>Bear girl</name>
+		<effect>Give Milk.</effect>
+		<desc>She seems a bit gruff but in reality she is a very sweet girl.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="24">
+		<name>Orca girl</name>
+		<effect>Give Milk.</effect>
+		<desc>An unfettered girl, you might need to swim to catch her.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="31">
+		<name>Cat girl</name>
+		<effect>Give Milk.</effect>
+		<desc>A cheerful girl which live for love, however somewhat lazy.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="32">
+		<name>Wolf girl</name>
+		<effect>Give Milk.</effect>
+		<desc>A tricky girl which live for hunting, however somewhat lonely.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="33">
+		<name>Reindeer girl</name>
+		<effect>Give Milk.</effect>
+		<desc>A party girl, you might need to run to catch her.</desc>
+		<quote></quote>
+	</slave>
+	<slave id="34">
+		<name>Camel girl</name>
+		<effect>Give Milk.</effect>
+		<desc>A mysterious girl with strange hobbies, like counting the grains of sand in the desert.</desc>
+		<quote></quote>
+	</slave>
+</slaves>
