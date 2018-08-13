@@ -1,27 +1,19 @@
 package modele.thing;
 
-import modele.baseObject.MilkFile;
-import modele.baseObject.MilkImage;
-import modele.baseObject.MilkInterface;
 import modele.baseObject.MilkKind;
 import modele.carac.Agent;
-import modele.carac.ThingAttrib;
 import modele.carac.Bonus;
 import modele.carac.Population;
 
-import java.util.ArrayList;
-
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
 
+public class Building extends Thing {
 
-public class Building extends Thing implements Cloneable {
-
-	public static final String file	= "Building", noeud	= "building";
+	public String getNoeud() {return BuildingList.getInstance().getNoeud();}
+	
+	/*	
+	private static final String file	= "Building", noeud	= "building";
 	public String getNoeud() {return noeud;}
 
 	private static ArrayList<Building> buildings;
@@ -75,70 +67,84 @@ public class Building extends Thing implements Cloneable {
         return (Building p) -> new Observable[]{p.getInfo().getObrservableName(), p.getAttrib().getObrservableQuant(), p.getAttrib().getObrservableActives()};
 	}
 	
+	public static void resetListes() {
+		setNeutralListe();
+		setScienceListe();
+		setMagicListe();
+		setFullListe();
+	}
+
 	public static ObservableList<Building> getFullListe() {
-		if (modelListe==null){
-			if (buildings==null)setMilkVarFromFiles();
-			if (modelNeutralListe==null)getNeutralListe();
-			if (modelScienceListe==null)getScienceListe();
-			if (modelMagicListe==null)getMagicListe();
-			modelListe = FXCollections.observableArrayList(extractor());
-			merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
-		}
+		if (modelListe==null) setFullListe();
 		return modelListe;
+	}
+	
+	public static void setFullListe() {
+		if (modelNeutralListe==null)getNeutralListe();
+		if (modelScienceListe==null)getScienceListe();
+		if (modelMagicListe==null)getMagicListe();
+		modelListe = FXCollections.observableArrayList(extractor());
+		merge(modelListe, modelNeutralListe, modelScienceListe, modelMagicListe);
 	}
 
 	public static ObservableList<Building> getNeutralListe() {
-		if (modelNeutralListe==null){
-			if (buildings==null)setMilkVarFromFiles();
-			modelNeutralListe = FXCollections.observableArrayList(extractor());
-			if (buildings!=null){
-				for (Building building:buildings){
-					try {
-						if(building.getAttrib().getTree()==ThingAttrib.Tree_Neutral)modelNeutralListe.add((Building) building.clone());
-					} catch (CloneNotSupportedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-		}
+		if (modelNeutralListe==null) setNeutralListe();
 		return modelNeutralListe;
 	}
 
-	public static ObservableList<Building> getScienceListe() {
-		if (modelScienceListe==null){
-			if (buildings==null)setMilkVarFromFiles();
-			modelScienceListe = FXCollections.observableArrayList(extractor());
-			if (buildings!=null){
-				for (Building building:buildings){
-					try {
-						if(building.getAttrib().getTree()==ThingAttrib.Tree_Science)modelScienceListe.add((Building) building.clone());
-					} catch (CloneNotSupportedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+	public static void setNeutralListe() {
+		modelNeutralListe = FXCollections.observableArrayList(extractor());
+		if (buildings==null)setMilkVarFromFiles();
+		if (buildings!=null){
+			for (Building building:buildings){
+				try {
+					if(building.getAttrib().getTree()==ThingAttrib.Tree_Neutral)modelNeutralListe.add((Building) building.clone());
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}
+	}
+
+	public static ObservableList<Building> getScienceListe() {
+		if (modelScienceListe==null) setScienceListe();
 		return modelScienceListe;
 	}
 
-	public static ObservableList<Building> getMagicListe() {
-		if (modelMagicListe==null){
-			if (buildings==null)setMilkVarFromFiles();
-			modelMagicListe = FXCollections.observableArrayList(extractor());
-			if (buildings!=null){
-				for (Building building:buildings){
-					try {
-						if(building.getAttrib().getTree()==ThingAttrib.Tree_Magic)modelMagicListe.add((Building) building.clone());
-					} catch (CloneNotSupportedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+	public static void setScienceListe() {
+		modelScienceListe = FXCollections.observableArrayList(extractor());
+		if (buildings==null)setMilkVarFromFiles();
+		if (buildings!=null){
+			for (Building building:buildings){
+				try {
+					if(building.getAttrib().getTree()==ThingAttrib.Tree_Science)modelScienceListe.add((Building) building.clone());
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}
+	}
+
+	public static ObservableList<Building> getMagicListe() {
+		if (modelMagicListe==null) setMagicListe();
 		return modelMagicListe;
+	}
+	
+	public static void setMagicListe() {
+		modelMagicListe = FXCollections.observableArrayList(extractor());
+		if (buildings==null)setMilkVarFromFiles();
+		if (buildings!=null){
+			for (Building building:buildings){
+				try {
+					if(building.getAttrib().getTree()==ThingAttrib.Tree_Magic)modelMagicListe.add((Building) building.clone());
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	public static double getIncomeFromList(double buildProdBonus, double buildQualBonus) {
@@ -149,7 +155,7 @@ public class Building extends Thing implements Cloneable {
 		}
 		return tIncome;
 	}
-
+*/
 	// Fields
 
 	private Agent agent;
@@ -163,7 +169,7 @@ public class Building extends Thing implements Cloneable {
 		this.agent = new Agent();
 		this.bonus = new Bonus();
 		this.population = new Population();
-		this.setKind(MilkKind.kind_Building);
+		this.setKind(MilkKind.Building);
 		this.setSellPrice((float)70);
 	}
 	public Building(Element milkElement) {
@@ -171,9 +177,16 @@ public class Building extends Thing implements Cloneable {
 		this.agent = new Agent();
 		this.bonus = new Bonus();
 		this.population = new Population();
-		this.setKind(MilkKind.kind_Building);
+		this.setKind(MilkKind.Building);
 		this.setSellPrice((float)70);
 		this.setValueFromNode(milkElement);
+	}
+	
+	public Building(Building original) {
+		super(original);
+		this.agent = new Agent(original.getAgent());
+		this.bonus = new Bonus(original.getBonus());
+		this.population = new Population(original.getPopulation());
 	}
 
 	// Set value from Element methods
@@ -186,13 +199,13 @@ public class Building extends Thing implements Cloneable {
 		this.setPopulation(milkElement);
 	}
 	public void setAgent(Element milkElement) {
-		this.agent.setValueFromNode(milkElement);;
+		this.agent.setValueFromNode(milkElement);
 	}
 	public void setBonus(Element milkElement) {
-		this.bonus.setValueFromNode(milkElement);;
+		this.bonus.setValueFromNode(milkElement);
 	}
 	public void setPopulation(Element milkElement) {
-		this.population.setValueFromNode(milkElement);;
+		this.population.setValueFromNode(milkElement);
 	}
 
 	// field methods
@@ -246,14 +259,5 @@ public class Building extends Thing implements Cloneable {
 		if(this.bonus!=null && !this.bonus.allZero()) temp= false;
 		if(this.population!=null && !this.population.allZero()) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Building clone = (Building) super.clone();
-		if (this.agent!=null) clone.setAgent((Agent) this.agent.clone());
-		if (this.bonus!=null) clone.setBonus((Bonus) this.bonus.clone());
-		if (this.population!=null) clone.setPopulation((Population) this.population.clone());
-		return clone;
 	}
 }

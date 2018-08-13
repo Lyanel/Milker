@@ -43,7 +43,7 @@ public class MilkCellOption extends ListCell<ToggleOption> {
         super.updateItem(value, empty);
         String text = null;
         Node graphic = null;
-        if (!empty && renderer != null && value != null && ((Milker) application).getModel().isMilkObjVisible(value)) {
+        if (!empty && renderer != null && value != null && ((Milker) application).getModel().isOptionVisible(value)) {
         	this.setVisible(true);
             graphic = renderer;
             rendererController.setValue(value);

@@ -89,9 +89,7 @@ public class MilkImage extends MilkFile {
 		if(milkInterfaceIcon==null)setMilkInterfaceIconFromFiles();
 		MilkImage milkImage = new MilkImage();
 		for (MilkImage tempImage: milkInterfaceIcon) {
-			try {
-				if (tempImage.getId()==id)milkImage=(MilkImage) tempImage.clone();
-			} catch (Exception e) {e.printStackTrace();}
+			if (tempImage.getId()==id)milkImage=new MilkImage(tempImage);
 		}
 		return milkImage;
 	}
@@ -144,10 +142,9 @@ public class MilkImage extends MilkFile {
 
 	// Fields
 
-	private String extension;
-	private String desc;
-	private Image img;
+	private String extension, desc;
 	private double IMG_HEIGHT, IMG_WIDTH;
+	//private Image img;
 	
 	// Constructors
 	
@@ -158,12 +155,19 @@ public class MilkImage extends MilkFile {
 		super();
 		this.setExt(".png");
 		this.setDesc(desc);
-		this.setImage(null);
+	//	this.setImage(null);
 	}
 	public MilkImage(Element milkElement) {
 		super();
 		this.setExt(".png");
 		this.setValueFromNode(milkElement);
+	}
+	public MilkImage(MilkImage original) {
+		super(original);
+		this.extension = new String(original.getExt());
+		this.desc = new String(original.getDesc());
+		this.IMG_HEIGHT = original.IMG_HEIGHT;
+		this.IMG_WIDTH = original.IMG_WIDTH;
 	}
 
 	// Set value from Element methods
@@ -173,14 +177,16 @@ public class MilkImage extends MilkFile {
 		super.setValueFromNode(milkElement);
 		this.setExt(milkElement);
 		this.setDesc(milkElement);
-		setImage();
 	}
 	public void setDesc(Element milkElement) {
 		this.desc = ParseMilkFile.getXmlStringValue(milkElement,xmlDesc);
 	}
 	
 	// field methods
-	
+
+	public String getExt() {
+		return this.extension;
+	}
 	public void setExt(String ext) {
 		this.extension = ext;
 	}
@@ -204,25 +210,26 @@ public class MilkImage extends MilkFile {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
+	/*
 	public void setImage(Image image) {
 		this.img = image;
-	}
+	}*/
 	
-	private void setImage() {
+	private Image setImage() {
 		/*String path = this.getPath();
 		if(path!=null && path.length()>0){
 			path = "file:"+this.getPath()+this.getName()+extension;
 			this.img = new Image(path);
 		}*/
-		this.img = ParseMilkFile.getMilkImage(this.getPath()+this.getName(), extension);
-		if(this.img!=null){
+		Image img = ParseMilkFile.getMilkImage(this.getPath()+this.getName(), extension);
+		if(img!=null){
 			IMG_HEIGHT = img.getHeight();
 			IMG_WIDTH = img.getWidth();
-		} else {System.out.println("MilkImage.setImage.img : "+this.img+". Fuuuuuuuuckkkkk!)");}
+		} else {System.out.println("MilkImage.setImage.img : "+img+". Fuuuuuuuuckkkkk!)");}
+		return img;
 	}
 	public Image getImage() {
-		return img;
+		return setImage();
 	}
 	public ImageView getImageView() {
             return getImageView(IMG_WIDTH,IMG_HEIGHT);
@@ -237,7 +244,7 @@ public class MilkImage extends MilkFile {
         ImageView imageView = new ImageView();
         imageView.setFitHeight(height);
         imageView.setFitWidth(width);
-        imageView.setImage(img);
+        imageView.setImage(setImage());
         return imageView;
 	}
     
@@ -274,10 +281,5 @@ public class MilkImage extends MilkFile {
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkImage clone = (MilkImage) super.clone();
-		if (this.img!=null) clone.setImage(this.img);
-		return clone;
-	}
+	
 } 

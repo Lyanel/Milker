@@ -8,7 +8,7 @@ import modele.ParseMilkFile;
 import modele.XmlHelper;
 import modele.thing.Thing;
 
-public class NeededThing extends NeededIntel implements Cloneable {
+public class NeededThing extends NeededIntel {
 	
 	public static final String noeud = "thing", xmlLvl = "lvl";
 	public String getNoeud() {return noeud;}
@@ -59,38 +59,52 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	// Fields
 	
 	private Integer lvl;
-	private ThingAttrib attrib;
+	private MilkTree tree;
+	private Quantity quant;
 
 	// Constructors
 	
 	public NeededThing() {
 		super();
 		this.setLvl(0);
-		this.attrib = new ThingAttrib();
+		this.tree = new MilkTree();
+		this.quant = new Quantity();
 		this.getKind().setMod(1);
 	}
 	public NeededThing(Element milkElement) {
 		super();
-		this.attrib = new ThingAttrib();
+		this.tree = new MilkTree();
+		this.quant = new Quantity();
 		this.setValueFromNode(milkElement);
 		this.getKind().setMod(1);
+	}
+	public NeededThing(NeededThing original) {
+		super(original);
+		if (original.getLvl()!=null) this.lvl = new Integer(original.getLvl());
+		this.tree = new MilkTree(original.getTree());
+		this.quant = new Quantity(original.getQuantity());
 	}
 
 	// Set value from Element methods
 	
+
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
 		this.setLvl(milkElement);
-		this.setAttrib(milkElement);
+		this.setTree(milkElement);
+		this.setQuantity(milkElement);
 	}
 	public void setLvl(Element milkElement) {
 		Integer temp=null;
 		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlLvl);
 		if (temp != null) this.lvl=temp;
 	}
-	public void setAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);;
+	public void setTree(Element milkElement) {
+		this.tree.setValueFromNode(milkElement);
+	}
+	public void setQuantity(Element milkElement) {
+		this.quant.setValueFromNode(milkElement);
 	}
 	
 	// field methods
@@ -105,18 +119,25 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	}
 	public String getXmlLvl() {
 		String temp = "";
-		if (this.lvl != null) temp += " "+xmlLvl+"=\""+lvl+"\"";
+		if (this.lvl != null && this.lvl.intValue() >0) temp += " "+xmlLvl+"=\""+lvl+"\"";
 		return temp;
 	}
 	public void setLvl(Integer lvl) {
 		this.lvl = lvl;
 	}
-	
-	public ThingAttrib getAttrib() {
-		return this.attrib;
+
+	public MilkTree getTree() {
+		return this.tree;
 	}
-	public void setAttrib(ThingAttrib attrib) {
-		this.attrib = attrib;
+	public void setTree(MilkTree tree) {
+		this.tree = tree;
+	}
+	
+	public Quantity getQuantity() {
+		return quant;
+	}
+	public void setQuantity(Quantity quant) {
+		this.quant = quant;
 	}
 	
 	// toString & toXml methods
@@ -125,26 +146,26 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	public String toStringAttrib() {
 		String temp =super.toStringAttrib();
 		temp+=this.getStringLvl();
-		if (this.attrib != null) temp += this.attrib.toStringAttrib();
+		if (this.tree != null) temp = this.tree.toStringAttrib();
 		return temp;
 	}
 	@Override
 	public String toXmlAttrib() {
 		String temp = super.toXmlAttrib();
 		temp+=this.getXmlLvl();
-		if (this.attrib != null) temp += this.attrib.toXmlAttrib();
+		if (this.tree != null) temp = this.tree.toXmlAttrib();
 		return temp;
 	}
 	@Override
 	public String toStringStatChild() {
 		String temp = super.toXmlStatChild();
-		if (this.attrib != null) temp += this.attrib.toStringStatChild();
+		if (this.quant != null) temp = this.quant.toXmlStatChild();
 		return temp;
 	}
 	@Override
 	public String toXmlStatChild() {
 		String temp = super.toXmlStatChild();
-		if (this.attrib != null) temp += this.attrib.toXmlStatChild();
+		if (this.quant != null) temp = this.quant.toXmlStatChild();
 		return temp;
 	}
 	
@@ -154,14 +175,9 @@ public class NeededThing extends NeededIntel implements Cloneable {
 	public boolean allZero()  {
 		boolean temp = super.allZero();
 		if(this.lvl!=null && this.lvl!=0) temp= false;
-		if(this.attrib!=null && !this.attrib.allZero()) temp= false;
+		if(this.tree!=null && !this.tree.allZero()) temp= false;
+		if(this.quant!=null && !this.quant.allZero()) temp= false;
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		NeededThing clone = (NeededThing) super.clone();
-		if (this.attrib!=null) clone.setAttrib((ThingAttrib) this.attrib.clone());
-		return clone;
-	}
 }

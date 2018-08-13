@@ -4,7 +4,7 @@ import org.w3c.dom.Element;
 
 import modele.baseObject.MilkKind;
 
-public class Ascension extends Intel implements Cloneable {
+public class Ascension extends Intel {
 	
 	public static final String noeud = "ascension";
 	public String getNoeud() {return noeud;}
@@ -13,19 +13,17 @@ public class Ascension extends Intel implements Cloneable {
 	
 	public Ascension() {
 		super();
-		this.setKind(MilkKind.kind_Ascension);
+		this.setKind(MilkKind.Ascension);
 	}
 	public Ascension(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
-		this.setKind(MilkKind.kind_Ascension);
+		this.setKind(MilkKind.Ascension);
+	}
+	public Ascension(Ascension original) {
+		super(original);
 	}
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Ascension clone = (Ascension) super.clone();
-		return clone;
-	}
 }

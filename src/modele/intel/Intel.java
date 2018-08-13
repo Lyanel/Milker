@@ -1,34 +1,35 @@
 package modele.intel;
 
 import modele.ParseMilkFile;
-import modele.baseObject.MilkXmlObj;
-import modele.carac.Price;
+import modele.baseObject.MilkPricedObj;
+import modele.carac.NeededIntel;
 
 import org.w3c.dom.Element;
 
-public class Intel extends MilkXmlObj implements Cloneable {
+public class Intel extends MilkPricedObj {
 	
-	public static final String noeud = "intel", xmlStart = "start";
+	public static final String noeud = "intel", xmlViewUnlock = "view";
 	public String getNoeud() {return noeud;}
 	
 
 	// Fields
 	
-	private Integer start;
-	private Price price;
+	private Integer viewUnlock;
 
 	// Constructors
 	
 	public Intel() {
 		super();
-		this.setStart(0);
-		this.price = new Price();
+		this.setViewUnlock(0);
 	}
 	public Intel(Element milkElement) {
 		super();
-		this.setStart(0);
-		this.price = new Price();
+		this.setViewUnlock(0);
 		this.setValueFromNode(milkElement);
+	}
+	public Intel(Intel original) {
+		super(original);
+		this.viewUnlock = new Integer(original.getViewUnlock());
 	}
 
 	// Set value from Element methods
@@ -36,61 +37,31 @@ public class Intel extends MilkXmlObj implements Cloneable {
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
-		this.setStart(milkElement);
-		this.setPrice(milkElement);
+		this.setViewUnlock(milkElement);
 	}
-	public void setStart(Element milkElement) {
+	public void setViewUnlock(Element milkElement) {
 		Integer temp=null;
-		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlStart);
-		if (temp != null) this.start=temp;
+		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlViewUnlock);
+		if (temp != null) this.viewUnlock=temp;
 	}
-	public void setPrice(Element milkElement) {
-		this.price.setValueFromNode(milkElement);;
-	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullStart(milkElement);
-		this.setNullPrice(milkElement);
-	}
-	public void setNullStart(Element milkElement) {
-		start = ParseMilkFile.getXmlIntAttribute(milkElement,xmlStart);
-	}
-	public void setNullPrice(Element milkElement) {
-		this.price.setValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 
-	public Integer getStart() {
-		return this.start;
+	public Integer getViewUnlock() {
+		return this.viewUnlock;
 	}
-	public String getStringStart() {
+	public String getStringViewUnlock() {
 		String temp = null;
-		if (this.start != null) temp = xmlStart+" : "+this.start+". ";
+		if (this.viewUnlock != null) temp = xmlStart+" : "+this.viewUnlock+". ";
 		return temp;
 	}
-	public String getXmlStart() {
+	public String getXmlViewUnlock() {
 		String temp = null;
-		if (this.start != null) temp = " "+xmlStart+"=\""+start+"\"";
+		if (this.viewUnlock != null) temp = " "+xmlStart+"=\""+viewUnlock+"\"";
 		return temp;
 	}
-	public void setStart(Integer start) {
-		this.start = start;
-	}
-	
-	public Double getPriceValue() {
-		return (double) (this.price.getCoin()*this.price.getCoef());
-	}
-	public Price getPrice() {
-		return this.price;
-	}
-	public void setSellPrice(Float sell) {
-		this.price.setSell(sell);
-	}
-	public void setPrice(Price price) {
-		this.price = price;
+	public void setViewUnlock(Integer viewUnlock) {
+		this.viewUnlock = viewUnlock;
 	}
 	
 	// toString & toXml methods
@@ -98,51 +69,30 @@ public class Intel extends MilkXmlObj implements Cloneable {
 	@Override
 	public String toStringAttrib() {
 		String temp = super.toStringAttrib();
-		temp+=this.getStringStart();
+		temp+=this.getStringViewUnlock();
 		return temp;
 	}
 	@Override
 	public String toXmlAttrib() {
 		String temp = super.toXmlAttrib();
-		temp+=this.getXmlStart();
-		return temp;
-	}
-	
-	@Override
-	public String toStringStatChild() {
-		String temp = super.toStringStatChild();
-		if (this.price != null) temp = this.price.toStringStat();
-		return temp;
-	}
-	@Override
-	public String toXmlStatChild() {
-		String temp = super.toXmlStatChild();
-		if (this.price != null) temp = this.price.toXmlStat();
+		temp+=this.getXmlViewUnlock();
 		return temp;
 	}
 	
 	// other object methods
 
-	public boolean bought()  {
-		return (getStart().intValue()==1)?true:false;
-	}
-
-	public void buy() {
-		setStart(1);
+	public NeededIntel toNeededIntel() {
+		NeededIntel save = new NeededIntel();
+		save.setKind(this.getKind().getKind());
+		save.setId(this.getId());
+		return save;
 	}
 
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
-		if(this.start!=null && this.start!=0) temp= false;
-		if(this.price!=null && !this.price.allZero()) temp= false;
+		if(this.viewUnlock!=null && this.viewUnlock!=0) temp= false;
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Intel clone = (Intel) super.clone();
-		if (this.price!=null) clone.setPrice((Price) this.price.clone());
-		return clone;
-	}
 }

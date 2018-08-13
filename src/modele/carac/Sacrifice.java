@@ -2,7 +2,7 @@ package modele.carac;
 
 import org.w3c.dom.Element;
 
-public class Sacrifice extends NeededThing implements Cloneable {
+public class Sacrifice extends NeededThing {
 	
 	public static final String noeud = "sacrifice";
 	public String getNoeud() {return noeud;}
@@ -17,6 +17,9 @@ public class Sacrifice extends NeededThing implements Cloneable {
 		super();
 		this.setValueFromNode(milkElement);
 	}
+	public Sacrifice(Sacrifice original) {
+		super(original);
+	}
 	
 	// Set value from Element methods
 	
@@ -28,9 +31,4 @@ public class Sacrifice extends NeededThing implements Cloneable {
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Sacrifice clone = (Sacrifice) super.clone();
-		return clone;
-	}
 }

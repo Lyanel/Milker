@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 import modele.MilkRs;
 import modele.XmlHelper;
 
-public class ToggleOption extends ToggleScene implements Cloneable {
+public class ToggleOption extends ToggleScene {
 	
 	public static final String noeud = "option";
 	public String getNoeud() {return noeud;}
@@ -151,9 +151,14 @@ public class ToggleOption extends ToggleScene implements Cloneable {
 		this.levels = new ArrayList<ToggleLevel>();
 		this.setValueFromNode(milkElement);
 	}
+	public ToggleOption(ToggleOption original) {
+		super(original);
+		this.selected = original.isSelected();
+		this.setDeeplevels(original.getLevels());
+	}
 
 	// Set value from Element methods
-	
+
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
@@ -186,6 +191,13 @@ public class ToggleOption extends ToggleScene implements Cloneable {
 	}
 	public void setLevels(ArrayList<ToggleLevel> levels) {
 		this.levels = levels;
+	}
+	public void setDeeplevels(ArrayList<ToggleLevel> original) {
+		this.levels = new ArrayList<ToggleLevel>();
+		for (ToggleLevel level:original) this.addToggleLevel( new ToggleLevel (level));
+	}
+	public void addToggleLevel(ToggleLevel toggleLevel) {
+		this.levels.add(toggleLevel);
 	}
 	public ToggleLevel getLevel() {
 		ToggleLevel level = levels.get(0);
@@ -250,12 +262,6 @@ public class ToggleOption extends ToggleScene implements Cloneable {
 	}
 	
 	// other object methods
-	
-	public ArrayList<ToggleLevel> getCloneLevels() throws CloneNotSupportedException {
-		ArrayList<ToggleLevel> clone = new ArrayList<ToggleLevel>();
-		if (this.levels!=null) for (ToggleLevel level:this.levels) clone.add((ToggleLevel) level.clone());
-		return clone;
-	}
 
 	@Override
 	public boolean allZero()  {
@@ -264,10 +270,4 @@ public class ToggleOption extends ToggleScene implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		ToggleOption clone = (ToggleOption) super.clone();
-		clone.setLevels(getCloneLevels());
-		return clone;
-	}
 }

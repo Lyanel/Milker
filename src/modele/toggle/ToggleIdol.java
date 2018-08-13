@@ -9,7 +9,7 @@ import modele.baseObject.MilkFile;
 import modele.baseObject.MilkImage;
 import modele.baseObject.MilkInterface;
 
-public class ToggleIdol extends Toggle implements Cloneable {
+public class ToggleIdol extends Toggle {
 
 	public static final String file	= "ToggleIdol";
 	private static ArrayList<ToggleIdol> idols;
@@ -60,15 +60,10 @@ public class ToggleIdol extends Toggle implements Cloneable {
 		setInfos(Toggle.getToggleListe(), elementlInfos);
 	}
 	
-	public static ToggleIdol getIdol() {
+	public static ToggleIdol getToggle() {
 		if(idol==null){
 			if(idols==null) setMilkVarFromFiles();
-			try {
-				idol=(ToggleIdol) idols.get(0).clone();
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			idol=new ToggleIdol(idols.get(0));
 		}
 		return idol;
 	}
@@ -81,6 +76,9 @@ public class ToggleIdol extends Toggle implements Cloneable {
 	public ToggleIdol(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
+	}
+	public ToggleIdol(ToggleIdol original) {
+		super(original);
 	}
 	
 	// Set value from Element methods
@@ -113,9 +111,4 @@ public class ToggleIdol extends Toggle implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		ToggleIdol clone = (ToggleIdol) super.clone();
-		return clone;
-	}
 }

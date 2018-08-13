@@ -58,26 +58,30 @@ public class MilkCellThingController extends MilkCellController implements Initi
 
     private void updateUI(Thing thing) {
     	super.updateUI(thing);
-    	if(((Milker) getApplication()).getModel().isMilkObjVisible(thing) ){
-         //   priceLabel.setText(thing.getPriceValue().toString());
+    	if(((Milker) getApplication()).getModel().isThingVisible(thing) ){
     		if(Utility.thatNeedaSacrifice(thing)){
     			ArrayList<? extends Thing> sacrifices = Utility.getThingsListsFromAgent(((Slave)thing).getSacrifice());
     			String sacrifice = null;
     			if(sacrifices.size() == 1){
     				sacrifice = sacrifices.get(0).getInfo().getObrservableName().getValue();
     			} else sacrifice = MilkInterface.getMilkStringsFromId(617).getText().getValue();
-    			priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",thing.getPriceValue()," ",
-    					MilkInterface.getMilkStringsFromId(601).getText()," ", MilkInterface.getMilkStringsFromId(1100).getText()," ",
-    					((Slave)thing).getSacrifice().getAttrib().getObrservableQuant().getValue()," ",sacrifice,"." ) );
+    			if(thing.getPriceValue().intValue()==0)
+        				priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",
+        						((Slave)thing).getSacrifice().getQuantity().getObrservableQuant().getValue()," ",sacrifice,"." ) );
+    			else priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",thing.getPriceValue()," ",
+    							MilkInterface.getMilkStringsFromId(601).getText()," ", MilkInterface.getMilkStringsFromId(1100).getText()," ",
+    							((Slave)thing).getSacrifice().getQuantity().getObrservableQuant().getValue()," ",sacrifice,"." ) );
     			
     		} else priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ", 
     					thing.getPriceValue()," ",MilkInterface.getMilkStringsFromId(601).getText(),"." ) );
-         //   quantLabel.setText(thing.getAttrib().getQuant().intValue());
-            quantLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(631).getText(), " : ", thing.getAttrib().getObrservableQuant().getValue(),"." ) );
-            activeLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(633).getText(), " : ", thing.getAttrib().getObrservableActives().getValue(),"." ) );
-            if(!((Milker) getApplication()).getModel().isIntelbuyable(thing))priceLabel.getStyleClass().add(MilkRs.cssNotBuyable);
+    		
+    		if(!thing.isVoluntarySlave()){
+                quantLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(631).getText(), " : ", thing.getQuantity().getObrservableQuant().getValue(),"." ) );
+                activeLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(633).getText(), " : ", thing.getQuantity().getObrservableActives().getValue(),"." ) );
+			}
+            if(!((Milker) getApplication()).getModel().isMilkPricedObjbuyable(thing))priceLabel.getStyleClass().add(MilkRs.cssNotBuyable);
             else priceLabel.getStyleClass().remove(MilkRs.cssNotBuyable);
-            if(thing.getAttrib().getQuant().intValue()!=thing.getAttrib().getActives().intValue())activeLabel.getStyleClass().add(MilkRs.cssTooMuch);
+            if(thing.getQuantity().getQuant().intValue()!=thing.getQuantity().getActives().intValue())activeLabel.getStyleClass().add(MilkRs.cssTooMuch);
             else activeLabel.getStyleClass().remove(MilkRs.cssTooMuch);
     	} else rootPane.setVisible(false);
     }
@@ -102,13 +106,13 @@ public class MilkCellThingController extends MilkCellController implements Initi
 
     @Override
     public void showThing() {
-    	((Milker) getApplication()).showMilkXmlObj( getValue());
+    	if(getValue().getQuantity().getQuant()>0) ((Milker) getApplication()).showMilkXmlObj( getValue());
     	updateUI(getValue());
     }
 
     @Override
     public void buyThing() {
-    	((Milker) getApplication()).getModel().buyIntel( getValue());
+    	((Milker) getApplication()).getModel().buyMilkPricedObj( getValue());
     	updateUI(getValue());
     }
 }

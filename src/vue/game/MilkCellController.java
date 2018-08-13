@@ -53,10 +53,8 @@ public class MilkCellController extends MilkBoxController implements Initializab
     };*/
 
     protected void updateUI(MilkXmlObj milkXmlObj) {
-    	if(((Milker) getApplication()).getModel().isMilkObjVisible(milkXmlObj) ){
-    		rootPane.setVisible(true);
-    		updateUIVisible(milkXmlObj);
-    	} else rootPane.setVisible(false);
+		rootPane.setVisible(true);
+		updateUIVisible(milkXmlObj);
     }
     
     protected void updateUIVisible(MilkXmlObj milkXmlObj) {

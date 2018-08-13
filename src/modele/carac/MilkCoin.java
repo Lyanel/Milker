@@ -5,9 +5,12 @@ import modele.baseObject.MilkVar;
 
 import org.w3c.dom.Element;
 
-public class MilkCoin extends MilkVar implements Cloneable {
+public class MilkCoin extends MilkVar {
 	
 	public static final String xmlCoin = "coin";
+
+	// Fields
+	
 	private Float coin;
 		
 	// Constructors
@@ -22,6 +25,10 @@ public class MilkCoin extends MilkVar implements Cloneable {
 	public MilkCoin(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
+	}
+	public MilkCoin(MilkCoin original) {
+		super(original);
+		this.coin = new Float(original.getCoin());
 	}
 
 	// Set value from Element methods
@@ -87,11 +94,5 @@ public class MilkCoin extends MilkVar implements Cloneable {
 		boolean temp = super.allZero();
 		if(this.coin!=null && this.coin!=0) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkCoin clone = (MilkCoin) super.clone();
-		return clone;
 	}
 }

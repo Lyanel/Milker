@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 import modele.XmlHelper;
 import modele.baseObject.MilkObj;
 
-public class NeededIntel extends MilkObj implements Cloneable {
+public class NeededIntel extends MilkObj {
 	
 	public static final String noeud = "intel";
 	public String getNoeud() {return noeud;}
@@ -48,9 +48,13 @@ public class NeededIntel extends MilkObj implements Cloneable {
 		this.setValueFromNode(elementMilk);
 		this.getKind().setMod(2);
 	}
+	public NeededIntel(NeededIntel original) {
+		super(original);
+	}
 
 	// Set value from Element methods
 	
+
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
@@ -59,9 +63,4 @@ public class NeededIntel extends MilkObj implements Cloneable {
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		NeededIntel clone = (NeededIntel) super.clone();
-		return clone;
-	}
 }

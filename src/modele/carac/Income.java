@@ -4,14 +4,14 @@ import org.w3c.dom.Element;
 
 import modele.ParseMilkFile;
 
-public class Income extends MilkCoin implements Cloneable {
+public class Income extends MilkCoin {
 	
 	public static final String noeud = "income", xmlProd = "prod";
 	public String getNoeud() {return noeud;}
 	
 	// Fields
 	
-	private MilkAttrib attrib;
+	private MilkProd attrib;
 	private Integer prod; //productivity (1/0 yes or no), sorry i was to leazy to convert a boolean from xml.
 	private int mod; //Check prod->Xml : 0 no, 1 as attrib.
 
@@ -19,18 +19,24 @@ public class Income extends MilkCoin implements Cloneable {
 	
 	public Income() {
 		super();
-		this.attrib = new MilkAttrib();
+		this.attrib = new MilkProd();
 	}
 	public Income(Integer prod,int mod) {
 		super();
-		this.attrib = new MilkAttrib();
+		this.attrib = new MilkProd();
 		this.setProd(prod);
 		this.setMod(mod);
 	}
 	public Income(Element milkElement) {
 		super();
-		this.attrib = new MilkAttrib();
+		this.attrib = new MilkProd();
 		this.setValueFromNode(milkElement);
+	}
+	public Income(Income original) {
+		super(original);
+		this.mod = original.getMod();
+		if (original.getProd()!=null)this.prod = new Integer(original.getProd());
+		this.attrib = new MilkProd(original.getAttrib());
 	}
 
 	// Set value from Element methods
@@ -50,27 +56,13 @@ public class Income extends MilkCoin implements Cloneable {
 		temp=ParseMilkFile.getXmlIntAttribute(milkElement,xmlProd);
 		if (temp != null) this.prod=temp;
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParent(milkElement);
-		super.setNullValueFromNode(milkElement);
-		this.setNullAttrib(thisElement);
-		this.setNullProd(thisElement);
-	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setNullValueFromNode(milkElement);
-	}
-	public void setNullProd(Element milkElement) {
-		prod = ParseMilkFile.getXmlIntAttribute(milkElement,xmlProd);
-	}*/
 	
 	// field methods
 	
-	public MilkAttrib getAttrib() {
+	public MilkProd getAttrib() {
 		return this.attrib;
 	}
-	public void setAttrib(MilkAttrib attrib) {
+	public void setAttrib(MilkProd attrib) {
 		this.attrib = attrib;
 	}
 	
@@ -143,12 +135,5 @@ public class Income extends MilkCoin implements Cloneable {
 		if(this.attrib!=null && !this.attrib.allZero()) temp= false;
 		if(this.prod!=null && this.prod!=0) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Income clone = (Income) super.clone();
-		if (this.attrib!=null) clone.setAttrib((MilkAttrib) this.attrib.clone());
-		return clone;
 	}
 }

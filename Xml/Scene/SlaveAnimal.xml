@@ -1,61 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <slaves>
-	<slave id="42">
+	<slave id="12">
 		<name>Sheep</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="43">
+	<slave id="13">
 		<name>Goat</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="44">
+	<slave id="14">
 		<name>Mare</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="45">
+	<slave id="15">
 		<name>Cow</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="51">
+	<slave id="21">
 		<name>Bunny</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="52">
+	<slave id="22">
 		<name>Sow</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="53">
+	<slave id="23">
 		<name>Bear</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="54">
+	<slave id="24">
 		<name>Orca</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="61">
+	<slave id="31">
 		<name>Cat</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="62">
+	<slave id="32">
 		<name>Wolf</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="63">
+	<slave id="33">
 		<name>Reindeer</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>
 	</slave>
-	<slave id="64">
+	<slave id="34">
 		<name>Camel</name>
 		<path>Img/Scene/SlaveA/</path>
 		<desc>Self-made on http://pochi.x.fc2.com/kisekae/k_kisekae2.html.</desc>

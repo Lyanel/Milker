@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -26,6 +27,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import javafx.scene.image.Image;
@@ -58,6 +60,31 @@ public class ParseMilkFile{
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         return builder.parse(new ByteArrayInputStream(documentoXml));
+    }
+	
+	/**
+	 * méthode générant un document xml depuis une string.
+	 * @throws Exception 
+	 * */
+	public static Document getXmlDocumentFromString(String documentoXml) {
+		String xmlString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>"+MilkRs.LIGNE_BREAK+documentoXml;
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();  
+		DocumentBuilder builder;
+		Document document=null;
+		try {
+			builder = factory.newDocumentBuilder();
+			document = builder.parse(new InputSource(new StringReader(xmlString)));
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return document;
     }
 	
 	/**
@@ -94,7 +121,7 @@ public class ParseMilkFile{
 		Element temp=null;
 		try {
 			temp = getXmlDocument(fichier).getDocumentElement();
-			if(!((Element) temp).getTagName().equals(node))throw new Exception("Expected racine tag name : " + node);
+			if(!((Element) temp).getTagName().equals(node))throw new Exception("Expected racine tag name : " + node + ", in file : "+ fichier);
 		} catch (Exception e) {e.printStackTrace();}
 		return temp;
 	}

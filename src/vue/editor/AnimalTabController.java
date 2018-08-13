@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import modele.baseObject.MilkInterface;
 import modele.thing.Animal;
+import modele.thing.AnimalList;
 
 /**
  * The controller for the Menu Bar.  
@@ -98,7 +99,7 @@ public class AnimalTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Animal.getFullListe());
+    	selectVar.setItems(AnimalList.getInstance().getFullListe());
 		changeVar(selectVar.getValue());
 	}
     
@@ -140,7 +141,7 @@ public class AnimalTabController extends MilkTabControleur {
 			idValue.setText(""+milkVar.getId());
 			lvlActual.setText(""+milkVar.getLvl());
 			startActual.setText(""+milkVar.getStart());
-			pathActual.setText(""+milkVar.getAttrib());
+			pathActual.setText(""+milkVar.getTree());
 			
 			priceActual.setText(""+milkVar.getPrice());
 			incomeActual.setText(""+milkVar.getIncome());
@@ -154,7 +155,7 @@ public class AnimalTabController extends MilkTabControleur {
 			idInput.setText(""+milkVar.getId());
 			lvlInput.setText(""+milkVar.getLvl());
 			startInput.setText(""+milkVar.getStart());
-			pathInput.setText(""+milkVar.getAttrib());
+			pathInput.setText(""+milkVar.getTree());
 			
 			priceInput.setText(""+milkVar.getPrice());
 			incomeInput.setText(""+milkVar.getIncome());

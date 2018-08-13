@@ -4,22 +4,32 @@ import org.w3c.dom.Element;
 
 import modele.baseObject.MilkKind;
 
-public class Population extends MilkKind implements Cloneable {
+public class Population extends MilkKind {
 	
 	public static final String noeud = "pop";
 	public String getNoeud() {return noeud;}
-	private ThingAttrib attrib;
+
+	// Fields
+	
+	private MilkTree tree;
+	private Quantity quant;
 
 	// Constructors
-	
 	public Population() {
 		super();
-		this.attrib = new ThingAttrib();
+		this.tree = new MilkTree();
+		this.quant = new Quantity();
 	}
 	public Population(Element milkElement) {
 		super();
-		this.attrib = new ThingAttrib();
+		this.tree = new MilkTree();
+		this.quant = new Quantity();
 		this.setValueFromNode(milkElement);
+	}
+	public Population(Population original) {
+		super(original);
+		this.tree = new MilkTree(original.getTree());
+		this.quant = new Quantity(original.getQuantity());
 	}
 
 	// Set value from Element methods
@@ -28,30 +38,31 @@ public class Population extends MilkKind implements Cloneable {
 	public void setValueFromNode(Element milkElement) {
 		Element thisElement = this.getThisOptionalChildFromParent(milkElement);
 		super.setValueFromNode(thisElement);
-		this.setAttrib(thisElement);
-		if(this.getAttrib().getQuant()>0)this.setMod(1);		
+		this.setTree(thisElement);
+		this.setQuantity(thisElement);
+		if(this.getQuantity().getQuant()>0)this.setMod(1);		
 	}
-	public void setAttrib(Element milkElement) {
-		this.attrib.setValueFromNode(milkElement);
+	public void setTree(Element milkElement) {
+		this.tree.setValueFromNode(milkElement);
 	}
-	/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		Element thisElement = this.getThisElementFromParentNull(milkElement);
-		super.setNullValueFromNode(thisElement);
-		this.setNullAttrib(thisElement);
+	public void setQuantity(Element milkElement) {
+		this.quant.setValueFromNode(milkElement);
 	}
-	public void setNullAttrib(Element milkElement) {
-		this.attrib.setNullValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 	
-	public ThingAttrib getAttrib() {
-		return this.attrib;
+	public MilkTree getTree() {
+		return this.tree;
 	}
-	public void setAttrib(ThingAttrib attrib) {
-		this.attrib = attrib;
+	public void setTree(MilkTree tree) {
+		this.tree = tree;
+	}
+	
+	public Quantity getQuantity() {
+		return quant;
+	}
+	public void setQuantity(Quantity quant) {
+		this.quant = quant;
 	}
 	
 	// toString & toXml methods
@@ -59,26 +70,26 @@ public class Population extends MilkKind implements Cloneable {
 	@Override
 	public String toStringAttrib() {
 		String temp = super.toStringAttrib();
-		if (this.attrib != null) temp = this.attrib.toStringAttrib();
+		if (this.tree != null) temp = this.tree.toStringAttrib();
 		return temp;
 	}
 	@Override
 	public String toXmlAttrib() {
 		String temp = super.toXmlAttrib();
-		if (this.attrib != null) temp = this.attrib.toXmlAttrib();
+		if (this.tree != null) temp = this.tree.toXmlAttrib();
 		return temp;
 	}
 	
 	@Override
 	public String toStringStatChild() {
 		String temp = super.toXmlStatChild();
-		if (this.attrib != null) temp = this.attrib.toXmlStatChild();
+		if (this.quant != null) temp = this.quant.toXmlStatChild();
 		return temp;
 	}
 	@Override
 	public String toXmlStatChild() {
 		String temp = super.toXmlStatChild();
-		if (this.attrib != null) temp = this.attrib.toXmlStatChild();
+		if (this.quant != null) temp = this.quant.toXmlStatChild();
 		return temp;
 	}
 	
@@ -87,14 +98,8 @@ public class Population extends MilkKind implements Cloneable {
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
-		if(this.attrib!=null && !this.attrib.allZero()) temp= false;
+		if(this.tree!=null && !this.tree.allZero()) temp= false;
+		if(this.quant!=null && !this.quant.allZero()) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Population clone = (Population) super.clone();
-		if (this.attrib!=null) clone.setAttrib((ThingAttrib) this.attrib.clone());
-		return clone;
 	}
 }

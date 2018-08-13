@@ -13,12 +13,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import modele.MathUtil;
 import modele.MilkRs;
 import modele.Utility;
 import modele.baseObject.MilkInterface;
 import modele.intel.Intel;
 import modele.intel.Research;
+import modele.intel.Upgrade;
 import modele.thing.Thing;
 
 /**
@@ -53,7 +53,7 @@ public class MilkCellIntelController extends MilkCellController implements Initi
 
     private void updateUI(Intel intel) {
     	super.updateUI(intel);
-    	if(((Milker) getApplication()).getModel().isMilkObjVisible(intel) ){
+    	if(((Milker) getApplication()).getModel().isIntelVisible(intel) ){
          //   priceLabel.setText(intel.getPrice().getStringCoin());
             if(intel.bought()){
             	nameLabel.getStyleClass().add(MilkRs.cssBought);
@@ -67,11 +67,11 @@ public class MilkCellIntelController extends MilkCellController implements Initi
         			} else sacrifice = MilkInterface.getMilkStringsFromId(617).getText().getValue();
         			priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",intel.getPriceValue()," ",
         					MilkInterface.getMilkStringsFromId(601).getText()," ", MilkInterface.getMilkStringsFromId(1100).getText()," ",
-        					((Research)intel).getSacrifice().getAttrib().getObrservableQuant().getValue()," ",sacrifice,"." ) );
+        					((Research)intel).getSacrifice().getQuantity().getObrservableQuant().getValue()," ",sacrifice,"." ) );
         			
         		} else priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ", 
         					intel.getPriceValue()," ",MilkInterface.getMilkStringsFromId(601).getText(),"." ) );
-        		if(!((Milker) getApplication()).getModel().isIntelbuyable(intel))nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
+        		if(!((Milker) getApplication()).getModel().isMilkPricedObjbuyable(intel))nameLabel.getStyleClass().add(MilkRs.cssNotBuyable);
                 else nameLabel.getStyleClass().remove(MilkRs.cssNotBuyable);
             }
     	} else rootPane.setVisible(false);
@@ -98,11 +98,10 @@ public class MilkCellIntelController extends MilkCellController implements Initi
     @Override
     public void buyThing() {
     	if(!getValue().bought()) {
-    		((Milker) getApplication()).getModel().buyIntel(getValue());
-			if(getValue().bought() && getValue().getClass().equals(Research.class)){
-				int test = getValue().getId().intValue();
-				if(test==44 || MathUtil.betweenInclusive(test, 240, 269))((Milker) getApplication()).setSlavesTabVisible(getValue().bought());
-				if(test==501)((Milker) getApplication()).setIdolTabVisible(getValue().bought());
+    		((Milker) getApplication()).getModel().buyMilkPricedObj(getValue());
+			if(getValue().bought()){
+				((Milker) getApplication()).unlockView(getValue());
+				if(getValue().getClass().equals(Upgrade.class) ) ((Upgrade)getValue()).applyUpgrade();
 			}
 			updateUI(getValue());
     	}

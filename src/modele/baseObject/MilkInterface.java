@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class MilkInterface extends MilkLanguage implements Cloneable {
+public class MilkInterface extends MilkLanguage {
 	
 	public static final String file			= "Interface";
 	
@@ -51,9 +51,7 @@ public class MilkInterface extends MilkLanguage implements Cloneable {
 		ObservableList<MilkLanguage> clone = FXCollections.observableArrayList();
 		if (languages!=null){
 			for (MilkLanguage temp:languages){
-				try {
-					clone.add((MilkLanguage) temp.clone());
-				} catch (CloneNotSupportedException e) {}
+				clone.add(new MilkLanguage(temp));
 			}
 		}
 		return clone;

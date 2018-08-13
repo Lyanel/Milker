@@ -47,7 +47,7 @@ public class Securite {
 			result = compress(result);
 			sauverFichier(filename  + ".Milk", result);
 		} catch (Exception e) {
-			System.out.println("Error saving file  " + e.getMessage());
+			System.out.println("Error saving file : " + e.getMessage());
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class Securite {
 			result = ouvrirFichier(filename + ".Milk");
 			return decrypter(result);
 		} catch (Exception e) {
-			System.out.println("Error opening file  : " + e.getMessage());
+			System.out.println("Error opening file : " + e.getMessage());
 			return null;
 		}
 	}
@@ -68,7 +68,7 @@ public class Securite {
 			result = crypter(result);
 			sauverFichier(filename  + ".Milk", result);
 		} catch (Exception e) {
-			System.out.println("Error saving file " + e.getMessage());
+			System.out.println("Error saving file : " + e.getMessage());
 		}
 	}
 

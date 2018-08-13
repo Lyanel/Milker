@@ -1,10 +1,22 @@
 package vue;
 
+import java.io.File;
+import java.util.Optional;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.stage.FileChooser;
+import modele.ParseMilkFile;
+import modele.Securite;
 import modele.baseObject.MilkInterface;
 
 /**
@@ -13,6 +25,8 @@ import modele.baseObject.MilkInterface;
  */
 public class MilkMenuController extends MilkerController {
 
+    private String saveFile;
+    
     @FXML
     private Menu menuFile;
     @FXML
@@ -49,33 +63,20 @@ public class MilkMenuController extends MilkerController {
 	}
     
 	public void setText() {
-	//	menuFile.setText(MilkInterface.getStringsFromId(10));
 		menuFile.textProperty().bind( MilkInterface.getMilkStringsFromId(10).getText()  );
-	//	menuNew.setText(MilkInterface.getStringsFromId(11));
 		menuNew.textProperty().bind( MilkInterface.getMilkStringsFromId(11).getText()  );
-	//	menuLoad.setText(MilkInterface.getStringsFromId(12));
 		menuLoad.textProperty().bind( MilkInterface.getMilkStringsFromId(12).getText()  );
-	//	menuSave.setText(MilkInterface.getStringsFromId(13));
 		menuSave.textProperty().bind( MilkInterface.getMilkStringsFromId(13).getText()  );
-	//	menuSaveAs.setText(MilkInterface.getStringsFromId(13)+" "+MilkInterface.getStringsFromId(16));
 		menuSaveAs.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(13).getText(), " ", MilkInterface.getMilkStringsFromId(16).getText() ) );
-	//	menuEdit.setText(MilkInterface.getStringsFromId(4)+" - "+MilkInterface.getStringsFromId(5));
 		menuEdit.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(4).getText(), " - ", MilkInterface.getMilkStringsFromId(5).getText() ) );
-	//	menuExit.setText(MilkInterface.getStringsFromId(15));
 		menuExit.textProperty().bind( MilkInterface.getMilkStringsFromId(15).getText()  );
 
-	//	menuDisplay.setText(MilkInterface.getStringsFromId(20));
 		menuDisplay.textProperty().bind( MilkInterface.getMilkStringsFromId(20).getText()  );
-	//	menuFullScreen.setText(MilkInterface.getStringsFromId(21));
 		menuFullScreen.textProperty().bind( MilkInterface.getMilkStringsFromId(21).getText()  );
-	//	menuStatutBar.setText(MilkInterface.getStringsFromId(22));
 		menuStatutBar.textProperty().bind( MilkInterface.getMilkStringsFromId(22).getText()  );
 
-	//	menuHelp.setText(MilkInterface.getStringsFromId(30));
 		menuHelp.textProperty().bind( MilkInterface.getMilkStringsFromId(30).getText()  );
-	//	menuOption.setText(MilkInterface.getStringsFromId(31));
 		menuOption.textProperty().bind( MilkInterface.getMilkStringsFromId(31).getText()  );
-	//	menuAbout.setText(MilkInterface.getStringsFromId(32));
 		menuAbout.textProperty().bind( MilkInterface.getMilkStringsFromId(32).getText()  );
     }
 
@@ -92,7 +93,23 @@ public class MilkMenuController extends MilkerController {
      */
     @FXML
     private void handleOpen() {
-
+    	File file = getFileChooser().showOpenDialog(this.getMainApp().getPrimaryStage());
+        if(file != null){
+        	byte[] data = null;
+	    	this.getMainApp().openGame();
+			try {
+				data = Securite.ouvrirFichier(file.getAbsolutePath());
+	            data = Securite.decompress(data);
+	            data = Securite.decrypter(data);
+				Document dataxml = ParseMilkFile.getXmlDocumentFromByteArray(data);
+				Element racine= dataxml.getDocumentElement();
+				this.getMainApp().getModel().loadSave(racine);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+        }
     }
 
     /**
@@ -101,7 +118,17 @@ public class MilkMenuController extends MilkerController {
      */
     @FXML
     private void handleSave() {
-
+    	if(saveFile!=null){
+    		Alert alert = new Alert(AlertType.CONFIRMATION);
+	  //  	alert.setTitle(titleTxt);
+	   // 	String s = "Confirm to clear text in text field !";
+	   // 	alert.setContentText(s);
+	
+	    	Optional<ButtonType> result = alert.showAndWait();
+	
+	    	if ((result.isPresent()) && (result.get() == ButtonType.OK)) save();
+    	}
+    	else handleSaveAs();
     }
 
     /**
@@ -109,7 +136,33 @@ public class MilkMenuController extends MilkerController {
      */
     @FXML
     private void handleSaveAs() {
+    	File file = getFileChooser().showSaveDialog(this.getMainApp().getPrimaryStage());
+        if(file != null){
+            saveFile = file.getAbsolutePath();
+        	save();
+        }
+    }
 
+    private FileChooser getFileChooser() {
+    	FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Milk Save files (*.MiSa)", "*.MiSa");
+        fileChooser.getExtensionFilters().add(extFilter);
+        return fileChooser;
+	}
+
+    private void save() {
+        String save = this.getMainApp().getModel().getSave();
+        byte[] data;
+		try {
+			Document dataxml = ParseMilkFile.getXmlDocumentFromString(save);
+			data = ParseMilkFile.getByteArrayFromXmlDocument(dataxml);
+            data = Securite.crypter(data) ;
+            data = Securite.compress(data) ;
+            Securite.sauverFichier(saveFile, data);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     /**

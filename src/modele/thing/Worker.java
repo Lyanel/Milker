@@ -1,21 +1,12 @@
 package modele.thing;
 
-import java.util.ArrayList;
-
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
-import modele.baseObject.MilkFile;
-import modele.baseObject.MilkImage;
-import modele.baseObject.MilkInterface;
 import modele.baseObject.MilkKind;
-import modele.carac.ThingAttrib;
 
-public class Worker extends LivingBeing implements Cloneable {
-
+public class Worker extends LivingBeing {
+	public String getNoeud() {return WorkerList.getInstance().getNoeud();}
+	/*
 	public static final String file	= "Worker", noeud = "worker";
 	public String getNoeud() {return noeud;}
 
@@ -144,26 +135,24 @@ public class Worker extends LivingBeing implements Cloneable {
 		}
 		return tIncome;
 	}
-	
+	*/
 	// Constructors
 	
 	public Worker() {
 		super();
-		this.setKind(MilkKind.kind_Ascension);
+		this.setKind(MilkKind.Worker);
 		this.setSellPrice((float)-40);
 	}
 	public Worker(Element milkElement) {
 		super();
-		this.setKind(MilkKind.kind_Worker);
+		this.setKind(MilkKind.Worker);
 		this.setSellPrice((float)-40);
 		this.setValueFromNode(milkElement);
+	}
+	public Worker(Worker original) {
+		super(original);
 	}
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Worker clone = (Worker) super.clone();
-		return clone;
-	}
 }

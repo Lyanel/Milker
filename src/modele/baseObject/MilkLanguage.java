@@ -40,6 +40,10 @@ public class MilkLanguage extends MilkFile {
 		super();
 		this.setValueFromNode(milkElement);
 	}
+	public MilkLanguage(MilkLanguage original) {
+		super(original);
+		setIso(original.getIso());
+	}
 
 	// Set value from Element methods
 	
@@ -97,9 +101,5 @@ public class MilkLanguage extends MilkFile {
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkLanguage clone = (MilkLanguage) super.clone();
-		return clone;
-	}
+	
 } 

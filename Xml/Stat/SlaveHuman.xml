@@ -1,9 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <slaves>
+	<slave id="13" tree="1" lvl="2">
+		<need>
+			<intels>
+				<intel kind="1" id="413" />
+			</intels>
+		</need>
+		<sacrifice kind="2">1</sacrifice>
+		<income quan="5" qual="1" />
+	</slave>
 	<slave id="11" tree="1" lvl="1">
 		<need>
 			<intels>
-				<intel kind="1" id="44" />
+				<intel kind="1" id="144" />
 			</intels>
 		</need>
 		<sacrifice kind="2">1</sacrifice>
@@ -12,115 +21,106 @@
 	<slave id="12" tree="1" lvl="2">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="500" coef="1.15"/>
 		<income quan="3.36" qual="12.5" />
-	</slave>
-	<slave id="13" tree="1" lvl="2">
-		<need>
-			<intels>
-				<intel kind="1" id="213" />
-			</intels>
-		</need>
-		<sacrifice kind="2">1</sacrifice>
-		<income quan="5" qual="1" />
 	</slave>
 	<slave id="22" tree="2" lvl="2">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="500" coef="1.15"/>
 		<income quan="3.75" qual="11.2" />
 	</slave>
 	<slave id="23" tree="2" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="223" />
+				<intel kind="1" id="423" />
 			</intels>
 		</need>
 		<sacrifice kind="2" tree="5" lvl="1" >1</sacrifice>
-		<price coin="1" coef="1.15"/>
+		<price coin="1000" coef="1.15"/>
 		<income quan="8.96" qual="6.25" />
 	</slave>
 	<slave id="24" tree="2" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="224" />
+				<intel kind="1" id="424" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="5000" coef="1.15"/>
 		<income quan="14.4" qual="5" />
 	</slave>
 	<slave id="25" tree="2" lvl="5">
 		<need>
 			<intels>
-				<intel kind="1" id="225" />
+				<intel kind="1" id="425" />
 			</intels>
 		</need>
 		<sacrifice kind="2" tree="5" lvl="3" >1</sacrifice>
-		<price coin="1" coef="1.15"/>
+		<price coin="10000" coef="1.15"/>
 		<income quan="6" qual="15" />
 	</slave>
 	<slave id="26" tree="2" lvl="6">
 		<need>
 			<intels>
-				<intel kind="1" id="226" />
+				<intel kind="1" id="426" />
 			</intels>
 		</need>
 		<sacrifice kind="2" tree="5" lvl="4" >1</sacrifice>
-		<price coin="1" coef="1.15"/>
+		<price coin="50000" coef="1.15"/>
 		<income quan="17.6" qual="6.25" />
 	</slave>
 	<slave id="32" tree="3" lvl="2">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="500" coef="1.15"/>
 		<income quan="3.2" qual="13.125" />
 	</slave>
 	<slave id="33" tree="3" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="233" />
+				<intel kind="1" id="433" />
 			</intels>
 		</need>
 		<sacrifice kind="2" tree="6" lvl="1" >1</sacrifice>
-		<price coin="1" coef="1.15"/>
+		<price coin="1000" coef="1.15"/>
 		<income quan="3.5" qual="16" />
 	</slave>
 	<slave id="34" tree="3" lvl="5">
 		<need>
 			<intels>
-				<intel kind="1" id="235" />
+				<intel kind="1" id="435" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="5000" coef="1.15"/>
 		<income quan="4" qual="18" />
 	</slave>
 	<slave id="35" tree="3" lvl="5">
 		<need>
 			<intels>
-				<intel kind="1" id="235" />
+				<intel kind="1" id="435" />
 			</intels>
 		</need>
 		<sacrifice kind="2" tree="6" lvl="3" >1</sacrifice>
-		<price coin="1" coef="1.15"/>
+		<price coin="10000" coef="1.15"/>
 		<income quan="13.75" qual="7.2" />
 	</slave>
 	<slave id="36" tree="3" lvl="6">
 		<need>
 			<intels>
-				<intel kind="1" id="236" />
+				<intel kind="1" id="436" />
 			</intels>
 		</need>
 		<sacrifice kind="2" tree="6" lvl="4" >1</sacrifice>
-		<price coin="1" coef="1.15"/>
+		<price coin="50000" coef="1.15"/>
 		<income quan="5.5" qual="20" />
 	</slave>
 </slaves>

@@ -1,23 +1,28 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.swing.JOptionPane;
 
 import controleur.GameModele;
 import controleur.GameOption;
+import controleur.ViewLock;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import modele.MilkRs;
+import modele.baseObject.MilkImage;
 import modele.baseObject.MilkInfo;
 import modele.baseObject.MilkInterface;
 import modele.baseObject.MilkXmlObj;
-import modele.thing.Animal;
+import modele.intel.Intel;
 import modele.thing.Building;
-import modele.thing.Slave;
+import modele.thing.LivingBeing;
 import modele.thing.Thing;
-import modele.thing.Worker;
 import modele.toggle.ToggleOption;
 import vue.MilkMenuController;
 import vue.MilkOptionController;
@@ -27,7 +32,10 @@ import vue.editor.MilkEditorController;
 import vue.game.MilkGameController;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.ImagePattern;
 
 
 /**
@@ -37,7 +45,25 @@ import javafx.scene.layout.BorderPane;
 public class Milker extends Application {
 	
 	public static void main(String[] args) {
-		launch(args);
+		try
+		  {
+			Milker.launch(args);
+		  }
+		  catch (Exception e)
+		  {
+		    JOptionPane.showMessageDialog(null, e.getMessage());
+		    try
+		    {
+		      PrintWriter pw = new PrintWriter(new File("error.txt"));
+		      e.printStackTrace(pw);
+		      pw.close();
+		    }
+		    catch (IOException e1)
+		    {
+		      e1.printStackTrace();
+		    }
+		  }
+
 	}
 
  	private Stage primaryStage;
@@ -49,8 +75,6 @@ public class Milker extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-       // this.primaryStage.setTitle(MilkInterface.getStringsFromId(1));
-       //this.primaryStage.titleProperty().bind( Bindings.selectString( MilkInterface.getMilkStringsFromId(1),"text" ) );
         this.primaryStage.titleProperty().bind( MilkInterface.getMilkStringsFromId(1).getText()  );
         
         this.primaryStage.setOnCloseRequest(e -> close(e));
@@ -71,6 +95,7 @@ public class Milker extends Application {
             
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+            rootLayout.setBackground(new Background(new BackgroundFill(new ImagePattern(MilkImage.getIconFromID(10).getImage()), null, null)));
             
             MilkerController controller = loader.getController();
             controller.setMainApp(this);
@@ -129,18 +154,18 @@ public class Milker extends Application {
      * Open the Game window.
      */
     public void openGame() {
+    	if (model!=null) GameModele.resetList();
         model = new GameModele(this);
         try {
             FXMLLoader loader = new FXMLLoader();
-          //  loader.setLocation(Milker.class.getResource(MilkRs.milkGame));
             loader.setLocation(Milker.class.getResource(MilkRs.milkGame));
             AnchorPane game = (AnchorPane) loader.load();
             rootLayout.setCenter(game);
-
-         //   MilkGameController controller = loader.getController();
+            
             gameController = loader.getController();
             gameController.setMainApp(this);
             gameController.initList();
+            rootLayout.setBackground(new Background(new BackgroundFill(new ImagePattern(MilkImage.getIconFromID(2).getImage()), null, null)));
             setStatutMessage(MilkInterface.getStringsFromId(1001));
         //    initInfoPan(game);
         } catch (IOException e) {
@@ -157,18 +182,18 @@ public class Milker extends Application {
 	
 	public void showMilkXmlObj(MilkXmlObj value) {
 		if (value instanceof Building) gameController.setBGScene((Thing) value);
-		if (value instanceof Slave || value instanceof Worker || value instanceof Animal) gameController.setNPCScene((Thing) value);
+		if (value instanceof LivingBeing) gameController.setNPCScene((Thing) value);
 		if (value instanceof ToggleOption) gameController.setIdolScene((ToggleOption) value);
 	}
 
-	public void setSlavesTabVisible(boolean visible) {
-		gameController.setSlavesTabVisible(visible);
+	public void unlockView(Intel value) {
+		if(value.getViewUnlock()!=0){
+			ViewLock.unlock(value.getViewUnlock());
+			if (value.getViewUnlock().intValue()==ViewLock.SCI_TAB)gameController.setScienceTabVisible();
+			if (value.getViewUnlock().intValue()==ViewLock.MAG_TAB)gameController.setMagicTabVisible();
+		}
 	}
-
-	public void setIdolTabVisible(boolean visible) {
-		gameController.setIdolTabVisible(visible);
-	}
-
+	
     /*
      * Open the editor window.
      */
@@ -186,9 +211,6 @@ public class Milker extends Application {
         }
     }
 
-    /*
-     * Open the option window.
-     */
   /*  public void openOption() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -204,13 +226,16 @@ public class Milker extends Application {
             e.printStackTrace();
         }
     }*/
+    
+    /*
+     * Open the option window.
+     */
     public void openOption() {
         try {
 	        FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(Milker.class.getResource(MilkRs.milkOption));
 	        AnchorPane optionAnchor = (AnchorPane) loader.load();
 	        Stage stage = new Stage();
-	  //      stage.setTitle(MilkInterface.getStringsFromId(31));
 	        stage.titleProperty().bind( MilkInterface.getMilkStringsFromId(31).getText()  );
 	        Scene scene = new Scene(optionAnchor);
 	        stage.setScene(scene);

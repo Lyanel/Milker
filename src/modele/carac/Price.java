@@ -4,10 +4,13 @@ import org.w3c.dom.Element;
 
 import modele.ParseMilkFile;
 
-public class Price extends MilkCoin implements Cloneable {
+public class Price extends MilkCoin {
 	
 	public static final String noeud = "price", xmlCoef = "coef", xmlSell = "sell";
 	public String getNoeud() {return noeud;}
+	
+	// Fields
+	
 	private Float coef, sell;
 		
 	// Constructors
@@ -23,6 +26,11 @@ public class Price extends MilkCoin implements Cloneable {
 	public Price(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
+	}
+	public Price(Price original) {
+		super(original);
+		this.coef = new Float(original.getCoef());
+		this.sell = new Float(original.getSell());
 	}
 	
 	// Set value from Element methods
@@ -108,9 +116,4 @@ public class Price extends MilkCoin implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Price clone = (Price) super.clone();
-		return clone;
-	}
 }

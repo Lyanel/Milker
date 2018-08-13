@@ -7,7 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class MilkDate {
+public class MilkDate extends MilkVar {
+	
+	private static final int MilkFormat = SimpleDateFormat.MEDIUM;
 
 	public static GregorianCalendar getGregorianCalendar(String sDate,int style) throws ParseException {
 		DateFormat dateFormat = DateFormat.getDateInstance(style);
@@ -36,17 +38,18 @@ public class MilkDate {
 		DateFormat dateFormat = new SimpleDateFormat(style);
 		return dateFormat.format(dateVoulu.getTime());
 	}
+	
+	// Fields
+	
+	private GregorianCalendar milkdate;
 
-	private static final int MilkFormat = SimpleDateFormat.MEDIUM;
+	// Constructors
 	
-	GregorianCalendar milkdate;
-	
-	
-
 	/**
 	 * Create a new Milkdate from the actual date + 40 year. 
 	 * */
 	public MilkDate() {
+		super();
 		milkdate = new GregorianCalendar();
 		milkdate.add(Calendar.YEAR, 40);
 	}
@@ -55,6 +58,7 @@ public class MilkDate {
 	 * Create a new Milkdate with specified GregorianCalendar. 
 	 * */
 	public MilkDate(GregorianCalendar milkdate) {
+		super();
 		this.milkdate = milkdate;
 	}
 	
@@ -68,6 +72,17 @@ public class MilkDate {
 		milkdate.setTimeInMillis(milkdate.getTimeInMillis()-ageMillisecond); 
 	}
 
+	/**
+	 * Create a new Milkdate from an other.
+	 * */
+	public MilkDate(MilkDate original) {
+		super(original);
+		this.milkdate = new GregorianCalendar();
+		this.milkdate.setTimeInMillis(original.getMilkdate().getTimeInMillis());
+	}
+
+	// field methods
+	
 	public GregorianCalendar getMilkdate() {
 		return milkdate;
 	}
@@ -75,16 +90,11 @@ public class MilkDate {
 	public void setMilkdate(GregorianCalendar milkdate) {
 		this.milkdate = milkdate;
 	}
+	
+	// toString & toXml methods
 
 	@Override
 	public String toString() {
 		return "" +getDateAsString(milkdate,MilkFormat) + "";
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkDate clone = (MilkDate) super.clone();
-		clone.milkdate = (GregorianCalendar) milkdate.clone();
-		return clone;
 	}
 }

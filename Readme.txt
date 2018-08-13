@@ -9,17 +9,23 @@ Donc si des gens sont interressé, je dirait jamais non et même si vous souhaité 
 
 V0.X
 Projected :	Things that need to be done for finishing the code of the java version (in random order) : 
-			Code for upgrade, synergy, ascension & achievement . 
-			Code for Event. 
-			Code for save game.
-			(In game XML editor is desactivate until finished)
-Need	:	An artist, a good programer.
+			Code for synergy, ascension & achievement. 
+			(In game XML editor is deactivated until finished)
+Need	:	An artist, a good programmer.
+
+v0.06 :	
+Done	:	Magic & science tree only appear if you've bought their first research.
+			Code for upgrade.
+Started	:	Code for Event. (Magic & science animal now can be bought at their respective time.)
+			Code for save game (Coin, building, worker, cattle and intels. Only tool need to be done).
+			Changing price to be more challenging (but that will need a lot of balancing).
+continued:	Code, bug tracking.
 
 v0.05 :	
 Done	:	File system : Encryption mechanism for xml and picture & Compression mechanism for xml.
-		Option : Language & CSS can now be changed in option while the game is runing. In the menu, there is an option for fullscreen, she now work.
-		Active system : Income and unlocking now need active living/building, if part of them are not active you will get less :p.
-		Sacrifice : Various things need a sacrifice to be bought, that work now.
+			Option : Language & CSS can now be changed in option while the game is running. In the menu, there is an option for fullscreen, she now work.
+			Active system : Income and unlocking now need active living/building, if part of them are not active you will get less :p.
+			Sacrifice : Various things need a sacrifice to be bought, that work now.
 continued:	Code, bug tracking.
 
 v0.04 :	
@@ -31,8 +37,8 @@ Done	:	Research (most of the game things can know be "unlocked".)
 continued:	Code, picture & toggle, added new picture.
 
 v0.02 :	
-Started	:	Code for showing picture, added picture to test it. Game start in computer language (English by default or Frensh).
-		Code for toggle, they also have their own tab.
+Started	:	Code for showing picture, added picture to test it. Game start in computer language (English by default or French).
+			Code for toggle, they also have their own tab.
 
 v0.01 :	
 Done	:	most of the xml.

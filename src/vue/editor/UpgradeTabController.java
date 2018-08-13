@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import modele.baseObject.MilkInterface;
 import modele.intel.Upgrade;
+import modele.intel.UpgradeList;
 
 /**
  * The controller for the Menu Bar.  
@@ -98,7 +99,7 @@ public class UpgradeTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Upgrade.getUpgradeListe());
+    	selectVar.setItems(UpgradeList.getInstance().getUpgradeListe());
 		changeVar(selectVar.getValue());
 	}
     
@@ -133,7 +134,7 @@ public class UpgradeTabController extends MilkTabControleur {
 			sacrificeActual.setText(""+milkVar.getSacrifice());
 			needActual.setText(""+milkVar.getNeed());
 			checkActual.setText(""+milkVar.getCheck());
-			effectActual.setText(""+milkVar.getEffect());
+			effectActual.setText(""+milkVar.getEffects());
 			
 			nameActual.setText(milkVar.getInfo().getName());
 			txEfActual.setText(milkVar.getInfo().getTxEffect());
@@ -147,7 +148,7 @@ public class UpgradeTabController extends MilkTabControleur {
 			sacrificeInput.setText(""+milkVar.getSacrifice());
 			needInput.setText(""+milkVar.getNeed());
 			checkInput.setText(""+milkVar.getCheck());
-			effectInput.setText(""+milkVar.getEffect());
+			effectInput.setText(""+milkVar.getEffects());
 			
 			nameInput.setText(milkVar.getInfo().getName());
 			txEfInput.setText(milkVar.getInfo().getTxEffect());

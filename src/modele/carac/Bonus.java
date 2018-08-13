@@ -4,29 +4,33 @@ import org.w3c.dom.Element;
 
 import modele.baseObject.MilkKind;
 
-public class Bonus extends MilkKind implements Cloneable {
+public class Bonus extends MilkKind {
 	
 	public static final String noeud = "bonus";
 	public String getNoeud() {return noeud;}
 
 	// Fields
 	
-	private MilkAttrib attrib;
+	private MilkProd attrib;
 		
 	// Constructors
 	
 	public Bonus() {
 		super();
-		this.attrib = new MilkAttrib();
+		this.attrib = new MilkProd();
 	}
 	public Bonus(Float quant,Float qual) {
 		super();
-		this.attrib = new MilkAttrib();
+		this.attrib = new MilkProd();
 	}
 	public Bonus(Element milkElement) {
 		super();
-		this.attrib = new MilkAttrib();
+		this.attrib = new MilkProd();
 		this.setValueFromNode(milkElement);
+	}
+	public Bonus(Bonus original) {
+		super(original);
+		this.attrib = new MilkProd(original.getAttrib());
 	}
 	
 	// Set value from Element methods
@@ -43,10 +47,10 @@ public class Bonus extends MilkKind implements Cloneable {
 	
 	// field methods
 	
-	public MilkAttrib getAttrib() {
+	public MilkProd getAttrib() {
 		return this.attrib;
 	}
-	public void setAttrib(MilkAttrib attrib) {
+	public void setAttrib(MilkProd attrib) {
 		this.attrib = attrib;
 	}
 	
@@ -87,10 +91,4 @@ public class Bonus extends MilkKind implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Bonus clone = (Bonus) super.clone();
-		if (this.attrib!=null) clone.setAttrib((MilkAttrib) this.attrib.clone());
-		return clone;
-	}
 }

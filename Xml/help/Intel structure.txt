@@ -1,66 +1,73 @@
 	Research, upgrade, synergy & Ascension XML structure
-ID :	
-	001->099 	building related Intel (& people that work/live in)
-	100->199	worker related Intel
-	200->299	slave related Intel
-	300->399	animal related Intel
-	400->499	event related Intel
-	500->599	Toggle related Intel
-	600->999	other Intel ?
+ID :		
+	000->099 	basic/click related Intel
+	100->199 	building related Intel (& people that work/live in)
+	200->299	worker related Intel
+	300->399	Slave worker related Intel
+	400->499	slave humanoide related Intel
+	500->599	slave animal related Intel
+	600->699	animal related Intel
+	700->799	Toggle / event related Intel
+	800->999	other Intel ?
+	
+view : on buy it unlock a specific part of the interface.
 	
 in effect, need & check, the thing reference id, tree & lvl are not needed (id="0", tree="0", lvl="0" by default)
 	if you leave them, all the thing of the specified kind will be affected/checked.
-	
-effect	
-	mod="x" : num indicate if the effect is a fixed value (1) or a percentage (0) or change the value (-1).
-		If you want to add a sacrifice cost put 1.
-		If you want to edit a sacrifice cost put -1 (it will not add a sacrifice for the things which don't have one).
-		In all case only specified value will change.
-	coef="x" : effect will increase by " number of agents / coef ".
-	
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Effect : 
+num="x"	:	1->7, indicate the number of the effect wanted (see below)
+mod="x"	:	0->4, indicate how the effect will modify the value (remove the value (0), change the value (1), add a fixed value (2), add a percentage (3) or multiply the value (4)).
+val="x":	0->?, How much the effect will modify the value, (For synergy it's " number of agents * val ").
+
+num			affecting all thing
+1		price.coin		:	decrease/change price.
+2		price.sell		:	decrease/change sell %.
+3		Sacrifice		:	Remove or Add (add will remove older sacrifice if there was one).
+4		income.prod		:	Can't -> can be milked.
+5		income.quant	:	Increase/change quantity.
+6		income.qual		:	Increase/change quality.
+			affecting only Building (Target's kind is still required)
+11		Agent (Worker)	: 	Change worker quantity need for being active (add/remove some of them) 
+12		Population		:	Increase building population
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Research.xml
-	<research id="x" start="x">
+	<research id="x" start="x" view="x">
 		<need />													see need.txt.
 		<check />													see need.txt.
 		<sacrifice kind="x" id="X" tree="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
 		<price coin="x" coef="x"/>
 	</research>
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-upgrade.xml
-	<upgrade id="x" start="x">
-		<need />							see need.txt.
-		<check />							see need.txt.
-		<sacrifice kind="x" id="X" tree="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
-		<price coin="x" coef="x"/>
-		<effect mod="x">
-			<things>
-				<thing kind="x" id="x" tree="x" lvl="x">
-					(...)
-				</thing>
-				(...)
-			</things>
-		</effect>
-	</upgrade>
-	
-synergy.xml
-	<synergy id="x" start="x">
+upgrade.xml : The effects are not related to some agent and are applied to the target only at the buy time
+	<upgrade id="x" start="x" view="x">
 		<need />							see need.txt.
 		<check />							see need.txt.
 		<sacrifice kind="x" id="X" tree="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
 		<price coin="x" coef="x"/>
 		<effects>
-			<effect mod="x" coef="x">
-				<agents>
-					<agent kind="x" id="x" tree="x" lvl="x" />	
-					(...)
-				</agents>
-				<things>
-					<thing kind="x" id="x" tree="x" lvl="x">
-						(...)
-					</thing>
-					(...)
-				</things>
+			<effect num="x" mod="x" val="x">
+				<target kind="x" id="x" tree="x" lvl="x" />
+			</effect>
+			(...)
+		</effects>
+	</upgrade>
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+synergy.xml : The effects are related to some agent (so depending if the agents quantity evovle, the bonus will also change).
+	<synergy id="x" start="x" view="x">
+		<need />							see need.txt.
+		<check />							see need.txt.
+		<sacrifice kind="x" id="X" tree="x" lvl="x">X</sacrifice>	Anything can be sacrified, but please don't kill people...
+		<price coin="x" coef="x"/>
+		<effects>
+			<effect num="x" mod="x" val="x">
+				<target kind="x" id="x" tree="x" lvl="x" />
+				<agent kind="x" id="x" tree="x" lvl="x" /> 
 			</effect>
 			(...)
 		</effects>
 	</synergy>
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

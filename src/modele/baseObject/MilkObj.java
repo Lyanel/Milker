@@ -2,7 +2,7 @@ package modele.baseObject;
 
 import org.w3c.dom.Element;
 
-public class MilkObj extends MilkId implements Cloneable {
+public class MilkObj extends MilkId {
 
 	// Fields
 	
@@ -18,6 +18,10 @@ public class MilkObj extends MilkId implements Cloneable {
 		super();
 		this.kind = new MilkKind();
 		this.setValueFromNode(milkElement);
+	}
+	public MilkObj(MilkObj original) {
+		super(original);
+		this.kind = new MilkKind(original.getKind());
 	}
 
 	// Set value from Element methods
@@ -66,12 +70,5 @@ public class MilkObj extends MilkId implements Cloneable {
 		boolean temp = super.allZero();
 		if(this.kind!=null && !this.kind.allZero()) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkObj clone = (MilkObj) super.clone();
-		if (this.kind!=null) clone.setKind((MilkKind) this.kind.clone());
-		return clone;
 	}
 }

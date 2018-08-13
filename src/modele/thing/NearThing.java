@@ -1,13 +1,13 @@
 package modele.thing;
 
 import modele.baseObject.MilkImage;
-import modele.intel.Intel;
+import modele.baseObject.MilkPricedObj;
 
 import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-public class NearThing extends Intel implements Cloneable {
+public class NearThing extends MilkPricedObj {
 	
 	public static void setScene(ArrayList<? extends NearThing> things, ArrayList<Element> elementScenes) {
 		for (Element elementScene: elementScenes) {
@@ -39,6 +39,10 @@ public class NearThing extends Intel implements Cloneable {
 		this.scene = new MilkImage();
 		this.setValueFromNode(milkElement);
 	}
+	public NearThing(NearThing original) {
+		super(original);
+		this.scene = new MilkImage(original.getScene());
+	}
 
 	// Set value from Element methods
 
@@ -62,12 +66,5 @@ public class NearThing extends Intel implements Cloneable {
 		boolean temp = super.allZero();
 		if(this.scene!=null && !this.scene.allZero()) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		NearThing clone = (NearThing) super.clone();
-		if (this.scene!=null) clone.setScene((MilkImage) this.scene.clone());
-		return clone;
 	}
 }

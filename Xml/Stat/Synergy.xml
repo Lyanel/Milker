@@ -3,62 +3,42 @@
 	<synergy id="101" tree="1" lvl="1">
 		<need>
 			<things>
-				<thing kind="1" id="14">1000</thing>
+				<thing kind="1" id="14">100</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="50000000" coef="1"/>
 		<effects>
-			<effect mod="0">
-				<agents>
-					<agent kind="1" id="14" />
-				</agents>
-				<things>
-					<thing kind="1">
-						<price coin="-0.01"/>
-					</thing>
-				</things>
-			</effect>
-		</effects>
-	</synergy>
-	<synergy id="101" tree="1" lvl="1">
-		<need>
-			<things>
-				<thing kind="5" id="31">100</thing>
-			</things>
-		</need>
-		<price coin="1" coef="1"/>
-		<effects>
-			<effect mod="0">
-				<agents>
-					<agent kind="4" id="61" />
-					<agent kind="5" id="31" />
-				</agents>
-				<things>
-					<thing kind="2">
-						<price coin="-0.01"/>
-					</thing>
-				</things>
+			<effect num="1" mod="3" val="-0.01">
+				<target kind="1" />
+				<agent kind="1" id="14" /> 
 			</effect>
 		</effects>
 	</synergy>
 	<synergy id="201" tree="1" lvl="1">
 		<need>
 			<things>
-				<thing kind="5" id="21">100</thing>
+				<thing kind="16" id="31">100</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="1000000" coef="1"/>
 		<effects>
-			<effect mod="0">
-				<agents>
-					<agent kind="4" id="51" />
-					<agent kind="5" id="21" />
-				</agents>
-				<things>
-					<thing kind="7">
-						<price coin="-0.01"/>
-					</thing>
-				</things>
+			<effect num="1" mod="3" val="-0.01">
+				<target kind="2" />
+				<agent kind="16" id="31" /> 
+			</effect>
+		</effects>
+	</synergy>
+	<synergy id="301" tree="1" lvl="1">
+		<need>
+			<things>
+				<thing kind="16" id="21">100</thing>
+			</things>
+		</need>
+		<price coin="1000000" coef="1"/>
+		<effects>
+			<effect num="1" mod="3" val="-0.01">
+				<target kind="23" />
+				<agent kind="16" id="21" /> 
 			</effect>
 		</effects>
 	</synergy>

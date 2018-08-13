@@ -1,23 +1,18 @@
 package modele.thing;
 
-import modele.baseObject.MilkFile;
 import modele.baseObject.MilkImage;
-import modele.baseObject.MilkInterface;
+import modele.baseObject.MilkInfo;
 import modele.baseObject.MilkKind;
 import modele.carac.Agent;
-import modele.carac.ThingAttrib;
-
-import java.util.ArrayList;
+import modele.carac.Income;
+import modele.carac.NeededIntel;
+import modele.carac.NeededThing;
+import modele.carac.Sacrifice;
 
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
-
-public class SlaveWorker extends Slave implements Cloneable {
-
+public class SlaveWorker extends Slave {
+/*
 	public static final String file		= "SlaveWorker";
 
 	private static ArrayList<SlaveWorker> slaveWorkers;
@@ -30,7 +25,7 @@ public class SlaveWorker extends Slave implements Cloneable {
 		if (slaveWorkers==null) slaveWorkers = new ArrayList<SlaveWorker>();
 		else slaveWorkers.clear();
 		//Set stats
-		ArrayList<Element> elementlist = new ArrayList<Element>();
+	/*	ArrayList<Element> elementlist = new ArrayList<Element>();
 		elementlist = MilkFile.getMilkElementsFromFiles(MilkFile.getXmlFilePath(file)+file, noeud);
 		slaveWorkers = getMilkVarList(elementlist);
 		//Set info
@@ -45,6 +40,15 @@ public class SlaveWorker extends Slave implements Cloneable {
 		ArrayList<Element> elementlScene = new ArrayList<Element>();
 		elementlScene = MilkFile.getMilkElementsFromFiles(MilkImage.getXmlScenesPath(file)+file, noeud);
 		setScene(slaveWorkers, elementlScene);
+		*
+		
+		ObservableList<Worker> workers = WorkerList.getInstance().getFullListe();
+		for (Worker worker: workers) {
+			try {
+				SlaveWorker slaveWorker = new SlaveWorker(worker);
+				slaveWorkers.add(slaveWorker);
+			} catch (Exception e) {e.printStackTrace();}
+		}
 		
 		return slaveWorkers;
 	}
@@ -136,6 +140,9 @@ public class SlaveWorker extends Slave implements Cloneable {
 		}
 		return modelMagicListe;
 	}
+	*/
+	
+	// Fields
 	
 	private Agent agent;
 
@@ -144,13 +151,50 @@ public class SlaveWorker extends Slave implements Cloneable {
 	public SlaveWorker() {
 		super();
 		this.agent = new Agent();
-		this.setKind(MilkKind.kind_Slave_Worker);
+		this.setKind(MilkKind.Slave_Worker);
 	}
 	public SlaveWorker(Element milkElement) {
 		super();
 		this.agent = new Agent();
-		this.setKind(MilkKind.kind_Slave_Worker);
+		this.setKind(MilkKind.Slave_Worker);
 		this.setValueFromNode(milkElement);
+	}
+	public SlaveWorker(SlaveWorker original) {
+		super(original);
+		if(original.getAgent()!=null)this.agent = new Agent(original.getAgent());
+	}
+	public SlaveWorker(Worker worker) {
+		super();
+		this.setKind(MilkKind.Slave_Worker);
+		this.setId(worker.getId());
+		this.setLvl(worker.getLvl());
+		
+		Sacrifice workerS = new Sacrifice();
+		workerS.setId(worker.getId());
+		workerS.setKind(MilkKind.Worker);
+		workerS.getQuantity().setQuant(1);
+		this.setSacrifice(workerS);
+		
+		NeededIntel upgrade = new NeededIntel();
+		upgrade.setId(122);
+		upgrade.setKind(MilkKind.Upgrade);
+		this.getNeed().getNeededIntels().add(upgrade);
+		
+		NeededThing neededWorker = new NeededThing();
+		neededWorker.setId(worker.getId());
+		neededWorker.setKind(MilkKind.Worker);
+		neededWorker.getQuantity().setQuant(10);
+		this.getNeed().getNeededThings().add(neededWorker);
+
+		this.getTree().setTree(worker.getTree().getTree());
+		this.setIncome(new Income(worker.getIncome()));
+		
+		this.setInfo(new MilkInfo(worker.getInfo()));
+		this.setIcon(new MilkImage(worker.getIcon()));
+		this.setScene(new MilkImage(worker.getScene()));
+		
+		this.setProductivity(1);
+		this.getIncome().getAttrib().setQuant(5*this.getIncome().getAttrib().getQuant().floatValue());
 	}
 	
 	// Set value from Element methods
@@ -163,14 +207,6 @@ public class SlaveWorker extends Slave implements Cloneable {
 	public void setAgent(Element milkElement) {
 		this.agent.setValueFromNode(milkElement);;
 	}
-	/*@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setAgent(milkElement);
-	}
-	public void setNullAgent(Element milkElement) {
-		this.agent.setNullValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 
@@ -203,12 +239,5 @@ public class SlaveWorker extends Slave implements Cloneable {
 		boolean temp = super.allZero();
 		if(this.agent!=null && !this.agent.allZero()) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		SlaveWorker clone = (SlaveWorker) super.clone();
-		if (this.agent!=null) clone.setAgent((Agent) this.agent.clone());
-		return clone;
 	}
 }

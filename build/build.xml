@@ -105,7 +105,7 @@
 			<manifest>
 				<attribute name="Implementation-Vendor" value="Paradise.Vns"/>
 				<attribute name="Implementation-Title" value="Milker"/>
-				<attribute name="Implementation-Version" value="0.5"/>
+				<attribute name="Implementation-Version" value="0.06"/>
 				<attribute name="JavaFX-Feature-Proxy" value="None"/>
 			</manifest>
 		</fx:jar>

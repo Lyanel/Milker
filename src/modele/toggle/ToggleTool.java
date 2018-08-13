@@ -9,7 +9,7 @@ import modele.baseObject.MilkFile;
 import modele.baseObject.MilkImage;
 import modele.baseObject.MilkInterface;
 
-public class ToggleTool extends Toggle implements Cloneable {
+public class ToggleTool extends Toggle {
 
 	private static ArrayList<ToggleTool> tools;
 	private static ToggleTool tool;
@@ -53,15 +53,10 @@ public class ToggleTool extends Toggle implements Cloneable {
 		return things;
 	}
 	
-	public static ToggleTool getTool() {
+	public static ToggleTool getToggle() {
 		if(tool==null){
 			if(tools==null) setMilkVarFromFiles();
-			try {
-				tool=(ToggleTool) tools.get(0).clone();
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			tool=new ToggleTool(tools.get(0));
 		}
 		return tool;
 	}
@@ -91,6 +86,9 @@ public class ToggleTool extends Toggle implements Cloneable {
 	public ToggleTool(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
+	}
+	public ToggleTool(ToggleTool original) {
+		super(original);
 	}
 	
 	// Set value from Element methods
@@ -123,9 +121,4 @@ public class ToggleTool extends Toggle implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		ToggleTool clone = (ToggleTool) super.clone();
-		return clone;
-	}
 }

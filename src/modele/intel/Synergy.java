@@ -1,21 +1,12 @@
 package modele.intel;
 
-import java.util.ArrayList;
-
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
-import modele.MilkRs;
-import modele.baseObject.MilkFile;
-import modele.baseObject.MilkInterface;
 import modele.baseObject.MilkKind;
-import modele.carac.Effect;
 
-public class Synergy extends Research implements Cloneable {
-
+public class Synergy extends Upgrade {
+	public String getNoeud() {return ResearchList.getInstance().getNoeud();}
+/*
 	public static final String file	= "Synergy", noeud = "synergy";
 	public String getNoeud() {return noeud;}
 
@@ -74,24 +65,23 @@ public class Synergy extends Research implements Cloneable {
 
 	public static Callback<Synergy, Observable[]> extractorS() {
         return (Synergy p) -> new Observable[]{p.getInfo().getObrservableName()};
-	}
+	}*/
 
 	// Fields
 	
-	private ArrayList<Effect> effects = null;
-
 	// Constructors
 	
 	public Synergy() {
 		super();
-		this.effects = new ArrayList<Effect>();
-		this.setKind(MilkKind.kind_Synergy);
+		this.setKind(MilkKind.Synergy);
 	}
 	public Synergy(Element milkElement) {
 		super();
-		this.effects = new ArrayList<Effect>();
 		this.setValueFromNode(milkElement);
-		this.setKind(MilkKind.kind_Synergy);
+		this.setKind(MilkKind.Synergy);
+	}
+	public Synergy(Synergy original) {
+		super(original);
 	}
 
 	// Set value from Element methods
@@ -99,67 +89,30 @@ public class Synergy extends Research implements Cloneable {
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
-		this.setEffects(milkElement);
 		
-	}
-	public void setEffects(Element milkElement) {
-		effects.addAll(Effect.getMilkVarList(milkElement));
 	}
 	
 	// field methods
-	
-	public ArrayList<Effect> getEffects() {
-		return effects;
-	}
-	public void setEffects(ArrayList<Effect> effects) {
-		this.effects = effects;
-	}
 	
 	// toString & toXml methods
 
 	@Override
 	public String toStringStatChild() {
 		String temp = super.toStringStatChild();
-		if(effects.size()>0){
-			temp += MilkRs.LIGNE_TAB+Effect.noeud+"s : "+MilkRs.LIGNE_BREAK;
-			for (Effect effect : effects) {
-				temp += MilkRs.LIGNE_TAB+effect.toStringStat();
-			}
-		}
 		return temp;
 	}
 	@Override
 	public String toXmlStatChild() {
 		String temp = super.toXmlStatChild();
-		if(effects.size()>0){
-			temp += "<"+Effect.noeud+"s>"+MilkRs.LIGNE_BREAK;
-			for (Effect effect : effects) {
-				temp += MilkRs.LIGNE_TAB+effect.toXmlStat();
-			}
-		temp += "</"+Effect.noeud+"s>"+MilkRs.LIGNE_BREAK;
-		}
 		return temp;
 	}
 
 	// other object methods
-	
-	public ArrayList<Effect> getCloneEffects() throws CloneNotSupportedException {
-		ArrayList<Effect> clone = new ArrayList<Effect>();
-		if (this.effects!=null) for (Effect effect:this.effects) clone.add((Effect) effect.clone());
-		return clone;
-	}
 
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
-		if(this.effects!=null && this.effects.size()!=0) temp= false;
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Synergy clone = (Synergy) super.clone();
-		clone.setEffects(getCloneEffects());
-		return clone;
-	}
 }

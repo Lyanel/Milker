@@ -9,7 +9,7 @@ import modele.baseObject.MilkKind;
 import modele.carac.Agent;
 import modele.carac.NeededThing;
 import modele.carac.QuantityListener;
-import modele.carac.ThingAttrib;
+import modele.carac.MilkTree;
 import modele.thing.Building;
 import modele.thing.Thing;
 import modele.thing.Worker;
@@ -30,12 +30,7 @@ public class Activity{
 	public static void addActiveListenerToThingsLists(Agent value, QuantityListener listener, ObservableList<? extends Thing>... testLists) {
         for (ObservableList<? extends Thing> tests : testLists) {
 			for (Thing test : tests) {
-				if(value.getId()!=null && value.getId().intValue()>0){
-					if(value.getId().intValue()==test.getId().intValue() ) test.getAttrib().addActiveListener(listener);
-				} else {
-					if( (value.getLvl()==null || NeededThing.checkLevel(value, test) ) &&
-							(value.getAttrib()==null || ThingAttrib.checkAttrib(value.getAttrib(), test) ) ) test.getAttrib().addActiveListener(listener);
-				}
+				if(Utility.multiCheck(value, test)) test.getQuantity().addActiveListener(listener);
 			}
 		}
 	}
@@ -55,12 +50,7 @@ public class Activity{
 		int result = 0;
         for (ObservableList<? extends Thing> tests : testLists) {
 			for (Thing test : tests) {
-				if(value.getId()!=null && value.getId().intValue()>0){
-					if(value.getId().intValue()==test.getId().intValue() ) result += test.getAttrib().getActives().intValue();
-				} else {
-					if( (value.getLvl()==null || NeededThing.checkLevel(value, test) ) &&
-							(value.getAttrib()==null || ThingAttrib.checkAttrib(value.getAttrib(), test) ) )  result += test.getAttrib().getActives().intValue();
-				}
+				if(Utility.multiCheck(value, test))  result += test.getQuantity().getActives().intValue();
 			}
 		}
         return result;
@@ -74,15 +64,10 @@ public class Activity{
 		int unit = 0;
         for (ObservableList<? extends Thing> tests : testLists) {
 			for (Thing test : tests) {
-				if(wanted.getId()!=null && wanted.getId().intValue()>0){
-					if(wanted.getId().intValue()==test.getId().intValue() ) unit += test.getAttrib().getQuant().intValue();
-				} else {
-					if( (wanted.getLvl()==null || NeededThing.checkLevel(wanted, test) ) &&
-							(wanted.getAttrib()==null || ThingAttrib.checkAttrib(wanted.getAttrib(), test) ) ) unit += test.getAttrib().getQuant().intValue();
-				}
+				if(Utility.multiCheck(wanted, test)) unit += test.getQuantity().getQuant().intValue();
 			}
 		}
-		return ( unit > wanted.getAttrib().getQuant().intValue() ) ? true : false;
+		return ( unit > wanted.getQuantity().getQuant().intValue() ) ? true : false;
 	}
 
 	
@@ -91,15 +76,15 @@ public class Activity{
 	 * */
 	public static void setActivesWandB() {
 		ArrayList<Thing> inactiveWorker = new ArrayList<Thing>();
-		inactiveWorker.addAll(setActiveWorker(ThingAttrib.Tree_Neutral));
-		inactiveWorker.addAll(setActiveWorker(ThingAttrib.Tree_Science));
-		inactiveWorker.addAll(setActiveWorker(ThingAttrib.Tree_Magic));
+		inactiveWorker.addAll(setActiveWorker(MilkTree.Tree_Neutral));
+		inactiveWorker.addAll(setActiveWorker(MilkTree.Tree_Science));
+		inactiveWorker.addAll(setActiveWorker(MilkTree.Tree_Magic));
 		Collections.shuffle(inactiveWorker);
 		setActiveWorker(inactiveWorker);
 		
-		setActiveBuilding(ThingAttrib.Tree_Neutral);
-		setActiveBuilding(ThingAttrib.Tree_Science);
-		setActiveBuilding(ThingAttrib.Tree_Magic);
+		setActiveBuilding(MilkTree.Tree_Neutral);
+		setActiveBuilding(MilkTree.Tree_Science);
+		setActiveBuilding(MilkTree.Tree_Magic);
 	}
 
 	/**
@@ -108,19 +93,19 @@ public class Activity{
 	 * */
 	protected static ArrayList<? extends Thing> setActiveWorker(int tree) {
 		Agent agent = new Agent();
-		agent.getAttrib().setTree(tree);
-		agent.setKind(MilkKind.kind_Building);
+		agent.getTree().setTree(tree);
+		agent.setKind(MilkKind.Building);
 		ArrayList<? extends Thing> houses = Utility.getThingsListsFromAgent(agent);
-		agent.setKind(MilkKind.kind_Worker);
+		agent.setKind(MilkKind.Worker);
 		ArrayList<? extends Thing> workers = Utility.getThingsListsFromAgent(agent);
 		
 		int availablePop = 0;
 		
 		for (Thing houseThing : houses) {
 			Building house = (Building) houseThing;
-			if(house.getPopulation().getAttrib().getQuant().intValue()>0 && house.getPopulation().getKind().intValue() == MilkKind.kind_Worker){
-				int houseQuant = house.getAttrib().getQuant().intValue();
-				int agentNeed = house.getAgent().getAttrib().getQuant().intValue();
+			if(house.getPopulation().getQuantity().getQuant().intValue()>0 && house.getPopulation().getKind().intValue() == MilkKind.Worker){
+				int houseQuant = house.getQuantity().getQuant().intValue();
+				int agentNeed = house.getAgent().getQuantity().getQuant().intValue();
 				Worker houseWorker = null;
 				for (Thing test : workers) {
 					if(house.getAgent().getId()!=null && house.getAgent().getId().intValue() == test.getId().intValue() ) {
@@ -129,12 +114,12 @@ public class Activity{
 					}
 				}
 				workers.remove(houseWorker);
-				int houseWorkerQuant = houseWorker.getAttrib().getQuant().intValue();
+				int houseWorkerQuant = houseWorker.getQuantity().getQuant().intValue();
 				int houseWorkerActive =  ( houseQuant * agentNeed <= houseWorkerQuant ) ? houseQuant * agentNeed : (int)Math.floor( houseWorkerQuant / agentNeed ) * agentNeed  ;
-				houseWorker.getAttrib().setActive(houseWorkerActive);
+				houseWorker.getQuantity().setActive(houseWorkerActive);
 				int houseActive = houseWorkerActive / agentNeed ;
-				house.getAttrib().setActive(houseActive);
-				int houseMaxPop = house.getPopulation().getAttrib().getQuant() * houseActive;
+				house.getQuantity().setActive(houseActive);
+				int houseMaxPop = house.getPopulation().getQuantity().getQuant() * houseActive;
 				availablePop += ( houseMaxPop - houseWorkerActive );
 				
 			}
@@ -144,7 +129,7 @@ public class Activity{
 		setHousing(availablePop, tempPop, workers);
 		
 		for (int i=workers.size()-1;i>-1;i--){
-			workers.get(i).getAttrib().setActive(tempPop[0][i]);
+			workers.get(i).getQuantity().setActive(tempPop[0][i]);
 			if(tempPop[0][i]==tempPop[1][i])workers.remove(i);
 		}
 		return workers ;
@@ -156,21 +141,21 @@ public class Activity{
 	 * */
 	protected static void setActiveWorker(ArrayList<Thing> inactiveWorker) {
 		Agent agent = new Agent();
-		agent.getAttrib().setTree(ThingAttrib.Tree_Special);
-		agent.setKind(MilkKind.kind_Building);
+		agent.getTree().setTree(MilkTree.Tree_Special);
+		agent.setKind(MilkKind.Building);
 		ArrayList<? extends Thing> houses = Utility.getThingsListsFromAgent(agent);
 
 		int availablePop=0;
 		
 		for (Thing houseThing : houses) {
 			Building house = (Building) houseThing;
-			if(house.bought()) availablePop += house.getPopulation().getAttrib().getQuant().intValue();
+			if(house.bought()) availablePop += house.getPopulation().getQuantity().getQuant().intValue();
 		}
 		if(availablePop>0){
 			int[][] tempPop = new int[2][inactiveWorker.size()];
 			setHousing(availablePop, tempPop, inactiveWorker);
 			for (int i=inactiveWorker.size()-1;i>-1;i--){
-				inactiveWorker.get(i).getAttrib().setActive(tempPop[0][i]);
+				inactiveWorker.get(i).getQuantity().setActive(tempPop[0][i]);
 			}
 		}
 	}
@@ -182,21 +167,21 @@ public class Activity{
 	 * */
 	private static void setActiveBuilding(int tree) {
 		Agent agent = new Agent();
-		agent.getAttrib().setTree(tree);
-		agent.setKind(MilkKind.kind_Building);
+		agent.getTree().setTree(tree);
+		agent.setKind(MilkKind.Building);
 		ArrayList<? extends Thing> buildings = Utility.getThingsListsFromAgent(agent);
 		for (Thing buildThing : buildings) {
 			Building building = (Building) buildThing;
-			int buildingQuant = building.getAttrib().getQuant().intValue();
+			int buildingQuant = building.getQuantity().getQuant().intValue();
 			if(buildingQuant>0){
 				ArrayList<? extends Thing> agents = Utility.getThingsListsFromAgent(building.getAgent());
 				if(agents.size()>0){
-					int agentNeed = building.getAgent().getAttrib().getQuant().intValue();
+					int agentNeed = building.getAgent().getQuantity().getQuant().intValue();
 					Worker worker = (Worker) agents.get(0);
-					int activeWorker = worker.getAttrib().getActives().intValue();
+					int activeWorker = worker.getQuantity().getActives().intValue();
 					int buildingActive =  ( buildingQuant * agentNeed <= activeWorker ) ? buildingQuant : (int)Math.floor( activeWorker / agentNeed ) ;
-					building.getAttrib().setActive(buildingActive);
-				} else building.getAttrib().setActive(buildingQuant);
+					building.getQuantity().setActive(buildingActive);
+				} else building.getQuantity().setActive(buildingQuant);
 			}
 		}
 	}
@@ -217,13 +202,13 @@ public class Activity{
 		ArrayList<Thing> inactiveAnimalS = new ArrayList<Thing>();
 		ArrayList<Thing> inactiveAnimalM = new ArrayList<Thing>();
 
-		int remainingHNPlace = setActiveHSlave(ThingAttrib.Tree_Neutral, inactiveHSlaveN, inactiveASlaveN);
-		setActiveHSlave(ThingAttrib.Tree_Science, inactiveHSlaveS, inactiveASlaveS);
-		setActiveHSlave(ThingAttrib.Tree_Magic, inactiveHSlaveM, inactiveASlaveM);
+		int remainingHNPlace = setActiveHSlave(MilkTree.Tree_Neutral, inactiveHSlaveN, inactiveASlaveN);
+		setActiveHSlave(MilkTree.Tree_Science, inactiveHSlaveS, inactiveASlaveS);
+		setActiveHSlave(MilkTree.Tree_Magic, inactiveHSlaveM, inactiveASlaveM);
 
-		int remainingANPlace = setActiveAnimal(ThingAttrib.Tree_Neutral, inactiveAnimalN);
-		int remainingASPlace = setActiveAnimal(ThingAttrib.Tree_Science, inactiveAnimalS);
-		int remainingAMPlace = setActiveAnimal(ThingAttrib.Tree_Magic, inactiveAnimalM);
+		int remainingANPlace = setActiveAnimal(MilkTree.Tree_Neutral, inactiveAnimalN);
+		int remainingASPlace = setActiveAnimal(MilkTree.Tree_Science, inactiveAnimalS);
+		int remainingAMPlace = setActiveAnimal(MilkTree.Tree_Magic, inactiveAnimalM);
 		
 		if(remainingHNPlace>0) putRemainingSandMWithNeutral(remainingHNPlace, inactiveHSlaveS, inactiveHSlaveM);
 		if(remainingASPlace>0) putRemainingHybrideWithAnimal(remainingASPlace, inactiveASlaveS);
@@ -237,18 +222,18 @@ public class Activity{
 	 * */
 	private static int setActiveHSlave(int tree, ArrayList<Thing> inactiveHSlave, ArrayList<Thing> inactiveASlave) {
 		Agent agent = new Agent();
-		agent.getAttrib().setTree(tree);
-		agent.setKind(MilkKind.kind_Building);
+		agent.getTree().setTree(tree);
+		agent.setKind(MilkKind.Building);
 		ArrayList<? extends Thing> houses = Utility.getThingsListsFromAgent(agent);
-		agent.setKind(MilkKind.kind_Slaves);
+		agent.setKind(MilkKind.Slaves);
 		ArrayList<? extends Thing> cattles = Utility.getThingsListsFromAgent(agent);
 		
 		int availablePop=0;
 		for (Thing houseThing : houses) {
 			Building house = (Building) houseThing;
-			if(house.getPopulation().getAttrib().getQuant().intValue()>0 && MilkKind.checkThingKind(MilkKind.kind_Slaves, house.getPopulation()) ){
-				int houseActive = house.getAttrib().getActives().intValue();
-				availablePop += ( house.getPopulation().getAttrib().getQuant() * houseActive );
+			if(house.getPopulation().getQuantity().getQuant().intValue()>0 && MilkKind.checkThingKind(MilkKind.Slaves, house.getPopulation()) ){
+				int houseActive = house.getQuantity().getActives().intValue();
+				availablePop += ( house.getPopulation().getQuantity().getQuant() * houseActive );
 			}
 		}
 		
@@ -256,11 +241,12 @@ public class Activity{
 		setHousing(availablePop, tempPop, cattles);
 		
 		for (int i=cattles.size()-1;i>-1;i--){
-			cattles.get(i).getAttrib().setActive(tempPop[0][i]);
+			cattles.get(i).getQuantity().setActive(tempPop[0][i]);
 			if(tempPop[0][i]!=tempPop[1][i]){
 				switch(cattles.get(i).getKind().getKind()){
-					case MilkKind.kind_Slave_Human			: inactiveHSlave.add(cattles.get(i)); break;
-					case MilkKind.kind_Slave_Animal			: inactiveASlave.add(cattles.get(i)); break;
+					case MilkKind.Slave_Animal			: inactiveASlave.add(cattles.get(i)); break;
+					case MilkKind.Slave_Humanoid			: inactiveHSlave.add(cattles.get(i)); break;
+					case MilkKind.Slave_Worker			: inactiveHSlave.add(cattles.get(i)); break;
 				}
 			}
 		}
@@ -273,18 +259,18 @@ public class Activity{
 	 * */
 	private static int setActiveAnimal(int tree, ArrayList<Thing> inactiveAnimal) {
 		Agent agent = new Agent();
-		agent.getAttrib().setTree(tree);
-		agent.setKind(MilkKind.kind_Building);
+		agent.getTree().setTree(tree);
+		agent.setKind(MilkKind.Building);
 		ArrayList<? extends Thing> houses = Utility.getThingsListsFromAgent(agent);
-		agent.setKind(MilkKind.kind_Animal);
+		agent.setKind(MilkKind.Animal);
 		ArrayList<? extends Thing> cattles = Utility.getThingsListsFromAgent(agent);
 
 		int availablePop=0;
 		for (Thing houseThing : houses) {
 			Building house = (Building) houseThing;
-			if(house.getPopulation().getAttrib().getQuant().intValue()>0 && MilkKind.checkThingKind(MilkKind.kind_Animal, house.getPopulation()) ){
-				int houseActive = house.getAttrib().getActives().intValue();
-				availablePop += ( house.getPopulation().getAttrib().getQuant() * houseActive );
+			if(house.getPopulation().getQuantity().getQuant().intValue()>0 && MilkKind.checkThingKind(MilkKind.Animal, house.getPopulation()) ){
+				int houseActive = house.getQuantity().getActives().intValue();
+				availablePop += ( house.getPopulation().getQuantity().getQuant() * houseActive );
 			}
 		}
 		
@@ -292,7 +278,7 @@ public class Activity{
 		setHousing(availablePop, tempPop, cattles);
 		
 		for (int i=cattles.size()-1;i>-1;i--){
-			cattles.get(i).getAttrib().setActive(tempPop[0][i]);
+			cattles.get(i).getQuantity().setActive(tempPop[0][i]);
 			if(tempPop[0][i]!=tempPop[1][i]) inactiveAnimal.add(cattles.get(i));
 		}
 		return availablePop;
@@ -309,7 +295,7 @@ public class Activity{
 		setSemiHousing(remainingPop, tempPop, inactive);
 		
 		for (int i=inactive.size()-1;i>-1;i--){
-			inactive.get(i).getAttrib().setSemiActive(tempPop[0][i]);
+			inactive.get(i).getQuantity().setSemiActive(tempPop[0][i]);
 		}
 	}
 
@@ -320,7 +306,7 @@ public class Activity{
 		setSemiHousing(remainingPop, tempPop, inactiveASlave);
 		
 		for (int i=inactiveASlave.size()-1;i>-1;i--){
-			inactiveASlave.get(i).getAttrib().setSemiActive(tempPop[0][i]);
+			inactiveASlave.get(i).getQuantity().setSemiActive(tempPop[0][i]);
 		}
 	}
 	
@@ -328,7 +314,7 @@ public class Activity{
 		int beingtype = inactiveBeing.size();
 		for (int i=0;i<beingtype;i++){
 			tempPop[0][i] = 0;
-			tempPop[1][i] = inactiveBeing.get(i).getAttrib().getQuant().intValue();
+			tempPop[1][i] = inactiveBeing.get(i).getQuantity().getQuant().intValue();
 		}
 		boolean allHoused = false;
 		while(availablePop>0 && !allHoused){
@@ -352,7 +338,7 @@ public class Activity{
 		int beingtype = inactiveBeing.size();
 		for (int i=0;i<beingtype;i++){
 			tempPop[0][i] = 0;
-			tempPop[1][i] = (inactiveBeing.get(i).getAttrib().getQuant().intValue() - inactiveBeing.get(i).getAttrib().getActives().intValue());
+			tempPop[1][i] = (inactiveBeing.get(i).getQuantity().getQuant().intValue() - inactiveBeing.get(i).getQuantity().getActives().intValue());
 		}
 		boolean allHoused = false;
 		while(availablePop>0 && !allHoused){

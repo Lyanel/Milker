@@ -1,21 +1,11 @@
 package modele.thing;
 
-import java.util.ArrayList;
-
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
-import modele.baseObject.MilkFile;
-import modele.baseObject.MilkImage;
-import modele.baseObject.MilkInterface;
 import modele.baseObject.MilkKind;
-import modele.carac.ThingAttrib;
 
-public class SlaveHuman extends Slave implements Cloneable {
-	
+public class SlaveHuman extends Slave {
+	/*
 	public static final String file		= "SlaveHuman";
 
 	private static ArrayList<SlaveHuman> slaveHumans;
@@ -134,24 +124,22 @@ public class SlaveHuman extends Slave implements Cloneable {
 		}
 		return modelMagicListe;
 	}
-	
+	*/
 	// Constructors
 	
 	public SlaveHuman() {
 		super();
-		this.setKind(MilkKind.kind_Slave_Human);
+		this.setKind(MilkKind.Slave_Humanoid);
 	}
 	public SlaveHuman(Element milkElement) {
 		super();
-		this.setKind(MilkKind.kind_Slave_Human);
+		this.setKind(MilkKind.Slave_Humanoid);
 		this.setValueFromNode(milkElement);
+	}
+	public SlaveHuman(SlaveHuman original) {
+		super(original);
 	}
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		SlaveHuman clone = (SlaveHuman) super.clone();
-		return clone;
-	}
 }

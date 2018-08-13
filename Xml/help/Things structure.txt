@@ -15,7 +15,7 @@ building, worker, Slaves, animal & toggle (<- not things but who care) XML struc
 		<income quan="X" qual="X" prod="x"/>
 	</worker>
 
-Slaves : Type A & Type B xml are the same, they are divided due to some default value (like kind & sell).	
+Slaves : Type A & Type B xml are the same, they are divided due to id and some default value (like kind & sell).	
 sacrifice : By default only these one are available :
 		Worker -> slave type A 
 		animal -> slave type B

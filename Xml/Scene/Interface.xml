@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<images id="3">
+	<image id="01">
+		<name>matt-icons_file-x-unknown</name>
+		<path>Img/Icon/</path>
+		<desc>https://publicdomainvectors.org/fr/gratuitement-des-vecteurs/Ic%C3%B4ne-de-fichier-inconnu/67196.html</desc>
+	</image>
+	<image id="301">
+		<name>Balance</name>
+		<path>Img/Icon/</path>
+		<desc>Image d'origine inconnue.</desc>
+	</image>
+	<image id="302">
+		<name>Microscope</name>
+		<path>Img/Icon/</path>
+		<desc>Image d'origine inconnue.</desc>
+	</image>
+	<image id="303">
+		<name>Magie</name>
+		<path>Img/Icon/</path>
+		<desc>Image d'origine inconnue.</desc>
+	</image>
+	<image id="304">
+		<name>Pad</name>
+		<path>Img/Icon/</path>
+		<desc>Image d'origine inconnue.</desc>
+	</image>
+	<image id="305">
+		<name>Tool</name>
+		<path>Img/Icon/</path>
+		<desc>Image d'origine inconnue.</desc>
+	</image>
+</images>

@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 import modele.MilkRs;
 import modele.XmlHelper;
 
-public class MilkVar implements Cloneable {
+public class MilkVar {
 	
 	public static final String noeud="";
 	public String getNoeud() {return noeud;}
@@ -51,6 +51,9 @@ public class MilkVar implements Cloneable {
 
 	// Set value from Element methods
 	
+	public MilkVar(MilkVar original) {}
+
+
 	/**
 	 * meant to be @Override. Set the various object from an Xml element, 
 	 * generally call getThisElementFromParent, so it return the element obtained, null (if that method returned null), or the element received if the method was not call.
@@ -241,8 +244,8 @@ public class MilkVar implements Cloneable {
 			temp += "<"+this.getNoeud();
 			if (this.toXmlAttrib().length()>0) temp += this.toXmlAttrib();
 			if (this.toXmlStatChild().length()>0){
-				temp += ">"+MilkRs.LIGNE_BREAK;
-				temp += this.toXmlStatChild()+MilkRs.LIGNE_BREAK;
+				temp += ">";
+				temp += this.toXmlStatChild();
 				temp += "</"+this.getNoeud()+">"+MilkRs.LIGNE_BREAK;
 			}
 			else temp+="/>"+MilkRs.LIGNE_BREAK;
@@ -260,11 +263,6 @@ public class MilkVar implements Cloneable {
 		return true;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkVar clone = (MilkVar) super.clone();
-		return clone;
-	}
 	@Override
 	public boolean equals(Object obj) {
 		boolean equal = super.equals(obj);

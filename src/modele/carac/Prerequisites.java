@@ -1,26 +1,31 @@
 package modele.carac;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
 import modele.MilkRs;
 import modele.baseObject.MilkVar;
 
-public class Prerequisites extends MilkVar implements Cloneable {
+public class Prerequisites extends MilkVar {
 
 	// Fields
-	private Vector<NeededThing> neededThings = null;
+	private ArrayList<NeededThing> neededThings = null;
 	
 	// Constructors
 	
 	public Prerequisites() {
-		this.neededThings = new Vector<NeededThing>();
+		super();
+		this.neededThings = new ArrayList<NeededThing>();
 	}
 	public Prerequisites(Element milkElement) {
 		super();
-		this.neededThings = new Vector<NeededThing>();
+		this.neededThings = new ArrayList<NeededThing>();
 		this.setValueFromNode(milkElement);
+	}
+	public Prerequisites(Prerequisites original) {
+		super(original);
+		this.setDeepNeededThings(original.getNeededThings());
 	}
 
 	// Set value from Element methods
@@ -36,17 +41,24 @@ public class Prerequisites extends MilkVar implements Cloneable {
 		if(neededThings.size()==0){
 			NeededThing test = new NeededThing();
 			test.setValueFromNode(milkElement);
-			if (test.getKind().getKind().intValue()!=0)neededThings.addElement(test);
+			if (test.getKind().getKind().intValue()!=0) this.addNeededThing(test);
 		}
 	}
 	
 	// field methods	
 	
-	public Vector<NeededThing> getNeededThings() {
+	public ArrayList<NeededThing> getNeededThings() {
 		return neededThings;
 	}
-	public void setNeededThings(Vector<NeededThing> neededThings) {
+	public void setDeepNeededThings(ArrayList<NeededThing> original) {
+		this.neededThings = new ArrayList<NeededThing>();
+		for (NeededThing neededThing:original) this.addNeededThing(new NeededThing (neededThing));
+	}
+	public void setNeededThings(ArrayList<NeededThing> neededThings) {
 		this.neededThings = neededThings;
+	}
+	public void addNeededThing(NeededThing thing) {
+		this.neededThings.add(thing);
 	}
 	
 	// toString & toXml methods
@@ -88,23 +100,10 @@ public class Prerequisites extends MilkVar implements Cloneable {
 
 	// other object methods
 	
-	public Vector<NeededThing> getCloneNeededThings() throws CloneNotSupportedException {
-		Vector<NeededThing> clone = new Vector<NeededThing>();
-		if (this.neededThings!=null) for (NeededThing neededThing:this.neededThings) clone.add((NeededThing) neededThing.clone());
-		return clone;
-	}
-
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
 		if(this.neededThings!=null && this.neededThings.size()!=0) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Prerequisites clone = (Prerequisites) super.clone();
-		clone.setNeededThings(getCloneNeededThings());
-		return clone;
 	}
 }

@@ -1,214 +1,214 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<toggles id="31">
-	<toggle id="1" start="10" >
+<toggles id="2">
+	<toggle id="2" start="110" >
 		<need />
 		<price coin="1" coef="1"/>
 		<agent kind="1" id="10"/>
 		<options>
-			<option id="10" />
-			<option id="11">
+			<option id="110" />
+			<option id="111">
 				<need>
 					<things><thing kind="1" id="11">100</thing></things>
 				</need>
 			</option>
-			<option id="111">
+			<option id="211">
 				<need>
 					<things><thing kind="2" id="11">100</thing></things>
 				</need>
 			</option>
-			<option id="112">
+			<option id="212">
 				<need>
 					<things><thing kind="2" id="12">100</thing></things>
 				</need>
 			</option>
-			<option id="113">
+			<option id="213">
 				<need>
 					<things><thing kind="2" id="13">100</thing></things>
 				</need>
 			</option>
-			<option id="121">
+			<option id="221">
 				<need>
 					<things><thing kind="2" id="21">100</thing></things>
 				</need>
 			</option>
-			<option id="122">
+			<option id="222">
 				<need>
 					<things><thing kind="2" id="22">100</thing></things>
 				</need>
 			</option>
-			<option id="123">
+			<option id="223">
 				<need>
 					<things><thing kind="2" id="23">100</thing></things>
 				</need>
 			</option>
-			<option id="124">
+			<option id="224">
 				<need>
 					<things><thing kind="2" id="24">100</thing></things>
 				</need>
 			</option>
-			<option id="125">
+			<option id="225">
 				<need>
 					<things><thing kind="2" id="25">100</thing></things>
 				</need>
 			</option>
-			<option id="126">
+			<option id="226">
 				<need>
 					<things><thing kind="2" id="26">100</thing></things>
 				</need>
 			</option>
-			<option id="131">
+			<option id="231">
 				<need>
 					<things><thing kind="2" id="31">100</thing></things>
 				</need>
 			</option>
-			<option id="132">
+			<option id="232">
 				<need>
 					<things><thing kind="2" id="32">100</thing></things>
 				</need>
 			</option>
-			<option id="133">
+			<option id="233">
 				<need>
 					<things><thing kind="2" id="33">100</thing></things>
 				</need>
 			</option>
-			<option id="134">
+			<option id="234">
 				<need>
 					<things><thing kind="2" id="34">100</thing></things>
 				</need>
 			</option>
-			<option id="135">
+			<option id="235">
 				<need>
 					<things><thing kind="2" id="35">100</thing></things>
 				</need>
 			</option>
-			<option id="136">
+			<option id="236">
 				<need>
 					<things><thing kind="2" id="36">100</thing></things>
 				</need>
 			</option>
-			<option id="144">
+			<option id="244">
 				<need>
 					<things><thing kind="2" id="44">100</thing></things>
 				</need>
 			</option>
-			<option id="211">
+			<option id="411">
 				<need>
-					<things><thing kind="3" id="11">100</thing></things>
+					<things><thing kind="4" id="11">100</thing></things>
 				</need>
 			</option>
-			<option id="212">
+			<option id="412">
 				<need>
-					<things><thing kind="3" id="12">100</thing></things>
+					<things><thing kind="4" id="12">100</thing></things>
 				</need>
 			</option>
-			<option id="222">
+			<option id="422">
 				<need>
-					<things><thing kind="3" id="22">100</thing></things>
+					<things><thing kind="4" id="22">100</thing></things>
 				</need>
 			</option>
-			<option id="223">
+			<option id="423">
 				<need>
-					<things><thing kind="3" id="23">100</thing></things>
+					<things><thing kind="4" id="23">100</thing></things>
 				</need>
 			</option>
-			<option id="224">
+			<option id="424">
 				<need>
-					<things><thing kind="3" id="24">100</thing></things>
+					<things><thing kind="4" id="24">100</thing></things>
 				</need>
 			</option>
-			<option id="225">
+			<option id="425">
 				<need>
-					<things><thing kind="3" id="25">100</thing></things>
+					<things><thing kind="4" id="25">100</thing></things>
 				</need>
 			</option>
-			<option id="226">
+			<option id="426">
 				<need>
-					<things><thing kind="3" id="26">100</thing></things>
+					<things><thing kind="4" id="26">100</thing></things>
 				</need>
 			</option>
-			<option id="232">
+			<option id="432">
 				<need>
-					<things><thing kind="3" id="32">100</thing></things>
+					<things><thing kind="4" id="32">100</thing></things>
 				</need>
 			</option>
-			<option id="233">
+			<option id="433">
 				<need>
-					<things><thing kind="3" id="33">100</thing></things>
+					<things><thing kind="4" id="33">100</thing></things>
 				</need>
 			</option>
-			<option id="234">
+			<option id="434">
 				<need>
-					<things><thing kind="3" id="34">100</thing></things>
+					<things><thing kind="4" id="34">100</thing></things>
 				</need>
 			</option>
-			<option id="235">
+			<option id="435">
 				<need>
-					<things><thing kind="3" id="35">100</thing></things>
+					<things><thing kind="4" id="35">100</thing></things>
 				</need>
 			</option>
-			<option id="236">
+			<option id="436">
 				<need>
-					<things><thing kind="3" id="36">100</thing></things>
+					<things><thing kind="4" id="36">100</thing></things>
 				</need>
 			</option>
-			<option id="242">
+			<option id="512">
 				<need>
-					<things><thing kind="4" id="42">100</thing></things>
+					<things><thing kind="5" id="12">100</thing></things>
 				</need>
 			</option>
-			<option id="243">
+			<option id="513">
 				<need>
-					<things><thing kind="4" id="43">100</thing></things>
+					<things><thing kind="5" id="13">100</thing></things>
 				</need>
 			</option>
-			<option id="244">
+			<option id="514">
 				<need>
-					<things><thing kind="4" id="44">100</thing></things>
+					<things><thing kind="5" id="14">100</thing></things>
 				</need>
 			</option>
-			<option id="245">
+			<option id="515">
 				<need>
-					<things><thing kind="4" id="45">100</thing></things>
+					<things><thing kind="5" id="15">100</thing></things>
 				</need>
 			</option>
-			<option id="251">
+			<option id="521">
 				<need>
-					<things><thing kind="4" id="51">100</thing></things>
+					<things><thing kind="5" id="21">100</thing></things>
 				</need>
 			</option>
-			<option id="252">
+			<option id="522">
 				<need>
-					<things><thing kind="4" id="52">100</thing></things>
+					<things><thing kind="5" id="22">100</thing></things>
 				</need>
 			</option>
-			<option id="253">
+			<option id="523">
 				<need>
-					<things><thing kind="4" id="53">100</thing></things>
+					<things><thing kind="5" id="23">100</thing></things>
 				</need>
 			</option>
-			<option id="254">
+			<option id="524">
 				<need>
-					<things><thing kind="4" id="54">100</thing></things>
+					<things><thing kind="5" id="24">100</thing></things>
 				</need>
 			</option>
-			<option id="261">
+			<option id="531">
 				<need>
-					<things><thing kind="4" id="61">100</thing></things>
+					<things><thing kind="5" id="31">100</thing></things>
 				</need>
 			</option>
-			<option id="262">
+			<option id="532">
 				<need>
-					<things><thing kind="4" id="62">100</thing></things>
+					<things><thing kind="5" id="32">100</thing></things>
 				</need>
 			</option>
-			<option id="263">
+			<option id="533">
 				<need>
-					<things><thing kind="4" id="63">100</thing></things>
+					<things><thing kind="5" id="33">100</thing></things>
 				</need>
 			</option>
-			<option id="264">
+			<option id="534">
 				<need>
-					<things><thing kind="4" id="64">100</thing></things>
+					<things><thing kind="5" id="34">100</thing></things>
 				</need>
 			</option>
 		</options>

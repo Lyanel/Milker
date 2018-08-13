@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <events>
-	<event id="1">
-	</event>
+	<event id="2" tree="2" month="2"></event>
+	<event id="3" tree="2" month="3"></event>
+	<event id="4" tree="3" month="5"></event>
+	<event id="5" tree="3" month="6"></event>
+	<event id="6" tree="2" month="8"></event>
+	<event id="7" tree="2" month="9"></event>
+	<event id="8" tree="3" month="11"></event>
+	<event id="9" tree="3" month="12"></event>
 </events>

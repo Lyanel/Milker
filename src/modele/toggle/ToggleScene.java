@@ -6,7 +6,7 @@ import modele.ParseMilkFile;
 import modele.baseObject.MilkImage;
 import modele.baseObject.MilkXmlObj;
 
-public class ToggleScene extends MilkXmlObj implements Cloneable {
+public class ToggleScene extends MilkXmlObj {
 
 	public static final String xmlLvl="lvl";
 	
@@ -27,6 +27,11 @@ public class ToggleScene extends MilkXmlObj implements Cloneable {
 		this.setLvl(0);
 		this.scene = new MilkImage();
 		this.setValueFromNode(milkElement);
+	}
+	public ToggleScene(ToggleScene original) {
+		super(original);
+		this.lvl = new Integer(original.getLvl());
+		this.scene = new MilkImage(original.getScene());
 	}
 	
 	// Set value from Element methods
@@ -95,10 +100,4 @@ public class ToggleScene extends MilkXmlObj implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		ToggleScene clone = (ToggleScene) super.clone();
-		if (this.scene!=null) clone.setScene((MilkImage) this.scene.clone());
-		return clone;
-	}
 }

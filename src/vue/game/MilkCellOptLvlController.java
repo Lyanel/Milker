@@ -53,7 +53,7 @@ public class MilkCellOptLvlController extends MilkCellOptionController implement
     
     @Override
     public void updateUI(ToggleOption thing) {
-    	if(((Milker) getApplication()).getModel().isMilkObjVisible(thing) ){
+    	if(((Milker) getApplication()).getModel().isOptionVisible(thing) ){
     		rootPane.setVisible(true);
     		int lvl = ((Milker) getApplication()).getModel().getToolLevel(thing);
     		thing.setLvl(lvl);

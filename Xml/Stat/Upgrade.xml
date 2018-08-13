@@ -1,488 +1,451 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <upgrades>
-	<upgrade id="2">
+	<upgrade id="102">
 		<need>
 			<things>
 				<thing kind="2" tree="1">250</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="11">
-					<max kind="2" tree="1" >3</max>
-				</thing>
-			</things>
-		</effect>
+		<price coin="1000000" coef="1"/>
+		<effects>
+			<effect num="12" mod="2" val="3"><target kind="1" id="11"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="3">
+	<upgrade id="103">
 		<need>
+			<intels>
+				<intel kind="2" id="102"/>
+			</intels>
 			<things>
 				<thing kind="2" tree="1">500</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="11">
-					<max kind="2" tree="1" >3</max>
-				</thing>
-			</things>
-		</effect>
+		<price coin="1000000000" coef="1"/>
+		<effects>
+			<effect num="12" mod="2" val="3"><target kind="1" id="11"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="11">
+	<upgrade id="111">
 		<need>
 			<things>
 				<thing kind="2" id="11">50</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="11">
-					<worker id="11" >1</worker>
-					<income quan="2500" qual="1.6"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="500" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="1" id="11"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="11"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="12">
+	<upgrade id="112">
 		<need>
 			<intels>
-				<intel kind="2" id="11"/>
+				<intel kind="2" id="111"/>
 			</intels>
 			<things>
 				<thing kind="2" id="11">100</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="11">
-					<worker id="11" >1</worker>
-					<income quan="3125" qual="3.2"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="5000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="3125"><target kind="1" id="11"/></effect>
+			<effect num="6" mod="1" val="3.2"><target kind="1" id="11"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="11"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="13">
+	<upgrade id="113">
 		<need>
 			<intels>
-				<intel kind="2" id="12"/>
+				<intel kind="2" id="112"/>
 			</intels>
 			<things>
 				<thing kind="2" id="11">250</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="11">
-					<worker id="11" >1</worker>
-					<income quan="12500" qual="4.8"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="50000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="12500"><target kind="1" id="11"/></effect>
+			<effect num="6" mod="1" val="4.8"><target kind="1" id="11"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="11"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="14">
+	<upgrade id="114">
 		<need>
 			<intels>
-				<intel kind="2" id="13"/>
+				<intel kind="2" id="113"/>
 			</intels>
 			<things>
 				<thing kind="2" id="11">500</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="11">
-					<worker id="11" >1</worker>
-					<income quan="109375" qual="6.4"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="500000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="109375"><target kind="1" id="11"/></effect>
+			<effect num="6" mod="1" val="6.4"><target kind="1" id="11"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="11"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="22">
+	<upgrade id="122">
 		<need>
 			<intels>
-				<intel kind="1" id="51"/>
+				<intel kind="1" id="151"/>
 			</intels>
 			<things>
 				<thing kind="2" id="21">50</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="51">
-					<worker id="21" >1</worker>
-					<income quan="5000" qual="2"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="5000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="5000"><target kind="1" id="51"/></effect>
+			<effect num="6" mod="1" val="2"><target kind="1" id="51"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="51"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="23">
+	<upgrade id="123">
 		<need>
 			<intels>
-				<intel kind="2" id="22"/>
+				<intel kind="2" id="122"/>
 			</intels>
 			<things>
 				<thing kind="2" id="21">100</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="51">
-					<worker id="21" >1</worker>
-					<income quan="20000" qual="3"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="50000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="20000"><target kind="1" id="51"/></effect>
+			<effect num="6" mod="1" val="3"><target kind="1" id="51"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="51"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="24">
+	<upgrade id="124">
 		<need>
 			<intels>
-				<intel kind="2" id="23"/>
+				<intel kind="2" id="123"/>
 			</intels>
 			<things>
 				<thing kind="2" id="21">300</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="51">
-					<worker id="21" >1</worker>
-					<income quan="175000" qual="4"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="500000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="175000"><target kind="1" id="51"/></effect>
+			<effect num="6" mod="1" val="4"><target kind="1" id="51"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="51"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="32">
+	<upgrade id="132">
 		<need>
 			<intels>
-				<intel kind="1" id="61"/>
+				<intel kind="1" id="161"/>
 			</intels>
 			<things>
 				<thing kind="2" id="31">50</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="61">
-					<worker id="31" >1</worker>
-					<income quan="2500" qual="4"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="5000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="2500"><target kind="1" id="61"/></effect>
+			<effect num="6" mod="1" val="4"><target kind="1" id="61"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="61"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="33">
+	<upgrade id="133">
 		<need>
 			<intels>
-				<intel kind="2" id="32"/>
+				<intel kind="2" id="132"/>
 			</intels>
 			<things>
 				<thing kind="2" id="31">100</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="61">
-					<worker id="31" >1</worker>
-					<income quan="10000" qual="6"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="50000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="10000"><target kind="1" id="61"/></effect>
+			<effect num="6" mod="1" val="6"><target kind="1" id="61"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="61"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="34">
+	<upgrade id="134">
 		<need>
 			<intels>
-				<intel kind="2" id="33"/>
+				<intel kind="2" id="133"/>
 			</intels>
 			<things>
 				<thing kind="2" id="31">300</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="1" id="61">
-					<worker id="31" >1</worker>
-					<income quan="87500" qual="8"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="500000" coef="1"/>
+		<effects>
+			<effect num="5" mod="1" val="87500"><target kind="1" id="61"/></effect>
+			<effect num="6" mod="1" val="8"><target kind="1" id="61"/></effect>
+			<effect num="11" mod="2" val="1"><target kind="1" id="61"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="111">
+	<upgrade id="201">
 		<need>
 			<things>
 				<thing kind="2" lvl="-1">500</thing>
-				<thing kind="7">50</thing>
+				<thing kind="23">50</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="2" lvl="-1">
-					<income prod="1"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="1000000000" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="2" lvl="-1"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="112">
+	<upgrade id="202">
 		<need>
 			<things>
 				<thing kind="2" lvl="-2">400</thing>
-				<thing kind="7">100</thing>
+				<thing kind="23">100</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="2" lvl="-2">
-					<income prod="1"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="10000000000" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="2" lvl="-2"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="113">
+	<upgrade id="203">
 		<need>
 			<things>
 				<thing kind="2" lvl="-3">300</thing>
-				<thing kind="7">200</thing>
+				<thing kind="23">200</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="2" lvl="-3">
-					<income prod="1"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="100000000000" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="2" lvl="-3"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="114">
+	<upgrade id="204">
 		<need>
 			<things>
 				<thing kind="2" lvl="-4">300</thing>
-				<thing kind="7">300</thing>
+				<thing kind="23">300</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="2" lvl="-4">
-					<income prod="1"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="1000000000000" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="2" lvl="-4"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="115">
+	<upgrade id="205">
 		<need>
 			<things>
 				<thing kind="2" lvl="-5">200</thing>
-				<thing kind="7">400</thing>
+				<thing kind="23">400</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="2" lvl="-5">
-					<income prod="1"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="10000000000000" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="2" lvl="-5"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="116">
+	<upgrade id="206">
 		<need>
 			<things>
 				<thing kind="2" lvl="-6">100</thing>
-				<thing kind="7">500</thing>
+				<thing kind="23">500</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="2" lvl="-5">
-					<income prod="1"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="2" lvl="-6"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="120">
+	<upgrade id="211">
 		<need>
 			<intels>
-				<intel kind="1" id="212"/>
+				<intel kind="1" id="114"/>
+			</intels>
+			<things>
+				<thing kind="2">500</thing>
+			</things>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="2" mod="1" val="-20"><target kind="2"/></effect>
+		</effects>
+	</upgrade>
+	<upgrade id="212">
+		<need>
+			<intels>
+				<intel kind="1" id="412"/>
+				<intel kind="2" id="211"/>
 			</intels>
 			<things>
 				<thing kind="2">1000</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="0">
-			<things>
-				<thing kind="2" sell="0">
-				</thing>
-			</things>
-		</effect>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="2" mod="1" val="0"><target kind="2"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="121">
+	<upgrade id="213" view="8">
 		<need>
 			<intels>
-				<intel kind="2" id="116"/>
-				<intel kind="2" id="120"/>
-				<intel kind="2" id="211"/>
-			</intels>
-		</need>
-		<price coin="1" coef="1"/>
-		<effect num="0">
-			<things>
-				<thing kind="2" sell="45">
-					<income quan="200"/>
-				</thing>
-			</things>
-		</effect>
-	</upgrade>
-	<upgrade id="122">
-		<need>
-			<intels>
-				<intel kind="2" id="121"/>
-				<intel kind="2" id="213"/>
-				<intel kind="2" id="223"/>
-			</intels>
-		</need>
-		<price coin="1" coef="1"/>
-		<effect num="0">
-			<things>
-				<thing kind="2" sell="90">
-					<income quan="300"/>
-				</thing>
-			</things>
-		</effect>
-	</upgrade>
-	<upgrade id="211">
-		<need>
-			<intels>
-				<intel kind="2" id="221"/>
-			</intels>
-			<things>
-				<thing kind="3">500</thing>
-			</things>
-		</need>
-		<price coin="1" coef="1"/>
-		<effect num="0">
-			<things>
-				<thing kind="3" sell="90" />
-			</things>
-		</effect>
-	</upgrade>
-	<upgrade id="212">
-		<need>
-			<intels>
-				<intel kind="1" id="253"/>
-				<intel kind="1" id="263"/>
-			</intels>
-			<things>
-				<thing kind="4">500</thing>
-			</things>
-		</need>
-		<price coin="1" coef="1"/>
-		<effect num="-1">
-			<things>
-				<thing kind="3">
-					<sacrifice kind="9"/>
-				</thing>
-			</things>
-		</effect>
-	</upgrade>
-	<upgrade id="213">
-		<need>
-			<intels>
+				<intel kind="2" id="206"/>
 				<intel kind="2" id="212"/>
+				<intel kind="2" id="401"/>
 			</intels>
-			<things>
-				<thing kind="5">750</thing>
-			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="-1">
-			<things>
-				<thing kind="3">
-					<sacrifice kind="13"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="2" mod="1" val="30"><target kind="2"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="221">
+	<upgrade id="214">
 		<need>
 			<intels>
-				<intel kind="1" id="212"/>
+				<intel kind="2" id="213"/>
+				<intel kind="2" id="404"/>
+				<intel kind="2" id="504"/>
+			</intels>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="2" mod="1" val="60"><target kind="2"/></effect>
+			<effect num="5" mod="3" val="100"><target kind="2"/></effect>
+		</effects>
+	</upgrade>
+	<upgrade id="215">
+		<need>
+			<intels>
+				<intel kind="2" id="214"/>
+				<intel kind="2" id="405"/>
+				<intel kind="2" id="505"/>
+			</intels>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="2" mod="1" val="90"><target kind="2"/></effect>
+			<effect num="5" mod="3" val="50"><target kind="2"/></effect>
+		</effects>
+	</upgrade>
+	<upgrade id="401">
+		<need>
+			<intels>
+				<intel kind="2" id="501"/>
 			</intels>
 			<things>
 				<thing kind="4">500</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="0">
-			<things>
-				<thing kind="4" sell="90" />
-			</things>
-		</effect>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="2" mod="1" val="90"><target kind="11"/></effect>
+		</effects>
 	</upgrade>
-	<upgrade id="222">
+	<upgrade id="402" view="7">
+		<need>
+			<things>
+				<thing kind="4">600</thing>
+			</things>
+		</need>
+		<check true="2">
+				<intel kind="1" id="424"/>
+				<intel kind="1" id="425"/>
+				<intel kind="1" id="434"/>
+				<intel kind="1" id="435"/>
+		</check>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="3" mod="0" val="0"><target kind="4"/></effect>
+		</effects>
+	</upgrade>
+	<upgrade id="403" view="11">
 		<need>
 			<intels>
-				<intel kind="1" id="223"/>
-				<intel kind="1" id="233"/>
+				<intel kind="2" id="213"/>
+				<intel kind="2" id="402"/>
+				<intel kind="2" id="502"/>
 			</intels>
-			<things>
-				<thing kind="3">500</thing>
-			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="-1">
-			<things>
-				<thing kind="4">
-					<sacrifice kind="10"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="100000000000000" coef="1"/>
 	</upgrade>
-	<upgrade id="223">
+	<upgrade id="404" view="12">
 		<need>
 			<intels>
-				<intel kind="2" id="222"/>
+				<intel kind="1" id="523"/>
+				<intel kind="1" id="533"/>
+				<intel kind="2" id="402"/>
+			</intels>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+	</upgrade>
+	<upgrade id="405" view="13">
+		<need>
+			<intels>
+				<intel kind="2" id="404"/>
 			</intels>
 			<things>
-				<thing kind="2">750</thing>
+				<thing kind="4">700</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="-1">
-			<things>
-				<thing kind="4">
-					<sacrifice kind="14"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="100000000000000" coef="1"/>
 	</upgrade>
-	<upgrade id="301">
+	<upgrade id="501">
+		<need>
+			<intels>
+				<intel kind="1" id="412"/>
+			</intels>
+			<things>
+				<thing kind="5">500</thing>
+			</things>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="2" mod="1" val="90"><target kind="5"/></effect>
+		</effects>
+	</upgrade>
+	<upgrade id="502" view="7">
+		<need>
+			<intels>
+				<intel kind="1" id="512"/>
+				<intel kind="1" id="513"/>
+				<intel kind="1" id="514"/>
+				<intel kind="1" id="515"/>
+			</intels>
+			<things>
+				<thing kind="5">600</thing>
+			</things>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="3" mod="0" val="0"><target kind="5"/></effect>
+		</effects>
+	</upgrade>
+	<upgrade id="504" view="14">
+		<need>
+			<intels>
+				<intel kind="1" id="423"/>
+				<intel kind="1" id="433"/>
+				<intel kind="2" id="502"/>
+			</intels>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+	</upgrade>
+	<upgrade id="505" view="15">
+		<need>
+			<intels>
+				<intel kind="2" id="504"/>
+			</intels>
+			<things>
+				<thing kind="5">700</thing>
+			</things>
+		</need>
+		<price coin="100000000000000" coef="1"/>
+	</upgrade>
+	<upgrade id="601">
 		<need>
 			<things>
-				<thing kind="5" lvl="-1">1000</thing>
+				<thing kind="6" lvl="-1">1000</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
-		<effect num="1">
-			<things>
-				<thing kind="5" lvl="-1">
-					<income prod="1"/>
-				</thing>
-			</things>
-		</effect>
+		<price coin="100000000000000" coef="1"/>
+		<effects>
+			<effect num="4" mod="1" val="1"><target kind="6" lvl="-1"/></effect>
+		</effects>
 	</upgrade>
 </upgrades>

@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import modele.baseObject.MilkInterface;
 import modele.intel.Research;
+import modele.intel.ResearchList;
 
 /**
  * The controller for the Menu Bar.  
@@ -93,7 +94,7 @@ public class ResearchTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Research.getResearchListe());
+    	selectVar.setItems(ResearchList.getInstance().getResearchListe());
 		changeVar(selectVar.getValue());
 	}
     

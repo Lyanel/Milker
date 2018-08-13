@@ -1,51 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <toggles>
-	<toggle id="300">
+	<toggle id="3">
 		<name>Styri-rocne-obdobia</name>
 		<path>Img/Icon/Tool/</path>
 		<desc>http://rexik.zoznam.sk/aktivity-pre-deti/tvorive-dielne/Styri-rocne-obdobia/</desc>
 		<options>
-			<option id="301">
+			<option id="701">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="302">
+			<option id="702">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="303">
+			<option id="703">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="304">
+			<option id="704">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="305">
+			<option id="705">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="306">
+			<option id="706">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="307">
+			<option id="707">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="308">
+			<option id="708">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>
 			</option>
-			<option id="309">
+			<option id="709">
 				<name>matt-icons_file-x-unknown</name>
 				<path>Img/Icon/</path>
 				<desc>matt-icons_file-x-unknown</desc>

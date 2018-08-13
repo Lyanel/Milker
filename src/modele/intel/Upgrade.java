@@ -1,7 +1,6 @@
 package modele.intel;
 
-import modele.baseObject.MilkFile;
-import modele.baseObject.MilkInterface;
+import modele.MilkRs;
 import modele.baseObject.MilkKind;
 import modele.carac.Effect;
 
@@ -9,14 +8,10 @@ import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
+public class Upgrade extends Research {
+	public String getNoeud() {return UpgradeList.getInstance().getNoeud();}
 
-public class Upgrade extends Research implements Cloneable {
-
-	public static final String file="Upgrade", noeud="upgrade";
+/*	public static final String file="Upgrade", noeud="upgrade";
 	public String getNoeud() {return noeud;}
 
 	private static ArrayList<Upgrade> upgrades;
@@ -75,24 +70,28 @@ public class Upgrade extends Research implements Cloneable {
 
 	public static Callback<Upgrade, Observable[]> extractorA() {
         return (Upgrade p) -> new Observable[]{p.getInfo().getObrservableName()};
-	}
+	}*/
 
 	// Fields
-	
-	private Effect effect;
+
+	private ArrayList<Effect> effects = null;
 
 	// Constructors
 	
 	public Upgrade() {
 		super();
-		effect = new Effect();
-		this.setKind(MilkKind.kind_Upgrade);
+		this.effects = new ArrayList<Effect>();
+		this.setKind(MilkKind.Upgrade);
 	}
 	public Upgrade(Element milkElement) {
 		super();
-		this.effect = new Effect();
-		this.setKind(MilkKind.kind_Upgrade);
+		this.effects = new ArrayList<Effect>();
+		this.setKind(MilkKind.Upgrade);
 		this.setValueFromNode(milkElement);
+	}
+	public Upgrade(Upgrade original) {
+		super(original);
+		this.setDeepEffects(original.getEffects());
 	}
 
 	// Set value from Element methods
@@ -100,27 +99,26 @@ public class Upgrade extends Research implements Cloneable {
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
-		this.setEffect(milkElement);
+		this.setEffects(milkElement);
 	}
-	public void setEffect(Element milkElement) {
-		this.effect.setValueFromNode(milkElement);
+	public void setEffects(Element milkElement) {
+		effects.addAll(Effect.getMilkVarList(milkElement));
 	}
-/*	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullEffect(milkElement);
-	}
-	public void setNullEffect(Element milkElement) {
-		this.effect.setValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 	
-	public Effect getEffect() {
-		return this.effect;
+	public ArrayList<Effect> getEffects() {
+		return effects;
 	}
-	public void setEffect(Effect effect) {
-		this.effect = effect;
+	public void setDeepEffects(ArrayList<Effect> original) {
+		this.effects = new ArrayList<Effect>();
+		for (Effect effect:original) this.addEffect( new Effect (effect));
+	}
+	public void setEffects(ArrayList<Effect> effects) {
+		this.effects = effects;
+	}
+	public void addEffect(Effect effect) {
+		this.effects.add(effect);
 	}
 		
 	// toString & toXml methods
@@ -128,13 +126,24 @@ public class Upgrade extends Research implements Cloneable {
 	@Override
 	public String toStringStatChild() {
 		String temp = super.toStringStatChild();
-		if (this.effect != null) temp = this.effect.toStringStat();
+		if(effects.size()>0){
+			temp += MilkRs.LIGNE_TAB+Effect.noeud+"s : "+MilkRs.LIGNE_BREAK;
+			for (Effect effect : effects) {
+				temp += MilkRs.LIGNE_TAB+effect.toStringStat();
+			}
+		}
 		return temp;
 	}
 	@Override
 	public String toXmlStatChild() {
 		String temp = super.toXmlStatChild();
-		if (this.effect != null) temp = this.effect.toXmlStat();
+		if(effects.size()>0){
+			temp += "<"+Effect.noeud+"s>"+MilkRs.LIGNE_BREAK;
+			for (Effect effect : effects) {
+				temp += MilkRs.LIGNE_TAB+effect.toXmlStat();
+			}
+		temp += "</"+Effect.noeud+"s>"+MilkRs.LIGNE_BREAK;
+		}
 		return temp;
 	}
 	
@@ -143,14 +152,13 @@ public class Upgrade extends Research implements Cloneable {
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
-		if(this.effect!=null && !this.effect.allZero()) temp= false;
+		if(this.effects!=null && this.effects.size()!=0) temp= false;
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Upgrade clone = (Upgrade) super.clone();
-		if (this.effect!=null) clone.setEffect((Effect) this.effect.clone());
-		return clone;
+	public void applyUpgrade() {
+		for (Effect effect : effects){
+			effect.applyEffect();
+		}
 	}
 }

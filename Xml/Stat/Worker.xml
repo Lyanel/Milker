@@ -1,146 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <workers>
 	<worker id="11" tree="1" lvl="1">
-		<price coin="1" coef="1.15"/>
+		<price coin="200" coef="1.15"/>
 		<income quan="1.606" qual="9.34" />
 	</worker>
 	<worker id="12" tree="1" lvl="2">
-		<price coin="1" coef="1.15"/>
+		<price coin="1000" coef="1.15"/>
 		<income quan="1.636" qual="9.78" />
 	</worker>
 	<worker id="13" tree="1" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="13" />
+				<intel kind="1" id="113" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="2000" coef="1.15"/>
 		<income quan="1.6" qual="10.625" />
 	</worker>
 	<worker id="14" tree="1" lvl="4">
 		<need>
 			<intels>
-				<intel kind="1" id="14" />
+				<intel kind="1" id="114" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="10000" coef="1.15"/>
 		<income quan="1.44" qual="12.5" />
 	</worker>
 	<worker id="21" tree="2" lvl="1">
 		<need>
 			<intels>
-				<intel kind="1" id="21" />
+				<intel kind="1" id="121" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="200" coef="1.15"/>
 		<income quan="1.875" qual="8" />
 	</worker>
 	<worker id="22" tree="2" lvl="2">
 		<need>
 			<intels>
-				<intel kind="1" id="22" />
+				<intel kind="1" id="122" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="1000" coef="1.15"/>
 		<income quan="1.702" qual="9.4" />
 	</worker>
 	<worker id="23" tree="2" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="23" />
+				<intel kind="1" id="123" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="2000" coef="1.15"/>
 		<income quan="1.91" qual="8.9" />
 	</worker>
 	<worker id="24" tree="2" lvl="4">
 		<need>
 			<intels>
-				<intel kind="1" id="24" />
+				<intel kind="1" id="124" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="10000" coef="1.15"/>
 		<income quan="2" qual="9" />
 	</worker>
 	<worker id="25" tree="2" lvl="5">
 		<need>
 			<intels>
-				<intel kind="1" id="25" />
+				<intel kind="1" id="125" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="20000" coef="1.15"/>
 		<income quan="1.9" qual="10" />
 	</worker>
 	<worker id="26" tree="2" lvl="6">
 		<need>
 			<intels>
-				<intel kind="1" id="26" />
+				<intel kind="1" id="126" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="100000" coef="1.15"/>
 		<income quan="1.923" qual="10.4" />
 	</worker>
 	<worker id="31" tree="3" lvl="1">
 		<need>
 			<intels>
-				<intel kind="1" id="31" />
+				<intel kind="1" id="131" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="200" coef="1.15"/>
 		<income quan="1.363" qual="11" />
 	</worker>
 	<worker id="32" tree="3" lvl="2">
 		<need>
 			<intels>
-				<intel kind="1" id="32" />
+				<intel kind="1" id="132" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="1000" coef="1.15"/>
 		<income quan="1.25" qual="12.8" />
 	</worker>
 	<worker id="33" tree="3" lvl="3">
 		<need>
 			<intels>
-				<intel kind="1" id="33" />
+				<intel kind="1" id="133" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="2000" coef="1.15"/>
 		<income quan="1.416" qual="12" />
 	</worker>
 	<worker id="34" tree="3" lvl="4">
 		<need>
 			<intels>
-				<intel kind="1" id="34" />
+				<intel kind="1" id="134" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="10000" coef="1.15"/>
 		<income quan="1.2" qual="15" />
 	</worker>
 	<worker id="35" tree="3" lvl="5">
 		<need>
 			<intels>
-				<intel kind="1" id="35" />
+				<intel kind="1" id="135" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="20000" coef="1.15"/>
 		<income quan="1.461" qual="13" />
 	</worker>
 	<worker id="36" tree="3" lvl="6">
 		<need>
 			<intels>
-				<intel kind="1" id="36" />
+				<intel kind="1" id="136" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="100000" coef="1.15"/>
 		<income quan="1.321" qual="15.14" />
 	</worker>
 	<worker id="44" tree="1" lvl="4">
 		<need>
 			<intels>
-				<intel kind="1" id="44" />
+				<intel kind="1" id="144" />
 			</intels>
 		</need>
-		<price coin="1" coef="1.15"/>
+		<price coin="10000" coef="1.15"/>
 		<income quan="1.5" qual="12" />
 	</worker>
 </workers>

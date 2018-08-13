@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.List;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -13,21 +14,27 @@ import org.w3c.dom.Element;
 
 import javafx.collections.ObservableList;
 import modele.baseObject.MilkKind;
+import modele.baseObject.MilkPricedObj;
 import modele.baseObject.MilkXmlObj;
 import modele.carac.Agent;
 import modele.carac.NeededIntel;
 import modele.carac.NeededThing;
 import modele.carac.QuantityListener;
-import modele.carac.ThingAttrib;
+import modele.carac.MilkTree;
+import modele.intel.AscensionList;
 import modele.intel.Intel;
 import modele.intel.Research;
-import modele.thing.Animal;
-import modele.thing.Building;
+import modele.intel.ResearchList;
+import modele.intel.SynergyList;
+import modele.intel.UpgradeList;
+import modele.thing.AnimalList;
+import modele.thing.BuildingList;
 import modele.thing.Slave;
-import modele.thing.SlaveAnimal;
-import modele.thing.SlaveHuman;
+import modele.thing.SlaveListA;
+import modele.thing.SlaveListH;
+import modele.thing.SlaveListW;
 import modele.thing.Thing;
-import modele.thing.Worker;
+import modele.thing.WorkerList;
 
 public class Utility{
 //	private static final String NAME_FILE_STRING = "NameList";
@@ -67,51 +74,95 @@ public class Utility{
 	@SuppressWarnings("unchecked")
 	public static ObservableList<? extends Thing>[] getThingsListsFromKind(MilkKind value) {
 		Vector<ObservableList<? extends Thing>> lists = new Vector<ObservableList<? extends Thing>>();
-		int val = value.getKind().intValue();
-		if (val == MilkKind.kind_Building) lists.add(Building.getFullListe());
 		
-		if (contain(val, MilkKind.kind_Worker, MilkKind.kind_Semi_Human, MilkKind.kind_Earthling_People, 
-				MilkKind.kind_People, MilkKind.kind_Earthling_Being, MilkKind.kind_Natural_Being, MilkKind.kind_Living_Being)) lists.add(Worker.getFullListe());
-		
-		if (contain(val, MilkKind.kind_Slave_Human, MilkKind.kind_Semi_Human, MilkKind.kind_Slaves, MilkKind.kind_Natural_Cattle, 
-				MilkKind.kind_People, MilkKind.kind_Cattle, MilkKind.kind_Natural_Being, MilkKind.kind_Living_Being)) lists.add(SlaveHuman.getFullListe());
-		
-		if (contain(val, MilkKind.kind_Slave_Animal, MilkKind.kind_Slaves, MilkKind.kind_Semi_Animal, MilkKind.kind_Earthling_People, 
-				MilkKind.kind_People, MilkKind.kind_Cattle, MilkKind.kind_Earthling_Being, MilkKind.kind_Living_Being)) lists.add(SlaveAnimal.getFullListe());
-		
-		if (contain(val, MilkKind.kind_Animal, MilkKind.kind_Semi_Animal, MilkKind.kind_Natural_Cattle, 
-				MilkKind.kind_Cattle, MilkKind.kind_Earthling_Being, MilkKind.kind_Natural_Being, MilkKind.kind_Living_Being)) lists.add(Animal.getFullListe());
+		if (MilkKind.checkThingKind(MilkKind.Building, value)) lists.add(BuildingList.getInstance().getFullListe());
+		if (MilkKind.checkThingKind(MilkKind.Worker, value)) lists.add(WorkerList.getInstance().getFullListe());
+		if (MilkKind.checkThingKind(MilkKind.Slave_Worker, value)) lists.add(SlaveListW.getInstance().getSWFullListe());
+		if (MilkKind.checkThingKind(MilkKind.Slave_Humanoid, value)) lists.add(SlaveListH.getInstance().getSHFullListe());
+		if (MilkKind.checkThingKind(MilkKind.Slave_Animal, value)) lists.add(SlaveListA.getInstance().getSAFullListe());
+		if (MilkKind.checkThingKind(MilkKind.Animal, value)) lists.add(AnimalList.getInstance().getFullListe());
 		
 		return (ObservableList<? extends Thing>[]) lists.toArray(new ObservableList[lists.size()]);
+	}
+	
+	/**
+	 * return an Array of ObservableList depending of a Milkkind.
+	 * */
+	public static ObservableList<? extends Intel> getIntelsListsFromKind(MilkKind value) {
+		ObservableList<? extends Intel> list = null;
+		switch (value.getKind()) {
+			case MilkKind.Research: {
+					list = ResearchList.getInstance().getResearchListe();
+				}
+				break;
+			case MilkKind.Upgrade: {
+					list = UpgradeList.getInstance().getUpgradeListe();
+				}
+				break;
+			case MilkKind.Synergy: {
+					list = SynergyList.getInstance().getSynergyListe();
+				}
+				break;
+			case MilkKind.Ascension: {
+					list = AscensionList.getInstance().getAscensionListe();
+				}
+				break;
+			case MilkKind.Event: {
+					//list = EventList.getInstance().getEventListe();
+				}
+				break;
+			default:
+				break;
+		}
+		return list;
+	}
+
+	/**
+	 * return an Intel depending of a NeededIntel.
+	 * */
+	public static Intel getIntelFromAgent(NeededIntel value) {
+		Intel result = null;
+    	for (Intel test : getIntelsListsFromKind(value.getKind())) {
+			if(value.getId()!=null && value.getId().intValue()>0){
+				if(value.getId().intValue()==test.getId().intValue() ){
+					result = test;
+					break;
+				}
+			} 
+		}
+		return result;
+	}
+	
+	/**
+	 * return an Array of ObservableList depending of a Milkkind.
+	 * */
+	public static MilkPricedObj getThingFromList(int id, List<? extends MilkPricedObj> list) {
+		MilkPricedObj wanted = null;
+		for (MilkPricedObj test : list) if(id==test.getId().intValue() ) wanted=test;
+		return wanted;
 	}
 
 	/**
 	 * return an Array of ObservableList depending of a Milkkind.
 	 * */
+	public static NeededThing getAgentFromThing(Thing value) {
+		NeededThing thing = new NeededThing();
+		thing.setKind(value.getKind().getKind());
+		thing.setId(value.getId().intValue());
+		return thing;
+	}
+
+	/**
+	 * return an Array of Thing depending of a NeededThing.
+	 * */
 	public static ArrayList<? extends Thing> getThingsListsFromAgent(NeededThing value) {
-		
 		ArrayList<Thing> lists =  new ArrayList<Thing>(); 
-		
         for (ObservableList<? extends Thing> tests : getThingsListsFromKind(value.getKind())) {
 			for (Thing test : tests) {
-				if(value.getId()!=null && value.getId().intValue()>0){
-					if(value.getId().intValue()==test.getId().intValue() ) lists.add(test);
-				} else {
-					if( (value.getLvl()==null || NeededThing.checkLevel(value, test) ) &&
-							(value.getAttrib()==null || ThingAttrib.checkAttrib(value.getAttrib(), test) ) ) lists.add(test);
-				}
+				if(multiCheck(value, test)) lists.add(test);
 			}
 		}
 		return lists;
-	}
-	
-	public static boolean contain(int value, int... args) {
-	    for (int arg : args) {
-	        if (arg == value) {
-	            return true;
-	        }
-	    }
-	    return false;
 	}
 	
 	/*
@@ -128,12 +179,7 @@ public class Utility{
 	public static void addQuantityListenerToThingsLists(Agent value, QuantityListener listener, ObservableList<? extends Thing>... testLists) {
         for (ObservableList<? extends Thing> tests : testLists) {
 			for (Thing test : tests) {
-				if(value.getId()!=null && value.getId().intValue()>0){
-					if(value.getId().intValue()==test.getId().intValue() ) test.getAttrib().addQuantityListener(listener);
-				} else {
-					if( (value.getLvl()==null || NeededThing.checkLevel(value, test) ) &&
-							(value.getAttrib()==null || ThingAttrib.checkAttrib(value.getAttrib(), test) ) ) test.getAttrib().addQuantityListener(listener);
-				}
+				if(multiCheck(value, test)) test.getQuantity().addQuantityListener(listener);
 			}
 		}
 	}
@@ -153,31 +199,36 @@ public class Utility{
 		int result = 0;
         for (ObservableList<? extends Thing> tests : testLists) {
 			for (Thing test : tests) {
-				if(value.getId()!=null && value.getId().intValue()>0){
-					if(value.getId().intValue()==test.getId().intValue() ) result += test.getAttrib().getQuant().intValue();
-				} else {
-					if( (value.getLvl()==null || NeededThing.checkLevel(value, test) ) &&
-							(value.getAttrib()==null || ThingAttrib.checkAttrib(value.getAttrib(), test) ) )  result += test.getAttrib().getQuant().intValue();
-				}
+				if(multiCheck(value, test))  result += test.getQuantity().getQuant().intValue();
 			}
 		}
         return result;
 	}
 
 	/*
-	 * Check if the Intel related to the NeededIntel is bought.
+	 * Chaek if the tested thing have the desired value (id or Lvl/Tree).
 	 * */
-	public static boolean checkIntel(NeededIntel value, ObservableList<? extends Intel> intels) {
-		boolean bought = true;
-		for (Intel intel : intels) {
-			if ( intel.getId().intValue()==value.getId().intValue() && !intel.bought() ) bought=false;
+	public static boolean multiCheck(NeededThing value, Thing test) {
+		boolean result = false;
+		if(value.getId()!=null && value.getId().intValue()>0){
+			if(value.getId().intValue()==test.getId().intValue() ) result = true;
+		} else {
+			if( (value.getLvl()==null || NeededThing.checkLevel(value, test) ) &&
+					(value.getTree()==null || MilkTree.checkTree(value.getTree(), test) ) )  result = true;
 		}
-		return bought;
+        return result;
+	}
+
+	/*
+	 * Check if the Intel related to the NeededIntel is bought.
+	 * *
+	public static boolean checkIntel(NeededIntel value, ObservableList<? extends MilkPricedObj> milkPricedObjs) {
+		return getIntelFromAgent(value).bought();
 	}
 
 	/*
 	 * Check if the things related to the NeededThing is bought and in enough quantity.
-	 * */
+	 * *
 	@SafeVarargs
 	public static boolean checkThing(NeededThing wanted, ObservableList<? extends Thing>... testLists) {
 		int unit = 0;
@@ -192,12 +243,21 @@ public class Utility{
 			}
 		}
 		return ( unit > wanted.getAttrib().getQuant().intValue() ) ? true : false;
-	}
+	}*/
 
 	public static boolean thatNeedaSacrifice(MilkXmlObj value) {
 		boolean result = false;
-		if ( (value instanceof Slave && ((Slave)value).getSacrifice().getKind().getKind().intValue()!=0 ) ||
-				(value instanceof Research && ((Research)value).getSacrifice().getKind().getKind().intValue()!=0) ) result =true;
+		if ( (value instanceof Slave && ((Slave)value).getSacrifice().getQuantity().getQuant().intValue()>0 ) ||
+				(value instanceof Research && ((Research)value).getSacrifice().getQuantity().getQuant().intValue()>0) ) result =true;
 		return result;
+	}
+	
+	public static boolean contain(int value, int... args) {
+	    for (int arg : args) {
+	        if (arg == value) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 }

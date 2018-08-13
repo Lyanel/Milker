@@ -1,92 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<toggles id="32">
-	<toggle id="500" start="510" >
+<toggles id="1">
+	<toggle id="1" start="710" >
 		<price coin="5" coef="1"/>
 		<agent kind="1" id="12"/>
 		<options>
-			<option id="510">
+			<option id="710">
 				<levels>
-					<level id="511" tree="1" lvl="1">
+					<level id="711" tree="1" lvl="1">
 						<bonus quan="40" qual="40" />
 					</level>
-					<level id="512" tree="1" lvl="2">
-						<need><intels><intel kind="1" id="512" /></intels></need>
+					<level id="712" tree="1" lvl="2">
+						<need><intels><intel kind="1" id="712" /></intels></need>
 						<bonus quan="50" qual="50" />
 					</level>
-					<level id="513" tree="1" lvl="3">
-						<need><intels><intel kind="1" id="513" /></intels></need>
+					<level id="713" tree="1" lvl="3">
+						<need><intels><intel kind="1" id="713" /></intels></need>
 						<bonus quan="70" qual="70" />
 					</level>
-					<level id="514" tree="1" lvl="4">
-						<need><intels><intel kind="1" id="514" /></intels></need>
+					<level id="714" tree="1" lvl="4">
+						<need><intels><intel kind="1" id="714" /></intels></need>
 						<bonus quan="90" qual="90" />
 					</level>
-					<level id="515" tree="1" lvl="5">
-						<need><intels><intel kind="1" id="515" /></intels></need>
+					<level id="715" tree="1" lvl="5">
+						<need><intels><intel kind="1" id="715" /></intels></need>
 						<bonus quan="110" qual="110" />
 					</level>
-					<level id="516" tree="1" lvl="6">
-						<need><intels><intel kind="1" id="516" /></intels></need>
+					<level id="716" tree="1" lvl="6">
+						<need><intels><intel kind="1" id="716" /></intels></need>
 						<bonus quan="120" qual="140" />
 					</level>
-					<level id="517" tree="1" lvl="7">
-						<need><intels><intel kind="1" id="517" /></intels></need>
+					<level id="717" tree="1" lvl="7">
+						<need><intels><intel kind="1" id="717" /></intels></need>
 						<bonus quan="150" qual="150" />
 					</level>
 				</levels>
 			</option>
-			<option id="520">
-				<need><intels><intel kind="1" id="522" /></intels></need>
+			<option id="720">
+				<need><intels><intel kind="1" id="722" /></intels></need>
 				<levels>
-					<level id="522" tree="2" lvl="2">
+					<level id="722" tree="2" lvl="2">
 						<bonus quan="60" qual="40" />
 					</level>
-					<level id="523" tree="2" lvl="3">
-						<need><intels><intel kind="1" id="523" /></intels></need>
+					<level id="723" tree="2" lvl="3">
+						<need><intels><intel kind="1" id="723" /></intels></need>
 						<bonus quan="80" qual="60" />
 					</level>
-					<level id="524" tree="2" lvl="4">
-						<need><intels><intel kind="1" id="524" /></intels></need>
+					<level id="724" tree="2" lvl="4">
+						<need><intels><intel kind="1" id="724" /></intels></need>
 						<bonus quan="80" qual="100" />
 					</level>
-					<level id="525" tree="2" lvl="5">
-						<need><intels><intel kind="1" id="525" /></intels></need>
+					<level id="725" tree="2" lvl="5">
+						<need><intels><intel kind="1" id="725" /></intels></need>
 						<bonus quan="100" qual="120" />
 					</level>
-					<level id="526" tree="2" lvl="6">
-						<need><intels><intel kind="1" id="526" /></intels></need>
+					<level id="726" tree="2" lvl="6">
+						<need><intels><intel kind="1" id="726" /></intels></need>
 						<bonus quan="130" qual="130" />
 					</level>
-					<level id="527" tree="2" lvl="7">
-						<need><intels><intel kind="1" id="527" /></intels></need>
+					<level id="727" tree="2" lvl="7">
+						<need><intels><intel kind="1" id="727" /></intels></need>
 						<bonus quan="160" qual="140" />
 					</level>
 				</levels>
 			</option>
-			<option id="530">
-				<need><intels><intel kind="1" id="532" /></intels></need>
+			<option id="730">
+				<need><intels><intel kind="1" id="732" /></intels></need>
 				<levels>
-					<level id="532" tree="3" lvl="2">
+					<level id="732" tree="3" lvl="2">
 						<bonus quan="40" qual="60" />
 					</level>
-					<level id="533" tree="3" lvl="3">
-						<need><intels><intel kind="1" id="533" /></intels></need>
+					<level id="733" tree="3" lvl="3">
+						<need><intels><intel kind="1" id="733" /></intels></need>
 						<bonus quan="60" qual="80" />
 					</level>
-					<level id="534" tree="3" lvl="4">
-						<need><intels><intel kind="1" id="534" /></intels></need>
+					<level id="734" tree="3" lvl="4">
+						<need><intels><intel kind="1" id="734" /></intels></need>
 						<bonus quan="100" qual="80" />
 					</level>
-					<level id="535" tree="3" lvl="5">
-						<need><intels><intel kind="1" id="535" /></intels></need>
+					<level id="735" tree="3" lvl="5">
+						<need><intels><intel kind="1" id="735" /></intels></need>
 						<bonus quan="120" qual="100" />
 					</level>
-					<level id="536" tree="3" lvl="6">
-						<need><intels><intel kind="1" id="536" /></intels></need>
+					<level id="736" tree="3" lvl="6">
+						<need><intels><intel kind="1" id="736" /></intels></need>
 						<bonus quan="140" qual="120" />
 					</level>
-					<level id="537" tree="3" lvl="7">
-						<need><intels><intel kind="1" id="537" /></intels></need>
+					<level id="737" tree="3" lvl="7">
+						<need><intels><intel kind="1" id="737" /></intels></need>
 						<bonus quan="140" qual="160" />
 					</level>
 				</levels>

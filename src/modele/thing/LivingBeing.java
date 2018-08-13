@@ -2,22 +2,29 @@ package modele.thing;
 
 import org.w3c.dom.Element;
 
-import modele.carac.MilkAttrib;
+import modele.carac.MilkProd;
 
-public class LivingBeing extends Thing implements Cloneable {
+public class LivingBeing extends Thing {
 	
 	
 	// field
 	
+	private Integer scene;
 
 	// Constructors
 	
 	public LivingBeing() {
 		super();
+		this.setSceneLvl(1);
 	}
 	public LivingBeing(Element milkElement) {
 		super();
+		this.setSceneLvl(1);
 		this.setValueFromNode(milkElement);
+	}
+	public LivingBeing(LivingBeing original) {
+		super(original);
+		this.scene = new Integer(original.getSceneLvl());
 	}
 
 	// Set value from Element methods
@@ -28,12 +35,29 @@ public class LivingBeing extends Thing implements Cloneable {
 	
 	// field methods
 	
+	public Integer getSceneLvl() {
+		return this.scene;
+	}
+	public String getStringSceneLvl() {
+		String temp = null;
+		if (this.scene != null) temp = xmlLvl+" : "+this.scene+". ";
+		return temp;
+	}
+	public String getXmlSceneLvl() {
+		String temp = null;
+		if (this.scene != null) temp = " "+xmlLvl+"=\""+scene+"\"";
+		return temp;
+	}
+	public void setSceneLvl(Integer scene) {
+		this.scene = scene;
+	}
+	
 	// other object methods
 
 	public double getIncome(double toolProdBonus, double toolQualBonus, double cattleProdBonus,double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
 		double tIncome = 0;
-		Integer thingQuant = this.getAttrib().getActives();
-		MilkAttrib attrib = this.getIncome().getAttrib();
+		Integer thingQuant = this.getQuantity().getActives();
+		MilkProd attrib = this.getIncome().getAttrib();
 		if(thingQuant>0 && this.getIncome().canProdMilk()){
 			double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus;
 			double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus;
@@ -45,14 +69,14 @@ public class LivingBeing extends Thing implements Cloneable {
 	public double getActiveIncome(double toolProdBonus, double toolQualBonus, double cattleProdBonus,double cattleQualBonus, double buildProdBonus, double buildQualBonus) {
 		double tIncome = 0;
 		if(this.getIncome().canProdMilk()){
-			MilkAttrib attrib = this.getIncome().getAttrib();
-			Integer fullyActive = this.getAttrib().getActives();
+			MilkProd attrib = this.getIncome().getAttrib();
+			Integer fullyActive = this.getQuantity().getActives();
 			if(fullyActive>0){
 				double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus;
 				double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus;
 				tIncome += fullyActive *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
 			}
-			Integer semiActive = this.getAttrib().getSemiActives();
+			Integer semiActive = this.getQuantity().getSemiActives();
 			if(semiActive>0){
 				double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*0.8*toolProdBonus;
 				double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*0.7*toolQualBonus;
@@ -68,9 +92,4 @@ public class LivingBeing extends Thing implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		LivingBeing clone = (LivingBeing) super.clone();
-		return clone;
-	}
 }

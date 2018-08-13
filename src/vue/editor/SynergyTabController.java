@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import modele.baseObject.MilkInterface;
 import modele.intel.Synergy;
+import modele.intel.SynergyList;
 
 /**
  * The controller for the Menu Bar.  
@@ -98,7 +99,7 @@ public class SynergyTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Synergy.getSynergyListe());
+    	selectVar.setItems(SynergyList.getInstance().getSynergyListe());
 		changeVar(selectVar.getValue());
 	}
     

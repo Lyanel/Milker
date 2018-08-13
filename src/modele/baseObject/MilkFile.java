@@ -8,7 +8,7 @@ import modele.MilkRs;
 import modele.ParseMilkFile;
 import modele.XmlHelper;
 
-public class MilkFile extends MilkId implements Cloneable {
+public class MilkFile extends MilkId {
 
 	public static final String xmlBasePath = "Xml/";
 	public static final String xmlFiles = "XmlFileListe";
@@ -75,8 +75,7 @@ public class MilkFile extends MilkId implements Cloneable {
 	
 	// Fields
 	
-	private String path;
-	private String name;
+	private String name,path;
 
 	// Constructors
 	
@@ -91,6 +90,11 @@ public class MilkFile extends MilkId implements Cloneable {
 	public MilkFile(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
+	}
+	public MilkFile(MilkFile original) {
+		super(original);
+		this.name = new String(original.getName());
+		this.path = new String(original.getPath());
 	}
 
 	// Set value from Element methods
@@ -163,9 +167,4 @@ public class MilkFile extends MilkId implements Cloneable {
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkFile clone = (MilkFile) super.clone();
-		return clone;
-	}
 }

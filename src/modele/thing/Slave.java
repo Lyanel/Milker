@@ -5,14 +5,10 @@ import modele.carac.Sacrifice;
 
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
 
-
-public class Slave extends LivingBeing implements Cloneable {
-	
+public class Slave extends LivingBeing {
+	public String getNoeud() {return SlaveList.getInstance().getNoeud();}
+	/*
 	public static String noeud = "slave";
 	public String getNoeud() {return noeud;}
 	
@@ -39,7 +35,7 @@ public class Slave extends LivingBeing implements Cloneable {
 	public static ObservableList<Slave> getNeutralListe() {
 		if (modelNeutralListe==null){
 			modelNeutralListe = FXCollections.observableArrayList(extractorSlave());
-			merge(modelNeutralListe, SlaveAnimal.getSANeutralListe(), SlaveHuman.getSHNeutralListe()/*, SlaveWorker.getSWNeutralListe()*/);
+			merge(modelNeutralListe, SlaveHuman.getSHNeutralListe(), SlaveWorker.getSWNeutralListe(), SlaveAnimal.getSANeutralListe());
 		}
 		return modelNeutralListe;
 	}
@@ -47,7 +43,7 @@ public class Slave extends LivingBeing implements Cloneable {
 	public static ObservableList<Slave> getScienceListe() {
 		if (modelScienceListe==null){
 			modelScienceListe = FXCollections.observableArrayList(extractorSlave());
-			merge(modelScienceListe, SlaveAnimal.getSAScienceListe(), SlaveHuman.getSHScienceListe()/*, SlaveWorker.getSWScienceListe()*/);
+			merge(modelScienceListe, SlaveHuman.getSHScienceListe(), SlaveWorker.getSWScienceListe(), SlaveAnimal.getSAScienceListe());
 		}
 		return modelScienceListe;
 	}
@@ -55,7 +51,7 @@ public class Slave extends LivingBeing implements Cloneable {
 	public static ObservableList<Slave> getMagicListe() {
 		if (modelMagicListe==null){
 			modelMagicListe = FXCollections.observableArrayList(extractorSlave());
-			merge(modelMagicListe, SlaveAnimal.getSAMagicListe(), SlaveHuman.getSHMagicListe()/*, SlaveWorker.getSWMagicListe()*/);
+			merge(modelMagicListe, SlaveHuman.getSHMagicListe(), SlaveWorker.getSWMagicListe(), SlaveAnimal.getSAMagicListe());
 		}
 		return modelMagicListe;
 	}
@@ -68,7 +64,7 @@ public class Slave extends LivingBeing implements Cloneable {
 			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
 		}
 		return tIncome;
-	}
+	}*/
 
 	// Fields
 	
@@ -79,15 +75,19 @@ public class Slave extends LivingBeing implements Cloneable {
 	public Slave() {
 		super();
 		sacrifice = new Sacrifice();
-		this.setKind(MilkKind.kind_Slaves);
+		this.setKind(MilkKind.Slaves);
 		this.setProductivity(1);
 	}
 	public Slave(Element milkElement) {
 		super();
 		this.sacrifice = new Sacrifice();
-		this.setKind(MilkKind.kind_Slaves);
+		this.setKind(MilkKind.Slaves);
 		this.setProductivity(1);
 		this.setValueFromNode(milkElement);
+	}
+	public Slave(Slave original) {
+		super(original);
+		this.sacrifice = new Sacrifice(original.getSacrifice());
 	}
 
 	// Set value from Element methods
@@ -99,15 +99,7 @@ public class Slave extends LivingBeing implements Cloneable {
 	}
 	public void setSacrifice(Element milkElement) {
 		this.sacrifice.setValueFromNode(milkElement);;
-	}/*
-	@Override
-	public void setNullValueFromNode(Element milkElement) {
-		super.setNullValueFromNode(milkElement);
-		this.setNullSacrifice(milkElement);
 	}
-	public void setNullSacrifice(Element milkElement) {
-		this.sacrifice.setValueFromNode(milkElement);
-	}*/
 	
 	// field methods
 	
@@ -142,10 +134,4 @@ public class Slave extends LivingBeing implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Slave clone = (Slave) super.clone();
-		if (this.sacrifice!=null) clone.setSacrifice((Sacrifice) this.sacrifice.clone());
-		return clone;
-	}
 }

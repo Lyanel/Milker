@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import modele.baseObject.MilkInterface;
 import modele.thing.Building;
+import modele.thing.BuildingList;
 
 /**
  * The controller for the Menu Bar.  
@@ -116,7 +117,7 @@ public class BuildingTabController extends MilkTabControleur {
 	public void initialize() {
     	setText();
     	selectVar.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> changeVar(newValue));
-    	selectVar.setItems(Building.getFullListe());
+    	selectVar.setItems(BuildingList.getInstance().getFullListe());
 		changeVar(selectVar.getValue());
 	}
     
@@ -150,7 +151,7 @@ public class BuildingTabController extends MilkTabControleur {
 			idValue.setText(""+building.getId());
 			lvlActual.setText(""+building.getLvl());
 			startActual.setText(""+building.getStart());
-			pathActual.setText(""+building.getAttrib());
+			pathActual.setText(""+building.getTree());
 			
 			priceActual.setText(""+building.getPrice());
 			incomeActual.setText(""+building.getIncome());
@@ -167,7 +168,7 @@ public class BuildingTabController extends MilkTabControleur {
 			idInput.setText(""+building.getId());
 			lvlInput.setText(""+building.getLvl());
 			startInput.setText(""+building.getStart());
-			pathInput.setText(""+building.getAttrib());
+			pathInput.setText(""+building.getTree());
 			
 			priceInput.setText(""+building.getPrice());
 			incomeInput.setText(""+building.getIncome());

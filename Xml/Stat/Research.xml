@@ -1,177 +1,177 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <researchs>
-	<research id="13">
+	<research id="113">
 		<need>
 			<things>
 				<thing kind="1" id="12">5</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="14">
+	<research id="114">
 		<need>
 			<things>
 				<thing kind="1" id="13">50</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="25000" coef="1"/>
 	</research>
-	<research id="21">
+	<research id="121" view="2">
 		<need>
 			<things>
 				<thing kind="1" id="11">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="500" coef="1"/>
 	</research>
-	<research id="22">
+	<research id="122">
 		<need>
 			<things>
 				<thing kind="1" id="13">10</thing>
 				<thing kind="1" id="21">1</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="2500" coef="1"/>
 	</research>
-	<research id="23">
+	<research id="123">
 		<need>
 			<things>
 				<thing kind="1" id="22">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="24">
+	<research id="124">
 		<need>
 			<things>
 				<thing kind="1" id="23">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="25000" coef="1"/>
 	</research>
-	<research id="25">
+	<research id="125">
 		<need>
 			<things>
 				<thing kind="1" id="24">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="50000" coef="1"/>
 	</research>
-	<research id="26">
+	<research id="126">
 		<need>
 			<things>
 				<thing kind="1" id="24">50</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="250000" coef="1"/>
 	</research>
-	<research id="31">
+	<research id="131" view="3">
 		<need>
 			<things>
 				<thing kind="1" id="11">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="500" coef="1"/>
 	</research>
-	<research id="32">
+	<research id="132">
 		<need>
 			<things>
 				<thing kind="1" id="13">10</thing>
 				<thing kind="1" id="31">1</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="2500" coef="1"/>
 	</research>
-	<research id="33">
+	<research id="133">
 		<need>
 			<things>
 				<thing kind="1" id="32">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="34">
+	<research id="134">
 		<need>
 			<things>
 				<thing kind="1" id="33">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="25000" coef="1"/>
 	</research>
-	<research id="35">
+	<research id="135">
 		<need>
 			<things>
 				<thing kind="1" id="34">10</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="50000" coef="1"/>
 	</research>
-	<research id="36">
+	<research id="136">
 		<need>
 			<things>
 				<thing kind="1" id="34">50</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="250000" coef="1"/>
 	</research>
-	<research id="43">
+	<research id="143">
 		<need>
 			<things>
 				<thing kind="1" id="13">5</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="44">
+	<research id="144" view="4">
 		<check>
 			<things>
 				<thing kind="1" id="24">1</thing>
 				<thing kind="1" id="34">1</thing>
 			</things>
 		</check>
-		<price coin="1" coef="1"/>
+		<price coin="100000" coef="1"/>
 	</research>
-	<research id="51">
+	<research id="151">
 		<need>
 			<intels>
-				<intel kind="2" id="11" />
+				<intel kind="2" id="111" />
 			</intels>
 			<things>
 				<thing kind="1" id="21">1</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="500" coef="1"/>
 	</research>
-	<research id="55">
+	<research id="155">
 		<need>
 			<things>
 				<thing kind="1" id="24">5</thing>
 				<thing kind="1" id="44">5</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="50000" coef="1"/>
 	</research>
-	<research id="61">
+	<research id="161">
 		<need>
 			<intels>
-				<intel kind="2" id="11" />
+				<intel kind="2" id="111" />
 			</intels>
 			<things>
 				<thing kind="1" id="31">1</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="500" coef="1"/>
 	</research>
-	<research id="65">
+	<research id="165">
 		<need>
 			<things>
 				<thing kind="1" id="34">5</thing>
 				<thing kind="1" id="44">5</thing>
 			</things>
 		</need>
-		<price coin="1" coef="1"/>
+		<price coin="50000" coef="1"/>
 	</research>
-	<research id="212">
+	<research id="412">
 		<need>
 			<things>
 				<thing kind="2" id="44" >1</thing>
@@ -183,12 +183,12 @@
 				<thing kind="1" id="34">5</thing>
 			</things>
 		</check>
-		<price coin="1" coef="1"/>
+		<price coin="2500" coef="1"/>
 	</research>
-	<research id="213">
+	<research id="413">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 		</need>
 		<check>
@@ -197,12 +197,12 @@
 				<thing kind="1" id="65">10</thing>
 			</things>
 		</check>
-		<price coin="1" coef="1"/>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="223">
+	<research id="423">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 			<things>
 				<thing kind="1" id="24">10</thing>
@@ -210,12 +210,12 @@
 			</things>
 		</need>
 		<sacrifice kind="1" id="24">1</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="4000" coef="1"/>
 	</research>
-	<research id="224">
+	<research id="424">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 			<things>
 				<thing kind="1" id="25">10</thing>
@@ -223,36 +223,36 @@
 			</things>
 		</need>
 		<sacrifice kind="1" id="25">1</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="20000" coef="1"/>
 	</research>
-	<research id="225">
+	<research id="425">
 		<need>
 			<intels>
-				<intel kind="1" id="223" />
+				<intel kind="1" id="423" />
 			</intels>
 			<things>
 				<thing kind="1" id="24">100</thing>
 			</things>
 		</need>
 		<sacrifice kind="1" id="24">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="40000" coef="1"/>
 	</research>
-	<research id="226">
+	<research id="426">
 		<need>
 			<intels>
-				<intel kind="1" id="225" />
+				<intel kind="1" id="425" />
 			</intels>
 			<things>
 				<thing kind="1" id="26">100</thing>
 			</things>
 		</need>
 		<sacrifice kind="1" id="26">1</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="200000" coef="1"/>
 	</research>
-	<research id="233">
+	<research id="433">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 			<things>
 				<thing kind="1" id="34">10</thing>
@@ -260,12 +260,12 @@
 			</things>
 		</need>
 		<sacrifice kind="1" id="34">1</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="4000" coef="1"/>
 	</research>
-	<research id="234">
+	<research id="434">
 		<need>
 			<intels>
-				<intel kind="1" id="212" />
+				<intel kind="1" id="412" />
 			</intels>
 			<things>
 				<thing kind="1" id="35">10</thing>
@@ -273,37 +273,37 @@
 			</things>
 		</need>
 		<sacrifice kind="1" id="35">1</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="20000" coef="1"/>
 	</research>
-	<research id="235">
+	<research id="435">
 		<need>
 			<intels>
-				<intel kind="1" id="233" />
+				<intel kind="1" id="433" />
 			</intels>
 			<things>
 				<thing kind="1" id="34">100</thing>
 			</things>
 		</need>
 		<sacrifice kind="1" id="34">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="40000" coef="1"/>
 	</research>
-	<research id="236">
+	<research id="436">
 		<need>
 			<intels>
-				<intel kind="1" id="235" />
+				<intel kind="1" id="435" />
 			</intels>
 			<things>
 				<thing kind="1" id="36">100</thing>
 			</things>
 		</need>
 		<sacrifice kind="1" id="36">1</sacrifice>
-		<price coin="1" coef="1"/>
+		<price coin="200000" coef="1"/>
 	</research>
-	<research id="242">
+	<research id="512" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="42">1</thing>
-				<thing kind="5" id="12">100</thing>
+				<thing kind="6" id="12">100</thing>
 			</things>
 		</need>
 		<check>
@@ -312,14 +312,14 @@
 				<thing kind="1" id="34">5</thing>
 			</things>
 		</check>
-		<sacrifice kind="5" id="12">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="12">10</sacrifice>
+		<price coin="2000" coef="1"/>
 	</research>
-	<research id="243">
+	<research id="513" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="42">1</thing>
-				<thing kind="5" id="13">100</thing>
+				<thing kind="6" id="13">100</thing>
 			</things>
 		</need>
 		<check>
@@ -328,14 +328,14 @@
 				<thing kind="1" id="34">10</thing>
 			</things>
 		</check>
-		<sacrifice kind="5" id="13">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="13">10</sacrifice>
+		<price coin="4000" coef="1"/>
 	</research>
-	<research id="244">
+	<research id="514" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="42">1</thing>
-				<thing kind="5" id="14">100</thing>
+				<thing kind="6" id="14">100</thing>
 			</things>
 		</need>
 		<check>
@@ -344,14 +344,14 @@
 				<thing kind="1" id="34">50</thing>
 			</things>
 		</check>
-		<sacrifice kind="5" id="14">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="14">10</sacrifice>
+		<price coin="20000" coef="1"/>
 	</research>
-	<research id="245">
+	<research id="515" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="42">1</thing>
-				<thing kind="5" id="15">100</thing>
+				<thing kind="6" id="15">100</thing>
 			</things>
 		</need>
 		<check>
@@ -360,295 +360,295 @@
 				<thing kind="1" id="34">100</thing>
 			</things>
 		</check>
-		<sacrifice kind="5" id="15">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="15">10</sacrifice>
+		<price coin="40000" coef="1"/>
 	</research>
-	<research id="251">
+	<research id="521" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="24">1</thing>
 				<thing kind="1" id="52">1</thing>
-				<thing kind="5" id="21">100</thing>
+				<thing kind="6" id="21">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="21">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="21">10</sacrifice>
+		<price coin="400" coef="1"/>
 	</research>
-	<research id="252">
+	<research id="522" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="24">5</thing>
 				<thing kind="1" id="52">1</thing>
-				<thing kind="5" id="22">100</thing>
+				<thing kind="6" id="22">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="22">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="22">10</sacrifice>
+		<price coin="2000" coef="1"/>
 	</research>
-	<research id="253">
+	<research id="523" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="24">10</thing>
 				<thing kind="1" id="52">1</thing>
-				<thing kind="5" id="23">100</thing>
+				<thing kind="6" id="23">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="23">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="23">10</sacrifice>
+		<price coin="4000" coef="1"/>
 	</research>
-	<research id="254">
+	<research id="524" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="24">50</thing>
 				<thing kind="1" id="52">1</thing>
-				<thing kind="5" id="24">100</thing>
+				<thing kind="6" id="24">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="24">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="24">10</sacrifice>
+		<price coin="20000" coef="1"/>
 	</research>
-	<research id="261">
+	<research id="531" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="34">1</thing>
 				<thing kind="1" id="62">1</thing>
-				<thing kind="5" id="31">100</thing>
+				<thing kind="6" id="31">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="31">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="31">10</sacrifice>
+		<price coin="400" coef="1"/>
 	</research>
-	<research id="262">
+	<research id="532" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="34">5</thing>
 				<thing kind="1" id="62">1</thing>
-				<thing kind="5" id="32">100</thing>
+				<thing kind="6" id="32">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="32">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="32">10</sacrifice>
+		<price coin="2000" coef="1"/>
 	</research>
-	<research id="263">
+	<research id="533" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="34">10</thing>
 				<thing kind="1" id="62">1</thing>
-				<thing kind="5" id="33">100</thing>
+				<thing kind="6" id="33">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="33">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="33">10</sacrifice>
+		<price coin="4000" coef="1"/>
 	</research>
-	<research id="264">
+	<research id="534" view="4">
 		<need>
 			<things>
 				<thing kind="1" id="34">50</thing>
 				<thing kind="1" id="62">1</thing>
-				<thing kind="5" id="34">100</thing>
+				<thing kind="6" id="34">100</thing>
 			</things>
 		</need>
-		<sacrifice kind="5" id="34">10</sacrifice>
-		<price coin="1" coef="1"/>
+		<sacrifice kind="6" id="34">10</sacrifice>
+		<price coin="20000" coef="1"/>
 	</research>
-	<research id="501">
+	<research id="701" view="5">
 		<need>
 			<things>
 				<thing kind="1" id="10">200</thing>
 				<thing kind="2">200</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="500" coef="1"/>
 	</research>
-	<research id="512">
+	<research id="712">
 		<need>
 			<things>
 				<thing kind="2" id="12">10</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="2500" coef="1"/>
 	</research>
-	<research id="513">
+	<research id="713">
 		<need>
 			<intels>
-				<intel kind="1" id="512" />
+				<intel kind="1" id="712" />
 			</intels>
 			<things>
 				<thing kind="2" id="12">100</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="514">
+	<research id="714">
 		<need>
 			<intels>
-				<intel kind="1" id="513" />
+				<intel kind="1" id="713" />
 			</intels>
 			<things>
 				<thing kind="2" id="12">500</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="25000" coef="1"/>
 	</research>
-	<research id="515">
+	<research id="715">
 		<need>
 			<intels>
-				<intel kind="1" id="514" />
+				<intel kind="1" id="714" />
 			</intels>
 			<things>
 				<thing kind="2" id="44">10</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="50000" coef="1"/>
 	</research>
-	<research id="516">
+	<research id="716">
 		<need>
 			<intels>
-				<intel kind="1" id="515" />
+				<intel kind="1" id="715" />
 			</intels>
 			<things>
 				<thing kind="2" id="44">100</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="250000" coef="1"/>
 	</research>
-	<research id="517">
+	<research id="717">
 		<need>
 			<intels>
-				<intel kind="1" id="516" />
+				<intel kind="1" id="716" />
 			</intels>
 			<things>
 				<thing kind="2" id="44">500</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="500000" coef="1"/>
 	</research>
-	<research id="522">
+	<research id="722">
 		<need>
 			<things>
 				<thing kind="1" id="22">1</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="2500" coef="1"/>
 	</research>
-	<research id="523">
+	<research id="723">
 		<need>
 			<intels>
-				<intel kind="1" id="522" />
+				<intel kind="1" id="722" />
 			</intels>
 			<things>
 				<thing kind="1" id="23">1</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="524">
+	<research id="724">
 		<need>
 			<intels>
-				<intel kind="1" id="523" />
+				<intel kind="1" id="723" />
 			</intels>
 			<things>
 				<thing kind="1" id="22">100</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="25000" coef="1"/>
 	</research>
-	<research id="525">
+	<research id="725">
 		<need>
 			<intels>
-				<intel kind="1" id="524" />
+				<intel kind="1" id="724" />
 			</intels>
 			<things>
 				<thing kind="1" id="24">50</thing>
 				<thing kind="1" id="55">1</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="50000" coef="1"/>
 	</research>
-	<research id="526">
+	<research id="726">
 		<need>
 			<intels>
-				<intel kind="1" id="525" />
+				<intel kind="1" id="725" />
 			</intels>
 			<things>
 				<thing kind="1" id="25">50</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="250000" coef="1"/>
 	</research>
-	<research id="527">
+	<research id="727">
 		<need>
 			<intels>
-				<intel kind="1" id="526" />
+				<intel kind="1" id="726" />
 			</intels>
 			<things>
 				<thing kind="1" id="26">50</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="500000" coef="1"/>
 	</research>
-	<research id="532">
+	<research id="732">
 		<need>
 			<things>
 				<thing kind="1" id="32">1</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="2500" coef="1"/>
 	</research>
-	<research id="533">
+	<research id="733">
 		<need>
 			<intels>
-				<intel kind="1" id="532" />
+				<intel kind="1" id="732" />
 			</intels>
 			<things>
 				<thing kind="1" id="33">1</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="5000" coef="1"/>
 	</research>
-	<research id="534">
+	<research id="734">
 		<need>
 			<intels>
-				<intel kind="1" id="533" />
+				<intel kind="1" id="733" />
 			</intels>
 			<things>
 				<thing kind="1" id="32">100</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="25000" coef="1"/>
 	</research>
-	<research id="535">
+	<research id="735">
 		<need>
 			<intels>
-				<intel kind="1" id="534" />
+				<intel kind="1" id="734" />
 			</intels>
 			<things>
 				<thing kind="1" id="34">50</thing>
 				<thing kind="1" id="65">1</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="50000" coef="1"/>
 	</research>
-	<research id="536">
+	<research id="736">
 		<need>
 			<intels>
-				<intel kind="1" id="535" />
+				<intel kind="1" id="735" />
 			</intels>
 			<things>
 				<thing kind="1" id="35">50</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="250000" coef="1"/>
 	</research>
-	<research id="537">
+	<research id="737">
 		<need>
 			<intels>
-				<intel kind="1" id="536" />
+				<intel kind="1" id="736" />
 			</intels>
 			<things>
 				<thing kind="1" id="36">50</thing>
 			</things>
 		</need>
-		<price coef="1" >1</price>
+		<price coin="500000" coef="1"/>
 	</research>
 </researchs>

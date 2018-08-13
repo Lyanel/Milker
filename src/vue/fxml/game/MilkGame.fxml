@@ -51,7 +51,7 @@
 	               <children>
 						<Label fx:id="coinLabel" text="MilkCoin" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
 	                	<Label fx:id="agnelLabel" text="MilkAgnel" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
-	      				<TabPane prefWidth="300.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE" GridPane.columnSpan="2" GridPane.rowIndex="1">
+	      				<TabPane fx:id="tabList" prefWidth="300.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE" GridPane.columnSpan="2" GridPane.rowIndex="1">
 	      					<tabs>
 	      						<Tab fx:id="neutralTab" text="Neutral Path">
 	      							<content>

@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class MilkInfo extends MilkVar implements Cloneable {
+public class MilkInfo extends MilkVar {
 	
 	public static final String xmlName = "name", xmlTxEffect= "effect", xmlDesc= "desc", xmlQuote = "quote";
 	
@@ -31,6 +31,13 @@ public class MilkInfo extends MilkVar implements Cloneable {
 	public MilkInfo(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
+	}
+	public MilkInfo(MilkInfo original) {
+		super(original);
+		this.setName(original.getName());
+		this.setTxEffect(original.getTxEffect());
+		this.setDesc(original.getDesc());
+		this.setQuote(original.getQuote());
 	}
 
 	// Set value from Element methods
@@ -172,13 +179,5 @@ public class MilkInfo extends MilkVar implements Cloneable {
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkInfo clone = (MilkInfo) super.clone();
-		if (this.name!=null) clone.setName(this.name.getValue());
-		if (this.txEffect!=null) clone.setTxEffect(this.txEffect.getValue());
-		if (this.desc!=null) clone.setDesc(this.desc.getValue());
-		if (this.quote!=null) clone.setQuote(this.quote.getValue());
-		return clone;
-	}
+	
 }

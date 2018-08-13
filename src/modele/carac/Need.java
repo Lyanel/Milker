@@ -1,29 +1,34 @@
 package modele.carac;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
 import modele.MilkRs;
 
-public class Need extends Prerequisites implements Cloneable {
+public class Need extends Prerequisites {
 	
 	public static final String noeud = "need";
 	public String getNoeud() {return noeud;}
 
 	// Fields
 
-	private Vector<NeededIntel> neededIntels = null;
+	private ArrayList<NeededIntel> neededIntels = null;
 	
 	// Constructors
 	
 	public Need() {
-		this.neededIntels = new Vector<NeededIntel>();
+		super();
+		this.neededIntels = new ArrayList<NeededIntel>();
 	}
 	public Need(Element milkElement) {
 		super();
-		this.neededIntels = new Vector<NeededIntel>();
+		this.neededIntels = new ArrayList<NeededIntel>();
 		this.setValueFromNode(milkElement);
+	}
+	public Need(Need original) {
+		super(original);
+		this.setDeepNeededIntels(original.getNeededIntels());
 	}
 
 	// Set value from Element methods
@@ -48,11 +53,18 @@ public class Need extends Prerequisites implements Cloneable {
 	
 	// field methods
 	
-	public Vector<NeededIntel> getNeededIntels() {
+	public ArrayList<NeededIntel> getNeededIntels() {
 		return neededIntels;
 	}
-	public void setNeededIntels(Vector<NeededIntel> neededIntels) {
+	public void setNeededIntels(ArrayList<NeededIntel> neededIntels) {
 		this.neededIntels = neededIntels;
+	}
+	public void setDeepNeededIntels(ArrayList<NeededIntel> original) {
+		this.neededIntels = new ArrayList<NeededIntel>();
+		for (NeededIntel neededIntel:original) this.addNeededIntel( new NeededIntel (neededIntel));
+	}
+	public void addNeededIntel(NeededIntel intel) {
+		this.neededIntels.add(intel);
 	}
 	
 	// toString & toXml methods
@@ -83,24 +95,10 @@ public class Need extends Prerequisites implements Cloneable {
 	
 	// other object methods
 
-	public Vector<NeededIntel> getCloneNeededIntels() throws CloneNotSupportedException {
-		Vector<NeededIntel> clone = new Vector<NeededIntel>();
-		if (this.neededIntels!=null) for (NeededIntel neededIntel:this.neededIntels) clone.add((NeededIntel) neededIntel.clone());
-		return clone;
-	}
-
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
 		if(this.neededIntels!=null && this.neededIntels.size()!=0) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Need clone = (Need) super.clone();
-		clone.setNeededIntels(getCloneNeededIntels());
-		clone.setNeededThings(getCloneNeededThings());
-		return clone;
 	}
 }

@@ -5,6 +5,16 @@
 		<path>Img/Icon/</path>
 		<desc>https://publicdomainvectors.org/fr/gratuitement-des-vecteurs/Ic%C3%B4ne-de-fichier-inconnu/67196.html</desc>
 	</image>
+	<image id="02">
+		<name>blank</name>
+		<path>Img/Icon/</path>
+		<desc>Just a small blank pixel.</desc>
+	</image>
+	<image id="10">
+		<name>Tittle</name>
+		<path>Img/Scene/</path>
+		<desc>http://f.hatena.ne.jp/retla/20080625102026 - https://www.chairish.com/product/867769/roman-era-female-statues-1959-chicago-universal-statuary-co-a-pair</desc>
+	</image>
 	<image id="301">
 		<name>Balance</name>
 		<path>Img/Icon/</path>

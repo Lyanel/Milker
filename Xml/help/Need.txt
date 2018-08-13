@@ -1,11 +1,4 @@
-Kind :  	Refer to the Kind of the thing you have/need.... needed object always have a kind.... :
-	object : 1 (buildings), 2 (workers), 3 (human slaves (SH)), 4 (animal slaves (SA)), 5 (animals), 
-		need/check :  x=0 (all), 6 (Semi-Humans (workers+SH)), 7 (slaves (SH+SA)), 8 (Semi-animals (SA+animals)),
-			09 (Earthling People (workers+SA)),			10 (natural Cattle (SH+animals)), 
-			11 (People (workers+SH+SA)),				12 (cattle (SH+SA+animals)),
-			13 (Earthling being (workers+SA+animals)),	14 (natural being (workers+SH+animals)), 
-			15 (Livings being (workers+SH+SA+animals)).
-	intel : 1 (research), 2 (upgrade), 3 (synergy), 4 (ascension), 5 (event).
+Kind :  	Refer to the Kind of the thing you have/need.... (see help.txt)
 
 Id :	If Id is present, kind will always be a specific one (beetwen 1 & 5), indicating a specific object (Ex : kind:11 & id:11 => Farm), in that case Level & tree are not needed.
 	

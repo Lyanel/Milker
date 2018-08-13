@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 import modele.XmlHelper;
 import modele.carac.Bonus;
 
-public class ToggleLevel extends ToggleScene implements Cloneable {
+public class ToggleLevel extends ToggleScene {
 	
 	public static final String noeud = "level";
 	public String getNoeud() {return noeud;}
@@ -139,6 +139,10 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 		this.bonus = new Bonus();
 		this.setValueFromNode(milkElement);
 	}
+	public ToggleLevel(ToggleLevel original) {
+		super(original);
+		this.bonus = new Bonus(original.getBonus());
+	}
 	
 	// Set value from Element methods
 	
@@ -184,10 +188,4 @@ public class ToggleLevel extends ToggleScene implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		ToggleLevel clone = (ToggleLevel) super.clone();
-		if (this.bonus!=null) clone.setBonus((Bonus) this.bonus.clone());
-		return clone;
-	}
 }

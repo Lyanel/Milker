@@ -4,7 +4,7 @@ import org.w3c.dom.Element;
 
 import modele.ParseMilkFile;
 
-public class Check extends Prerequisites implements Cloneable {
+public class Check extends Prerequisites {
 
 	public static final String noeud = "check", xmlMod = "mod";
 	public String getNoeud() {return noeud;}
@@ -22,6 +22,10 @@ public class Check extends Prerequisites implements Cloneable {
 		super();
 		this.mod = 1;
 		this.setValueFromNode(milkElement);
+	}
+	public Check(Check original) {
+		super(original);
+		this.mod = new Integer(original.getMod());
 	}
 
 	// Set value from Element methods
@@ -86,16 +90,10 @@ public class Check extends Prerequisites implements Cloneable {
 
 	// other object methods
 	
-
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Check clone = (Check) super.clone();
-		return clone;
-	}
 }

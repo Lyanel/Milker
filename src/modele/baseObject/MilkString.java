@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import modele.ParseMilkFile;
 
-public class MilkString extends MilkId implements Cloneable {
+public class MilkString extends MilkId {
 	public static final String noeud = "string";
 	public String getNoeud() {return noeud;}
 
@@ -39,6 +39,10 @@ public class MilkString extends MilkId implements Cloneable {
 	public MilkString(Element milkElement) {
 		super(milkElement);
 		this.setValueFromNode(milkElement);
+	}
+	public MilkString(MilkString original) {
+		super(original);
+		this.setText(original.getText());
 	}
 
 	// Set value from Element methods
@@ -100,10 +104,5 @@ public class MilkString extends MilkId implements Cloneable {
 	
 	// other object methods
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkString clone = (MilkString) super.clone();
-		if (this.text!=null) clone.setText(this.text.getValue());
-		return clone;
-	}
+	
 }

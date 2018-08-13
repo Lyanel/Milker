@@ -1,8 +1,8 @@
 package modele.toggle;
 
 import modele.MilkRs;
+import modele.baseObject.MilkPricedObj;
 import modele.carac.Agent;
-import modele.intel.Intel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Callback;
 
-public class Toggle extends Intel implements Cloneable {
+public class Toggle extends MilkPricedObj {
 
 	public static final String noeud = "toggle";
 	public String getNoeud() {return noeud;}
@@ -79,21 +79,26 @@ public class Toggle extends Intel implements Cloneable {
 	
 	
 	public static ObservableList<Toggle> getToggleListe() {
-		if (modeltoggles==null){
-			if (toggles==null){
-				toggles = new ArrayList<Toggle>();
-				toggles.add(ToggleTool.getTool());
-				toggles.add(ToggleIdol.getIdol());
-				toggles.add(ToggleEvent.getEvent());
-			}
-			modeltoggles = FXCollections.observableArrayList(extractor());
-			if (toggles!=null){
-				for (Toggle toggle:toggles){
-					modeltoggles.add(toggle);
-				}
-			}
-		}
+		if (modeltoggles==null)setObservableListe();
 		return modeltoggles;
+	}
+	
+	public static void setObservableListe() {
+		modeltoggles = FXCollections.observableArrayList(extractor());
+		if (toggles==null)setToggleListe();
+		for (Toggle toggle:toggles){
+			modeltoggles.add(new Toggle(toggle));
+		}
+		for (Toggle toggle:modeltoggles){
+			toggle.setOptionSelected(toggle.getStart());
+		}
+	}
+	
+	private static void setToggleListe() {
+		toggles = new ArrayList<Toggle>();
+		toggles.add(ToggleTool.getToggle());
+		toggles.add(ToggleIdol.getToggle());
+		toggles.add(ToggleEvent.getToggle());
 	}
 
 	// field
@@ -114,6 +119,12 @@ public class Toggle extends Intel implements Cloneable {
 		this.agent = new Agent();
 		this.toggleOptions = new ArrayList<ToggleOption>();
 		this.setValueFromNode(milkElement);
+	}
+	public Toggle(Toggle original) {
+		super(original);
+		this.agent = new Agent(original.getAgent());
+		this.setDeepOptions(original.getToggleOptions());
+		this.setDeepObservableOptions(original.getObservableOptions());
 	}
 	
 	// Set values from Element methods
@@ -162,6 +173,13 @@ public class Toggle extends Intel implements Cloneable {
 	public void setToggleOptions(ArrayList<ToggleOption> toggleOptions) {
 		this.toggleOptions = toggleOptions;
 	}
+	public void setDeepOptions(ArrayList<ToggleOption> original) {
+		this.toggleOptions = new ArrayList<ToggleOption>();
+		for (ToggleOption toggleOption:original) this.addToggleOption( new ToggleOption (toggleOption));
+	}
+	public void addToggleOption(ToggleOption toggleOption) {
+		this.toggleOptions.add(toggleOption);
+	}
 	public void setToggleOptionsInfo(ArrayList<ToggleOption> toggleOptions) {
 		if (this.toggleOptions!=null && toggleOptions!=null){
 			for (ToggleOption toggleOption:this.toggleOptions) {
@@ -208,6 +226,10 @@ public class Toggle extends Intel implements Cloneable {
 		return value;
 	}
 	
+	public void setDeepObservableOptions(ObservableList<ToggleOption> observableList) {
+		modelOptions = FXCollections.observableArrayList(extractorO());
+		for (ToggleOption toggleOption:observableList) modelOptions.add(new ToggleOption (toggleOption));
+	}
 	public ObservableList<ToggleOption> getObservableOptions() {
 		if (modelOptions==null){
 			modelOptions = FXCollections.observableArrayList(extractorO());
@@ -246,12 +268,6 @@ public class Toggle extends Intel implements Cloneable {
 	
 	// other object methods
 
-	public ArrayList<ToggleOption> getCloneToggleOptions() throws CloneNotSupportedException {
-		ArrayList<ToggleOption> clone = new ArrayList<ToggleOption>();
-		if (this.toggleOptions!=null) for (ToggleOption toggleOption:this.toggleOptions) clone.add((ToggleOption) toggleOption.clone());
-		return clone;
-	}
-
 	@Override
 	public boolean allZero()  {
 		boolean temp = super.allZero();
@@ -260,11 +276,4 @@ public class Toggle extends Intel implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Toggle clone = (Toggle) super.clone();
-		if (this.agent!=null) clone.setAgent((Agent) this.agent.clone());
-		clone.setToggleOptions(getCloneToggleOptions());
-		return clone;
-	}
 }

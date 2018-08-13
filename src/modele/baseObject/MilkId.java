@@ -5,7 +5,7 @@ import org.w3c.dom.Element;
 import modele.MilkRs;
 import modele.ParseMilkFile;
 
-public class MilkId extends MilkVar implements Cloneable {
+public class MilkId extends MilkVar {
 	
 	public static final String xmlId = "id";
 	public static final String noeud = "";
@@ -27,6 +27,10 @@ public class MilkId extends MilkVar implements Cloneable {
 	public MilkId(Element milkElement) {
 		super();
 		this.setValueFromNode(milkElement);
+	}
+	public MilkId(MilkId original) {
+		super(original);
+		if(original.getId() != null) this.id = new Integer(original.getId());
 	}
 
 	// Set value from Element methods
@@ -94,12 +98,6 @@ public class MilkId extends MilkVar implements Cloneable {
 		boolean temp = super.allZero();
 		if(this.id!=null && this.id!=0) temp= false;
 		return temp;
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkId clone = (MilkId) super.clone();
-		return clone;
 	}
 	
 	@Override

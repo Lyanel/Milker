@@ -3,14 +3,46 @@ ID : must be an unique number >0 for each kind of object (Building, research...)
 		 (except when multiple object have the same path and lvl)
 
 Kind :  Refer to the Kind of the thing you have/need :
-	object : 1 (buildings), 2 (workers), 3 (human slaves (SH)), 4 (animal slaves (SA)), 5 (animals), 
-		need/check :  x= 0 (None), 49 (All)
-			6 (Semi-Humans (workers+SH)), 7 (slaves (SH+SA)), 8 (Semi-animals (SA+animals)),
-			09 (Earthling People (workers+SA)),			10 (natural Cattle (SH+animals)), 
-			11 (People (workers+SH+SA)),				12 (cattle (SH+SA+animals)),
-			13 (Earthling being (workers+SA+animals)),	14 (natural being (workers+SH+animals)), 
-			15 (Livings being (workers+SH+SA+animals)).
+	object : 	
+		Building = 1,
+		Worker = 2,
+		Slave_Worker = 3,
+		Slave_Humanoid = 4,
+		Slave_Animal = 5,
+		Animal = 6,
+		
+		Human = 7,				// workers + slaves worker
+		MasterAndCaptive = 8,	// workers + slaves humanoids
+		MasterAndCreature = 9,	// workers + slaves animals
+		Original_Farm = 10,		// workers + animals
+		Natural_Slave = 11,		// slaves worker + slaves humanoids
+		Earthling_Slave = 12,	// slaves worker + slaves animals
+		NatEarthCattle = 13,	// slaves worker + animals
+		Forced_Slave = 14,		// slaves humanoids + slaves animals
+		Familiar = 15,			// slaves humanoids + animals
+		Pet = 16,				// slaves animals + animals
+		
+		Semi_Human = 17,		// workers + slaves worker + slaves humanoids
+		Earthling_People = 18,	// workers + slaves worker + slaves animals
+		Natural_Earthling = 19,	// workers + slaves worker + animals
+		MasterAndSlave = 20,	// workers + slaves humanoids + slaves animals
+		MasterAndFamiliar = 21,	// workers + slaves humanoids + animals
+		MasterAndPet = 22,		// workers + slaves animals + animals
+		Slaves = 23,			// slaves worker + slaves humanoids + slaves animals
+		Natural_Cattle = 24,	// slaves worker + slaves humanoids + animals
+		Earthling_Cattle = 25,	// slaves worker + slaves animals + animals
+		Forced_Cattle = 26,		// slaves humanoids + slaves animals + animals			
+		
+		People = 27,			// workers + slaves worker + slaves humanoids + slaves animals
+		Natural_Being = 28,		// workers + slaves worker + slaves humanoids + animals
+		Earthling_Being = 29,	// workers + slaves worker + slaves animals + animals
+		MasterAndCattle = 30,	// workers + slaves humanoids + slaves animals + animals
+		Cattle = 31,			// slaves worker + slaves humanoids + slaves animals + animals
+		
+		Living_Being = 32,		// workers + slaves worker + slaves humanoids + slaves animals + animals	
+		Economic_Agent = 33,	// Building + workers
 	intel : 1 (research), 2 (upgrade), 3 (synergy), 4 (ascension), 5 (event).
+	both : 0(None), 49 (All)
 
 Tree :  Refer to the development tree in which you can have the object : 
 	object : 1 (neutral), 2 (science) or 3 (magic).

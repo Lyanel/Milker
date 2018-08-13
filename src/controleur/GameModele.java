@@ -2,6 +2,9 @@ package controleur;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.GregorianCalendar;
+
+import org.w3c.dom.Element;
 
 import application.Milker;
 import javafx.animation.Animation;
@@ -15,22 +18,17 @@ import modele.Utility;
 import modele.baseObject.MilkDate;
 import modele.baseObject.MilkInterface;
 import modele.baseObject.MilkKind;
+import modele.baseObject.MilkPricedObj;
+import modele.baseObject.MilkString;
 import modele.baseObject.MilkXmlObj;
 import modele.carac.Agent;
 import modele.carac.NeededIntel;
 import modele.carac.NeededThing;
 import modele.carac.QuantityListener;
 import modele.carac.Sacrifice;
-import modele.intel.Ascension;
-import modele.intel.Intel;
-import modele.intel.Research;
-import modele.intel.Synergy;
-import modele.intel.Upgrade;
-import modele.thing.Animal;
-import modele.thing.Building;
-import modele.thing.Slave;
-import modele.thing.Thing;
-import modele.thing.Worker;
+import modele.carac.Save;
+import modele.intel.*;
+import modele.thing.*;
 import modele.toggle.Toggle;
 import modele.toggle.ToggleLevel;
 import modele.toggle.ToggleOption;
@@ -38,10 +36,24 @@ import javafx.util.Duration;
 
 public class GameModele {
 
+	public static void resetList() {
+		BuildingList.getInstance().resetListes();
+		WorkerList.getInstance().resetListes();
+		SlaveList.getInstance().resetListes();
+		AnimalList.getInstance().resetListes();
+		
+		ResearchList.getInstance().resetListes();
+		UpgradeList.getInstance().resetListes();
+		SynergyList.getInstance().resetListes();
+	//	Ascencion.getInstance().resetListes();
+		Toggle.setObservableListe();
+	}
+	
     private Milker milker;
 	private MilkDate plaYear;
 	private String name;
-	private DoubleProperty milkCoin = new SimpleDoubleProperty(0.0), toolTogglePrice = new SimpleDoubleProperty(0.0), idolTogglePrice = new SimpleDoubleProperty(0.0), eventTogglePrice = new SimpleDoubleProperty(0.0);
+	private DoubleProperty milkCoin = new SimpleDoubleProperty(0.0), milkAgnel = new SimpleDoubleProperty(0.0),
+			toolTogglePrice = new SimpleDoubleProperty(0.0), idolTogglePrice = new SimpleDoubleProperty(0.0), eventTogglePrice = new SimpleDoubleProperty(0.0);
 	private float cattleProdBonus = 0, cattleQualBonus = 0, buildProdBonus = 0, buildQualBonus = 0;
 	
 	public GameModele(Milker milker) {
@@ -77,7 +89,7 @@ public class GameModele {
 		});
 		
 		Agent eco = new Agent();
-		eco.setKind(MilkKind.kind_Building);
+		eco.setKind(MilkKind.Building);
 		Utility.addQuantityListenerToThings(eco, new QuantityListener() {
 			@Override
 			public void quantityChanged(double oldQuantity, double newQuantity) {
@@ -92,7 +104,7 @@ public class GameModele {
 			}
 		});
 		
-		eco.setKind(MilkKind.kind_Worker);
+		eco.setKind(MilkKind.Worker);
 		Utility.addQuantityListenerToThings(eco, new QuantityListener() {
 			@Override
 			public void quantityChanged(double oldQuantity, double newQuantity) {
@@ -106,7 +118,7 @@ public class GameModele {
 			}
 		});
 		
-		eco.setKind(MilkKind.kind_Cattle);
+		eco.setKind(MilkKind.Cattle);
 		Utility.addQuantityListenerToThings(eco, new QuantityListener() {
 			@Override
 			public void quantityChanged(double oldQuantity, double newQuantity) {
@@ -128,15 +140,23 @@ public class GameModele {
 	 * return 1
 	 * */
 	private double getIncome() {
+		changeDate();
 		double tIncome = 0;
 		double toolProdBonus = getToggles().get(0).getselectedOption().getLevel().getBonus().getAttrib().getQuant().doubleValue();
 		double toolQualBonus = getToggles().get(0).getselectedOption().getLevel().getBonus().getAttrib().getQual().doubleValue();
 		
-		tIncome+=Building.getIncomeFromList(buildProdBonus,buildQualBonus); 
-		tIncome+=Animal.getIncomeFromList(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Slave.getIncomeFromList(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
-		tIncome+=Worker.getIncomeFromList(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus);
+		tIncome+=BuildingList.getInstance().getIncome(buildProdBonus,buildQualBonus); 
+		tIncome+=AnimalList.getInstance().getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=SlaveList.getInstance().getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus); 
+		tIncome+=WorkerList.getInstance().getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus);
 		return tIncome;
+	}
+
+	public void changeDate() {
+		this.plaYear.getMilkdate().add(GregorianCalendar.DAY_OF_MONTH, 1);
+		int day = this.plaYear.getMilkdate().get(GregorianCalendar.DAY_OF_MONTH);
+		if (getToggles().get(2).getselectedOption().getId().intValue()==getToggles().get(2).getStart().intValue() 
+				&& day==1) EventList.getInstance().changeByDate(this.plaYear.getMilkdate().get(GregorianCalendar.MONTH));
 	}
 
 	public void setName(String name) {
@@ -153,15 +173,20 @@ public class GameModele {
 	public DoubleProperty getMilkCoin() {
 		return this.milkCoin;
 	}
+
+	public DoubleProperty getAgnelCoin() {
+		// TODO Auto-generated method stub
+		return this.milkAgnel;
+	}
 	
 	protected void setIncomeBonus() {
 		cattleProdBonus = 0;
 		cattleQualBonus = 0; 
 		buildProdBonus = 0;
 		buildQualBonus = 0;
-		for (Building building:Building.getFullListe()){
-			int active = building.getAttrib().getActives();
-			if(building.getBonus().getKind().intValue()==MilkKind.kind_Living_Being){
+		for (Building building:BuildingList.getInstance().getFullListe()){
+			int active = building.getQuantity().getActives();
+			if(building.getBonus().getKind().intValue()==MilkKind.Living_Being){
 				cattleProdBonus+=(building.getBonus().getAttrib().getQuant().doubleValue()*active);
 				cattleQualBonus+=(building.getBonus().getAttrib().getQual().doubleValue()*active);
 			}else{
@@ -211,46 +236,66 @@ public class GameModele {
 		this.plaYear = plaYear;
 	}
 
-	public ObservableList<Research> getResearch() {return Research.getResearchListe();}
-	public ObservableList<Upgrade> getUpgrade() {return Upgrade.getUpgradeListe();}
-	public ObservableList<Synergy> getSynergy() {return Synergy.getSynergyListe();}
+	public ObservableList<Research> getResearch() {return ResearchList.getInstance().getResearchListe();}
+	public ObservableList<Upgrade> getUpgrade() {return UpgradeList.getInstance().getUpgradeListe();}
+	public ObservableList<Synergy> getSynergy() {return SynergyList.getInstance().getSynergyListe();}
 	public ObservableList<Ascension> getAscension() {return null;}
 	//public ObservableList<Event> getEvent() {return null;}
 
 	public ObservableList<Toggle> getToggles() {return Toggle.getToggleListe();}
 
-	public ObservableList<Building> getBuildingNeutral() {return Building.getNeutralListe();}
-	public ObservableList<Building> getBuildingScience() {return Building.getScienceListe();}
-	public ObservableList<Building> getBuildingMagic() {return Building.getMagicListe();}
+	public ObservableList<Building> getBuildingNeutral() {return BuildingList.getInstance().getNeutralListe();}
+	public ObservableList<Building> getBuildingScience() {return BuildingList.getInstance().getScienceListe();}
+	public ObservableList<Building> getBuildingMagic() {return BuildingList.getInstance().getMagicListe();}
 
-	public ObservableList<Worker> getWorkerNeutral() {return Worker.getNeutralListe();}
-	public ObservableList<Worker> getWorkerScience() {return Worker.getScienceListe();}
-	public ObservableList<Worker> getWorkerMagic() {return Worker.getMagicListe();}
+	public ObservableList<Worker> getWorkerNeutral() {return WorkerList.getInstance().getNeutralListe();}
+	public ObservableList<Worker> getWorkerScience() {return WorkerList.getInstance().getScienceListe();}
+	public ObservableList<Worker> getWorkerMagic() {return WorkerList.getInstance().getMagicListe();}
 
-	public ObservableList<Slave> getSlaveNeutral() {return Slave.getNeutralListe();}
-	public ObservableList<Slave> getSlaveScience() {return Slave.getScienceListe();}
-	public ObservableList<Slave> getSlaveMagic() {return Slave.getMagicListe();}
+	public ObservableList<Slave> getSlaveNeutral() {return SlaveList.getInstance().getNeutralListe();}
+	public ObservableList<Slave> getSlaveScience() {return SlaveList.getInstance().getScienceListe();}
+	public ObservableList<Slave> getSlaveMagic() {return SlaveList.getInstance().getMagicListe();}
 
-	public ObservableList<Animal> getAnimalNeutral() {return Animal.getNeutralListe();}
-	public ObservableList<Animal> getAnimalScience() {return Animal.getScienceListe();}
-	public ObservableList<Animal> getAnimalMagic() {return Animal.getMagicListe();}
+	public ObservableList<Animal> getAnimalNeutral() {return AnimalList.getInstance().getNeutralListe();}
+	public ObservableList<Animal> getAnimalScience() {return AnimalList.getInstance().getScienceListe();}
+	public ObservableList<Animal> getAnimalMagic() {return AnimalList.getInstance().getMagicListe();}
 	
 	public void statueClicked() {
-		for(Building building: Building.getNeutralListe()) {
+		for(Building building: getBuildingNeutral()) {
 			if (building.getId().intValue()==10) 
-				milkCoin.setValue( milkCoin.doubleValue() + building.getIncome().getProd() * building.getAttrib().getQuant() );
+				milkCoin.setValue( milkCoin.doubleValue() + building.getIncome().getProd() * building.getQuantity().getQuant() );
 		}
 		
 	}
+
+	public boolean isIntelVisible(Intel value) {
+		boolean visible = true;
+		if(!value.bought()){
+			if(!isMilkObjVisible(value))visible = false;
+			if(visible && value instanceof Research){
+				Research tempResearch = (Research)value;
+				if(tempResearch.getCheck().getNeededThings().size()>0)visible = areMilkObjOwned(tempResearch);
+			}
+		}
+		return visible;
+	}
 	
-	public boolean isMilkObjVisible(MilkXmlObj value) {
+	public boolean isThingVisible(Thing value) {
+		boolean visible = true;
+		if(value.getQuantity().getQuant().intValue()<1 && !isMilkObjVisible(value)) visible = false;
+		return visible;
+	}
+	
+	public boolean isOptionVisible(ToggleOption value) {
+		boolean visible = true;
+		if(!isMilkObjVisible(value)) visible = false;
+		return visible;
+	}
+
+	private boolean isMilkObjVisible(MilkXmlObj value) {
 		boolean visible = true;
 		if(value.getNeed().getNeededIntels().size()>0) visible = isMilkObjResearched(value);
 		if(visible && value.getNeed().getNeededThings().size()>0) visible = isMilkObjOwned(value);
-		if(visible && value instanceof Research){
-			Research tempResearch = (Research)value;
-			if(tempResearch.getCheck().getNeededThings().size()>0)visible = areMilkObjOwned(tempResearch);
-		}
 		return visible;
 	}
 
@@ -259,7 +304,7 @@ public class GameModele {
 		int retlvl=1;
 		for (ToggleLevel lvl:lvls){
 			for (NeededIntel need: lvl.getNeed().getNeededIntels()) {
-				if (Utility.checkIntel(need, getResearch()) && lvl.getLvl() > retlvl) retlvl = lvl.getLvl();
+				if (Utility.getIntelFromAgent(need).bought() && lvl.getLvl() > retlvl) retlvl = lvl.getLvl();
 			}
 		}
 		return retlvl;
@@ -268,30 +313,10 @@ public class GameModele {
 	public boolean isMilkObjResearched(MilkXmlObj value) {
 		boolean visible = true;
 		for (NeededIntel need: value.getNeed().getNeededIntels()) {
-			switch (need.getKind().getKind()) {
-				case MilkKind.kind_Research: {
-						visible = Utility.checkIntel(need, getResearch());
-					}
-					break;
-				case MilkKind.kind_Upgrade: {
-						visible = Utility.checkIntel(need, getUpgrade());
-					}
-					break;
-				case MilkKind.kind_Synergy: {
-						visible = Utility.checkIntel(need, getSynergy());
-					}
-					break;
-				case MilkKind.kind_Ascension: {
-					visible = false; //MilkCheck.checkIntel(need, getAscension());
-				}
-				break;
-				case MilkKind.kind_Event: {
-					visible = false; //MilkCheck.checkIntel(need, getEvent());
-				}
-				break;
-				default:
-					break;
-			}
+			if(MilkKind.checkThingKind(MilkKind.Event, need.getKind())){
+				Event test = EventList.getInstance().getActiveEvent();
+				if(test!=null && need.getId().intValue()!=test.getId().intValue())visible=false;
+			} else if(!Utility.getIntelFromAgent(need).bought())visible=false;
 		}
 		return visible;
 	}
@@ -314,7 +339,7 @@ public class GameModele {
 	}
 
 
-	public boolean isIntelbuyable(Intel value) {
+	public boolean isMilkPricedObjbuyable(MilkPricedObj value) {
 		boolean result = false;
 		if(value.getPriceValue()<=milkCoin.doubleValue()){
 			if(value instanceof Thing)result = true;
@@ -323,8 +348,8 @@ public class GameModele {
 		return result;
 	}
 
-	public void buyIntel(Intel value) {
-		if(isIntelbuyable(value)){
+	public void buyMilkPricedObj(MilkPricedObj value) {
+		if(isMilkPricedObjbuyable(value)){
 			boolean sacrified = true;
 			if(Utility.thatNeedaSacrifice(value)){
 				ArrayList<Thing> selecteds = GetSacrificesList(value);
@@ -334,7 +359,13 @@ public class GameModele {
 					Sacrifice need = null;
 					if(value instanceof Research) need = ((Research)value).getSacrifice();
 					else need = ((Slave)value).getSacrifice();
-					selecteds.get(0).getAttrib().incrementeQuant(-need.getAttrib().getQuant());
+					selecteds.get(0).getQuantity().incrementeQuant(-need.getQuantity().getQuant());
+					if(value.isVoluntarySlave()){
+						sacrified = false;
+						SlaveWorker test = (SlaveWorker) Utility.getThingFromList(selecteds.get(0).getId().intValue(),SlaveListW.getInstance().getSWFullListe());
+						test.getQuantity().incrementeQuant(1);
+						milker.setStatutMessage(selecteds.get(0).getInfo().getName()+" "+MilkInterface.getMilkStringsFromId(1105).asText());
+					}
 				} else {
 					sacrified = false;
 					milker.setStatutMessage(value.getInfo().getName()+" "+MilkInterface.getMilkStringsFromId(1101).asText()
@@ -349,7 +380,7 @@ public class GameModele {
 		} else milker.setStatutMessage(value.getInfo().getName()+" "+MilkInterface.getMilkStringsFromId(1104).asText());
 	}
 
-	public ArrayList<Thing> GetSacrificesList(Intel value) {
+	public ArrayList<Thing> GetSacrificesList(MilkPricedObj value) {
 		Sacrifice need = null;
 		ArrayList<? extends Thing> candidates = null;
 		ArrayList<Thing> selected = new ArrayList<Thing>();
@@ -357,16 +388,16 @@ public class GameModele {
 			need = ((Research)value).getSacrifice();
 			candidates = Utility.getThingsListsFromAgent(need);
 			for(Thing candidate : candidates){
-				if(need.getAttrib().getQuant().intValue()<candidate.getAttrib().getQuant().intValue())selected.add(candidate);
+				if(need.getQuantity().getQuant().intValue()<candidate.getQuantity().getQuant().intValue())selected.add(candidate);
 			}
 		} else {
 			need = ((Slave)value).getSacrifice();
 			candidates = Utility.getThingsListsFromAgent(need);
 			for(Thing candidate : candidates){
-				if(MilkKind.checkThingKind(MilkKind.kind_Worker, candidate.getKind())){
-					if(need.getAttrib().getQuant().intValue()<
-							(candidate.getAttrib().getQuant().intValue()-candidate.getAttrib().getActives().intValue()-candidate.getAttrib().getSemiActives().intValue()))selected.add(candidate);
-				} else if(need.getAttrib().getQuant().intValue()<candidate.getAttrib().getQuant().intValue())selected.add(candidate);
+				if(MilkKind.checkThingKind(MilkKind.Worker, candidate.getKind())){
+					if(need.getQuantity().getQuant().intValue()<
+							(candidate.getQuantity().getQuant().intValue()-candidate.getQuantity().getActives().intValue()-candidate.getQuantity().getSemiActives().intValue()))selected.add(candidate);
+				} else if(need.getQuantity().getQuant().intValue()<candidate.getQuantity().getQuant().intValue())selected.add(candidate);
 			}
 		}
 		return selected;
@@ -398,6 +429,34 @@ public class GameModele {
 		if (isEventToggleSwitchable()){
 			getToggles().get(2).setOptionSelected(value);
 			milkCoin.setValue(milkCoin.doubleValue() - eventTogglePrice.doubleValue());
+		}
+	}
+
+	public String getSave() {
+		Save save = new Save(milkCoin.getValue(),milkAgnel.getValue());
+		save.setName(new MilkString(name));
+		save.setPlaYear(plaYear);
+		save.setSave();
+		return save.toXmlStat();
+	}
+	
+	public void loadSave(Element racine) {
+		Save save = new Save(racine);
+		milkCoin.setValue(save.getMilkCoin());
+		milkAgnel.setValue(save.getMilkAgnel());
+		//name=save.getName().asText();
+		//plaYear.setMilkdate(save.getPlaYear().getMilkdate());
+		
+		for (NeededThing neededThing : save.getNeededThings()){
+			Thing thing = Utility.getThingsListsFromAgent(neededThing).get(0);
+			thing.getQuantity().setQuant(neededThing.getQuantity().getQuant());
+		}
+		
+		for (NeededIntel neededIntel : save.getNeededIntels()){
+			Intel intel = Utility.getIntelFromAgent(neededIntel);
+			intel.buy();
+			milker.unlockView(intel);
+			if(intel.getClass().equals(Upgrade.class) ) ((Upgrade)intel).applyUpgrade();
 		}
 	}
 }

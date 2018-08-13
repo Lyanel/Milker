@@ -1,23 +1,16 @@
 package modele.intel;
 
-import modele.baseObject.MilkFile;
-import modele.baseObject.MilkInterface;
 import modele.baseObject.MilkKind;
 import modele.carac.Check;
 import modele.carac.Sacrifice;
 
-import java.util.ArrayList;
 
 import org.w3c.dom.Element;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.util.Callback;
+public class Research extends Intel {
+	public String getNoeud() {return ResearchList.getInstance().getNoeud();}
 
-public class Research extends Intel implements Cloneable {
-
-	public static final String file = "Research", noeud = "research";
+/*	public static final String file = "Research", noeud = "research";
 	public String getNoeud() {return noeud;}
 
 	private static ArrayList<Research> researchs;
@@ -76,7 +69,7 @@ public class Research extends Intel implements Cloneable {
 	public static Callback<Research, Observable[]> extractor() {
         return (Research p) -> new Observable[]{p.getInfo().getObrservableName()};
 	}
-
+*/
 	// Fields
 	
 	private Sacrifice sacrifice;
@@ -88,14 +81,19 @@ public class Research extends Intel implements Cloneable {
 		super();
 		sacrifice = new Sacrifice();
 		check = new Check();
-		this.setKind(MilkKind.kind_Research);
+		this.setKind(MilkKind.Research);
 	}
 	public Research(Element milkElement) {
 		super();
 		this.sacrifice = new Sacrifice();
 		this.check = new Check();
-		this.setKind(MilkKind.kind_Research);
+		this.setKind(MilkKind.Research);
 		this.setValueFromNode(milkElement);
+	}
+	public Research(Research original) {
+		super(original);
+		this.sacrifice = new Sacrifice(original.getSacrifice());
+		this.check = new Check(original.getCheck());
 	}
 
 	// Set value from Element methods
@@ -156,11 +154,4 @@ public class Research extends Intel implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		Research clone = (Research) super.clone();
-		if (this.sacrifice!=null) clone.setSacrifice((Sacrifice) this.sacrifice.clone());
-		if (this.check!=null) clone.setCheck((Check) this.check.clone());
-		return clone;
-	}
 }

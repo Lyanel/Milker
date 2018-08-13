@@ -1,14 +1,11 @@
 package modele.baseObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.w3c.dom.Element;
 
 import modele.carac.Need;
 
-public class MilkXmlObj extends MilkObj implements Cloneable {
-
+public class MilkXmlObj extends MilkObj {
+/*
 	protected static void setInfo(List<? extends MilkXmlObj> milkObjs, ArrayList<Element> elementlInfos) {
 		for (Element elementlInfo: elementlInfos) {
 			try {
@@ -37,7 +34,7 @@ public class MilkXmlObj extends MilkObj implements Cloneable {
 				}
 			} catch (Exception e) {e.printStackTrace();}
 		}
-	}
+	}*/
 
 	// Fields
 	
@@ -62,9 +59,17 @@ public class MilkXmlObj extends MilkObj implements Cloneable {
 		this.icon = new MilkImage();
 		this.setValueFromNode(milkElement);
 	}
+	public MilkXmlObj(MilkXmlObj original) {
+		super(original);
+		this.info = new MilkInfo(original.getInfo());
+		this.need = new Need(original.getNeed());
+		this.icon = new MilkImage(original.getIcon());
+		
+	}
 
 	// Set value from Element methods
 	
+
 	@Override
 	public void setValueFromNode(Element milkElement) {
 		super.setValueFromNode(milkElement);
@@ -158,12 +163,4 @@ public class MilkXmlObj extends MilkObj implements Cloneable {
 		return temp;
 	}
 	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		MilkXmlObj clone = (MilkXmlObj) super.clone();
-		if (this.info!=null) clone.setInfo((MilkInfo) this.info.clone());
-		if (this.need!=null) clone.setNeed((Need) this.need.clone());
-		if (this.icon!=null) clone.setIcon((MilkImage) this.icon.clone());
-		return clone;
-	}
 }
