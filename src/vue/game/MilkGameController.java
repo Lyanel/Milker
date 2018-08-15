@@ -207,9 +207,11 @@ public class MilkGameController extends MilkTabControleur {
 				});
             }
         };
-        
-    	coinLabel.textProperty().bind( Bindings.concat(this.getMainApp().getModel().getMilkCoin().asString(), " ", MilkInterface.getMilkStringsFromId(601).getText()));
-    	agnelLabel.textProperty().bind(Bindings.concat(this.getMainApp().getModel().getAgnelCoin().asString(), " ", MilkInterface.getMilkStringsFromId(603).getText()));
+
+       	coinLabel.textProperty().bind(Bindings.format("%1$.0f %2$s", this.getMainApp().getModel().getMilkCoin(), MilkInterface.getMilkStringsFromId(601).getText()));
+    	//coinLabel.textProperty().bind( Bindings.concat(this.getMainApp().getModel().getMilkCoin().asString(), " ", MilkInterface.getMilkStringsFromId(601).getText()));
+    	agnelLabel.textProperty().bind(Bindings.format("%1$.0f %2$s", this.getMainApp().getModel().getAgnelCoin(), MilkInterface.getMilkStringsFromId(603).getText()));
+    	//agnelLabel.textProperty().bind(Bindings.concat(this.getMainApp().getModel().getAgnelCoin().asString(), " ", MilkInterface.getMilkStringsFromId(603).getText()));
     	
     	idolPic.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import vue.DigitalClock?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MilkStatutController">
+<AnchorPane fx:id="statutAnchor" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.MilkStatutController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <left>

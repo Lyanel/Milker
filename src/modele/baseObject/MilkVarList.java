@@ -95,7 +95,7 @@ public class MilkVarList {
 	public static double getIncomeFromList(double toolProdBonus, double toolQualBonus, double cattleProdBonus, double cattleQualBonus, double buildProdBonus, double buildQualBonus, ObservableList<? extends LivingBeing> beingList) {
 		double tIncome = 0;
 		for (LivingBeing thing: beingList){
-			tIncome += thing.getIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
+			tIncome += thing.getActiveIncome(toolProdBonus,toolQualBonus,cattleProdBonus,cattleQualBonus,buildProdBonus,buildQualBonus) ;
 		}
 		return tIncome;
 	}	

@@ -3,13 +3,16 @@ package vue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * The controller for the Statut bar.  
  * @author Lyanel Pheles
  */
 public class MilkStatutController extends MilkerController {
-		
+
+    @FXML
+    private AnchorPane statutAnchor;
     @FXML
     private ProgressBar progress;
     @FXML

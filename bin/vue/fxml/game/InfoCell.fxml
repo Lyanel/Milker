@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.game.InfoCellController">
   <children>
-      <GridPane id="infoPan" fx:id="infoPan" scaleZ="2.0" visible="false">
+      <GridPane fx:id="infoPanel" scaleZ="2.0" visible="false">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
         </columnConstraints>

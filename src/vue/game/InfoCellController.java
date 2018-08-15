@@ -23,7 +23,7 @@ public class InfoCellController {
     private AnchorPane rootPane;
     
     @FXML
-    private GridPane infoPan;
+    private GridPane infoPanel;
     @FXML
     private Label effectPan;
     @FXML
@@ -39,7 +39,7 @@ public class InfoCellController {
     	effectPan.setText(getValue().getTxEffect());
     	descPan.setText(getValue().getDesc());
     	quotePan.setText(getValue().getQuote());
-    	infoPan.managedProperty().bind(rootPane.visibleProperty());
+    	infoPanel.managedProperty().bind(rootPane.visibleProperty());
     }
 
     /**
@@ -73,11 +73,11 @@ public class InfoCellController {
     }
 
 	public void setVisible(boolean visible) {
-		infoPan.setVisible(visible);
+		infoPanel.setVisible(visible);
 	}
 
 	public boolean isVisible() {
-		return infoPan.isVisible();
+		return infoPanel.isVisible();
 		
 	}
 }

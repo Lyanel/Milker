@@ -65,15 +65,26 @@ public class MilkCellThingController extends MilkCellController implements Initi
     			if(sacrifices.size() == 1){
     				sacrifice = sacrifices.get(0).getInfo().getObrservableName().getValue();
     			} else sacrifice = MilkInterface.getMilkStringsFromId(617).getText().getValue();
-    			if(thing.getPriceValue().intValue()==0)
-        				priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",
-        						((Slave)thing).getSacrifice().getQuantity().getObrservableQuant().getValue()," ",sacrifice,"." ) );
-    			else priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",thing.getPriceValue()," ",
-    							MilkInterface.getMilkStringsFromId(601).getText()," ", MilkInterface.getMilkStringsFromId(1100).getText()," ",
-    							((Slave)thing).getSacrifice().getQuantity().getObrservableQuant().getValue()," ",sacrifice,"." ) );
+    			if(thing.getPriceValue().intValue()==0){
+    				/*priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",
+    						((Slave)thing).getSacrifice().getQuantity().getObrservableQuant().getValue()," ",sacrifice,"." ) );*/
+    	        	priceLabel.textProperty().bind(Bindings.format("%1$s : %2$.0f %3$s\\.", 
+    	        			MilkInterface.getMilkStringsFromId(616).getText(), ((Slave)thing).getSacrifice().getQuantity().getObrservableQuant(), sacrifice));
+    			} else {
+    				/*priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ",thing.getPriceValue()," ",
+							MilkInterface.getMilkStringsFromId(601).getText()," ", MilkInterface.getMilkStringsFromId(1100).getText()," ",
+							((Slave)thing).getSacrifice().getQuantity().getObrservableQuant().getValue()," ",sacrifice,"." ) );*/
+        			priceLabel.textProperty().bind(Bindings.format("%1$s : %2$.0f %3$s %4$s %5$.0f %6$s\\.", 
+        					MilkInterface.getMilkStringsFromId(616).getText(), thing.getPriceValue(), MilkInterface.getMilkStringsFromId(601).getText(),
+        					MilkInterface.getMilkStringsFromId(1100).getText(),((Slave)thing).getSacrifice().getQuantity().getObrservableQuant(),sacrifice));
+    			}
     			
-    		} else priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ", 
-    					thing.getPriceValue()," ",MilkInterface.getMilkStringsFromId(601).getText(),"." ) );
+    		} else {
+    			/*priceLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(616).getText()," : ", 
+    					thing.getPriceValue()," ",MilkInterface.getMilkStringsFromId(601).getText(),"." ) );*/
+    			priceLabel.textProperty().bind(Bindings.format("%1$s : %2$.0f %3$s", MilkInterface.getMilkStringsFromId(616).getText(), thing.getPriceValue(), MilkInterface.getMilkStringsFromId(601).getText()));
+    			
+    		}
     		
     		if(!thing.isVoluntarySlave()){
                 quantLabel.textProperty().bind( Bindings.concat(MilkInterface.getMilkStringsFromId(631).getText(), " : ", thing.getQuantity().getObrservableQuant().getValue(),"." ) );

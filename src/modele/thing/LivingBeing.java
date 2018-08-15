@@ -59,8 +59,8 @@ public class LivingBeing extends Thing {
 		Integer thingQuant = this.getQuantity().getActives();
 		MilkProd attrib = this.getIncome().getAttrib();
 		if(thingQuant>0 && this.getIncome().canProdMilk()){
-			double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus;
-			double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus;
+			double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus/100;
+			double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus/100;
 			tIncome += thingQuant *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
 		}
 		return tIncome;
@@ -72,15 +72,15 @@ public class LivingBeing extends Thing {
 			MilkProd attrib = this.getIncome().getAttrib();
 			Integer fullyActive = this.getQuantity().getActives();
 			if(fullyActive>0){
-				double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus;
-				double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus;
+				double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*toolProdBonus/100;
+				double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*toolQualBonus/100;
 				tIncome += fullyActive *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
 			}
 			Integer semiActive = this.getQuantity().getSemiActives();
 			if(semiActive>0){
-				double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*0.8*toolProdBonus;
-				double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*0.7*toolQualBonus;
-				tIncome += semiActive *( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
+				double milkQuant = (attrib.getQuant()+attrib.getQuant()*cattleProdBonus)*0.8*toolProdBonus/100;
+				double milkQual = (attrib.getQual()+attrib.getQual()*cattleQualBonus)*0.7*toolQualBonus/100;
+				tIncome += semiActive * ( milkQuant+milkQuant*buildProdBonus ) * (milkQual+milkQual*buildQualBonus) ;
 			}
 		}
 		return tIncome;

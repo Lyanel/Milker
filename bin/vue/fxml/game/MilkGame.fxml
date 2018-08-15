@@ -34,7 +34,7 @@
 		                        <ImageView fx:id="idolPic" pickOnBounds="true" preserveRatio="true" smooth="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS" />
 	      					</children>
 	      				</GridPane>
-	                  <Pane fx:id="infoPan" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 0 13 13 0 ; -fx-border-radius: 0 12 12 0; -fx-border-width:3; -fx-border-color: rgba(150,150,150,0.6);" />
+	                  <Pane fx:id="infoPan"/>
 	               </children>
 	            </AnchorPane>
 			</center>

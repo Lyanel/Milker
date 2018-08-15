@@ -249,7 +249,7 @@ public class ParseMilkFile{
 		if(path!=null && path.length()>0){
 			byte[] raw = Securite.ouvrirImageCrypter(path);
 			if (raw == null) {
-			//	Securite.crypterImage(path,extension); //unlock this method do crypte xml file.
+				//Securite.crypterImage(path,extension); //unlock this method do crypte xml file.
 				
 				//old code to get clear image file.
 				path = "file:"+path+extension;
